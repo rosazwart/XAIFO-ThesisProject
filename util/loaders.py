@@ -18,3 +18,6 @@ def load_nodes_from_csv():
     print('Loaded nodes with attributes:', nodes_data.columns.values)
     
     return nodes_data
+
+def load_entity_sample(all_nodes, semantic_group):
+    return all_nodes.loc[all_nodes['semantic_groups'] == semantic_group].sample(n=5)
