@@ -15,7 +15,7 @@ def load_nodes_from_csv():
     data_path = os.path.join(data_folder, 'graph_nodes_v2022-01-11.csv')
     nodes_data = pd.read_csv(data_path)
     
-    print('Loaded nodes with attributes:', nodes_data.columns.values)
+    print('Loaded nodes with attributes:', nodes_data.columns.values, '\n')
     
     return nodes_data
 
