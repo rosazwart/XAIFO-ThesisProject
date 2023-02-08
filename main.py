@@ -1,6 +1,6 @@
 import util.loaders as loaders
 import util.monarch_fetcher as monarch_fetcher
-import util.graph_creator as graph_creator
+import util.graph_builder as graph_builder
 
 def analyzeData(all_edges, all_nodes):
     # Get all unique properties and semantic groups
@@ -23,7 +23,7 @@ def analyzeData(all_edges, all_nodes):
     # Look at unique subject/object pairs and relation pairs
     subject_object_pairs = joined_objects[['semantic_groups_subject', 'semantic_groups_object']].drop_duplicates().reset_index(drop=True)
     
-    graph_creator.create_graph(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name='allconcepts.png')
+    graph_builder.create_graph(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name='allconcepts.png')
     
     subject_property_object_triplets = joined_objects.drop_duplicates().reset_index(drop=True)
     subject_property_object_triplets = subject_property_object_triplets.sort_values(by='property_label').reset_index(drop=True)
@@ -53,6 +53,15 @@ if __name__ == "__main__":
     
     monarch_requester = monarch_fetcher.MonarchFetcher()
     
-    seed_associations = monarch_requester.get_seed_first_neighbour_associations(nodes_list) + monarch_requester.get_orthopheno_associations(nodes_list, 2)
-    seeded_graph = monarch_fetcher.GraphCreator(seed_associations)
+    #seed_associations = monarch_requester.get_seed_first_neighbour_associations(nodes_list) + monarch_requester.get_orthopheno_associations(nodes_list, 2)
+    
+    seed_associations = monarch_requester.get_seed_first_neighbour_associations(nodes_list)
+    seeded_graph = graph_builder.KnowledgeGraph(seed_associations)
+    
+    seeded_graph_edges, seeded_graph_nodes = seeded_graph.generate_dataframes()
+    seeded_graph_edges.to_csv('output/seeded_graph_edges.csv', index=False)
+    seeded_graph_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
+    
+    print(seeded_graph_edges)
+    print(seeded_graph_nodes)
     

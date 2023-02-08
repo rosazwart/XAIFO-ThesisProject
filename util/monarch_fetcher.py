@@ -1,128 +1,75 @@
 """
-Sources: 
-    - https://hynek.me/articles/hashes-and-equality/
+
 """
 
 import requests
-
-class Node:
-    def __init__(self, response_dict: dict, node_role: str):
-        self.id = response_dict[node_role]['id']
-        self.semantic_groups = response_dict[node_role]['category']
-        self.label = response_dict[node_role]['label']
-        self.iri = response_dict[node_role]['iri']
-        self.taxon = response_dict[node_role]['taxon']
-        
-    def __eq__(self, other):
-        return self.id == other.id
-    
-    def __hash__(self):
-        return hash(self.id)
-    
-class Edge:
-    def __init__(self, response_dict: dict):
-        self.id = response_dict['id']
-        self.subject = response_dict['subject']['id']
-        self.object = response_dict['object']['id']
-        self.relation = {
-            'id': response_dict['relation']['id'],
-            'iri': response_dict['relation']['iri'],
-            'label': response_dict['relation']['label']
-        }
-        
-    def __eq__(self, other):
-        return self.id == other.id
-    
-    def __hash__(self):
-        return hash(self.id)
-
-class GraphCreator:
-    def __init__(self, all_associations: list):
-        self.all_edges = set()
-        self.all_nodes = set()
-        
-        self.generate_edges_and_nodes(all_associations)
-        
-        all_category_pairs = list(set([node.semantic_groups[0] for node in self.all_nodes]))
-        print(f'The graph contains {len(all_category_pairs)} different semantic groups: {all_category_pairs}')
-        
-        print(f'For the graph, a total of {len(self.all_edges)} edges and {len(self.all_nodes)} nodes have been generated.')
-        
-    def find_relation_labels(self, substring_relation_label):
-        all_relations = list(set([edge.relation['label'] for edge in self.all_edges if (edge.relation['label'] and substring_relation_label in edge.relation['label'])]))
-        print(f'All  with substring "{substring_relation_label}": {all_relations}')
-    
-    def generate_edges_and_nodes(self, associations: dict):
-        for association in associations:
-            self.all_edges.add(Edge(association))
-            self.all_nodes.add(Node(association, 'subject'))
-            self.all_nodes.add(Node(association, 'object'))
-            
-    def get_filtered_nodes(self, extract_semantic_groups: list):
-        filtered_nodes = set()
-        
-        for node in self.all_nodes:
-            intersection = [semantic_group for semantic_group in node.semantic_groups if semantic_group in extract_semantic_groups]
-            if (len(intersection)):
-                filtered_nodes.add(node)
-        
-        print(f'Extracted a total of {len(filtered_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
-        return filtered_nodes
-        
+from tqdm import tqdm
 
 class MonarchFetcher:
+    """
+        Fetches relevant data from the Monarch Initiative data and analytic platform (https://monarchinitiative.org/about/monarch).
+    """
     def __init__(self):
         self.base_url = 'https://api.monarchinitiative.org/api'
         
-        self.relation_ids = {
-            'ortholog genes': ['RO:HOM0000017', 'RO:HOM0000020']
+        self.relation_ids_filters = {
+            'orthologous': ['RO:HOM0000017', 'RO:HOM0000020']
         }
         
-    def get_from_to_associations(self, node: str, max_rows: int = 2000):
+    def get_in_out_associations(self, node: str, params: dict, max_rows: int = 2000):
         """
-        Get all out and in edges from given node. 
-        :param node: identifier of node
-        :return: responses of retrieving out and in associations, respectively
+            Get all out and in edges of given node. 
+            :param node: identifier of node
+            :param max_rows: maximum number of rows to get
+            :return: responses of getting out and in associations, respectively
         """
-        params = {
-            'unselect_evidence': True,
-            'rows': max_rows
-        }
+        params['rows'] = max_rows
         
-        response_from = requests.get(f'{self.base_url}/association/from/{node}', params=params)
-        response_to = requests.get(f'{self.base_url}/association/to/{node}', params=params)
+        response_out = requests.get(f'{self.base_url}/association/from/{node}', params=params)
+        response_in = requests.get(f'{self.base_url}/association/to/{node}', params=params)
         
-        return response_from.json(), response_to.json()
+        return response_out.json(), response_in.json()
     
-    def get_filtered_associations_on_entities(self, all_associations: list, include_semantic_groups: list):
+    def get_filtered_associations_on_entities(self, all_associations: list, semantic_groups_filter: list, include: bool = True):
         """
+            Get a filtered list of associations in which each association includes at least one entity that belongs to
+            one of the given semantic groups.
+            :param all_associations: list of associations that needs to be filtered
+            :param include_semantic_groups: list of semantic groups that needs to be included
+            :return: list of filtered associations
         """
         filtered_associations = list()
 
         for association in all_associations:
-            subject_intersection = [semantic_group for semantic_group in association['subject']['category'] if semantic_group in include_semantic_groups]
-            object_intersection = [semantic_group for semantic_group in association['object']['category'] if semantic_group in include_semantic_groups]
+            all_semantic_groups = association['subject']['category'] + association['object']['category']
+            intersection = [semantic_group for semantic_group in all_semantic_groups if semantic_group in semantic_groups_filter]
             
-            if (len(subject_intersection) or len(object_intersection)):
+            if (include and len(intersection) > 0) or (not include and len(intersection) == 0):
                 filtered_associations.append(association)
                 
         return filtered_associations
     
-    def get_filtered_associations_on_relations(self, all_associations, include_relation_ids_group):
+    def get_filtered_associations_on_relations(self, all_associations: list, include_relation_ids_group: list):
         """
-        Get all relations that comply with given relations.
-        :param all_associations: list of associations
-        :return: filtered association list
+            Get a filtered list of associations in which each association includes one of the given relations.
+            :param all_associations: list of associations
+            :param include_relation_ids_group: list of relation ids that needs to be included
+            :return: list of filtered associations
         """
         filtered_associations = list()
         
         for association in all_associations:
-            if (association['relation']['id'] in self.relation_ids[include_relation_ids_group]):
+            if (association['relation']['id'] in self.relation_ids_filters[include_relation_ids_group]):
                 filtered_associations.append(association)
                 
         return filtered_associations
     
     def unpack_response(self, response_values):
+        """
+            Association information is embedded in response, so unpack this information from nonrelevant values.
+            :param response_value: dictionary with BioLink API response objects
+            :return: list of association dictionaries
+        """
         unpacked_associations = list()
         
         if ('associations' in response_values.keys()):   
@@ -130,25 +77,65 @@ class MonarchFetcher:
                 unpacked_associations.append(response)
                 
         return unpacked_associations
-        
-    def get_neighbour_associations(self, id_list):
-        """ 
-        Return the first layer of neighbours from a list of node identifiers.
-        :param id_list: list of entities represented by their identifiers
-        :return: list of direct neighbours
+    
+    def get_neighbour_ids(self, seed_list: list, associations: list, include_semantic_groups: list = []):
         """
+            Get all ids of list of associations that are not the seed ids. If given, only include ids when entity belongs to at least
+            one of given semantic groups.
+            :param seed_list: list of seed ids
+            :param associations: list of associations
+            :param include_semantic_groups: list of semantic groups to which all neighbour ids need to belong
+            :return: list of (filtered) neighbour ids 
+        """
+        neighbour_ids = set()
         
-        all_seed_nodes = set(id_list)
+        for association in associations:
+            subject_node_id = association['subject']['id']
+            object_node_id = association['object']['id']
+            
+            subject_intersection = [semantic_group for semantic_group in association['subject']['category'] if semantic_group in include_semantic_groups]
+            if not(subject_node_id in seed_list) and len(subject_intersection) > 0:
+                neighbour_ids.add(subject_node_id)
+            
+            object_intersection = [semantic_group for semantic_group in association['object']['category'] if semantic_group in include_semantic_groups]
+            if not(object_node_id in seed_list) and len(object_intersection) > 0:
+                neighbour_ids.add(object_node_id)
+            
+        return neighbour_ids
+        
+    def get_neighbour_associations(self, id_list: list, relations: list = []):
+        """ 
+            Return the first layer of neighbours from a list of node identifiers.
+            :param id_list: list of entities represented by their identifiers
+            :return: list of direct neighbours
+        """
         all_associations = []
         
-        for seed_node in all_seed_nodes:
-            response_assoc_out, response_assoc_in = self.get_from_to_associations(seed_node)
-            # print(f"For seed {seed_node}, {len(response_assoc_out['associations'])} 'from seed' associations and {len(response_assoc_in['associations'])} 'to seed' associations have been found.")
+        all_seed_nodes = set(id_list)
+        for seed_node in tqdm(all_seed_nodes):
+            params = {}
             
-            # actual associations are stored inside response dictionary, so unpack these
-            all_associations = all_associations + self.unpack_response(response_assoc_out) + self.unpack_response(response_assoc_in)
+            if (len(relations) > 0):
+                for relation_id in relations:
+                    params['relation'] = relation_id
+                    
+                    response_assoc_out, response_assoc_in = self.get_in_out_associations(seed_node, params)
+                    
+                    assoc_out = self.unpack_response(response_assoc_out)
+                    assoc_in = self.unpack_response(response_assoc_in)
+                    #print(f'For seed {seed_node}, {len(assoc_out)} out associations and {len(assoc_in)} in associations have been found with relation {relation_id}.')
+                    
+                    all_associations = all_associations + assoc_out + assoc_in
+            else:
+                response_assoc_out, response_assoc_in = self.get_in_out_associations(seed_node, params)
+                
+                assoc_out = self.unpack_response(response_assoc_out)
+                assoc_in = self.unpack_response(response_assoc_in)
+                #print(f'For seed {seed_node}, {len(assoc_out)} out associations and {len(assoc_in)} in associations have been found.')
+                
+                all_associations = all_associations + assoc_out + assoc_in
             
-        return all_associations
+        return self.get_filtered_associations_on_entities(all_associations, ['publication'], include=False)
     
     def get_seed_first_neighbour_associations(self, id_list: list):
         """
@@ -162,42 +149,28 @@ class MonarchFetcher:
         print(f'{len(direct_neighbours_associations)} directly neighbouring associations of seeds')
         
         return direct_neighbours_associations
-    
-    def get_neighbour_ids(self, id_list: list, associations: list, include_semantic_groups: list):
-        ortholog_ids = set()
         
-        for association in associations:
-            subject_node_id = association['subject']['id']
-            object_node_id = association['object']['id']
-            
-            subject_intersection = [semantic_group for semantic_group in association['subject']['category'] if semantic_group in include_semantic_groups]
-            object_intersection = [semantic_group for semantic_group in association['object']['category'] if semantic_group in include_semantic_groups]
-            
-            if not(subject_node_id in id_list) and len(subject_intersection):
-                ortholog_ids.add(subject_node_id)
-            
-            if not(object_node_id in id_list) and len(object_intersection):
-                ortholog_ids.add(object_node_id)
-            
-        return ortholog_ids
-        
-    def get_orthopheno_associations(self, id_list: list, depth: int):
+    def get_orthopheno_associations(self, first_seed_id_list: list, depth: int):
         """
-        :param id_list: list of entities represented by their identifiers
+            Get list of associations between an ortholog gene and phenotype. These genes are orthologous to initial entities given.
+            :param first_seed_id_list: list of entities that are the first seeds
+            :param depth: number of iterations
         """
-        
-        seed_list = id_list
         all_ortho_pheno_associations = []
         
+        seed_list = first_seed_id_list
+        
         for d in range(depth):   
-            print('At depth', d+1)
+            if (depth > 0):
+                print(f'At depth {d+1}, replace previous list of seeds with their first order ortholog neighbours.')
+            print(f'Seed list contains {len(seed_list)} seeds')
             
             # Retrieve the first layer of neighbours
             direct_neighbours_associations = self.get_neighbour_associations(seed_list)
             print(f'{len(direct_neighbours_associations)} directly neighbouring associations of seeds')
             
             # Filter to only include associations related to orthology
-            filtered_associations = self.get_filtered_associations_on_relations(direct_neighbours_associations, 'ortholog genes')
+            filtered_associations = self.get_filtered_associations_on_relations(direct_neighbours_associations, 'orthologous')
             
             # Retrieve all orthologs of genes included in given list of ids
             ortholog_id_list = self.get_neighbour_ids(seed_list, filtered_associations, ['gene'])
@@ -211,10 +184,10 @@ class MonarchFetcher:
             filtered_orthologs_associations = self.get_filtered_associations_on_entities(direct_neighbours_orthologs_associations, ['phenotype'])
             print(f'{len(filtered_orthologs_associations)} phenotype associations of orthologs')
             
+            # Add newly retrieved ortho-pheno associations to list
             all_ortho_pheno_associations = all_ortho_pheno_associations + filtered_orthologs_associations
             
-            
-            # Get direct neighbours of seeds
+            # Get direct neighbours of seeds that are the new seeds in next iteration
             neighbour_id_list = self.get_neighbour_ids(seed_list, direct_neighbours_associations, ['gene'])
             print(f'{len(neighbour_id_list)} direct neighbours of seeds being a gene')
             seed_list = neighbour_id_list
