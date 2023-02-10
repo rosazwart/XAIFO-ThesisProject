@@ -1,0 +1,10 @@
+id,label,iri,taxon_id,taxon_label
+GO:0003779,actin binding,http://purl.obolibrary.org/obo/GO_0003779,,
+GO:0002162,dystroglycan binding,http://purl.obolibrary.org/obo/GO_0002162,,
+GO:0050998,nitric-oxide synthase binding,http://purl.obolibrary.org/obo/GO_0050998,,
+GO:0005515,protein binding,http://purl.obolibrary.org/obo/GO_0005515,,
+GO:0017022,myosin binding,http://purl.obolibrary.org/obo/GO_0017022,,
+GO:0017166,vinculin binding,http://purl.obolibrary.org/obo/GO_0017166,,
+GO:0008307,structural constituent of muscle,http://purl.obolibrary.org/obo/GO_0008307,,
+GO:0005200,structural constituent of cytoskeleton,http://purl.obolibrary.org/obo/GO_0005200,,
+GO:0008270,zinc ion binding,http://purl.obolibrary.org/obo/GO_0008270,,

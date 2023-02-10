@@ -1,0 +1,21 @@
+id,label,iri,taxon_id,taxon_label
+UBERON:0005384,nasal cavity epithelium,http://purl.obolibrary.org/obo/UBERON_0005384,NCBITaxon:131567,cellular organisms
+UBERON:0002371,bone marrow,http://purl.obolibrary.org/obo/UBERON_0002371,NCBITaxon:131567,cellular organisms
+UBERON:0006920,esophagus squamous epithelium,http://purl.obolibrary.org/obo/UBERON_0006920,NCBITaxon:131567,cellular organisms
+UBERON:0000178,blood,http://purl.obolibrary.org/obo/UBERON_0000178,NCBITaxon:131567,cellular organisms
+UBERON:0001728,nasopharynx,http://purl.obolibrary.org/obo/UBERON_0001728,NCBITaxon:131567,cellular organisms
+UBERON:0008266,periodontal ligament,http://purl.obolibrary.org/obo/UBERON_0008266,NCBITaxon:10090,Mus musculus
+UBERON:0000977,pleura,http://purl.obolibrary.org/obo/UBERON_0000977,NCBITaxon:131567,cellular organisms
+UBERON:0001637,artery,http://purl.obolibrary.org/obo/UBERON_0001637,NCBITaxon:131567,cellular organisms
+UBERON:0000970,eye,http://purl.obolibrary.org/obo/UBERON_0000970,NCBITaxon:131567,cellular organisms
+UBERON:0004801,cervix epithelium,http://purl.obolibrary.org/obo/UBERON_0004801,NCBITaxon:131567,cellular organisms
+UBERON:0001976,epithelium of esophagus,http://purl.obolibrary.org/obo/UBERON_0001976,NCBITaxon:131567,cellular organisms
+UBERON:0000966,retina,http://purl.obolibrary.org/obo/UBERON_0000966,NCBITaxon:131567,cellular organisms
+UBERON:0000317,colonic mucosa,http://purl.obolibrary.org/obo/UBERON_0000317,NCBITaxon:131567,cellular organisms
+UBERON:0002370,thymus,http://purl.obolibrary.org/obo/UBERON_0002370,NCBITaxon:10090,Mus musculus
+UBERON:0002418,cartilage tissue,http://purl.obolibrary.org/obo/UBERON_0002418,NCBITaxon:131567,cellular organisms
+UBERON:0002031,epithelium of bronchus,http://purl.obolibrary.org/obo/UBERON_0002031,NCBITaxon:131567,cellular organisms
+UBERON:0000006,islet of Langerhans,http://purl.obolibrary.org/obo/UBERON_0000006,NCBITaxon:131567,cellular organisms
+UBERON:0016525,frontal lobe,http://purl.obolibrary.org/obo/UBERON_0016525,NCBITaxon:131567,cellular organisms
+UBERON:0002106,spleen,http://purl.obolibrary.org/obo/UBERON_0002106,NCBITaxon:131567,cellular organisms
+UBERON:0014892,skeletal muscle organ,http://purl.obolibrary.org/obo/UBERON_0014892,NCBITaxon:131567,cellular organisms

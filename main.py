@@ -1,8 +1,14 @@
 import util.loaders as loaders
 import util.monarch_fetcher as monarch_fetcher
 import util.graph_builder as graph_builder
+import util.cypher_query_builder as cypher_query_builder
 
 def analyzeData(all_edges, all_nodes):
+    """
+        Analyze given data by getting all unique properties and semantic groups, unique triplets etc.
+        :param all_edges: dataframe of edges in the format resulting from BioKnowledgeReviewer Monarch Module
+        :param all_nodes: dataframe of nodes in the format resulting from BioKnowledgeReviewer Monarch module
+    """
     # Get all unique properties and semantic groups
     property_grouped = all_edges['property_label'].unique()
     print(f'There are {len(property_grouped)} properties:')
@@ -23,7 +29,7 @@ def analyzeData(all_edges, all_nodes):
     # Look at unique subject/object pairs and relation pairs
     subject_object_pairs = joined_objects[['semantic_groups_subject', 'semantic_groups_object']].drop_duplicates().reset_index(drop=True)
     
-    graph_builder.create_graph(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name='allconcepts.png')
+    graph_builder.draw_graph_from_edges(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name='allconcepts.png')
     
     subject_property_object_triplets = joined_objects.drop_duplicates().reset_index(drop=True)
     subject_property_object_triplets = subject_property_object_triplets.sort_values(by='property_label').reset_index(drop=True)
@@ -59,9 +65,10 @@ if __name__ == "__main__":
     seeded_graph = graph_builder.KnowledgeGraph(seed_associations)
     
     seeded_graph_edges, seeded_graph_nodes = seeded_graph.generate_dataframes()
-    seeded_graph_edges.to_csv('output/seeded_graph_edges.csv', index=False)
-    seeded_graph_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
+    cypher_query_builder.build_queries(seeded_graph_nodes, seeded_graph_edges)
+
+    #seeded_graph_edges.to_csv('output/seeded_graph_edges.csv', index=False)
+    #seeded_graph_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
     
-    print(seeded_graph_edges)
-    print(seeded_graph_nodes)
-    
+    #print(seeded_graph_edges.head(10))
+    #print(seeded_graph_nodes.head(10))

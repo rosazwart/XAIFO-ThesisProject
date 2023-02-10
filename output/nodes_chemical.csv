@@ -1,0 +1,10 @@
+id,label,iri,taxon_id,taxon_label
+MESH:D000077185,Resveratrol,http://id.nlm.nih.gov/mesh/D000077185,,
+MESH:C540944,5-O-(5-amino-5-deoxyribofuranosyl)-1N-(4-amino-2-hydroxybutanoyl)paromamine,http://id.nlm.nih.gov/mesh/C540944,,
+MESH:C056165,acetovanillone,http://id.nlm.nih.gov/mesh/C056165,,
+MESH:C580853,cannabidivarin,http://id.nlm.nih.gov/mesh/C580853,,
+MESH:D002185,Cannabidiol,http://id.nlm.nih.gov/mesh/D002185,,
+MESH:D000806,Angiotensin-Converting Enzyme Inhibitors,http://id.nlm.nih.gov/mesh/D000806,,
+MESH:D019808,Losartan,http://id.nlm.nih.gov/mesh/D019808,,
+MESH:D008775,Methylprednisolone,http://id.nlm.nih.gov/mesh/D008775,,
+MESH:D013654,Taurine,http://id.nlm.nih.gov/mesh/D013654,,

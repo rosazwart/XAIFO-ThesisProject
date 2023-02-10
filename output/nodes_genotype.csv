@@ -1,0 +1,2 @@
+id,label,iri,taxon_id,taxon_label
+dbSNPIndividual:19147,DMD(ARG2905TER); arr(1-22)x2;(XY)x1 [GM04619],http://www.ncbi.nlm.nih.gov/SNP/snp_ind.cgi?ind_id=19147,NCBITaxon:9606,Homo sapiens

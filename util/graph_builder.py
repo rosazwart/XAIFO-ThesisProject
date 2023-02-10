@@ -25,13 +25,25 @@ class Node:
         return hash(self.id)
     
     def to_dict(self):
-        return {
+        """
+            Convert Node object to a dictionary of values relevant to the node.
+            :return: dictionary with node information
+        """
+        node_dict = {
             'id': self.id,
             'label': self.label,
-            'semantic': self.semantic_groups,
             'iri': self.iri,
-            'taxon': self.taxon
+            'taxon_id': self.taxon['id'],
+            'taxon_label': self.taxon['label']
         }
+        
+        if (len(self.semantic_groups) > 0):
+            # only one semantic group per node is allowed
+            node_dict['semantic'] = self.semantic_groups[0]
+        else:
+            node_dict['semantic'] = None
+        
+        return node_dict
     
 class Edge:
     """
@@ -57,7 +69,11 @@ class Edge:
         return hash(self.id)
     
     def to_dict(self):
-        return {
+        """
+            Convert Edge object to a dictionary of values relevant to the edge.
+            :return: dictionary with edge information
+        """
+        edge_dict = {
             'id': self.id,
             'subject': self.subject,
             'object': self.object,
@@ -65,6 +81,13 @@ class Edge:
             'relation_label': self.relation['label'],
             'relation_iri': self.relation['iri']
         }
+        
+        reference_ids = list()
+        for reference in self.references:
+            reference_ids.append(reference['id'])
+        edge_dict['references'] = '|'.join(reference_ids)
+        
+        return edge_dict
 
 class KnowledgeGraph:
     """
