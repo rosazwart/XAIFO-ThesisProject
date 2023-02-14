@@ -1,6 +1,7 @@
 import util.loaders as loaders
 import util.monarch_fetcher as monarch_fetcher
 import util.graph_builder as graph_builder
+import util.mapper as mapper
 import util.cypher_query_builder as cypher_query_builder
 
 def analyzeData(all_edges, all_nodes):
@@ -57,18 +58,17 @@ if __name__ == "__main__":
         'HGNC:2928'
     ]
     
-    monarch_requester = monarch_fetcher.MonarchFetcher()
+    seed_associations = monarch_fetcher.get_seed_first_neighbour_associations(nodes_list) #+ monarch_fetcher.get_orthopheno_associations(nodes_list, 2)
     
-    #seed_associations = monarch_requester.get_seed_first_neighbour_associations(nodes_list) + monarch_requester.get_orthopheno_associations(nodes_list, 2)
-    
-    seed_associations = monarch_requester.get_seed_first_neighbour_associations(nodes_list)
     seeded_graph = graph_builder.KnowledgeGraph(seed_associations)
     
     seeded_graph_edges, seeded_graph_nodes = seeded_graph.generate_dataframes()
-    cypher_query_builder.build_queries(seeded_graph_nodes, seeded_graph_edges)
-
-    #seeded_graph_edges.to_csv('output/seeded_graph_edges.csv', index=False)
-    #seeded_graph_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
     
-    #print(seeded_graph_edges.head(10))
-    #print(seeded_graph_nodes.head(10))
+    mapped_nodes_edges = mapper.Mapper(all_nodes=seeded_graph_nodes, all_edges=seeded_graph_edges)
+    mapped_nodes_edges.include_genotype_gene_relations()
+    
+    # Save into csv files
+    mapped_nodes_edges.all_edges.to_csv('output/seeded_graph_edges.csv', index=False)
+    mapped_nodes_edges.all_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
+    
+    cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)

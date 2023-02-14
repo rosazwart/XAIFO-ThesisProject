@@ -105,7 +105,7 @@ def build_queries_for_nodes(all_nodes: pd.DataFrame, include_constraints: bool):
             all_queries.append(query_stmt)
     
     # load nodes queries
-    header_filter = ['semantic', 'taxon_id', 'taxon_label']
+    header_filter = ['semantic', 'semantic_label', 'taxon_id', 'taxon_label']
     
     all_nodes['semantic_label'] = all_nodes.apply(lambda x: x['semantic'].title().replace(' ', ''), axis=1)
     headers = list(all_nodes.columns.values)

@@ -849,6 +849,7 @@ b5305753-4589-467f-be0c-cdba27037626,ClinVarVariant:455870,MONDO:0010679,GENO:00
 884a4182-80d6-48ef-b890-ec34029c04cb,HGNC:3097,HGNC:2928,RO:0002434,interacts with,http://purl.obolibrary.org/obo/RO_0002434,
 01468bac-8da2-4c19-ace5-e3aefa61208c,ClinVarVariant:455801,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 66f6aa64-c3b7-496a-9eeb-2ed2dc7d8bb9,ClinVarVariant:225615,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
+c523dbe3-0fb9-4bda-bf21-5c68022140c6,MESH:C540944,MONDO:0010679,,,,PMID:19309154
 85272b06-5b50-4413-a9c4-eefd3da08812,ClinVarVariant:94512,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 e221f32f-5714-4710-8181-8513c40e3419,HGNC:2928,GO:0033137,RO:0002331,involved_in,http://purl.obolibrary.org/obo/RO_0002331,PMID:23263329
 341fda0f-cf5d-4cf8-8565-ff3d3c95a41c,ClinVarVariant:945133,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
@@ -891,6 +892,7 @@ d1e5c943-1824-4135-b1c7-c1d2385a5411,dbSNPIndividual:19147,HGNC:2928,CUSTOM:R1,h
 b80caaf4-35b6-455c-89e4-98ed95d1c761,ClinVarVariant:11282,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 e9bb5933-e359-48e2-a1ea-64a89e4fdf20,ClinVarVariant:526049,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 a267f0ec-e448-4e56-9cd0-8b706a4993f8,ClinVarVariant:803913,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
+78a33124-9a2a-4f97-baec-e66c1f5c400a,MESH:D019808,MONDO:0010679,,,,PMID:21641384
 9eff5746-260b-4782-9932-9a3fb3ca348f,ClinVarVariant:574223,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 3a9577a9-477a-4598-b351-0bbd3858f960,HGNC:2928,HGNC:329,RO:0002434,interacts with,http://purl.obolibrary.org/obo/RO_0002434,PMID:29872149
 ef39e6ef-898d-468e-845d-b31745624c86,ClinVarVariant:640997,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
@@ -948,6 +950,7 @@ b390f714-dadd-402c-8c5f-b92ca521097a,HGNC:2928,UBERON:0000977,RO:0002206,express
 11e07a57-c74f-4800-95e3-e23d7f5b393a,ClinVarVariant:833262,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:19937601|PMID:17561468|PMID:11409318
 71cf5c7a-80e7-4b86-a38b-5412e7b31fc1,OMIM:300377.0011,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
 f6ce444b-b1ec-4bc8-9903-dec12900a5a8,MGI:5795669,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,PMID:17889902
+618f9d0f-4786-44f8-9b57-3f09f5bb2e0b,MMRRC:041198,HGNC:2928,,,,
 054b4e65-e69b-4ed5-a459-ecb2178a06cc,HGNC:2928,GO:0050998,RO:0002327,enables,http://purl.obolibrary.org/obo/RO_0002327,PMID:7545544
 9f98d75e-215b-45ff-b989-9014a729ac24,ClinVarVariant:409886,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 68742bf8-d251-4eaf-b8dd-3fe9a966f5a8,OMIM:300377.0062,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
@@ -1128,6 +1131,7 @@ b0d069de-c47e-4e7d-97fc-c0a76ee10bf5,ClinVarVariant:813307,HGNC:2928,GENO:000041
 3e28c7af-7a36-49d4-b3e4-3fba9a75a6c7,ClinVarVariant:833327,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 e834311e-4791-4d3d-bf32-dfed05e46d5d,ClinVarVariant:803852,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 116857c0-0b82-49e8-aa40-1ff09009def9,WormBase:WBGene00001116,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,WormBase:WBPaper00004383|WormBase:WBPaper00031344
+18ba691d-c1cd-4a0b-85e2-376e3da3d563,MESH:D000077185,MONDO:0010679,,,,PMID:26930420
 bf4fe403-f4c4-4b6b-b52a-74e173f875b9,ClinVarVariant:583963,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:21969337|PMID:7853367|PMID:18974567
 f1cc0e81-37d2-40fe-8993-8da58478d271,OMIM:300377.0083,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
 d709636e-c903-4958-ac03-8c47cf6f0285,ClinVarVariant:649074,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:18752307|PMID:9441825|PMID:8034300|PMID:2063877|PMID:26911353|PMID:16917894|PMID:2316519
@@ -1270,6 +1274,7 @@ d6c428d0-7439-4054-baff-82449313a47d,ClinVarVariant:832171,MONDO:0010679,GENO:00
 45c2f4ec-9d21-4ba3-8954-3ae50ddf675c,ClinVarVariant:455927,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 370f4241-f826-4f52-a37c-acc0f381b6a4,ClinVarVariant:984112,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 808bbc7b-5c31-4c8f-87c8-4aa3f2ea801d,MGI:2176891,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,PMID:10559919
+99db9c5c-aea8-48e9-af7f-d573297ce0d8,MESH:C056165,MONDO:0010679,,,,PMID:26930420
 d8e59241-6332-4f98-b33a-ab9b75dc300d,ClinVarVariant:813445,MONDO:0010679,GENO:0000841,likely_pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000841,
 ef278596-7d25-420c-b324-4c412d83a18d,ClinVarVariant:981956,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 fbc88af7-cfbe-4928-b802-127ff0f22bef,ClinVarVariant:832846,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
@@ -1618,6 +1623,7 @@ bb222427-b53d-4297-ac48-91c91bc494d0,ClinVarVariant:832588,MONDO:0010679,GENO:00
 9f5e706c-1d92-4811-8abd-db60bc79c5c1,ClinVarVariant:455814,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:16917894|PMID:10392746|PMID:9800909
 778bd3f9-ea43-41b2-9b9b-c1d0326c10e4,ClinVarVariant:409918,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 e914030b-b4d9-4b1a-89cb-427066de2e21,ClinVarVariant:646387,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:26718981|PMID:19907931|PMID:9800909
+baf2175c-bda6-4422-af0f-0441575cbaa9,MMRRC:050929,HGNC:2928,,,,
 824c7166-8851-43e5-aa0f-c18b46fa3402,HGNC:2928,REACT:R-HSA-390522,RO:0002331,involved_in,http://purl.obolibrary.org/obo/RO_0002331,
 ad005aa9-82ae-44ac-9548-dcd36604145f,HGNC:26293,MONDO:0010679,RO:0003304,contributes to condition,http://purl.obolibrary.org/obo/RO_0003304,PMID:30014611
 88b8391f-4657-49b8-b7bf-a393b7e5ac9e,ClinVarVariant:217195,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
@@ -1931,6 +1937,7 @@ f56abe3d-1143-4dd4-af56-8ad95aa9f694,ClinVarVariant:851668,HGNC:2928,GENO:000041
 5f0f2f9d-b98c-44f2-b38c-02a4fb3dc782,ClinVarVariant:409887,MONDO:0010679,GENO:0000841,likely_pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000841,
 45a586ac-409b-4a9c-8611-196fdbb1b99f,ClinVarVariant:830677,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:19084397|PMID:8543940|PMID:14571009|PMID:18055393
 567083d3-e60e-4f3f-98c1-555b443e3814,HGNC:2928,HGNC:685,RO:0002434,interacts with,http://purl.obolibrary.org/obo/RO_0002434,
+d587b267-b2ee-445e-8ba7-b2dc1b5dc0c8,MESH:D002185,MONDO:0010679,,,,PMID:30074247
 37c05b87-aacf-4fa5-9346-0e3624cda6ae,HGNC:2928,EFO:0007845,RO:0003304,contributes to condition,http://purl.obolibrary.org/obo/RO_0003304,PMID:28441456
 d6abf93b-2691-4512-a349-448a4d6f2af3,ClinVarVariant:639041,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 1736fe8f-732c-4784-8a45-b7b76364cb2e,HGNC:15516,MONDO:0010679,RO:0003304,contributes to condition,http://purl.obolibrary.org/obo/RO_0003304,PMID:30014611
@@ -2009,6 +2016,7 @@ ca0b0caa-8a00-4bd9-b31b-06dbd270d4f8,ClinVarVariant:860135,MONDO:0010679,GENO:00
 6067cf63-4660-4028-bb06-de668dc27bff,HGNC:2928,HGNC:25174,RO:0002434,interacts with,http://purl.obolibrary.org/obo/RO_0002434,PMID:25416956|PMID:28514442
 a1aa2ce8-0e5b-43fc-a84c-b5c7bc283ebb,MGI:6163637,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,PMID:29187645
 a3ccf6b4-d24e-4a81-acb0-4bcf145a10d9,ClinVarVariant:654111,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
+5ef22d28-15bb-476d-8b26-4c059ec3238b,MESH:D000806,MONDO:0010679,,,,PMID:19233868
 b410e84f-831d-43f0-9363-8129ce82890d,ClinVarVariant:803838,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 2c4d4cee-85c2-42f5-b2aa-a92ffba54f39,ClinVarVariant:455846,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 ad887f47-3e2a-438d-b535-1bb00bc7f621,WormBase:WBGene00001248,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,WormBase:WBPaper00034698
@@ -2191,6 +2199,7 @@ df8df87f-5c6b-441c-a731-cdadc9536d43,ClinVarVariant:831234,HGNC:2928,GENO:000041
 57f027e0-6a4c-4836-94e9-1f8419e1aba3,ClinVarVariant:94436,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 b1e726de-0c2c-40d3-8811-2b61073962ac,ClinVarVariant:526156,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:19937601|PMID:25482253
 75fa667d-d8e2-4558-92ee-3eb301a27b65,ClinVarVariant:981974,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
+5b858563-66b8-408d-8b31-f5a312267474,Coriell:GM04619,HGNC:2928,,,,
 64ed3b7d-4b4f-4449-8128-3ddf0d6c5e1b,ClinVarVariant:11250,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:7951253
 9807eb6b-9620-4996-9161-a12097707cfb,ClinVarVariant:583527,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 6dd0ca73-278e-4642-bf63-12e8bc59d02e,ClinVarVariant:455811,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
@@ -2245,6 +2254,7 @@ a2204725-b98a-4240-9eac-58e6473efc83,ClinVarVariant:650214,MONDO:0010679,GENO:00
 37900ddc-4943-4272-bd71-cd5025d4af78,ClinVarVariant:831002,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 7a1341d3-d5c1-4fef-a633-64cdcabde110,ClinVarVariant:832628,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 259a1deb-e956-4436-86c2-a198a5c8fc83,ClinVarVariant:11290,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
+6f61f7b1-bd08-4f46-8863-543a44f6e941,MESH:D008775,MONDO:0010679,,,,PMID:26930420
 7e091e62-d12b-4176-8c22-c261c9402d9d,ClinVarVariant:217198,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 f443da75-9b3a-41ad-b9f3-232124bbedae,ClinVarVariant:830622,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:18055393|PMID:17259292
 d76b93c6-b563-4d87-9727-e0042afd081a,ClinVarVariant:803878,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
@@ -2271,6 +2281,7 @@ a5be047f-332a-47d5-8917-c4ea6a8156aa,ClinVarVariant:803897,HGNC:2928,GENO:000041
 9a89e98b-5356-401e-a000-fac04758170f,ClinVarVariant:803867,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 6e962583-6df8-44f2-bcb7-475e22eb3d24,HGNC:2928,HP:0000343,RO:0002200,has phenotype,http://purl.obolibrary.org/obo/RO_0002200,MONDO:0019181
 d7545700-4cbc-4279-9173-4c0bb0c06289,ClinVarVariant:984096,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
+afbd0128-016e-480c-a95c-7b0b2488d493,MESH:D013654,MONDO:0010679,,,,PMID:26930420
 8612fb33-665a-4154-ac8b-043d24ea51d1,ClinVarVariant:835263,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 5b3f6854-4663-4d49-9764-06bc14fc6a33,Coriell:GM03783,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,
 3bfa58da-cf12-4c9c-a3b3-e39e0fc87af3,MGI:3655088,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,PMID:10792059
@@ -2626,6 +2637,7 @@ e900a78f-0955-4686-b610-c12665490133,ClinVarVariant:981975,HGNC:2928,GENO:000041
 89da7563-5824-43b4-9839-83820ee0dc43,ClinVarVariant:584367,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 732a8172-b3ae-44e2-8f07-9cf0c02b76e6,ClinVarVariant:803813,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 51e0b0ef-b202-4c5b-bf6c-400412705a7b,OMIM:300377.0005,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
+c69095ee-7268-47fb-ba62-af944fa1682d,MESH:C580853,MONDO:0010679,,,,PMID:30074247
 daeacff5-c191-4dc0-aeb4-13af79ad4734,OMIM:300377.0010,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
 a2ed0c6d-08ee-4250-a411-a638e1c8eae1,ClinVarVariant:813444,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 bf0b2342-c648-4e06-894d-621fff7bc6fa,ClinVarVariant:94526,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:27593222|PMID:11524473|PMID:25007885|PMID:28859693|PMID:16770791
@@ -2641,6 +2653,7 @@ a7b6f971-a174-400d-a40b-f5908bc0ab05,ClinVarVariant:803941,HGNC:2928,GENO:000041
 3c0245e4-a7f8-4ea6-8ea5-dc28f3c6217e,ClinVarVariant:583478,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:18752307|PMID:16917894
 6bb8be8b-39cd-4351-9bd5-e9e46bf37591,ClinVarVariant:568924,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 4aee5b3c-3894-4d8c-a1a6-f0a8f67adc30,ClinVarVariant:497488,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:15351422
+4d1b91ec-81b4-40fc-81a5-e8c859784ca3,MMRRC:041194,HGNC:2928,,,,
 e70dc793-e73a-4535-a3c1-4da81367b810,ClinVarVariant:526076,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:27122458
 9d24c7e8-2706-433f-bcf2-83267c796c68,ClinVarVariant:803843,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 854d5339-1b03-4ffb-951b-f416ecab20da,HGNC:10056,HGNC:2928,RO:0002434,interacts with,http://purl.obolibrary.org/obo/RO_0002434,PMID:31985874
@@ -2648,6 +2661,7 @@ e70dc793-e73a-4535-a3c1-4da81367b810,ClinVarVariant:526076,MONDO:0010679,GENO:00
 e80b3009-5662-44dd-b6cc-4ec9182a54be,HGNC:2928,HGNC:11943,RO:0002434,interacts with,http://purl.obolibrary.org/obo/RO_0002434,
 29fe987d-ddc2-4571-bd9d-29f738986a24,ClinVarVariant:217172,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:10196701|PMID:9143930
 25923a64-c665-4c07-922b-aba05af2cecd,ClinVarVariant:830499,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:11409318
+e21516b1-5f7f-41fc-95b1-2a9e1c925c59,MMRRC:041195,HGNC:2928,,,,
 00f301d2-053d-40b9-bb5e-dc1682b4dbd4,ClinVarVariant:217203,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:12398835
 b713d9ac-bd0c-446b-a148-5f9f68c4f9bc,ClinVarVariant:971303,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 6ad32e49-cd73-4ef5-89a4-4bc3e544bc5b,ClinVarVariant:409923,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
@@ -2768,6 +2782,7 @@ f7d33784-4a16-416b-9523-6d776b7b709a,ClinVarVariant:217202,HGNC:2928,GENO:000041
 cab295a2-71f3-48f9-bd71-bb3aedef84b9,ClinVarVariant:830712,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,PMID:17854090
 1a92b05a-c18c-452d-a100-b2d33f4c1fc0,OMIM:300377.0079,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
 10d36433-1302-4bb3-860f-f56a239a180b,HGNC:2928,EFO:0006330,RO:0003304,contributes to condition,http://purl.obolibrary.org/obo/RO_0003304,PMID:22041458
+da6bcb45-6170-44bd-b874-fb083f651c2d,MMRRC:050930,HGNC:2928,,,,
 4f3b857b-d15c-4906-85b5-33c28aac4c7e,MGI:3798621,MONDO:0010679,RO:0003301,has role in modeling,http://purl.obolibrary.org/obo/RO_0003301,PMID:21893021
 8b8d4048-e111-4b04-a15e-acd826bc7dd9,OMIM:300377.0006,HGNC:2928,GENO:0000408,is_allele_of,http://purl.obolibrary.org/obo/GENO_0000408,
 db00308b-3a7c-4fde-85d6-6458fd4c0a46,ClinVarVariant:830801,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
@@ -2782,6 +2797,7 @@ db00308b-3a7c-4fde-85d6-6458fd4c0a46,ClinVarVariant:830801,HGNC:2928,GENO:000041
 457e5fb8-299c-4d41-829f-026aa1664d4b,ClinVarVariant:575031,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
 eb6af6fd-6121-4c66-9147-4230267656cf,ClinVarVariant:593327,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 4550e8d5-36b0-4bd4-b330-ee8afc83eced,ClinVarVariant:983655,MONDO:0010679,GENO:0000841,likely_pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000841,
+a43f03f4-a7cc-4632-9f2e-2f018b8aba12,MMRRC:041193,HGNC:2928,,,,
 74aef1de-1cec-49e6-827c-b9185c76b282,ClinVarVariant:584157,HGNC:2928,GENO:0000418,has_affected_feature,http://purl.obolibrary.org/obo/GENO_0000418,
 3c563e26-f735-496a-9ab6-7ee68ee49f87,MONDO:0010679,HP:0001290,RO:0002200,has phenotype,http://purl.obolibrary.org/obo/RO_0002200,MONDO:0010679
 c0ace606-0711-4861-b261-2249ee5e1e91,ClinVarVariant:803956,MONDO:0010679,GENO:0000840,pathogenic_for_condition,http://purl.obolibrary.org/obo/GENO_0000840,
