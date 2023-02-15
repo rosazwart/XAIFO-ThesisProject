@@ -95,7 +95,7 @@ class KnowledgeGraph:
     """
         Initialize a knowledge graph by giving a list of associations that is converted into
         a set of Edge objects and Node objects. 
-        :param all_associations: list of dictionaries from reponses, by default an empty list
+        :param all_associations: list of dictionaries from responses, by default an empty list
     """
     def __init__(self, all_associations: list = []):
         self.all_edges = set()  # all unique edges in knowledge graph
@@ -170,6 +170,7 @@ class KnowledgeGraph:
         
         print(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
         return extracted_nodes
+    
 
 def draw_graph_from_edges(edges, source_colname, target_colname, file_name):
     """

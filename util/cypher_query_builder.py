@@ -42,7 +42,7 @@ def build_queries_for_edges(all_edges: pd.DataFrame):
     all_edges.dropna(inplace=True)
     all_edges.reset_index(drop=True, inplace=True)
     
-    file_name = 'edges.csv'.format(all_edges)
+    file_name = 'query_edges.csv'.format(all_edges)
     all_edges.to_csv('output/{}'.format(file_name), index=False)
     print('All edges are stored into', file_name)
     
@@ -111,7 +111,7 @@ def build_queries_for_nodes(all_nodes: pd.DataFrame, include_constraints: bool):
     headers = list(all_nodes.columns.values)
     headers = [header_name for header_name in headers if header_name not in header_filter]
     
-    file_name = 'nodes.csv'.format(all_nodes)
+    file_name = 'query_nodes.csv'.format(all_nodes)
     all_nodes.to_csv('output/{}'.format(file_name), index=False)
     print('All nodes are stored into', file_name)
     

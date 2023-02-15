@@ -14,12 +14,12 @@ class Mapper:
     """
     
     """
-    def __init__(self, all_nodes: pd.DataFrame, all_edges: pd.DataFrame):
+    def __init__(self, all_edges: pd.DataFrame, all_nodes: pd.DataFrame):
         self.all_edges = all_edges
         self.all_nodes = all_nodes
-        self.all_edges_with_nodes = self.join_nodes_edges(all_nodes, all_edges)
+        self.all_edges_with_nodes = self.join_nodes_edges(all_edges, all_nodes)
         
-    def join_nodes_edges(self, all_nodes: pd.DataFrame, all_edges: pd.DataFrame):
+    def join_nodes_edges(self, all_edges: pd.DataFrame, all_nodes: pd.DataFrame):
         """
             Join given dataframes of all nodes and all edges into one dataframe.
         """
@@ -58,6 +58,8 @@ class Mapper:
             self.all_edges.loc[self.all_edges['id'] == association_id, 'relation_id'] = relation_id
             self.all_edges.loc[self.all_edges['id'] == association_id, 'relation_label'] = relation_type
             self.all_edges.loc[self.all_edges['id'] == association_id, 'relation_iri'] = relation_iri
+            
+        print(f'A total of {len(association_ids)} edges have been modified to include the genotype-gene relation.')
     
     def add_taxon_relations(self):
         """

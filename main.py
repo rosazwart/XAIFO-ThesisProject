@@ -4,60 +4,68 @@ import util.graph_builder as graph_builder
 import util.mapper as mapper
 import util.cypher_query_builder as cypher_query_builder
 
-def analyzeData(all_edges, all_nodes):
+def analyzeData(all_edges, all_nodes, edge_colmap: dict, node_colmap: dict, graph_image_file_name, triplets_file_name):
     """
         Analyze given data by getting all unique properties and semantic groups, unique triplets etc.
         :param all_edges: dataframe of edges in the format resulting from BioKnowledgeReviewer Monarch Module
         :param all_nodes: dataframe of nodes in the format resulting from BioKnowledgeReviewer Monarch module
     """
     # Get all unique properties and semantic groups
-    property_grouped = all_edges['property_label'].unique()
+    property_grouped = all_edges[edge_colmap['relations']].unique()
     print(f'There are {len(property_grouped)} properties:')
     print(property_grouped, '\n')
-    semantic_grouped = all_nodes['semantic_groups'].unique()
+    semantic_grouped = all_nodes[node_colmap['semantics']].unique()
     print(f'There are {len(semantic_grouped)} semantic groups:')
     print(semantic_grouped, '\n')
     
     # Retrieve relations and their subjects/objects
-    edge_entries = all_edges[['subject_id', 'property_label', 'object_id']]
+    edge_entries = all_edges[[edge_colmap['subject'], edge_colmap['relations'], edge_colmap['object']]]
     
-    joined_subjects = edge_entries.merge(all_nodes, left_on='subject_id', right_on='id')[['semantic_groups', 'property_label', 'object_id']]
-    joined_subjects.rename(columns={'semantic_groups': 'semantic_groups_subject'}, inplace=True)
+    joined_subjects = edge_entries.merge(all_nodes, left_on=edge_colmap['subject'], right_on=node_colmap['node_id'])[[node_colmap['semantics'], edge_colmap['relations'], edge_colmap['object']]]
+    joined_subjects.rename(columns={node_colmap['semantics']: 'semantic_groups_subject'}, inplace=True)
     
-    joined_objects = joined_subjects.merge(all_nodes, left_on='object_id', right_on='id')[['semantic_groups_subject', 'property_label', 'semantic_groups']]
-    joined_objects.rename(columns={'semantic_groups': 'semantic_groups_object'}, inplace=True)
+    joined_objects = joined_subjects.merge(all_nodes, left_on=edge_colmap['object'], right_on=node_colmap['node_id'])[['semantic_groups_subject', edge_colmap['relations'], node_colmap['semantics']]]
+    joined_objects.rename(columns={node_colmap['semantics']: 'semantic_groups_object'}, inplace=True)
     
     # Look at unique subject/object pairs and relation pairs
     subject_object_pairs = joined_objects[['semantic_groups_subject', 'semantic_groups_object']].drop_duplicates().reset_index(drop=True)
     
-    graph_builder.draw_graph_from_edges(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name='allconcepts.png')
+    graph_builder.draw_graph_from_edges(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name=graph_image_file_name)
     
     subject_property_object_triplets = joined_objects.drop_duplicates().reset_index(drop=True)
-    subject_property_object_triplets = subject_property_object_triplets.sort_values(by='property_label').reset_index(drop=True)
+    subject_property_object_triplets = subject_property_object_triplets.sort_values(by=edge_colmap['relations']).reset_index(drop=True)
     
-    subject_property_object_triplets.rename(columns={'semantic_groups_subject': 'subject', 'property_label': 'relation', 'semantic_groups_object': 'object'}, inplace=True)
+    subject_property_object_triplets.rename(columns={'semantic_groups_subject': 'subject', edge_colmap['relations']: 'relation', 'semantic_groups_object': 'object'}, inplace=True)
     all_col_names = list(subject_property_object_triplets.columns.values)
     for col_name in all_col_names:
         subject_property_object_triplets[col_name] = subject_property_object_triplets[col_name].str.replace('_',' ')
         subject_property_object_triplets[col_name] = subject_property_object_triplets[col_name].fillna('undefined')
         
-    subject_property_object_triplets.to_csv('output/alltriplets.csv', index=False)
-
-if __name__ == "__main__":
+    subject_property_object_triplets.to_csv(f'output/{triplets_file_name}', index=False)
+    
+def analyze_bioknowledgereviewer_results():
     # Load the edges and nodes of the graph generated from Monarch
-    #all_edges = loaders.load_edges_from_csv()
-    #all_nodes = loaders.load_nodes_from_csv()
+    all_edges = loaders.load_edges_from_csv()
+    all_nodes = loaders.load_nodes_from_csv()
     
-    #analyzeData(all_edges, all_nodes)
-
-    # Majority of ID entries lead to other semantic groups like phenotype and gene?
-    #print(loaders.load_entity_sample(all_nodes, 'GENO'))
+    edge_colmap = {
+        'relations': 'property_label',
+        'subject': 'subject_id',
+        'object': 'object_id'
+    }
     
+    node_colmap = {
+        'node_id': 'id',
+        'semantics': 'semantic_groups'
+    }
+    
+    analyzeData(all_edges, all_nodes, edge_colmap, node_colmap, 'bioknowledgereviewer_concepts.png', 'bioknowledgereviewer_triplets.csv')
+    
+def fetch_data():
     nodes_list = [
         'MONDO:0010679',
         'HGNC:2928'
     ]
-    
     
     seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(nodes_list)
     orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(nodes_list, 2)
@@ -68,20 +76,36 @@ if __name__ == "__main__":
     associated_nodes_id_list.update(nodes_list)
     print(f'A total of {len(associated_nodes_id_list)} associated nodes have been found.')
     
-    # TODO: get neighbours of above list of nodes
-    # TODO: create knowledge graph
+    all_associations = monarch_fetcher.get_neighbour_associations(id_list=associated_nodes_id_list)
+    print(f'A total of {len(all_associations)} associations have been found and will be added to the knowledge graph.')
     
+    knowledge_graph = graph_builder.KnowledgeGraph(all_associations)
+    all_edges, all_nodes = knowledge_graph.generate_dataframes()
     
-    #seeded_graph = graph_builder.KnowledgeGraph(seed_associations)
-    
-    #seeded_graph_edges, seeded_graph_nodes = seeded_graph.generate_dataframes()
-    
-    #mapped_nodes_edges = mapper.Mapper(all_nodes=seeded_graph_nodes, all_edges=seeded_graph_edges)
-    #mapped_nodes_edges.include_genotype_gene_relations()
+    mapped_nodes_edges = mapper.Mapper(all_edges=all_edges, all_nodes=all_nodes)
+    mapped_nodes_edges.all_edges_with_nodes.to_csv('output/associations_notmapped.csv', index=False)
+    mapped_nodes_edges.include_genotype_gene_relations()
     
     # Save into csv files
-    #mapped_nodes_edges.all_edges.to_csv('output/seeded_graph_edges.csv', index=False)
-    #mapped_nodes_edges.all_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
+    mapped_nodes_edges.all_edges.to_csv('output/edges.csv', index=False)
+    mapped_nodes_edges.all_nodes.to_csv('output/nodes.csv', index=False)
     
-    #cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
+    cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
     
+    edge_colmap = {
+        'relations': 'relation_label',
+        'subject': 'subject',
+        'object': 'object'
+    }
+    
+    node_colmap = {
+        'node_id': 'id',
+        'semantics': 'semantic'
+    }
+    
+    analyzeData(all_edges, all_nodes, edge_colmap, node_colmap, 'concepts.png', 'triplets.csv')
+
+if __name__ == "__main__":
+    #analyze_bioknowledgereviewer_results()
+    
+    fetch_data()
