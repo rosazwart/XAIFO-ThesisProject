@@ -58,17 +58,30 @@ if __name__ == "__main__":
         'HGNC:2928'
     ]
     
-    seed_associations = monarch_fetcher.get_seed_first_neighbour_associations(nodes_list) #+ monarch_fetcher.get_orthopheno_associations(nodes_list, 2)
     
-    seeded_graph = graph_builder.KnowledgeGraph(seed_associations)
+    seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(nodes_list)
+    orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(nodes_list, 2)
+    print(f'/nA total of {len(seed_neighbours_id_list)} first order neighbours have been found')
+    print(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
     
-    seeded_graph_edges, seeded_graph_nodes = seeded_graph.generate_dataframes()
+    associated_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
+    associated_nodes_id_list.update(nodes_list)
+    print(f'A total of {len(associated_nodes_id_list)} associated nodes have been found.')
     
-    mapped_nodes_edges = mapper.Mapper(all_nodes=seeded_graph_nodes, all_edges=seeded_graph_edges)
-    mapped_nodes_edges.include_genotype_gene_relations()
+    # TODO: get neighbours of above list of nodes
+    # TODO: create knowledge graph
+    
+    
+    #seeded_graph = graph_builder.KnowledgeGraph(seed_associations)
+    
+    #seeded_graph_edges, seeded_graph_nodes = seeded_graph.generate_dataframes()
+    
+    #mapped_nodes_edges = mapper.Mapper(all_nodes=seeded_graph_nodes, all_edges=seeded_graph_edges)
+    #mapped_nodes_edges.include_genotype_gene_relations()
     
     # Save into csv files
-    mapped_nodes_edges.all_edges.to_csv('output/seeded_graph_edges.csv', index=False)
-    mapped_nodes_edges.all_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
+    #mapped_nodes_edges.all_edges.to_csv('output/seeded_graph_edges.csv', index=False)
+    #mapped_nodes_edges.all_nodes.to_csv('output/seeded_graph_nodes.csv', index=False)
     
-    cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
+    #cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
+    

@@ -84,7 +84,7 @@ def get_neighbour_ids(seed_list: list, associations: list, include_semantic_grou
         :param seed_list: list of seed ids
         :param associations: list of associations
         :param include_semantic_groups: list of semantic groups to which all neighbour ids need to belong
-        :return: list of (filtered) neighbour ids 
+        :return: set of (filtered) neighbour ids 
     """
     neighbour_ids = set()
     
@@ -93,11 +93,11 @@ def get_neighbour_ids(seed_list: list, associations: list, include_semantic_grou
         object_node_id = association['object']['id']
         
         subject_intersection = [semantic_group for semantic_group in association['subject']['category'] if semantic_group in include_semantic_groups]
-        if not(subject_node_id in seed_list) and len(subject_intersection) > 0:
+        if not(subject_node_id in seed_list) and (len(include_semantic_groups) == 0 or len(subject_intersection) > 0):
             neighbour_ids.add(subject_node_id)
         
         object_intersection = [semantic_group for semantic_group in association['object']['category'] if semantic_group in include_semantic_groups]
-        if not(object_node_id in seed_list) and len(object_intersection) > 0:
+        if not(object_node_id in seed_list) and (len(include_semantic_groups) == 0 or len(object_intersection) > 0):
             neighbour_ids.add(object_node_id)
         
     return neighbour_ids
@@ -133,59 +133,61 @@ def get_neighbour_associations(id_list: list, relations: list = []):
             all_associations = all_associations + assoc_out + assoc_in
         
     return get_filtered_associations_on_entities(all_associations, ['publication'], include=False)
-    
-def get_seed_first_neighbour_associations(id_list: list):
+
+def get_seed_neighbour_node_ids(seed_id_list: list):
     """
-        Get a list of all associations with all first neighbours of given seeds.
-        :param id_list: list of entities represented by their identifiers
-        :return: object with nodes and edges 
+        Get a list of all node ids of all first order neighbours of given seeds.
+        :param seed_id_list: list of entities represented by their identifiers
+        :return: list of neighbour node ids
     """
-    # Retrieve the first layer of neighbours
-    direct_neighbours_associations = get_neighbour_associations(id_list)
-    print(f'{len(direct_neighbours_associations)} directly neighbouring associations of seeds')
-    
-    return direct_neighbours_associations
+    direct_neighbours_associations = get_neighbour_associations(seed_id_list)
+    print(f'A total of {len(direct_neighbours_associations)} associations have been found between seeds and their neighbours.')
+    neighbour_ids = get_neighbour_ids(seed_list=seed_id_list, associations=direct_neighbours_associations)
+    print(f'A total of {len(neighbour_ids)} neighbour nodes have been found for the {len(seed_id_list)} given seeds.')
+    return neighbour_ids
         
-def get_orthopheno_associations(first_seed_id_list: list, depth: int):
+def get_orthopheno_node_ids(first_seed_id_list: list, depth: int):
     """
-        Get list of associations between an ortholog gene and phenotype. These genes are orthologous to initial entities given.
-        :param first_seed_id_list: list of entities that are the first seeds
+        Get list of all nodes ids yielded from associations between an ortholog gene and phenotype. In the first iteration, orthologs are found for given seed list.
+        :param first_seed_id_list: list of entities that are the seeds of first iteration
         :param depth: number of iterations
     """
-    all_ortho_pheno_associations = []
+    all_sets = list()
     
+    # Initial iteration seed list
     seed_list = first_seed_id_list
+    
     for d in range(depth):   
-        if (depth > 0):
-            print(f'At depth {d+1}, replace previous list of seeds with their first order ortholog neighbours.')
-        print(f'Seed list contains {len(seed_list)} seeds')
+        if (d+1 > 1):
+            print(f'At depth {d+1}, replace previous list of seeds with all their first order neighbours.')
+        print(f'For depth {d+1} seed list contains {len(seed_list)} ids')
         
-        # Retrieve the first layer of neighbours
+        # Get associations between seeds and their first order neighbours
         direct_neighbours_associations = get_neighbour_associations(seed_list)
-        print(f'{len(direct_neighbours_associations)} directly neighbouring associations of seeds')
+        # Get all ids of found neighbour nodes
+        neighbour_id_list = get_neighbour_ids(seed_list=seed_list, associations=direct_neighbours_associations)
+        print(f'{len(neighbour_id_list)} neighbours of given seeds')
         
         # Filter to only include associations related to orthology
-        seed_associations_with_orthologs = get_filtered_associations_on_relations(direct_neighbours_associations, 'orthologous')
+        associations_with_orthologs = get_filtered_associations_on_relations(direct_neighbours_associations, 'orthologous')
+        # Get all orthologs of genes included in given list of ids
+        ortholog_id_list = get_neighbour_ids(seed_list=seed_list, associations=associations_with_orthologs, include_semantic_groups=['gene'])
+        print(f'{len(ortholog_id_list)} orthologous genes of given seeds')
         
-        # Retrieve all orthologs of genes included in given list of ids
-        ortholog_id_list = get_neighbour_ids(seed_list, seed_associations_with_orthologs, ['gene'])
-        print(f'{len(ortholog_id_list)} orthologous genes of the given seeds')
-        
-        # Retrieve the first layer of neighbours of orthologs
+        # Get the first layer of neighbours of orthologs
         ortholog_associations = get_neighbour_associations(ortholog_id_list);
-        print(f'{len(ortholog_associations)} directly neighbouring associations of seed orthologs')
-        
         # Filter to only include associations related to phenotype
-        ortholog_associations_with_phenotypes = get_filtered_associations_on_entities(ortholog_associations, ['phenotype'])
-        print(f'{len(ortholog_associations_with_phenotypes)} phenotype associations of seed orthologs')
+        phenotype_id_list = get_neighbour_ids(seed_list=ortholog_id_list, associations=ortholog_associations, include_semantic_groups=['phenotype'])
+        print(f'{len(phenotype_id_list)} phenotypes of orthologous genes')
         
-        # Add newly retrieved ortho-pheno associations to list
-        all_ortho_pheno_associations = all_ortho_pheno_associations + seed_associations_with_orthologs + ortholog_associations_with_phenotypes
+        # Add set of ortholog nodes of seeds
+        all_sets.append(ortholog_id_list)
+        all_sets.append(phenotype_id_list)
+        print(f'{len(ortholog_id_list)+len(phenotype_id_list)} orthologs/phenotypes')
         
-        # Get direct neighbours of seeds that are the new seeds in next iteration
-        neighbour_id_list = get_neighbour_ids(seed_list, direct_neighbours_associations, ['gene'])
-        print(f'{len(neighbour_id_list)} direct neighbours of seeds being a gene')
+        # Next iteration seed list
         seed_list = neighbour_id_list
     
-    return all_ortho_pheno_associations
+    all_ortho_pheno_node_ids = set().union(*all_sets)
+    return all_ortho_pheno_node_ids
     

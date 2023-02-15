@@ -39,6 +39,8 @@ class Node:
         
         if (len(self.semantic_groups) > 0):
             # only one semantic group per node is allowed
+            if (len(self.semantic_groups) > 1):
+                print(self.semantic_groups)
             node_dict['semantic'] = self.semantic_groups[0]
         else:
             node_dict['semantic'] = None
