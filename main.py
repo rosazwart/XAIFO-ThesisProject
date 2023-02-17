@@ -89,8 +89,8 @@ def fetch_data():
     mapped_nodes_edges.include_genotype_gene_relations()
     
     # Save into csv files
-    mapped_nodes_edges.all_edges.to_csv('output/edges.csv', index=False)
-    mapped_nodes_edges.all_nodes.to_csv('output/nodes.csv', index=False)
+    mapped_nodes_edges.all_edges.to_csv('output/monarch_edges.csv', index=False)
+    mapped_nodes_edges.all_nodes.to_csv('output/monarch_nodes.csv', index=False)
     
     cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
     
