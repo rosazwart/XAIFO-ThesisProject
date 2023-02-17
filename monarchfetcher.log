@@ -1,0 +1,51 @@
+2023-02-17 15:52:41,838 INFO     Neighbours of seeds retrieval has started...
+2023-02-17 15:53:04,423 INFO     A total of 2955 associations have been found between seeds and their neighbours.
+2023-02-17 15:53:04,430 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-17 15:53:04,432 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-17 15:53:04,433 INFO     For depth 1 seed list contains 2 ids
+2023-02-17 15:53:25,921 INFO     1766 neighbours of given seeds
+2023-02-17 15:53:25,924 INFO     0 orthologous genes of given seeds
+2023-02-17 15:53:25,925 INFO     0 phenotypes of orthologous genes
+2023-02-17 15:53:25,926 INFO     0 orthologs/phenotypes
+2023-02-17 15:53:25,926 INFO     For depth 2 seed list contains 1766 ids
+2023-02-17 15:55:54,063 INFO     Neighbours of seeds retrieval has started...
+2023-02-17 15:56:15,990 INFO     A total of 2955 associations have been found between seeds and their neighbours.
+2023-02-17 15:56:15,996 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-17 15:56:16,000 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-17 15:56:16,000 INFO     For depth 1 seed list contains 2 ids
+2023-02-17 15:56:38,090 INFO     1766 neighbours of given seeds
+2023-02-17 15:56:38,261 INFO     0 orthologous genes of given seeds
+2023-02-17 15:56:38,262 INFO     0 phenotypes of orthologous genes
+2023-02-17 15:56:38,262 INFO     0 orthologs/phenotypes
+2023-02-17 15:56:38,262 INFO     For depth 2 seed list contains 1766 ids
+2023-02-17 15:57:56,241 INFO     Neighbours of seeds retrieval has started...
+2023-02-17 15:58:28,636 INFO     Neighbours of seeds retrieval has started...
+2023-02-17 15:58:51,389 INFO     A total of 2955 associations have been found between seeds and their neighbours.
+2023-02-17 15:58:51,396 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-17 15:58:51,400 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-17 15:58:51,400 INFO     For depth 1 seed list contains 2 ids
+2023-02-17 15:59:13,447 INFO     1766 neighbours of given seeds
+2023-02-17 15:59:13,453 INFO     0 orthologous genes of given seeds
+2023-02-17 15:59:13,454 INFO     0 phenotypes of orthologous genes
+2023-02-17 15:59:13,454 INFO     0 orthologs/phenotypes
+2023-02-17 15:59:13,454 INFO     For depth 2 seed list contains 1766 ids
+2023-02-17 15:59:38,973 INFO     Neighbours of seeds retrieval has started...
+2023-02-17 16:00:01,710 INFO     A total of 2955 associations have been found between seeds and their neighbours.
+2023-02-17 16:00:01,716 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-17 16:00:01,721 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-17 16:00:01,721 INFO     For depth 1 seed list contains 2 ids
+2023-02-17 16:00:23,386 INFO     1766 neighbours of given seeds
+2023-02-17 16:00:23,389 INFO     0 orthologous genes of given seeds
+2023-02-17 16:00:23,390 INFO     0 phenotypes of orthologous genes
+2023-02-17 16:00:23,390 INFO     0 orthologs/phenotypes
+2023-02-17 16:00:23,390 INFO     For depth 2 seed list contains 1766 ids
+2023-02-17 16:04:33,161 INFO     Neighbours of seeds retrieval has started...
+2023-02-17 16:04:54,976 INFO     A total of 2955 associations have been found between seeds and their neighbours.
+2023-02-17 16:04:54,979 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-17 16:04:54,984 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-17 16:04:54,984 INFO     For depth 1 seed list contains 2 ids
+2023-02-17 16:05:16,839 INFO     1766 neighbours of given seeds
+2023-02-17 16:05:16,844 INFO     8 orthologous genes of given seeds
+2023-02-17 16:05:41,503 INFO     259 phenotypes of orthologous genes
+2023-02-17 16:05:41,505 INFO     267 orthologs/phenotypes
+2023-02-17 16:05:41,505 INFO     For depth 2 seed list contains 1766 ids

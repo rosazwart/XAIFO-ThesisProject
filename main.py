@@ -1,7 +1,7 @@
-from util.common_util import register_info
+from util.common_util import register_info, draw_graph_from_edges
 
 import util.loaders as loaders
-import util.monarch_fetcher as monarch_fetcher
+import util.monarch_fetcher.monarch_fetcher as monarch_fetcher
 import util.graph_builder as graph_builder
 import util.mapper as mapper
 import util.cypher_query_builder as cypher_query_builder
@@ -74,12 +74,11 @@ def fetch_data():
     register_info(f'A total of {len(seed_neighbours_id_list)} first order neighbours have been found')
     register_info(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
     
-    associated_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
-    associated_nodes_id_list.update(nodes_list)
-    register_info(f'A total of {len(associated_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
+    all_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
+    all_nodes_id_list.update(nodes_list)
+    register_info(f'A total of {len(all_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
     
-    all_associations = monarch_fetcher.get_neighbour_associations(id_list=associated_nodes_id_list)
-    register_info(f'A total of {len(all_associations)} from and to associations have been found and will be added to the knowledge graph.')
+    all_associations = monarch_fetcher.get_seed_first_order_associations(all_nodes_id_list)
     
     knowledge_graph = graph_builder.KnowledgeGraph(all_associations)
     all_edges, all_nodes = knowledge_graph.generate_dataframes()

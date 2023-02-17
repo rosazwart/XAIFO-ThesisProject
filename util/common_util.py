@@ -1,6 +1,9 @@
 import logging
 logging.basicConfig(level=logging.INFO, filename='monarchfetcher.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
 
+import networkx as nx
+import matplotlib.pyplot as plt
+
 def register_info(message):
     """
         Print message into console as well as given logger.
@@ -17,3 +20,16 @@ def register_error(message):
     """
     print(message)
     logging.error(message)
+
+def draw_graph_from_edges(edges, source_colname, target_colname, file_name):
+    """
+        Draw a graph from a pandas dataframe given the column names of the source and target of the edges.
+        :param source_colname: name of column that includes source of edge
+        :param target_colname: name of column that includes target of edge
+        :param file_name: name of file in which image of graph is stored (in `output` folder)
+    """
+    G = nx.from_pandas_edgelist(edges, source=source_colname, target=target_colname)
+    
+    nx.draw(G, with_labels=True, node_size=800, font_size=6)
+    
+    plt.savefig(f'output/{file_name}')

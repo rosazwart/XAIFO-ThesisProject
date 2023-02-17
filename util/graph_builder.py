@@ -1,7 +1,7 @@
 from util.common_util import register_info
 
-import networkx as nx
-import matplotlib.pyplot as plt
+import util.monarch_fetcher.monarch_constants as monarch_constants
+
 import pandas as pd
 
 class Node:
@@ -10,14 +10,14 @@ class Node:
         the semantic groups that are associated with the entity, the label of the entity as well as
         the iri link. The taxon attribute is used to specify whether the entity belongs to a certain taxon
         relevant to GENE entities.
-        :param response_dict: dictionary of information from response
+        :param assoc_tuple: tuple of information about association
     """
-    def __init__(self, response_dict: dict, node_role: str):
-        self.id = response_dict[node_role]['id']
-        self.semantic_groups = response_dict[node_role]['category']
-        self.label = response_dict[node_role]['label']
-        self.iri = response_dict[node_role]['iri']
-        self.taxon = response_dict[node_role]['taxon']
+    def __init__(self, assoc_tuple: tuple, node_role: str):
+        self.id = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_id')]
+        self.semantic_groups = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_category')]
+        self.label = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_label')]
+        self.iri = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_iri')]
+        self.taxon = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_taxon_id')]
         
     def __eq__(self, other):
         return self.id == other.id
@@ -51,18 +51,18 @@ class Edge:
     """
         Initialize edges using this class, carrying information about the id of the association,
         the ids of the subject and object and the id, label and iri link of the relation.
-        :param response_dict: dictionary of information from response
+        :param assoc_tuple: tuple of information about association
     """
-    def __init__(self, response_dict: dict):
-        self.id = response_dict['id']
-        self.subject = response_dict['subject']['id']
-        self.object = response_dict['object']['id']
+    def __init__(self, assoc_tuple: tuple):
+        self.id = assoc_tuple[monarch_constants.assoc_tuple_values.index('id')]
+        self.subject = assoc_tuple[monarch_constants.assoc_tuple_values.index('subject_id')]
+        self.object = assoc_tuple[monarch_constants.assoc_tuple_values.index('object_id')]
         self.relation = {
-            'id': response_dict['relation']['id'],
-            'iri': response_dict['relation']['iri'],
-            'label': response_dict['relation']['label']
+            'id': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_id')],
+            'iri': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_iri')],
+            'label': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_label')]
         }
-        self.references = response_dict['publications']
+        self.references = assoc_tuple[monarch_constants.assoc_tuple_values.index('publications')]
         
     def __eq__(self, other):
         return self.id == other.id
@@ -81,13 +81,9 @@ class Edge:
             'object': self.object,
             'relation_id': self.relation['id'],
             'relation_label': self.relation['label'],
-            'relation_iri': self.relation['iri']
+            'relation_iri': self.relation['iri'],
+            'references': self.references
         }
-        
-        reference_ids = list()
-        for reference in self.references:
-            reference_ids.append(reference['id'])
-        edge_dict['references'] = '|'.join(reference_ids)
         
         return edge_dict
 
@@ -121,9 +117,7 @@ class KnowledgeGraph:
         # Find all semantic groups
         all_semantic_groups = set()
         for node in self.all_nodes:
-            all_categories = node.semantic_groups
-            for category in all_categories:
-                all_semantic_groups.add(category)
+            all_semantic_groups.add(node.semantic_groups)
         register_info(f'The graph contains {len(all_semantic_groups)} different semantic groups: {all_semantic_groups}')
         
         # Show total number of edges and nodes
@@ -170,18 +164,4 @@ class KnowledgeGraph:
         register_info(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
         
         return extracted_nodes
-    
-
-def draw_graph_from_edges(edges, source_colname, target_colname, file_name):
-    """
-        Draw a graph from a pandas dataframe given the column names of the source and target of the edges.
-        :param source_colname: name of column that includes source of edge
-        :param target_colname: name of column that includes target of edge
-        :param file_name: name of file in which image of graph is stored (in `output` folder)
-    """
-    G = nx.from_pandas_edgelist(edges, source=source_colname, target=target_colname)
-    
-    nx.draw(G, with_labels=True, node_size=800, font_size=6)
-    
-    plt.savefig(f'output/{file_name}')
     
