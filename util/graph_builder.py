@@ -2,6 +2,11 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import pandas as pd
 
+import logging
+from util.common_util import register_info
+
+logging.basicConfig(level=logging.DEBUG, filename='graphbuilder.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
+
 class Node:
     """
         Initialize nodes using this class, carrying information about the id of the entity,
@@ -39,8 +44,6 @@ class Node:
         
         if (len(self.semantic_groups) > 0):
             # only one semantic group per node is allowed
-            if (len(self.semantic_groups) > 1):
-                print(self.semantic_groups)
             node_dict['semantic'] = self.semantic_groups[0]
         else:
             node_dict['semantic'] = None
@@ -124,10 +127,10 @@ class KnowledgeGraph:
             all_categories = node.semantic_groups
             for category in all_categories:
                 all_semantic_groups.add(category)
-        print(f'The graph contains {len(all_semantic_groups)} different semantic groups: {all_semantic_groups}')
+        register_info(logging, f'The graph contains {len(all_semantic_groups)} different semantic groups: {all_semantic_groups}')
         
         # Show total number of edges and nodes
-        print(f'For the graph, a total of {len(self.all_edges)} edges and {len(self.all_nodes)} nodes have been generated.')
+        register_info(logging, f'For the graph, a total of {len(self.all_edges)} edges and {len(self.all_nodes)} nodes have been generated.')
         
     def find_relation_labels(self, substring_relation_label):
         """ 
@@ -142,8 +145,8 @@ class KnowledgeGraph:
             relation_label = edge.relation['label']
             if (relation_label and substring_relation_label in relation_label):
                 found_relations[relation_id] = relation_label
+        register_info(logging, f'All {len(found_relations)} relations with substring "{substring_relation_label}":\n {found_relations}')
         
-        print(f'All {len(found_relations)} relations with substring "{substring_relation_label}":\n {found_relations}')
         return found_relations
     
     def add_edges_and_nodes(self, associations: list):
@@ -167,8 +170,8 @@ class KnowledgeGraph:
             intersection = [semantic_group for semantic_group in node.semantic_groups if semantic_group in extract_semantic_groups]
             if (len(intersection) > 0):
                 extracted_nodes.add(node)
+        register_info(logging, f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
         
-        print(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
         return extracted_nodes
     
 
