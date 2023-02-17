@@ -108,7 +108,7 @@ def fetch_data():
         'semantics': 'semantic'
     }
     
-    analyzeData(all_edges, all_nodes, edge_colmap, node_colmap, 'concepts.png', 'triplets.csv')
+    analyzeData(all_edges, all_nodes, edge_colmap, node_colmap, 'monarch_concepts.png', 'monarch_triplets.csv')
 
 if __name__ == "__main__":
     #analyze_bioknowledgereviewer_results()
