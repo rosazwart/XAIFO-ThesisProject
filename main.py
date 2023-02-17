@@ -1,7 +1,4 @@
-import logging
 from util.common_util import register_info
-
-logging.basicConfig(level=logging.DEBUG, filename='main.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
 
 import util.loaders as loaders
 import util.monarch_fetcher as monarch_fetcher
@@ -17,10 +14,10 @@ def analyzeData(all_edges, all_nodes, edge_colmap: dict, node_colmap: dict, grap
     """
     # Get all unique properties and semantic groups
     property_grouped = all_edges[edge_colmap['relations']].unique()
-    register_info(logging, f'There are {len(property_grouped)} properties: {property_grouped}')
+    register_info(f'There are {len(property_grouped)} properties: {property_grouped}')
     
     semantic_grouped = all_nodes[node_colmap['semantics']].unique()
-    register_info(logging, f'There are {len(semantic_grouped)} semantic groups: {semantic_grouped}')
+    register_info(f'There are {len(semantic_grouped)} semantic groups: {semantic_grouped}')
     
     # Retrieve relations and their subjects/objects
     edge_entries = all_edges[[edge_colmap['subject'], edge_colmap['relations'], edge_colmap['object']]]
@@ -74,15 +71,15 @@ def fetch_data():
     seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(nodes_list)
     orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(nodes_list, 2)
     
-    register_info(logging, f'A total of {len(seed_neighbours_id_list)} first order neighbours have been found')
-    register_info(logging, f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
+    register_info(f'A total of {len(seed_neighbours_id_list)} first order neighbours have been found')
+    register_info(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
     
     associated_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
     associated_nodes_id_list.update(nodes_list)
-    register_info(logging, f'A total of {len(associated_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
+    register_info(f'A total of {len(associated_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
     
     all_associations = monarch_fetcher.get_neighbour_associations(id_list=associated_nodes_id_list)
-    register_info(logging, f'A total of {len(all_associations)} from and to associations have been found and will be added to the knowledge graph.')
+    register_info(f'A total of {len(all_associations)} from and to associations have been found and will be added to the knowledge graph.')
     
     knowledge_graph = graph_builder.KnowledgeGraph(all_associations)
     all_edges, all_nodes = knowledge_graph.generate_dataframes()

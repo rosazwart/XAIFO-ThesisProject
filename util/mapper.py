@@ -2,12 +2,9 @@
     Module that adds new semantics to associations.
 """
 
-import pandas as pd
-
-import logging
 from util.common_util import register_info
 
-logging.basicConfig(level=logging.DEBUG, filename='mapper.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
+import pandas as pd
 
 # List of existing semantic groups:
 GENOTYPE = 'genotype'
@@ -63,7 +60,7 @@ class Mapper:
             self.all_edges.loc[self.all_edges['id'] == association_id, 'relation_label'] = relation_type
             self.all_edges.loc[self.all_edges['id'] == association_id, 'relation_iri'] = relation_iri
             
-        register_info(logging, f'A total of {len(association_ids)} edges have been modified to include the genotype-gene relation.')
+        register_info(f'A total of {len(association_ids)} edges have been modified to include the genotype-gene relation.')
     
     def add_taxon_relations(self):
         """

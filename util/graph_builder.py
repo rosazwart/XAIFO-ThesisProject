@@ -1,11 +1,8 @@
+from util.common_util import register_info
+
 import networkx as nx
 import matplotlib.pyplot as plt
 import pandas as pd
-
-import logging
-from util.common_util import register_info
-
-logging.basicConfig(level=logging.DEBUG, filename='graphbuilder.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
 
 class Node:
     """
@@ -127,10 +124,10 @@ class KnowledgeGraph:
             all_categories = node.semantic_groups
             for category in all_categories:
                 all_semantic_groups.add(category)
-        register_info(logging, f'The graph contains {len(all_semantic_groups)} different semantic groups: {all_semantic_groups}')
+        register_info(f'The graph contains {len(all_semantic_groups)} different semantic groups: {all_semantic_groups}')
         
         # Show total number of edges and nodes
-        register_info(logging, f'For the graph, a total of {len(self.all_edges)} edges and {len(self.all_nodes)} nodes have been generated.')
+        register_info(f'For the graph, a total of {len(self.all_edges)} edges and {len(self.all_nodes)} nodes have been generated.')
         
     def find_relation_labels(self, substring_relation_label):
         """ 
@@ -145,7 +142,7 @@ class KnowledgeGraph:
             relation_label = edge.relation['label']
             if (relation_label and substring_relation_label in relation_label):
                 found_relations[relation_id] = relation_label
-        register_info(logging, f'All {len(found_relations)} relations with substring "{substring_relation_label}":\n {found_relations}')
+        register_info(f'All {len(found_relations)} relations with substring "{substring_relation_label}":\n {found_relations}')
         
         return found_relations
     
@@ -170,7 +167,7 @@ class KnowledgeGraph:
             intersection = [semantic_group for semantic_group in node.semantic_groups if semantic_group in extract_semantic_groups]
             if (len(intersection) > 0):
                 extracted_nodes.add(node)
-        register_info(logging, f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
+        register_info(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
         
         return extracted_nodes
     

@@ -1,9 +1,6 @@
-import pandas as pd
-
-import logging
 from util.common_util import register_info
 
-logging.basicConfig(level=logging.DEBUG, filename='querybuilder.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
+import pandas as pd
 
 def store_queries(queries: list, file_name: str ='queries.txt'):
     """
@@ -16,7 +13,7 @@ def store_queries(queries: list, file_name: str ='queries.txt'):
     with open('output/{}'.format(file_name), 'w') as f:
         f.write(query_chain)
     
-    register_info(logging, f'Generated query list in file {file_name}')
+    register_info(f'Generated query list in file {file_name}')
 
 def create_load_csv_to_edge_query(file_name: str, colname_edge_id: str, colname_relation_label: str, colname_subject_id: str, colname_object_id: str):
     """
@@ -50,7 +47,7 @@ def build_queries_for_edges(all_edges: pd.DataFrame):
     file_name = 'query_edges.csv'.format(all_edges)
     all_edges.to_csv('output/{}'.format(file_name), index=False)
     
-    register_info(logging, f'All edges are stored into {file_name}')
+    register_info(f'All edges are stored into {file_name}')
     
     query_stmt = create_load_csv_to_edge_query(file_name, 'id', 'relation_label', 'subject', 'object')
     return [query_stmt]
@@ -120,7 +117,7 @@ def build_queries_for_nodes(all_nodes: pd.DataFrame, include_constraints: bool):
     file_name = 'query_nodes.csv'.format(all_nodes)
     all_nodes.to_csv('output/{}'.format(file_name), index=False)
     
-    register_info(logging, f'All nodes are stored into {file_name}')
+    register_info(f'All nodes are stored into {file_name}')
     
     query_stmt = create_load_csv_to_node_query(file_name, headers, 'semantic_label')    
     all_queries.append(query_stmt)
@@ -140,4 +137,4 @@ def build_queries(all_nodes: pd.DataFrame, all_edges: pd.DataFrame, include_cons
     all_queries.extend(build_queries_for_edges(all_edges))
     store_queries(all_queries, 'queries.txt')
     
-    register_info(logging, '--- Instructions ---\n Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.')
+    register_info('--- Instructions ---\n Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.')
