@@ -82,7 +82,8 @@ def get_neighbour_associations(id_list: list, relations: list = []):
         :param relations: when parsing a non-empty list, these elements are the relation ids such that only associations are retrieved including these relations
         :return: list of direct neighbours (list of tuples)
     """
-    all_associations = []
+    all_associations = set()
+    
     all_seed_nodes = set(id_list)   # make sure there are no duplicate seed ids
     for seed_node in tqdm(all_seed_nodes):
         params = {}
@@ -96,13 +97,15 @@ def get_neighbour_associations(id_list: list, relations: list = []):
                 assoc_out = unpack_response(response_assoc_out)
                 assoc_in = unpack_response(response_assoc_in)
                 
-                all_associations = all_associations + assoc_out + assoc_in
+                all_associations.update(assoc_out)
+                all_associations.update(assoc_in)
         else:
             response_assoc_out, response_assoc_in = requester.get_in_out_associations(seed_node, params)
             
             assoc_out = unpack_response(response_assoc_out)
             assoc_in = unpack_response(response_assoc_in)
             
-            all_associations = all_associations + assoc_out + assoc_in
+            all_associations.update(assoc_out)
+            all_associations.update(assoc_in)
         
     return filter.get_associations_on_entities(all_associations, ['publication'], include=False)
