@@ -1,8 +1,27 @@
 from util.common_util import register_error
 
 import requests
+import time
 
 BASE_URL = 'https://api.monarchinitiative.org/api'
+RETRIES = 2
+
+def get_associations(direction: str, node: str, params: dict):
+    """
+    """
+    print(direction, 'association for', node)
+    for i in range(RETRIES):
+        try:
+            response = requests.get(f'{BASE_URL}/association/{direction}/{node}', params=params)
+            return response.json()
+        except Exception as e:
+            if (i < RETRIES - 1):
+                time.sleep(3)
+                print('Retry', i)
+                continue
+            else:
+                register_error(f'Response values could not get acquired at node {node} for {direction} associations (params: {params}) resulting in response {response} due to {e}')
+                return {}
 
 def get_in_out_associations(node: str, params: dict, max_rows: int = 2000):
     """
@@ -12,10 +31,10 @@ def get_in_out_associations(node: str, params: dict, max_rows: int = 2000):
         :return: responses of getting out and in associations, respectively (return empty objects when request fails and record error in log file)
     """
     params['rows'] = max_rows
-    try:
-        response_out = requests.get(f'{BASE_URL}/association/from/{node}', params=params)
-        response_in = requests.get(f'{BASE_URL}/association/to/{node}', params=params)
-        return response_out.json(), response_in.json()
-    except Exception as e:
-        register_error(f'Response values could not get acquired at node {node} with responses {response_in} and {response_out} due to {e}')
-        return {}, {}
+    
+    response_out = get_associations('from', node, params)
+    print(response_out)
+    response_in = get_associations('to', node, params)
+    print(response_in)
+    
+    return response_out, response_in
