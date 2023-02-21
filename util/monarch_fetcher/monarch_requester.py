@@ -9,7 +9,6 @@ RETRIES = 2
 def get_associations(direction: str, node: str, params: dict):
     """
     """
-    print(direction, 'association for', node)
     for i in range(RETRIES):
         try:
             response = requests.get(f'{BASE_URL}/association/{direction}/{node}', params=params)
@@ -33,8 +32,6 @@ def get_in_out_associations(node: str, params: dict, max_rows: int = 2000):
     params['rows'] = max_rows
     
     response_out = get_associations('from', node, params)
-    print(response_out)
     response_in = get_associations('to', node, params)
-    print(response_in)
     
     return response_out, response_in
