@@ -108,5 +108,4 @@ def fetch_data():
 
 if __name__ == "__main__":
     #analyze_bioknowledgereviewer_results()
-    
     fetch_data()

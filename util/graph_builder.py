@@ -35,8 +35,7 @@ class Node:
             'id': self.id,
             'label': self.label,
             'iri': self.iri,
-            'taxon_id': self.taxon['id'],
-            'taxon_label': self.taxon['label']
+            'taxon_id': self.taxon
         }
         
         if (len(self.semantic_groups) > 0):

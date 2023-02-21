@@ -1,0 +1,76 @@
+2023-02-20 11:47:08,691 INFO     generated new fontManager
+2023-02-20 11:48:14,591 INFO     Neighbours of seeds retrieval has started...
+2023-02-20 11:50:23,988 INFO     Neighbours of seeds retrieval has started...
+2023-02-20 11:50:47,821 INFO     A total of 2954 associations have been found between seeds and their neighbours.
+2023-02-20 11:50:47,828 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-20 11:50:47,838 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-20 11:50:47,838 INFO     For depth 1 seed list contains 2 ids
+2023-02-20 11:51:09,878 INFO     1766 neighbours of given seeds
+2023-02-20 11:51:09,892 INFO     8 orthologous genes of given seeds
+2023-02-20 11:51:36,609 INFO     259 phenotypes of orthologous genes
+2023-02-20 11:51:36,615 INFO     267 orthologs/phenotypes
+2023-02-20 11:51:36,616 INFO     For depth 2 seed list contains 1766 ids
+2023-02-20 13:14:04,613 INFO     61904 neighbours of given seeds
+2023-02-20 13:14:05,732 INFO     2965 orthologous genes of given seeds
+2023-02-20 15:12:17,094 INFO     5225 phenotypes of orthologous genes
+2023-02-20 15:12:17,992 INFO     8190 orthologs/phenotypes
+2023-02-20 15:12:17,995 INFO     8284 orthologs/phenotypes have been found using a depth of 2
+2023-02-20 15:12:18,054 INFO     A total of 1766 first order neighbours have been found
+2023-02-20 15:12:18,054 INFO     A total of 8284 orthologs/phenotypes have been found.
+2023-02-20 15:12:18,057 INFO     A total of 9949 nodes have been found for which from and to associations will be retrieved.
+2023-02-20 15:12:18,057 INFO     Associations of seeds retrieval has started...
+2023-02-20 15:17:48,556 ERROR    Response values could not get acquired at node MP:0005369 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 15:24:29,593 ERROR    Response values could not get acquired at node HP:0002664 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 15:40:00,021 ERROR    Response values could not get acquired at node HP:0030680 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 15:57:36,709 ERROR    Response values could not get acquired at node MP:0005378 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 16:17:06,326 ERROR    Response values could not get acquired at node MP:0005387 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 17:24:47,261 ERROR    Response values could not get acquired at node MP:0010274 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 18:32:21,089 ERROR    Response values could not get acquired at node HP:0012638 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 19:39:21,119 ERROR    Response values could not get acquired at node MP:0001265 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 19:44:03,356 ERROR    Response values could not get acquired at node FBcv:0000709 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 19:54:52,792 ERROR    Response values could not get acquired at node HP:0000234 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 20:05:32,386 ERROR    Response values could not get acquired at node MP:0005381 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 20:20:07,608 ERROR    Response values could not get acquired at node MP:0005391 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 20:25:45,944 ERROR    Response values could not get acquired at node HP:0002795 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 20:33:04,728 ERROR    Response values could not get acquired at node MP:0000438 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 20:50:58,809 ERROR    Response values could not get acquired at node MP:0003491 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 21:00:11,340 ERROR    Response values could not get acquired at node HP:0040006 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 21:12:29,075 ERROR    Response values could not get acquired at node MP:0005388 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 21:29:51,137 ERROR    Response values could not get acquired at node HP:0012639 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 21:39:34,681 ERROR    Response values could not get acquired at node HP:0001507 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 21:52:46,552 ERROR    Response values could not get acquired at node MP:0005376 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 22:16:42,926 ERROR    Response values could not get acquired at node MP:0005379 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 22:38:20,162 ERROR    Response values could not get acquired at node MP:0002020 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 22:41:45,659 ERROR    Response values could not get acquired at node MP:0000358 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 22:58:05,943 ERROR    Response values could not get acquired at node MP:0002116 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 23:19:22,844 ERROR    Response values could not get acquired at node HP:0001939 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 23:41:30,233 ERROR    Response values could not get acquired at node MP:0002442 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 23:48:07,469 ERROR    Response values could not get acquired at node MP:0010771 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 23:52:58,083 ERROR    Response values could not get acquired at node MP:0005389 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-20 23:56:02,663 ERROR    Response values could not get acquired at node HP:0000708 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 00:08:06,123 ERROR    Response values could not get acquired at node HP:0011017 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 00:25:44,131 ERROR    Response values could not get acquired at node MP:0002089 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 01:56:18,302 ERROR    Response values could not get acquired at node MP:0001731 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 02:14:12,230 ERROR    Response values could not get acquired at node MP:0005390 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 02:35:43,560 ERROR    Response values could not get acquired at node HP:0000924 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 02:46:29,806 ERROR    Response values could not get acquired at node MP:0002166 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 02:55:47,599 ERROR    Response values could not get acquired at node MP:0005384 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 03:22:03,381 ERROR    Response values could not get acquired at node MP:0003631 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 03:26:17,897 ERROR    Response values could not get acquired at node ZP:0000206 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 04:03:29,677 ERROR    Response values could not get acquired at node HP:0011804 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 04:23:50,379 ERROR    Response values could not get acquired at node HP:0012337 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 04:27:24,668 ERROR    Response values could not get acquired at node MP:0005386 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 05:25:46,659 ERROR    Response values could not get acquired at node HP:0002597 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 05:40:13,903 ERROR    Response values could not get acquired at node MP:0005385 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 05:55:11,515 ERROR    Response values could not get acquired at node MP:0002066 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 06:32:24,777 ERROR    Response values could not get acquired at node HP:0009121 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 06:37:08,894 ERROR    Response values could not get acquired at node MP:0000428 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 07:20:18,557 ERROR    Response values could not get acquired at node HP:0000315 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 07:32:43,554 ERROR    Response values could not get acquired at node HP:0010978 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 07:56:06,725 ERROR    Response values could not get acquired at node HP:0011121 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 08:08:55,856 ERROR    Response values could not get acquired at node HP:0003011 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 08:13:17,725 ERROR    Response values could not get acquired at node HP:0012243 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 08:17:57,048 ERROR    Response values could not get acquired at node MP:0005397 for to associations (params: {'rows': 2000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-21 08:20:34,662 INFO     A total of 1942826 associations have been found between seeds and their neighbours.
+2023-02-21 08:22:05,429 INFO     The graph contains 13 different semantic groups: {'anatomical entity', 'disease', 'gene', 'genotype', 'model', 'molecular function', 'variant', 'pathway', 'chemical', 'phenotype', 'cellular component', 'biological process', 'case'}
+2023-02-21 08:22:05,429 INFO     For the graph, a total of 1942826 edges and 384410 nodes have been generated.
