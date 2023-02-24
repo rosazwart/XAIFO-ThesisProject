@@ -61,7 +61,6 @@ class Edge:
             'iri': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_iri')],
             'label': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_label')]
         }
-        self.references = assoc_tuple[monarch_constants.assoc_tuple_values.index('publications')]
         
     def __eq__(self, other):
         return self.id == other.id
@@ -80,8 +79,7 @@ class Edge:
             'object': self.object,
             'relation_id': self.relation['id'],
             'relation_label': self.relation['label'],
-            'relation_iri': self.relation['iri'],
-            'references': self.references
+            'relation_iri': self.relation['iri']
         }
         
         return edge_dict

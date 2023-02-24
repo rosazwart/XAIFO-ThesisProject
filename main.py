@@ -68,8 +68,8 @@ def fetch_data():
         'HGNC:2928'
     ]
     
-    seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(nodes_list)
-    orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(nodes_list, 2)
+    seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(seed_id_list=nodes_list, rows=2000)
+    orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(first_seed_id_list=nodes_list, depth=2, rows=2000)
     
     register_info(f'A total of {len(seed_neighbours_id_list)} first order neighbours have been found')
     register_info(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
@@ -78,7 +78,7 @@ def fetch_data():
     all_nodes_id_list.update(nodes_list)
     register_info(f'A total of {len(all_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
     
-    all_associations = monarch_fetcher.get_seed_first_order_associations(all_nodes_id_list)
+    all_associations = monarch_fetcher.get_seed_first_order_associations(seed_id_list=all_nodes_id_list, rows=1000, exclude_new_ids=True)
     
     knowledge_graph = graph_builder.KnowledgeGraph(all_associations)
     all_edges, all_nodes = knowledge_graph.generate_dataframes()

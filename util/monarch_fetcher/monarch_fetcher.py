@@ -6,19 +6,19 @@ from util.common_util import register_info
 import util.monarch_fetcher.monarch_unpacker as unpacker
 import util.monarch_fetcher.monarch_filter as filter
 
-def get_seed_first_order_associations(seed_id_list: list):
+def get_seed_first_order_associations(seed_id_list: list, rows: int, exclude_new_ids: bool = False):
     """
         Get list of tuples storing each association found with given seed ids.
         :param seed_id_list: list of entities represented by their identifiers
         :return: list of tuples storing associations
     """
     register_info('Associations of seeds retrieval has started...')
-    direct_neighbours_associations = unpacker.get_neighbour_associations(seed_id_list)
+    direct_neighbours_associations = unpacker.get_neighbour_associations(id_list=seed_id_list, rows=rows, exclude_new_ids=exclude_new_ids)
     register_info(f'A total of {len(direct_neighbours_associations)} associations have been found between seeds and their neighbours.')
     
     return direct_neighbours_associations
 
-def get_seed_neighbour_node_ids(seed_id_list: list):
+def get_seed_neighbour_node_ids(seed_id_list: list, rows: int):
     """
         Get a list of all node ids of all first order neighbours of given seeds.
         :param seed_id_list: list of entities represented by their identifiers
@@ -26,7 +26,7 @@ def get_seed_neighbour_node_ids(seed_id_list: list):
     """
     register_info('Neighbours of seeds retrieval has started...')
     
-    direct_neighbours_associations = unpacker.get_neighbour_associations(seed_id_list)
+    direct_neighbours_associations = unpacker.get_neighbour_associations(id_list=seed_id_list, rows=rows)
     register_info(f'A total of {len(direct_neighbours_associations)} associations have been found between seeds and their neighbours.')
     
     neighbour_ids = unpacker.get_neighbour_ids(seed_list=seed_id_list, associations=direct_neighbours_associations)
@@ -34,7 +34,7 @@ def get_seed_neighbour_node_ids(seed_id_list: list):
     
     return neighbour_ids
         
-def get_orthopheno_node_ids(first_seed_id_list: list, depth: int):
+def get_orthopheno_node_ids(first_seed_id_list: list, depth: int, rows: int):
     """
         Get list of all nodes ids yielded from associations between an ortholog gene and phenotype. In the first iteration, orthologs are found for given seed list.
         :param first_seed_id_list: list of entities that are the seeds of first iteration
@@ -53,7 +53,7 @@ def get_orthopheno_node_ids(first_seed_id_list: list, depth: int):
         register_info(f'For depth {d+1} seed list contains {len(seed_list)} ids')
         
         # Get associations between seeds and their first order neighbours
-        direct_neighbours_associations = unpacker.get_neighbour_associations(seed_list)
+        direct_neighbours_associations = unpacker.get_neighbour_associations(id_list=seed_list, rows=rows)
         # Get all ids of found neighbour nodes
         neighbour_id_list = unpacker.get_neighbour_ids(seed_list=seed_list, associations=direct_neighbours_associations)
         register_info(f'{len(neighbour_id_list)} neighbours of given seeds')
@@ -69,7 +69,7 @@ def get_orthopheno_node_ids(first_seed_id_list: list, depth: int):
         register_info(f'{len(ortholog_id_list)} orthologous genes of given seeds')
         
         # Get the first layer of neighbours of orthologs
-        ortholog_associations = unpacker.get_neighbour_associations(ortholog_id_list);
+        ortholog_associations = unpacker.get_neighbour_associations(id_list=ortholog_id_list, rows=rows);
         # Filter to only include associations related to phenotype
         phenotype_id_list = unpacker.get_neighbour_ids(seed_list=ortholog_id_list, associations=ortholog_associations, include_semantic_groups=['phenotype'])
         register_info(f'{len(phenotype_id_list)} phenotypes of orthologous genes')

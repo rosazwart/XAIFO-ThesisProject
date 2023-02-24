@@ -14,7 +14,7 @@ if __name__ == "__main__":
     ] 
 
     # get first shell of neighbours
-    neighboursList = monarch.get_neighbours_list(seedList)
+    neighboursList = monarch.get_neighbours_list(seedList)  # 2000 rows
     print(len(neighboursList))
 
     # introduce animal model ortho-phenotypes for seed and 1st shell neighbors

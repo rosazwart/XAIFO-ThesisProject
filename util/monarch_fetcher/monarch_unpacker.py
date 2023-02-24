@@ -22,12 +22,6 @@ def load_into_tuple(association_info):
         for dict_level in dict_levels:
             if dict_level == 'category':
                 value = value[dict_level][0]    # only allow one category, first category of list of categories chosen
-            elif dict_level == 'publications':  # concatenate list of references
-                all_publications = value[dict_level]
-                reference_ids = list()
-                for reference in all_publications:
-                    reference_ids.append(reference['id'])
-                value = '|'.join(reference_ids)
             else:
                 value = value[dict_level]
         
@@ -35,10 +29,11 @@ def load_into_tuple(association_info):
         
     return tuple(info_list)
 
-def unpack_response(response_values):
+def unpack_response(response_values, seed_id_list = None):
     """
         Association information is embedded in response, so unpack this information from nonrelevant values. Store each association entry in a tuple.
         :param response_value: dictionary with BioLink API response objects
+        :param seed_id_list: when list of seeds is given, exclude all associations that introduce nodes not existing in seeds list
         :return: list of association dictionaries
     """
     unpacked_associations = list()
@@ -48,7 +43,14 @@ def unpack_response(response_values):
             # Tuple contains the following info: id, subject_id, 
             association_info = load_into_tuple(association)
             
-            unpacked_associations.append(association_info)
+            if seed_id_list:
+                subject_id = association_info[constants.assoc_tuple_values.index('subject_id')]
+                object_id = association_info[constants.assoc_tuple_values.index('object_id')]
+                
+                if {subject_id, object_id} <= seed_id_list:
+                    unpacked_associations.append(association_info)
+            else:
+                unpacked_associations.append(association_info)
             
     return unpacked_associations
     
@@ -75,7 +77,7 @@ def get_neighbour_ids(seed_list: list, associations: list, include_semantic_grou
         
     return neighbour_ids
         
-def get_neighbour_associations(id_list: list, relations: list = []):
+def get_neighbour_associations(id_list: list, rows: int = 2000, relations: list = [], exclude_new_ids: bool = False):
     """ 
         Return the first layer of neighbours from a list of node identifiers.
         :param id_list: list of entities represented by their identifiers
@@ -83,8 +85,13 @@ def get_neighbour_associations(id_list: list, relations: list = []):
         :return: list of direct neighbours (list of tuples)
     """
     all_associations = set()
-    
     all_seed_nodes = set(id_list)   # make sure there are no duplicate seed ids
+    
+    if exclude_new_ids:
+        included_id_list = all_seed_nodes
+    else:
+        included_id_list = None
+    
     for seed_node in tqdm(all_seed_nodes):
         params = {}
         
@@ -92,18 +99,18 @@ def get_neighbour_associations(id_list: list, relations: list = []):
             for relation_id in relations:
                 params['relation'] = relation_id
                 
-                response_assoc_out, response_assoc_in = requester.get_in_out_associations(seed_node, params)
+                response_assoc_out, response_assoc_in = requester.get_in_out_associations(seed_node, params, rows)
                 
-                assoc_out = unpack_response(response_assoc_out)
-                assoc_in = unpack_response(response_assoc_in)
+                assoc_out = unpack_response(response_assoc_out, included_id_list)
+                assoc_in = unpack_response(response_assoc_in, included_id_list)
                 
                 all_associations.update(assoc_out)
                 all_associations.update(assoc_in)
         else:
-            response_assoc_out, response_assoc_in = requester.get_in_out_associations(seed_node, params)
+            response_assoc_out, response_assoc_in = requester.get_in_out_associations(seed_node, params, rows)
             
-            assoc_out = unpack_response(response_assoc_out)
-            assoc_in = unpack_response(response_assoc_in)
+            assoc_out = unpack_response(response_assoc_out, included_id_list)
+            assoc_in = unpack_response(response_assoc_in, included_id_list)
             
             all_associations.update(assoc_out)
             all_associations.update(assoc_in)
