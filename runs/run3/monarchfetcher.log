@@ -1,0 +1,61 @@
+2023-02-27 00:09:24,778 INFO     Neighbours of seeds retrieval has started...
+2023-02-27 00:10:00,092 INFO     A total of 2954 associations have been found between seeds and their neighbours.
+2023-02-27 00:10:00,098 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-02-27 00:10:00,108 INFO     Orthologs/phenotypes retrieval has started...
+2023-02-27 00:10:00,108 INFO     For depth 1 seed list contains 2 ids
+2023-02-27 00:10:32,106 INFO     1766 neighbours of given seeds
+2023-02-27 00:10:32,119 INFO     8 orthologous genes of given seeds
+2023-02-27 00:11:10,897 INFO     259 phenotypes of orthologous genes
+2023-02-27 00:11:10,903 INFO     267 orthologs/phenotypes
+2023-02-27 00:11:10,903 INFO     For depth 2 seed list contains 1766 ids
+2023-02-27 01:18:45,580 INFO     61904 neighbours of given seeds
+2023-02-27 01:18:46,608 INFO     2965 orthologous genes of given seeds
+2023-02-27 03:01:35,255 INFO     5225 phenotypes of orthologous genes
+2023-02-27 03:01:36,087 INFO     8190 orthologs/phenotypes
+2023-02-27 03:01:36,089 INFO     8284 orthologs/phenotypes have been found using a depth of 2
+2023-02-27 03:01:36,143 INFO     A total of 1766 first order neighbours have been found
+2023-02-27 03:01:36,144 INFO     A total of 8284 orthologs/phenotypes have been found.
+2023-02-27 03:01:36,146 INFO     A total of 9949 nodes have been found for which from and to associations will be retrieved.
+2023-02-27 03:01:36,146 INFO     Associations of seeds retrieval has started...
+2023-02-27 03:27:15,947 ERROR    Response values could not get acquired at node HP:0009121 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 04:21:06,082 ERROR    Response values could not get acquired at node MP:0005379 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 05:27:14,628 ERROR    Response values could not get acquired at node HP:0000708 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 05:59:34,206 ERROR    Response values could not get acquired at node MP:0003631 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 06:21:15,517 ERROR    Response values could not get acquired at node MP:0005386 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 06:34:44,316 ERROR    Response values could not get acquired at node HP:0002664 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 06:41:26,328 ERROR    Response values could not get acquired at node MP:0005376 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 07:05:19,102 ERROR    Response values could not get acquired at node HP:0001939 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 07:30:11,560 ERROR    Response values could not get acquired at node MP:0005397 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 08:15:35,761 ERROR    Response values could not get acquired at node MP:0005384 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 08:47:39,123 ERROR    Response values could not get acquired at node MP:0005387 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 09:57:06,366 ERROR    Response values could not get acquired at node HP:0012337 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 10:39:12,604 ERROR    Response values could not get acquired at node HP:0012638 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 10:53:10,802 ERROR    Response values could not get acquired at node HP:0000234 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 11:07:53,013 ERROR    Response values could not get acquired at node HP:0000924 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 11:12:08,116 ERROR    Response values could not get acquired at node MP:0002020 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 11:37:21,719 ERROR    Response values could not get acquired at node HP:0012639 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 11:48:50,451 ERROR    Response values could not get acquired at node MP:0000428 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 12:22:09,392 ERROR    Response values could not get acquired at node MP:0005388 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 12:34:47,248 ERROR    Response values could not get acquired at node MP:0005390 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 12:46:05,179 ERROR    Response values could not get acquired at node MP:0002116 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 12:59:01,724 ERROR    Response values could not get acquired at node MP:0005378 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 13:34:01,420 ERROR    Response values could not get acquired at node MP:0002166 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 13:46:19,983 ERROR    Response values could not get acquired at node HP:0040006 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 13:52:43,148 ERROR    Response values could not get acquired at node MP:0005385 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-02-27 14:07:24,558 INFO     A total of 83287 associations have been found between seeds and their neighbours.
+2023-02-27 14:07:27,190 INFO     The graph contains 11 different semantic groups: {'gene', 'phenotype', 'variant', 'molecular function', 'biological process', 'disease', 'anatomical entity', 'cellular component', 'model', 'chemical', 'genotype'}
+2023-02-27 14:07:27,190 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-02-27 14:07:30,356 INFO     A total of 0 edges have been modified to include the genotype-gene relation.
+2023-02-27 14:07:32,141 INFO     All nodes are stored into query_nodes.csv
+2023-02-27 14:07:33,851 INFO     All edges are stored into query_edges.csv
+2023-02-27 14:07:33,851 INFO     Generated query list in file queries.txt
+2023-02-27 14:07:33,852 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-02-27 14:07:33,909 INFO     There are 19 properties: ['has phenotype' 'interacts with' 'in 1 to 1 orthology relationship with'
+ 'in orthology relationship with' 'pathogenic_for_condition'
+ 'contributes to condition' 'enables' 'is part of' 'expressed in'
+ 'involved_in' 'likely_pathogenic_for_condition' 'has_affected_feature'
+ 'colocalizes with' 'has role in modeling'
+ 'is causal germline mutation in' 'is_allele_of' 'has_genotype'
+ 'causes condition' 'is causal germline mutation partially giving rise to']
+2023-02-27 14:07:33,910 INFO     There are 8 semantic groups: ['p' 'g' 'v' 'm' 'c' 'd' 'b' 'a']

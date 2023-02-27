@@ -35,14 +35,9 @@ class Node:
             'id': self.id,
             'label': self.label,
             'iri': self.iri,
+            'semantic': self.semantic_groups,
             'taxon_id': self.taxon
         }
-        
-        if (len(self.semantic_groups) > 0):
-            # only one semantic group per node is allowed
-            node_dict['semantic'] = self.semantic_groups[0]
-        else:
-            node_dict['semantic'] = None
         
         return node_dict
     

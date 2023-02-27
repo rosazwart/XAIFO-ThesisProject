@@ -31,7 +31,7 @@ def analyzeData(all_edges, all_nodes, edge_colmap: dict, node_colmap: dict, grap
     # Look at unique subject/object pairs and relation pairs
     subject_object_pairs = joined_objects[['semantic_groups_subject', 'semantic_groups_object']].drop_duplicates().reset_index(drop=True)
     
-    graph_builder.draw_graph_from_edges(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name=graph_image_file_name)
+    draw_graph_from_edges(subject_object_pairs, source_colname='semantic_groups_subject', target_colname='semantic_groups_object', file_name=graph_image_file_name)
     
     subject_property_object_triplets = joined_objects.drop_duplicates().reset_index(drop=True)
     subject_property_object_triplets = subject_property_object_triplets.sort_values(by=edge_colmap['relations']).reset_index(drop=True)
