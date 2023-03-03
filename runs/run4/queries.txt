@@ -1,0 +1,15 @@
+
+        LOAD CSV WITH HEADERS FROM 'file:///query_nodes.csv' AS row
+        CALL apoc.merge.node([row.semantic_label], {id: row.id, label: row.label, iri: row.iri})
+        YIELD node
+        RETURN node
+    ;
+
+        LOAD CSV WITH HEADERS FROM 'file:///query_edges.csv' AS row
+        MATCH (n1 {id: row.subject}), (n2 {id: row.object})
+        
+        WITH n1, n2, row
+        CALL apoc.create.relationship(n1, row.relation_label, {id: row.id}, n2) 
+        YIELD rel
+        RETURN rel
+    
