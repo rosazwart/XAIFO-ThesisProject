@@ -6,26 +6,40 @@ ID_LINE = 'TTDDRUID'
 NAME_LINE = 'DRUGNAME'
 DISEASE_PHASE_LINE = 'INDICATI'
 EMPTY_LINE = '\n'
-MIN_MATCHING_SCORE = 80
 
 def convert_id_format(df):
     new_ids = list()
     
-    for i in df['ID']: 
+    for i in df['DISEASE_ID']: 
         id = re.sub("[^0-9a-zA-Z]+", ":", i)
         new_ids.append(id)
     
-    df['ID'] = new_ids
+    df['DISEASE_ID'] = new_ids
     return df
 
 def load_phenotype_matcher():
+    """
+        Matches originate from submitting a task on https://sorta.molgeniscloud.org/menu/main/sorta?threshold=100
+    """
     matches = pd.read_csv('././data/matched_phenotypes.csv', header = 0, delimiter = ';')
-    trusted_matches = matches[matches['score'] > MIN_MATCHING_SCORE]
+    trusted_matches = matches[matches['score'] == 100]
     
+    # Change formatting
+    trusted_matches['DISEASE_ID'] = trusted_matches['ontologyTermIRI'].str.split('/obo/').str[1]
+    trusted_matches['Name'] = trusted_matches['Name'].str.strip()
     matched_phenotype_ids = convert_id_format(trusted_matches)
     
-    print(f'Loaded {trusted_matches.shape[0]} phenotypes with matching IDs scoring higher than:\n{trusted_matches.head(10)}')
-    return trusted_matches
+    print(f'Loaded {matched_phenotype_ids.shape[0]} phenotypes with matching IDs scoring 100:\n{matched_phenotype_ids.head(10)}')
+    return matched_phenotype_ids
+
+def reformat_disease_name(name):
+    new_name = re.sub("[^0-9a-zA-Z]+", " ", name)
+    return new_name.lower().strip()
+
+def reformat_disease_names(df):
+    reformatted_df = df.copy()
+    reformatted_df['DISEASE_NAME'] = df.apply(lambda row: reformat_disease_name(row['DISEASE_NAME']), axis=1)
+    return reformatted_df
         
 def load_drug_disease_entries():
     
@@ -54,3 +68,13 @@ def load_drug_disease_entries():
             current_drug_disease_pair = dict()
             
     return pd.DataFrame.from_dict(drug_disease_pairs, orient='columns')
+
+def join_disease_name_with_id(names_df, ids_df):
+    joined_df = pd.merge(names_df, ids_df, left_on='DISEASE_NAME', right_on='Name', how='left')
+    left_outer_joined_df = joined_df[joined_df['DISEASE_ID'].notna()][['DRUG_ID', 'DRUG_NAME', 'DISEASE_ID', 'DISEASE_NAME', 'PHASE']]
+    print(f'Total of {left_outer_joined_df.shape[0]} disease names mapped to their IDs:\n{left_outer_joined_df.head(10)}')
+    return left_outer_joined_df
+
+def filter_drug_disease_pairs(drug_disease_edges, drug_target_edges):
+    
+    

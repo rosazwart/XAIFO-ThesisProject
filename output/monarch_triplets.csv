@@ -1,0 +1,36 @@
+subject,relation,object
+gene,causes condition,disease
+gene,colocalizes with,gene
+variant,contributes to condition,disease
+variant,contributes to condition,phenotype
+gene,contributes to condition,phenotype
+gene,contributes to condition,disease
+gene,enables,molecular function
+gene,expressed in,anatomical entity
+disease,has phenotype,phenotype
+variant,has phenotype,disease
+variant,has phenotype,phenotype
+model,has phenotype,phenotype
+gene,has phenotype,phenotype
+genotype,has phenotype,phenotype
+variant,has role in modeling,disease
+gene,has role in modeling,disease
+model,has role in modeling,disease
+variant,has affected feature,gene
+genotype,has allele of,gene
+genotype,has allele of,disease
+model,has genotype,genotype
+model,has genotype,variant
+gene,in 1 to 1 orthology relationship with,gene
+gene,in orthology relationship with,gene
+model,interacts with,gene
+gene,interacts with,gene
+gene,interacts with,model
+gene,involved in,biological process
+disease,involved in,biological process
+gene,is causal germline mutation in,disease
+gene,is causal germline mutation partially giving rise to,disease
+gene,is part of,cellular component
+variant,is allele of,gene
+variant,likely pathogenic for condition,disease
+variant,pathogenic for condition,disease

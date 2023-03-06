@@ -5,17 +5,18 @@
 
 import pandas as pd
 import numpy as np
+import os
 
 import drugtarget_fetcher as drugtarget_fetcher
 
 GENE = 'gene'
 
-def load_nodes():
-    """
-        Load all node entries retrieved from monarch data fetching. 
-        :return: Dataframe containing all nodes
-    """
-    nodes = pd.read_csv('././runs/run4/monarch_nodes.csv', header=0)
+INPUT_FOLDER = 'data'
+OUTPUT_FOLDER = 'output'
+
+def load_monarch_nodes():
+    data_path = os.path.join(OUTPUT_FOLDER, 'monarch_nodes.csv')
+    nodes = pd.read_csv(data_path, header=0)
     print(f'Loaded {nodes.shape[0]} nodes:\n{nodes.head(3)}')
     return nodes
 
@@ -54,7 +55,7 @@ def retrieve_gene_prefixes(genes: pd.DataFrame):
 
 if __name__ == "__main__":
     # Nodes fetched Monarch Initiative
-    nodes = load_nodes()
+    nodes = load_monarch_nodes()
     gene_ids = extract_gene_ids(nodes)
     
     # Data for drug-target interactions

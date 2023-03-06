@@ -13,7 +13,7 @@ def load_monarch_nodes_from_csv():
     data_path = os.path.join(OUTPUT_FOLDER, 'monarch_nodes.csv')
     nodes_data = pd.read_csv(data_path)
     
-    register_info(f'Loaded nodes with attributes: {nodes_data.columns.values}')
+    register_info(f'Loaded {nodes_data.shape[0]} nodes with attributes: {nodes_data.columns.values}')
     
     return nodes_data
 
