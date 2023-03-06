@@ -29,16 +29,15 @@ db_mapper = {
 }
 
 class IdMapper:
-    def __init__(self, ids_to_map: pd.DataFrame, to_db = DEFAULT_TO_DB, from_db = FROM_DB):
+    def __init__(self, ids_to_map: list, to_db = DEFAULT_TO_DB, from_db = FROM_DB):
         self.url = 'https://rest.uniprot.org'
         self.job_id = self.submit_id_mapping(ids_to_map, to_db, from_db)
 
         if self.check_job_ready():
             self.results = self.get_results()
         
-    def submit_id_mapping(self, ids: pd.DataFrame, to_db, from_db):
+    def submit_id_mapping(self, id_list, to_db, from_db):
         print(f'Map to database {to_db}')
-        id_list = ids['ACCESSION'].to_list()
         
         data_params = {
             'from': from_db,
