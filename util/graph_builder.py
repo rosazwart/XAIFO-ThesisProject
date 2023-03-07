@@ -1,6 +1,6 @@
 from util.common import register_info
 
-import monarch.constants as monarch_constants
+import util.constants as constants
 
 import pandas as pd
 
@@ -13,11 +13,11 @@ class Node:
         :param assoc_tuple: tuple of information about association
     """
     def __init__(self, assoc_tuple: tuple, node_role: str):
-        self.id = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_id')]
-        self.semantic_groups = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_category')]
-        self.label = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_label')]
-        self.iri = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_iri')]
-        self.taxon = assoc_tuple[monarch_constants.assoc_tuple_values.index(f'{node_role}_taxon_id')]
+        self.id = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_id')]
+        self.semantic_groups = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_category')]
+        self.label = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_label')]
+        self.iri = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_iri')]
+        self.taxon = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_taxon_id')]
         
     def __eq__(self, other):
         return self.id == other.id
@@ -48,13 +48,13 @@ class Edge:
         :param assoc_tuple: tuple of information about association
     """
     def __init__(self, assoc_tuple: tuple):
-        self.id = assoc_tuple[monarch_constants.assoc_tuple_values.index('id')]
-        self.subject = assoc_tuple[monarch_constants.assoc_tuple_values.index('subject_id')]
-        self.object = assoc_tuple[monarch_constants.assoc_tuple_values.index('object_id')]
+        self.id = assoc_tuple[constants.assoc_tuple_values.index('id')]
+        self.subject = assoc_tuple[constants.assoc_tuple_values.index('subject_id')]
+        self.object = assoc_tuple[constants.assoc_tuple_values.index('object_id')]
         self.relation = {
-            'id': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_id')],
-            'iri': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_iri')],
-            'label': assoc_tuple[monarch_constants.assoc_tuple_values.index('relation_label')]
+            'id': assoc_tuple[constants.assoc_tuple_values.index('relation_id')],
+            'iri': assoc_tuple[constants.assoc_tuple_values.index('relation_iri')],
+            'label': assoc_tuple[constants.assoc_tuple_values.index('relation_label')]
         }
         
     def __eq__(self, other):

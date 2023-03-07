@@ -2,7 +2,10 @@ import pandas as pd
 
 import analyzer.graphstructure as graphstructure
 
-from util.loaders import get_input_data_path
+import monarch.fetcher as monarch_fetcher
+
+from util.loaders import get_input_data_path, OUTPUT_FOLDER
+from util.common import register_info, tuplelist2dataframe
 
 def analyzePrevData():
     data_path = get_input_data_path('graph_nodes_v2022-01-11.csv')
@@ -29,6 +32,28 @@ def analyzePrevData():
     graphstructure.getConnectionSummary(edges, nodes, 
                                         edge_colmapping, node_colmapping,
                                         'prev_concepts.png', 'prev_triplets.csv')
+    
+def getMonarchAssociations():
+    nodes_list = [
+        'MONDO:0010679',
+        'HGNC:2928'
+    ]
+    
+    seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(seed_id_list=nodes_list, rows=2)
+    orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(first_seed_id_list=nodes_list, depth=2, rows=2)
+    
+    register_info(f'A total of {len(seed_neighbours_id_list)} first order neighbours of given seeds have been found')
+    register_info(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
+    
+    all_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
+    all_nodes_id_list.update(nodes_list)
+    register_info(f'A total of {len(all_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
+        
+    all_associations = monarch_fetcher.get_seed_first_order_associations(seed_id_list=all_nodes_id_list, rows=1, exclude_new_ids=True)
+    tuplelist2dataframe(all_associations).to_csv(f'{OUTPUT_FOLDER}/monarch_associations.csv', index=False)
+    register_info('All MONARCH associations are saved into monarch_associations.csv')
+    
+    return all_associations
 
 if __name__ == "__main__":
-    analyzePrevData()
+    getMonarchAssociations()

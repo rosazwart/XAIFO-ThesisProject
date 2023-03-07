@@ -1,4 +1,4 @@
-import monarch.constants as constants
+import util.constants as constants
 
 relation_ids_filters = {'orthologous': ['RO:HOM0000017', 'RO:HOM0000020']}
 

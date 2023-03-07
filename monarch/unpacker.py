@@ -4,9 +4,9 @@
 
 from tqdm import tqdm
 
-import util.monarch_fetcher.monarch_constants as constants
-import util.monarch_fetcher.monarch_requester as requester
-import util.monarch_fetcher.monarch_filter as filter
+import util.constants as constants
+import monarch.requester as requester
+import monarch.filterer as filterer
 
 def load_into_tuple(association_info):
     """
@@ -115,4 +115,4 @@ def get_neighbour_associations(id_list: list, rows: int = 2000, relations: list 
             all_associations.update(assoc_out)
             all_associations.update(assoc_in)
         
-    return filter.get_associations_on_entities(all_associations, ['publication'], include=False)
+    return filterer.get_associations_on_entities(all_associations, ['publication'], include=False)

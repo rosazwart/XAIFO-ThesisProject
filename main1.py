@@ -8,24 +8,6 @@ import util.graph_builder as graph_builder
 import util.mapper as mapper
 import util.cypher_query_builder as cypher_query_builder
     
-def analyze_bioknowledgereviewer_results():
-    # Load the edges and nodes of the graph generated from Monarch
-    all_edges = loaders.load_edges_from_csv()
-    all_nodes = loaders.load_nodes_from_csv()
-    
-    edge_colmap = {
-        'relations': 'property_label',
-        'subject': 'subject_id',
-        'object': 'object_id'
-    }
-    
-    node_colmap = {
-        'node_id': 'id',
-        'semantics': 'semantic_groups'
-    }
-    
-    analyzeData(all_edges, all_nodes, edge_colmap, node_colmap, 'bioknowledgereviewer_concepts.png', 'bioknowledgereviewer_triplets.csv')
-    
 def fetch_data():
     nodes_list = [
         'MONDO:0010679',

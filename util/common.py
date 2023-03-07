@@ -3,6 +3,9 @@ logging.basicConfig(level=logging.INFO, filename='monarchfetcher.log', filemode=
 
 import networkx as nx
 import matplotlib.pyplot as plt
+import pandas as pd
+
+from util.constants import assoc_tuple_values
 
 def register_info(message):
     """
@@ -33,3 +36,19 @@ def draw_graph(edges, source_colname, target_colname, file_name):
     nx.draw(G, with_labels=True, node_size=800, font_size=6)
     
     plt.savefig(file_name)
+    
+def tuplelist2dataframe(tuple_list: list):
+    """
+
+    """
+    df = pd.DataFrame.from_records(tuple_list, columns=list(assoc_tuple_values))
+    register_info(f'Created a dataframe with {df.shape[0]} entries and column values {df.columns.values}')
+    return df
+
+def dataframe2tuplelist(df: pd.DataFrame):
+    """
+
+    """
+    tuple_list = list(df.itertuples(index=False, name=None))
+    register_info(f'Created a list of tuples with {len(tuple_list)} entries')
+    return tuple_list
