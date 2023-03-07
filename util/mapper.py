@@ -2,9 +2,9 @@
     Module that adds new semantics to associations.
 """
 
-from util.common_util import register_info
-
 import pandas as pd
+
+from util.common import register_info
 
 # List of existing semantic groups:
 GENOTYPE = 'genotype'

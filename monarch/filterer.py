@@ -1,5 +1,4 @@
-
-import util.monarch_fetcher.monarch_constants as constants
+import monarch.constants as constants
 
 relation_ids_filters = {'orthologous': ['RO:HOM0000017', 'RO:HOM0000020']}
 

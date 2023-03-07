@@ -1,6 +1,6 @@
-from util.common_util import register_info
+from util.common import register_info
 
-import util.monarch_fetcher.monarch_constants as monarch_constants
+import monarch.constants as monarch_constants
 
 import pandas as pd
 

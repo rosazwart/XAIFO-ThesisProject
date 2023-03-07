@@ -76,5 +76,5 @@ def join_disease_name_with_id(names_df, ids_df):
     return left_outer_joined_df
 
 def filter_drug_disease_pairs(drug_disease_edges, drug_target_edges):
-    
+    print('filter')
     

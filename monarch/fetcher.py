@@ -1,10 +1,10 @@
 """
     Module that fetches relevant data from the Monarch Initiative data and analytic platform (https://monarchinitiative.org/about/monarch).
 """
-from util.common_util import register_info
+from util.common import register_info
 
-import util.monarch_fetcher.monarch_unpacker as unpacker
-import util.monarch_fetcher.monarch_filter as filter
+import monarch.unpacker as unpacker
+import monarch.filterer as filterer
 
 def get_seed_first_order_associations(seed_id_list: list, rows: int, exclude_new_ids: bool = False):
     """
@@ -59,7 +59,7 @@ def get_orthopheno_node_ids(first_seed_id_list: list, depth: int, rows: int):
         register_info(f'{len(neighbour_id_list)} neighbours of given seeds')
         
         # Filter to only include associations related to orthology
-        associations_with_orthologs = filter.get_associations_on_relations(direct_neighbours_associations, 'orthologous')
+        associations_with_orthologs = filterer.get_associations_on_relations(direct_neighbours_associations, 'orthologous')
         
         # Free memory as this list is not used anymore in this iteration
         direct_neighbours_associations = []

@@ -21,7 +21,7 @@ def register_error(message):
     print(message)
     logging.error(message)
 
-def draw_graph_from_edges(edges, source_colname, target_colname, file_name):
+def draw_graph(edges, source_colname, target_colname, file_name):
     """
         Draw a graph from a pandas dataframe given the column names of the source and target of the edges.
         :param source_colname: name of column that includes source of edge
@@ -32,4 +32,4 @@ def draw_graph_from_edges(edges, source_colname, target_colname, file_name):
     
     nx.draw(G, with_labels=True, node_size=800, font_size=6)
     
-    plt.savefig(f'output/{file_name}')
+    plt.savefig(file_name)

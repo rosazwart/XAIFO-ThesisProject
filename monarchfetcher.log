@@ -62,3 +62,23 @@
 2023-02-28 06:18:10,053 INFO     There are 11 semantic groups: ['phenotype' 'variant' 'gene' 'genotype' 'cellular component' 'model'
  'anatomical entity' 'biological process' 'chemical' 'disease'
  'molecular function']
+2023-03-07 12:07:09,922 INFO     There are 8 semantic groups: ['ORTH' 'DISO' 'GENE' 'GENO' 'VARI' 'PHYS' 'ANAT' 'DRUG']
+2023-03-07 12:07:09,927 INFO     There are 24 relation labels: ['has phenotype' 'interacts with' 'in orthology relationship with'
+ 'in 1 to 1 orthology relationship with' 'has_affected_feature'
+ 'likely_pathogenic_for_condition' 'is part of' 'enables' 'expressed in'
+ 'involved in' 'pathogenic_for_condition' 'contributes to condition'
+ 'is_allele_of' 'has role in modeling' nan 'contributes to' 'source'
+ 'colocalizes with' 'is causal germline mutation in'
+ 'is substance that treats' 'has_genotype' 'is marker for'
+ 'is causal germline mutation partially giving rise to' 'causes condition']
+2023-03-07 12:10:17,640 INFO     There are 8 semantic groups: ['ORTH' 'DISO' 'GENE' 'GENO' 'VARI' 'PHYS' 'ANAT' 'DRUG']
+2023-03-07 12:10:17,645 INFO     There are 24 relation labels: ['has phenotype' 'interacts with' 'in orthology relationship with'
+ 'in 1 to 1 orthology relationship with' 'has_affected_feature'
+ 'likely_pathogenic_for_condition' 'is part of' 'enables' 'expressed in'
+ 'involved in' 'pathogenic_for_condition' 'contributes to condition'
+ 'is_allele_of' 'has role in modeling' nan 'contributes to' 'source'
+ 'colocalizes with' 'is causal germline mutation in'
+ 'is substance that treats' 'has_genotype' 'is marker for'
+ 'is causal germline mutation partially giving rise to' 'causes condition']
+2023-03-07 12:10:17,989 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-07 12:10:18,006 INFO     List of triplets saved to prev_triplets.csv

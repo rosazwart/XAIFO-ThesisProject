@@ -1,4 +1,4 @@
-from util.common_util import register_info
+from util.common import register_info
 
 import pandas as pd
 
