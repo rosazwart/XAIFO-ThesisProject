@@ -107,7 +107,7 @@ def build_queries_for_nodes(all_nodes: pd.DataFrame, include_constraints: bool):
             query_stmt = create_load_csv_to_node_constraint_query(semantic_group, col_name_id='id')
             all_queries.append(query_stmt)
     
-    # load nodes queries
+    # load nodes queries, filter out all non relevant columns
     header_filter = ['semantic', 'semantic_label', 'taxon_id', 'taxon_label']
     
     all_nodes['semantic_label'] = all_nodes.apply(lambda x: x['semantic'].title().replace(' ', ''), axis=1)

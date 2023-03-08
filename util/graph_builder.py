@@ -83,7 +83,7 @@ class KnowledgeGraph:
     """
         Initialize a knowledge graph by giving a list of associations that is converted into
         a set of Edge objects and Node objects. 
-        :param all_associations: list of dictionaries from responses, by default an empty list
+        :param all_associations: list of tuples complying with `constants.assoc_tuple_values`, by default an empty list
     """
     def __init__(self, all_associations: list = []):
         self.all_edges = set()  # all unique edges in knowledge graph
@@ -146,6 +146,7 @@ class KnowledgeGraph:
         """
             Get all nodes that belong to at least one of the given semantic group(s).
             :param extract_semantic_groups: list of semantic group names
+            :return Dataframe containing extracted nodes
         """
         extracted_nodes = set()
         
@@ -155,5 +156,5 @@ class KnowledgeGraph:
                 extracted_nodes.add(node)
         register_info(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of {extract_semantic_groups}')
         
-        return extracted_nodes
+        return pd.DataFrame.from_records([node.to_dict() for node in extracted_nodes])
     

@@ -4,12 +4,8 @@
 
 import pandas as pd
 
+from util.constants import GENE, GENOTYPE, TAXON
 from util.common import register_info
-
-# List of existing semantic groups:
-GENOTYPE = 'genotype'
-GENE = 'gene'
-TAXON = 'taxon'
 
 class Mapper:
     """

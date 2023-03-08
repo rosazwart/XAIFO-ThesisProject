@@ -1,13 +1,15 @@
 import pandas as pd
 
-import analyzer.graphstructure as graphstructure
-
-import monarch.fetcher as monarch_fetcher
-
-from util.loaders import get_input_data_path, OUTPUT_FOLDER
+from util.constants import GENE
+from util.loaders import get_input_data_path, OUTPUT_FOLDER, load_monarch_associations_from_csv
 from util.common import register_info, tuplelist2dataframe
+from util.graph_builder import KnowledgeGraph
 
-def analyzePrevData():
+import analyzer.graphstructure as graphstructure
+import monarch.fetcher as monarch_fetcher
+import ttd.fetcher as ttd_fetcher
+
+def analyze_prev_data():
     data_path = get_input_data_path('graph_nodes_v2022-01-11.csv')
     nodes = pd.read_csv(data_path)
     print('Loaded nodes with attributes:', nodes.columns.values)
@@ -33,7 +35,7 @@ def analyzePrevData():
                                         edge_colmapping, node_colmapping,
                                         'prev_concepts.png', 'prev_triplets.csv')
     
-def getMonarchAssociations():
+def get_monarch_associations():
     nodes_list = [
         'MONDO:0010679',
         'HGNC:2928'
@@ -55,5 +57,36 @@ def getMonarchAssociations():
     
     return all_associations
 
+def build_kg(load_csv: bool = False):
+    if load_csv:
+        monarch_associations = load_monarch_associations_from_csv()
+    else:
+        monarch_associations = get_monarch_associations()
+        
+    kg = KnowledgeGraph(monarch_associations)
+    
+    monarch_edges, monarch_nodes = kg.generate_dataframes()
+    monarch_gene_nodes = kg.get_extracted_nodes([GENE])
+    
+    edge_colmapping = {
+        'relations': 'relation_label',
+        'subject': 'subject',
+        'object': 'object'
+    }
+    
+    node_colmapping = {
+        'node_id': 'id',
+        'semantics': 'semantic'
+    }
+    
+    
+    graphstructure.getConcepts(monarch_nodes, node_colmapping)
+    graphstructure.getRelations(monarch_edges, edge_colmapping)
+    graphstructure.getConnectionSummary(monarch_edges, monarch_nodes, 
+                                        edge_colmapping, node_colmapping,
+                                        'monarch_concepts.png', 'monarch_triplets.csv')
+    
+    ttd_associations = ttd_fetcher.get_drugtarget_associations(monarch_gene_nodes)
+
 if __name__ == "__main__":
-    getMonarchAssociations()
+    build_kg()

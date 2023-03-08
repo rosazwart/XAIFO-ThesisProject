@@ -52,3 +52,13 @@ def dataframe2tuplelist(df: pd.DataFrame):
     tuple_list = list(df.itertuples(index=False, name=None))
     register_info(f'Created a list of tuples with {len(tuple_list)} entries')
     return tuple_list
+
+def extract_colvalues(df: pd.DataFrame, extract_colname: str):
+    """
+        Extract values from column with given name.
+        :param df: Dataframe from which column values need to be extracted
+        :param extract_colname: Name of column that needs to be extracted
+        :return List of extracted column values
+    """
+    colvalues = df[extract_colname].to_list()
+    return colvalues
