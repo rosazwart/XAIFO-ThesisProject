@@ -1,0 +1,123 @@
+id,subject_id,subject_label,subject_iri,subject_category,subject_taxon_id,subject_taxon_label,object_id,object_label,object_iri,object_category,object_taxon_id,object_taxon_label,relation_id,relation_label,relation_iri
+DC975,"2    4483
+Name: id, dtype: object",carfilzomib,,drug,,,HP:0030357,,,,,,CustomRO:DC,is substance that treats,
+DC2136,"93    1043
+Name: id, dtype: object",ergotamine,,drug,,,HP:0002315,,,,,,CustomRO:DC,is substance that treats,
+DC2168,"8    812
+Name: id, dtype: object",desipramine,,drug,,,HP:0007018,,,,,,CustomRO:DC,is substance that treats,
+DC2389,"80    4225
+Name: id, dtype: object",axitinib,,drug,,,HP:0005584,,,,,,CustomRO:DC,is substance that treats,
+DC2632,"254    4175
+Name: id, dtype: object",linagliptin,,drug,,,HP:0005978,,,,,,CustomRO:DC,is substance that treats,
+DC2871,"252    5431
+Name: id, dtype: object",tirbanibulin,,drug,,,HP:0012125,,,,,,CustomRO:DC,is substance that treats,
+DC3772,"264    1683
+Name: id, dtype: object",menadione,,drug,,,HP:0012125,,,,,,CustomRO:DC,is substance that treats,
+DC6255,"254    4175
+Name: id, dtype: object",linagliptin,,drug,,,HP:0005978,,,,,,CustomRO:DC,is substance that treats,
+DC6768,"77    1989
+Name: id, dtype: object",omapatrilat,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC7139,"240    176
+Name: id, dtype: object",amiodarone,,drug,,,HP:0004756,,,,,,CustomRO:DC,is substance that treats,
+DC7168,"92    2815
+Name: id, dtype: object",verapamil,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC8635,"272    2561
+Name: id, dtype: object",tamoxifen,,drug,,,HP:0003002,,,,,,CustomRO:DC,is substance that treats,
+DC8870,"34    1045
+Name: id, dtype: object",erlotinib,,drug,,,HP:0003003,,,,,,CustomRO:DC,is substance that treats,
+DC9090,"91    257
+Name: id, dtype: object",atorvastatin,,drug,,,HP:0003077,,,,,,CustomRO:DC,is substance that treats,
+DC9193,"181    960
+Name: id, dtype: object",doxorubicin,,drug,,,HP:0001402,,,,,,CustomRO:DC,is substance that treats,
+DC9194,"181    960
+Name: id, dtype: object",doxorubicin,,drug,,,HP:0003002,,,,,,CustomRO:DC,is substance that treats,
+DC9195,"181    960
+Name: id, dtype: object",doxorubicin,,drug,,,HP:0002664,,,,,,CustomRO:DC,is substance that treats,
+DC9732,"241    749
+Name: id, dtype: object",cyclizine,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC9800,"75    183
+Name: id, dtype: object",amlodipine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC10125,"123    1057
+Name: id, dtype: object",estradiol,,drug,,,HP:0003002,,,,,,CustomRO:DC,is substance that treats,
+DC10370,"48    1782
+Name: id, dtype: object",metoclopramide,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC10669,"249    461
+Name: id, dtype: object",cadralazine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC10829,"3    2745
+Name: id, dtype: object",trihexyphenidyl,,drug,,,HP:0001332,,,,,,CustomRO:DC,is substance that treats,
+DC10831,"3    2745
+Name: id, dtype: object",trihexyphenidyl,,drug,,,HP:0001513,,,,,,CustomRO:DC,is substance that treats,
+DC10987,"56    2149
+Name: id, dtype: object",phenylpropanolamine,,drug,,,HP:0001513,,,,,,CustomRO:DC,is substance that treats,
+DC11246,"146    2774
+Name: id, dtype: object",tropicamide,,drug,,,HP:0011499,,,,,,CustomRO:DC,is substance that treats,
+DC11578,"193    1150
+Name: id, dtype: object",fenfluramine,,drug,,,HP:0001513,,,,,,CustomRO:DC,is substance that treats,
+DC11792,"28    1947
+Name: id, dtype: object",nitrendipine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC12355,"199    1423
+Name: id, dtype: object",imatinib,,drug,,,HP:0006721,,,,,,CustomRO:DC,is substance that treats,
+DC12474,"229    2274
+Name: id, dtype: object",prochlorperazine,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC12669,"9    2424
+Name: id, dtype: object",scopolamine,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC13096,"262    1576
+Name: id, dtype: object",levosimendan,,drug,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
+DC13097,"262    1576
+Name: id, dtype: object",levosimendan,,drug,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
+DC13499,"23    700
+Name: id, dtype: object",clomifene,,drug,,,HP:0008222,,,,,,CustomRO:DC,is substance that treats,
+DC13599,"84    522
+Name: id, dtype: object",carvedilol,,drug,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
+DC14339,"121    4682
+Name: id, dtype: object",panobinostat,,drug,,,HP:0005978,,,,,,CustomRO:DC,is substance that treats,
+DC15202,"127    832
+Name: id, dtype: object",dexfenfluramine,,drug,,,HP:0001513,,,,,,CustomRO:DC,is substance that treats,
+DC16074,"119    4716
+Name: id, dtype: object",ponatinib,,drug,,,HP:0006721,,,,,,CustomRO:DC,is substance that treats,
+DC17894,"174    1384
+Name: id, dtype: object",hydralazine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC18177,"19    3514
+Name: id, dtype: object",quercetin,,drug,,,HP:0001513,,,,,,CustomRO:DC,is substance that treats,
+DC18743,"102    4119
+Name: id, dtype: object",romidepsin,,drug,,,HP:0005584,,,,,,CustomRO:DC,is substance that treats,
+DC19257,"206    926
+Name: id, dtype: object",disopyramide,,drug,,,HP:0004308,,,,,,CustomRO:DC,is substance that treats,
+DC19258,"206    926
+Name: id, dtype: object",disopyramide,,drug,,,HP:0000020,,,,,,CustomRO:DC,is substance that treats,
+DC20326,"95    5345
+Name: id, dtype: object",entrectinib,,drug,,,HP:0003006,,,,,,CustomRO:DC,is substance that treats,
+DC20732,"274    4359
+Name: id, dtype: object",bosutinib,,drug,,,HP:0003002,,,,,,CustomRO:DC,is substance that treats,
+DC20733,"161    897
+Name: id, dtype: object",diltiazem,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC21925,"61    65
+Name: id, dtype: object",acetylcholine,,drug,,,HP:0000518,,,,,,CustomRO:DC,is substance that treats,
+DC22143,"92    2815
+Name: id, dtype: object",verapamil,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC22897,"230    1942
+Name: id, dtype: object",nisoldipine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC23377,"35    2286
+Name: id, dtype: object",promethazine,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC24051,"31    1385
+Name: id, dtype: object",hydrochlorothiazide,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC24230,"139    901
+Name: id, dtype: object",dimenhydrinate,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC25275,"44    2459
+Name: id, dtype: object",sorafenib,,drug,,,HP:0005584,,,,,,CustomRO:DC,is substance that treats,
+DC25276,"44    2459
+Name: id, dtype: object",sorafenib,,drug,,,HP:0001402,,,,,,CustomRO:DC,is substance that treats,
+DC25358,"197    231
+Name: id, dtype: object",aprindine,,drug,,,HP:0011675,,,,,,CustomRO:DC,is substance that treats,
+DC25448,"180    1797
+Name: id, dtype: object",mibefradil,,drug,,,HP:0012174,,,,,,CustomRO:DC,is substance that treats,
+DC25467,"84    522
+Name: id, dtype: object",carvedilol,,drug,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
+DC25482,"227    313
+Name: id, dtype: object",diphenidol,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC25591,"147    1142
+Name: id, dtype: object",felodipine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,
+DC26312,"22    2630
+Name: id, dtype: object",thiethylperazine,,drug,,,HP:0002018,,,,,,CustomRO:DC,is substance that treats,
+DC27209,"7    1511
+Name: id, dtype: object",isradipine,,drug,,,HP:0000822,,,,,,CustomRO:DC,is substance that treats,

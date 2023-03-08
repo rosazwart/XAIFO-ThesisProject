@@ -1,7 +1,8 @@
 """
     Module that fetches relevant data from the Monarch Initiative data and analytic platform (https://monarchinitiative.org/about/monarch).
 """
-from util.common import register_info
+import util.constants as constants
+from util.common import register_info, tuplelist2dataframe
 
 import monarch.unpacker as unpacker
 import monarch.filterer as filterer
@@ -91,3 +92,20 @@ def get_orthopheno_node_ids(first_seed_id_list: list, depth: int, rows: int):
     
     return all_ortho_pheno_node_ids
     
+def get_monarch_associations(nodes_list):
+    
+    seed_neighbours_id_list = get_seed_neighbour_node_ids(seed_id_list=nodes_list, rows=2000)
+    orthopheno_id_list = get_orthopheno_node_ids(first_seed_id_list=nodes_list, depth=2, rows=2000)
+    
+    register_info(f'A total of {len(seed_neighbours_id_list)} first order neighbours of given seeds have been found')
+    register_info(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
+    
+    all_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
+    all_nodes_id_list.update(nodes_list)
+    register_info(f'A total of {len(all_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
+        
+    all_associations = get_seed_first_order_associations(seed_id_list=all_nodes_id_list, rows=1000, exclude_new_ids=True)
+    tuplelist2dataframe(all_associations).to_csv(f'{constants.OUTPUT_FOLDER}/monarch_associations.csv', index=False)
+    register_info('All MONARCH associations are saved into monarch_associations.csv')
+    
+    return all_associations

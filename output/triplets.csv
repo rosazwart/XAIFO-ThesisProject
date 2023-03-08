@@ -1,0 +1,49 @@
+subject,relation,object
+gene,causes condition,disease
+gene,colocalizes with,gene
+variant,contributes to condition,disease
+gene,contributes to condition,phenotype
+variant,contributes to condition,phenotype
+gene,contributes to condition,disease
+model,enables,molecular function
+gene,enables,molecular function
+gene,expressed in,anatomical entity
+genotype,has phenotype,phenotype
+model,has phenotype,phenotype
+disease,has phenotype,phenotype
+variant,has phenotype,disease
+variant,has phenotype,phenotype
+gene,has phenotype,phenotype
+genotype,has phenotype,disease
+gene,has role in modeling,disease
+variant,has role in modeling,disease
+model,has role in modeling,disease
+genotype,has role in modeling,disease
+variant,has_affected_feature,gene
+model,has_genotype,variant
+model,has_genotype,genotype
+gene,in 1 to 1 orthology relationship with,model
+model,in 1 to 1 orthology relationship with,gene
+gene,in 1 to 1 orthology relationship with,gene
+gene,in orthology relationship with,gene
+model,interacts with,gene
+gene,interacts with,gene
+gene,interacts with,model
+gene,involved_in,biological process
+disease,involved_in,pathway
+disease,involved_in,biological process
+gene,involved_in,pathway
+gene,is causal germline mutation in,disease
+gene,is causal germline mutation partially giving rise to,disease
+gene,is part of,cellular component
+model,is part of,cellular component
+drug,is substance that treats,phenotype
+variant,is_allele_of,gene
+variant,likely_pathogenic_for_condition,disease
+variant,pathogenic_for_condition,disease
+drug,targets,gene
+genotype,,gene
+model,,gene
+chemical,,disease
+variant,,genotype
+variant,,model

@@ -4,9 +4,9 @@ from util.common import register_info, draw_graph_from_edges
 
 import util.loaders as loaders
 import monarch.fetcher as monarch_fetcher
-import util.graph_builder as graph_builder
+import builder.kg as kg
 import util.mapper as mapper
-import util.cypher_query_builder as cypher_query_builder
+import builder.cypherqueries as cypherqueries
     
 def fetch_data():
     nodes_list = [
@@ -26,7 +26,7 @@ def fetch_data():
     
     all_associations = monarch_fetcher.get_seed_first_order_associations(seed_id_list=all_nodes_id_list, rows=1000, exclude_new_ids=True)
     
-    knowledge_graph = graph_builder.KnowledgeGraph(all_associations)
+    knowledge_graph = kg.KnowledgeGraph(all_associations)
     all_edges, all_nodes = knowledge_graph.generate_dataframes()
     
     mapped_nodes_edges = mapper.Mapper(all_edges=all_edges, all_nodes=all_nodes)
@@ -37,7 +37,7 @@ def fetch_data():
     mapped_nodes_edges.all_edges.to_csv('output/monarch_edges.csv', index=False)
     mapped_nodes_edges.all_nodes.to_csv('output/monarch_nodes.csv', index=False)
     
-    cypher_query_builder.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
+    cypherqueries.build_queries(mapped_nodes_edges.all_nodes, mapped_nodes_edges.all_edges)
     
     edge_colmap = {
         'relations': 'relation_label',

@@ -9,6 +9,8 @@ GENOTYPE = 'genotype'
 GENE = 'gene'
 TAXON = 'taxon'
 DRUG = 'drug'
+DISEASE = 'disease'
+PHENOTYPE = 'phenotype'
 
 INPUT_FOLDER = 'data'
 OUTPUT_FOLDER = 'output'

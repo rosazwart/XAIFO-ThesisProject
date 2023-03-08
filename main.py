@@ -1,13 +1,15 @@
 import pandas as pd
 
-from util.constants import GENE
-from util.loaders import get_input_data_path, OUTPUT_FOLDER, load_monarch_associations_from_csv
-from util.common import register_info, tuplelist2dataframe
-from util.graph_builder import KnowledgeGraph
+import util.constants as constants
+
+from util.loaders import get_input_data_path, load_monarch_associations_from_csv
+from builder.kg import KnowledgeGraph
 
 import analyzer.graphstructure as graphstructure
 import monarch.fetcher as monarch_fetcher
 import ttd.fetcher as ttd_fetcher
+import drugcentral.fetcher as drugcentral_fetcher
+import builder.cypherqueries as cypher_querybuilder
 
 def analyze_prev_data():
     data_path = get_input_data_path('graph_nodes_v2022-01-11.csv')
@@ -34,39 +36,9 @@ def analyze_prev_data():
     graphstructure.getConnectionSummary(edges, nodes, 
                                         edge_colmapping, node_colmapping,
                                         'prev_concepts.png', 'prev_triplets.csv')
-    
-def get_monarch_associations():
-    nodes_list = [
-        'MONDO:0010679',
-        'HGNC:2928'
-    ]
-    
-    seed_neighbours_id_list = monarch_fetcher.get_seed_neighbour_node_ids(seed_id_list=nodes_list, rows=2000)
-    orthopheno_id_list = monarch_fetcher.get_orthopheno_node_ids(first_seed_id_list=nodes_list, depth=2, rows=2000)
-    
-    register_info(f'A total of {len(seed_neighbours_id_list)} first order neighbours of given seeds have been found')
-    register_info(f'A total of {len(orthopheno_id_list)} orthologs/phenotypes have been found.')
-    
-    all_nodes_id_list = seed_neighbours_id_list.union(orthopheno_id_list)
-    all_nodes_id_list.update(nodes_list)
-    register_info(f'A total of {len(all_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
-        
-    all_associations = monarch_fetcher.get_seed_first_order_associations(seed_id_list=all_nodes_id_list, rows=1000, exclude_new_ids=True)
-    tuplelist2dataframe(all_associations).to_csv(f'{OUTPUT_FOLDER}/monarch_associations.csv', index=False)
-    register_info('All MONARCH associations are saved into monarch_associations.csv')
-    
-    return all_associations
 
-def build_kg(load_csv: bool = False):
-    if load_csv:
-        monarch_associations = load_monarch_associations_from_csv()
-    else:
-        monarch_associations = get_monarch_associations()
-        
-    kg = KnowledgeGraph(monarch_associations)
-    
-    monarch_edges, monarch_nodes = kg.generate_dataframes()
-    monarch_gene_nodes = kg.get_extracted_nodes([GENE])
+def analyze_new_data(kg: KnowledgeGraph):
+    edges, nodes = kg.generate_dataframes()
     
     edge_colmapping = {
         'relations': 'relation_label',
@@ -79,14 +51,43 @@ def build_kg(load_csv: bool = False):
         'semantics': 'semantic'
     }
     
-    
-    graphstructure.getConcepts(monarch_nodes, node_colmapping)
-    graphstructure.getRelations(monarch_edges, edge_colmapping)
-    graphstructure.getConnectionSummary(monarch_edges, monarch_nodes, 
+    kg.analyze_graph()
+    graphstructure.getConcepts(nodes, node_colmapping)
+    graphstructure.getRelations(edges, edge_colmapping)
+    graphstructure.getConnectionSummary(edges, nodes, 
                                         edge_colmapping, node_colmapping,
-                                        'monarch_concepts.png', 'monarch_triplets.csv')
+                                        'concepts.png', 'triplets.csv')
+
+
+def build_kg(load_csv: bool = False):
+    if load_csv:
+        monarch_associations = load_monarch_associations_from_csv()
+    else:
+        nodes_list = [
+            'MONDO:0010679',
+            'HGNC:2928'
+        ]
+        monarch_associations = monarch_fetcher.get_monarch_associations(nodes_list)
+        
+    kg = KnowledgeGraph(monarch_associations)
     
-    ttd_associations = ttd_fetcher.get_drugtarget_associations(monarch_gene_nodes)
+    gene_nodes = kg.get_extracted_nodes([constants.GENE])
+    ttd_associations = ttd_fetcher.get_drugtarget_associations(gene_nodes)
+    
+    kg.add_edges_and_nodes(ttd_associations)
+    
+    drug_nodes = kg.get_extracted_nodes([constants.DRUG])
+    diso_pheno_nodes = kg.get_extracted_nodes([constants.DISEASE, constants.PHENOTYPE])
+    drugcentral_associations = drugcentral_fetcher.get_drugdisease_associations(drug_nodes, diso_pheno_nodes)
+    
+    kg.add_edges_and_nodes(drugcentral_associations)
+    
+    analyze_new_data(kg)
+    
+    kg_edges, kg_nodes = kg.generate_dataframes()
+    cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
+    
+    # TODO: still some duplicates for substance that treats and targets?
 
 if __name__ == "__main__":
-    build_kg()
+    build_kg(load_csv=True)

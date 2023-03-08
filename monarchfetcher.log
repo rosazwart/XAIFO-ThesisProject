@@ -1,0 +1,437 @@
+2023-03-08 00:35:11,309 INFO     Neighbours of seeds retrieval has started...
+2023-03-08 00:35:37,674 INFO     A total of 2954 associations have been found between seeds and their neighbours.
+2023-03-08 00:35:37,680 INFO     A total of 1766 neighbour nodes have been found for the 2 given seeds.
+2023-03-08 00:35:37,689 INFO     Orthologs/phenotypes retrieval has started...
+2023-03-08 00:35:37,690 INFO     For depth 1 seed list contains 2 ids
+2023-03-08 00:35:59,293 INFO     1766 neighbours of given seeds
+2023-03-08 00:35:59,304 INFO     8 orthologous genes of given seeds
+2023-03-08 00:36:24,317 INFO     259 phenotypes of orthologous genes
+2023-03-08 00:36:24,321 INFO     267 orthologs/phenotypes
+2023-03-08 00:36:24,321 INFO     For depth 2 seed list contains 1766 ids
+2023-03-08 01:36:28,268 INFO     61904 neighbours of given seeds
+2023-03-08 01:36:29,292 INFO     2965 orthologous genes of given seeds
+2023-03-08 03:25:38,932 INFO     5225 phenotypes of orthologous genes
+2023-03-08 03:25:39,765 INFO     8190 orthologs/phenotypes
+2023-03-08 03:25:39,767 INFO     8284 orthologs/phenotypes have been found using a depth of 2
+2023-03-08 03:25:39,823 INFO     A total of 1766 first order neighbours of given seeds have been found
+2023-03-08 03:25:39,823 INFO     A total of 8284 orthologs/phenotypes have been found.
+2023-03-08 03:25:39,825 INFO     A total of 9949 nodes have been found for which from and to associations will be retrieved.
+2023-03-08 03:25:39,826 INFO     Associations of seeds retrieval has started...
+2023-03-08 04:14:51,609 ERROR    Response values could not get acquired at node MP:0002166 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 04:35:25,368 ERROR    Response values could not get acquired at node MP:0005387 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 05:08:06,265 ERROR    Response values could not get acquired at node HP:0009121 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 05:40:39,544 ERROR    Response values could not get acquired at node MP:0002020 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 06:27:55,417 ERROR    Response values could not get acquired at node HP:0001939 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 07:16:25,672 ERROR    Response values could not get acquired at node MP:0005397 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 07:20:56,174 ERROR    Response values could not get acquired at node MP:0005379 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 07:32:42,384 ERROR    Response values could not get acquired at node HP:0000708 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 07:44:52,596 ERROR    Response values could not get acquired at node HP:0000924 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 08:14:05,445 ERROR    Response values could not get acquired at node HP:0012639 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 08:28:46,610 ERROR    Response values could not get acquired at node HP:0000234 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 08:40:37,325 ERROR    Response values could not get acquired at node MP:0005390 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 10:07:02,464 ERROR    Response values could not get acquired at node MP:0005385 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 10:19:06,267 ERROR    Response values could not get acquired at node HP:0012337 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 11:16:37,089 ERROR    Response values could not get acquired at node HP:0010978 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 12:52:40,043 ERROR    Response values could not get acquired at node MP:0005384 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 12:59:47,862 ERROR    Response values could not get acquired at node MP:0003631 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 12:59:51,830 ERROR    Response values could not get acquired at node MP:0011100 for from associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 12:59:56,064 ERROR    Response values could not get acquired at node MP:0011100 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:00:00,016 ERROR    Response values could not get acquired at node ZP:0138564 for from associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:00:04,004 ERROR    Response values could not get acquired at node ZP:0138564 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:00:07,972 ERROR    Response values could not get acquired at node MP:0010238 for from associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:00:11,934 ERROR    Response values could not get acquired at node MP:0010238 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:00:15,858 ERROR    Response values could not get acquired at node MONARCH:APO_0000110APO_0000003 for from associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:14:52,645 ERROR    Response values could not get acquired at node MP:0005388 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:31:01,400 ERROR    Response values could not get acquired at node HP:0002664 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:38:17,617 ERROR    Response values could not get acquired at node MP:0000428 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 13:47:56,290 ERROR    Response values could not get acquired at node HP:0040006 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 14:02:50,910 ERROR    Response values could not get acquired at node MP:0005378 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 14:15:52,471 ERROR    Response values could not get acquired at node MP:0005386 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 14:25:09,906 ERROR    Response values could not get acquired at node HP:0012638 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 14:34:38,263 ERROR    Response values could not get acquired at node MP:0005376 for to associations (params: {'rows': 1000}) resulting in response <Response [502]> due to Expecting value: line 2 column 1 (char 1)
+2023-03-08 14:37:30,687 INFO     A total of 83287 associations have been found between seeds and their neighbours.
+2023-03-08 14:37:31,132 INFO     Created a dataframe with 83287 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2023-03-08 14:37:34,182 INFO     All MONARCH associations are saved into monarch_associations.csv
+2023-03-08 14:57:08,418 INFO     Created a list of tuples with 83287 entries
+2023-03-08 14:57:08,423 INFO     Loaded 83287 associations
+2023-03-08 14:57:09,269 INFO     The graph contains 12 different semantic groups: {'variant', 'anatomical entity', 'phenotype', 'pathway', 'cellular component', 'biological process', 'genotype', 'disease', 'gene', 'molecular function', 'chemical', 'model'}
+2023-03-08 14:57:09,269 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 14:57:09,279 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 14:57:57,174 INFO     Created a list of tuples with 83287 entries
+2023-03-08 14:57:57,179 INFO     Loaded 83287 associations
+2023-03-08 14:57:58,026 INFO     The graph contains 12 different semantic groups: {'genotype', 'model', 'molecular function', 'anatomical entity', 'pathway', 'chemical', 'phenotype', 'cellular component', 'biological process', 'gene', 'disease', 'variant'}
+2023-03-08 14:57:58,026 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 14:57:58,035 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 14:58:45,224 INFO     Created a list of tuples with 83287 entries
+2023-03-08 14:58:45,228 INFO     Loaded 83287 associations
+2023-03-08 14:58:46,064 INFO     The graph contains 12 different semantic groups: {'pathway', 'genotype', 'gene', 'cellular component', 'biological process', 'chemical', 'disease', 'anatomical entity', 'model', 'molecular function', 'variant', 'phenotype'}
+2023-03-08 14:58:46,064 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 14:58:46,272 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 15:00:24,129 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:00:24,132 INFO     Loaded 83287 associations
+2023-03-08 15:00:24,946 INFO     The graph contains 12 different semantic groups: {'phenotype', 'model', 'biological process', 'anatomical entity', 'variant', 'molecular function', 'gene', 'cellular component', 'pathway', 'disease', 'genotype', 'chemical'}
+2023-03-08 15:00:24,947 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:00:24,956 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 15:01:01,002 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:01:01,007 INFO     Loaded 83287 associations
+2023-03-08 15:01:01,838 INFO     The graph contains 12 different semantic groups: {'molecular function', 'variant', 'anatomical entity', 'biological process', 'model', 'cellular component', 'disease', 'phenotype', 'pathway', 'chemical', 'genotype', 'gene'}
+2023-03-08 15:01:01,839 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:01:01,849 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 15:02:03,235 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:02:03,239 INFO     Loaded 83287 associations
+2023-03-08 15:02:04,084 INFO     The graph contains 12 different semantic groups: {'biological process', 'anatomical entity', 'pathway', 'chemical', 'model', 'genotype', 'molecular function', 'phenotype', 'disease', 'variant', 'cellular component', 'gene'}
+2023-03-08 15:02:04,084 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:02:22,019 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:02:22,023 INFO     Loaded 83287 associations
+2023-03-08 15:02:22,831 INFO     The graph contains 12 different semantic groups: {'chemical', 'anatomical entity', 'variant', 'molecular function', 'model', 'disease', 'pathway', 'biological process', 'cellular component', 'gene', 'phenotype', 'genotype'}
+2023-03-08 15:02:22,832 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:02:22,841 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 15:03:03,970 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:03:03,973 INFO     Loaded 83287 associations
+2023-03-08 15:03:04,805 INFO     The graph contains 12 different semantic groups: {'phenotype', 'model', 'disease', 'biological process', 'variant', 'genotype', 'gene', 'cellular component', 'molecular function', 'chemical', 'anatomical entity', 'pathway'}
+2023-03-08 15:03:04,805 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:03:04,819 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 15:03:13,154 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:03:13,159 INFO     Loaded 83287 associations
+2023-03-08 15:03:13,987 INFO     The graph contains 12 different semantic groups: {'cellular component', 'biological process', 'genotype', 'gene', 'pathway', 'chemical', 'phenotype', 'disease', 'model', 'variant', 'molecular function', 'anatomical entity'}
+2023-03-08 15:03:13,988 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:03:14,479 INFO     Extracted a total of 0 nodes that belong to at least one of ['gene']
+2023-03-08 15:04:02,300 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:04:02,304 INFO     Loaded 83287 associations
+2023-03-08 15:04:03,194 INFO     The graph contains 12 different semantic groups: {'phenotype', 'model', 'disease', 'chemical', 'cellular component', 'molecular function', 'biological process', 'genotype', 'anatomical entity', 'gene', 'variant', 'pathway'}
+2023-03-08 15:04:03,194 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:04:03,199 INFO     Extracted a total of 3161 nodes that belong to at least one of ['gene']
+2023-03-08 15:04:03,235 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 15:06:24,640 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:06:24,644 INFO     Loaded 83287 associations
+2023-03-08 15:06:25,503 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'molecular function', 'genotype', 'pathway', 'cellular component', 'model', 'variant', 'phenotype', 'chemical', 'biological process', 'disease', 'gene'}
+2023-03-08 15:06:25,503 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:06:25,507 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 15:06:25,523 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 15:11:24,555 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:11:24,559 INFO     Loaded 83287 associations
+2023-03-08 15:11:25,398 INFO     The graph contains 12 different semantic groups: {'phenotype', 'gene', 'cellular component', 'model', 'biological process', 'disease', 'chemical', 'genotype', 'anatomical entity', 'pathway', 'molecular function', 'variant'}
+2023-03-08 15:11:25,398 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:11:25,402 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 15:11:25,417 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 15:11:43,977 INFO     Created a dataframe with 357 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2023-03-08 15:11:43,987 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 15:13:58,856 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:13:58,860 INFO     Loaded 83287 associations
+2023-03-08 15:15:21,579 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:15:21,582 INFO     Loaded 83287 associations
+2023-03-08 15:15:22,395 INFO     The graph contains 12 different semantic groups: {'genotype', 'molecular function', 'model', 'disease', 'chemical', 'gene', 'phenotype', 'biological process', 'anatomical entity', 'cellular component', 'variant', 'pathway'}
+2023-03-08 15:15:22,395 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:15:22,399 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 15:15:22,405 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 15:17:30,566 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:17:30,570 INFO     Loaded 83287 associations
+2023-03-08 15:17:31,416 INFO     The graph contains 12 different semantic groups: {'chemical', 'gene', 'pathway', 'biological process', 'cellular component', 'molecular function', 'disease', 'anatomical entity', 'phenotype', 'model', 'variant', 'genotype'}
+2023-03-08 15:17:31,416 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:17:31,420 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 15:17:31,427 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 15:17:49,674 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 15:17:49,677 INFO     Created a list of tuples with 357 entries
+2023-03-08 15:20:29,397 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:20:29,402 INFO     Loaded 83287 associations
+2023-03-08 15:20:30,243 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'disease', 'genotype', 'chemical', 'molecular function', 'cellular component', 'biological process', 'pathway', 'model', 'variant', 'phenotype', 'gene'}
+2023-03-08 15:20:30,243 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:20:30,247 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 15:20:30,254 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 15:20:50,435 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 15:20:50,437 INFO     Created a list of tuples with 357 entries
+2023-03-08 15:34:47,729 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:34:47,732 INFO     Loaded 83287 associations
+2023-03-08 15:34:48,539 INFO     The graph contains 12 different semantic groups: {'biological process', 'molecular function', 'genotype', 'cellular component', 'gene', 'phenotype', 'pathway', 'variant', 'model', 'chemical', 'disease', 'anatomical entity'}
+2023-03-08 15:34:48,539 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:44:50,819 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:44:50,823 INFO     Loaded 83287 associations
+2023-03-08 15:44:51,675 INFO     The graph contains 12 different semantic groups: {'pathway', 'variant', 'disease', 'cellular component', 'model', 'phenotype', 'genotype', 'gene', 'anatomical entity', 'molecular function', 'chemical', 'biological process'}
+2023-03-08 15:44:51,675 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:50:56,989 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:50:56,992 INFO     Loaded 83287 associations
+2023-03-08 15:50:57,806 INFO     The graph contains 12 different semantic groups: {'model', 'genotype', 'variant', 'disease', 'phenotype', 'gene', 'biological process', 'chemical', 'pathway', 'molecular function', 'cellular component', 'anatomical entity'}
+2023-03-08 15:50:57,807 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:51:18,000 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:51:18,006 INFO     Loaded 83287 associations
+2023-03-08 15:51:18,859 INFO     The graph contains 12 different semantic groups: {'chemical', 'pathway', 'anatomical entity', 'molecular function', 'disease', 'biological process', 'gene', 'cellular component', 'phenotype', 'model', 'variant', 'genotype'}
+2023-03-08 15:51:18,860 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:57:37,546 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:57:37,550 INFO     Loaded 83287 associations
+2023-03-08 15:57:38,610 INFO     The graph contains 12 different semantic groups: {'molecular function', 'variant', 'anatomical entity', 'model', 'genotype', 'chemical', 'gene', 'biological process', 'phenotype', 'pathway', 'cellular component', 'disease'}
+2023-03-08 15:57:38,611 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 15:57:53,653 INFO     Created a list of tuples with 83287 entries
+2023-03-08 15:57:53,657 INFO     Loaded 83287 associations
+2023-03-08 15:57:54,505 INFO     The graph contains 12 different semantic groups: {'molecular function', 'anatomical entity', 'model', 'phenotype', 'disease', 'gene', 'pathway', 'biological process', 'variant', 'genotype', 'cellular component', 'chemical'}
+2023-03-08 15:57:54,506 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:02:25,344 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:02:25,348 INFO     Loaded 83287 associations
+2023-03-08 16:02:26,184 INFO     The graph contains 12 different semantic groups: {'disease', 'cellular component', 'gene', 'chemical', 'genotype', 'variant', 'biological process', 'molecular function', 'phenotype', 'model', 'pathway', 'anatomical entity'}
+2023-03-08 16:02:26,184 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:04:59,392 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:04:59,396 INFO     Loaded 83287 associations
+2023-03-08 16:05:00,252 INFO     The graph contains 12 different semantic groups: {'molecular function', 'gene', 'disease', 'model', 'phenotype', 'anatomical entity', 'genotype', 'biological process', 'chemical', 'pathway', 'cellular component', 'variant'}
+2023-03-08 16:05:00,252 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:06:06,162 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:06:06,166 INFO     Loaded 83287 associations
+2023-03-08 16:06:06,974 INFO     The graph contains 12 different semantic groups: {'chemical', 'model', 'cellular component', 'anatomical entity', 'variant', 'disease', 'molecular function', 'gene', 'phenotype', 'genotype', 'biological process', 'pathway'}
+2023-03-08 16:06:06,974 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:13:02,990 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:13:02,994 INFO     Loaded 83287 associations
+2023-03-08 16:13:03,857 INFO     The graph contains 12 different semantic groups: {'model', 'cellular component', 'chemical', 'pathway', 'genotype', 'molecular function', 'variant', 'phenotype', 'gene', 'biological process', 'anatomical entity', 'disease'}
+2023-03-08 16:13:03,857 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:13:03,861 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:13:03,867 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:13:24,442 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:13:24,444 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:13:24,454 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:14:35,020 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:14:35,023 INFO     Loaded 83287 associations
+2023-03-08 16:14:35,891 INFO     The graph contains 12 different semantic groups: {'biological process', 'cellular component', 'disease', 'anatomical entity', 'molecular function', 'pathway', 'phenotype', 'genotype', 'chemical', 'model', 'gene', 'variant'}
+2023-03-08 16:14:35,892 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:14:35,896 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:14:35,902 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:14:56,066 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:14:56,069 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:14:56,078 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:27:17,282 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:27:17,286 INFO     Loaded 83287 associations
+2023-03-08 16:27:18,123 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'molecular function', 'pathway', 'disease', 'biological process', 'genotype', 'model', 'gene', 'phenotype', 'chemical', 'cellular component', 'variant'}
+2023-03-08 16:27:18,124 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:27:18,127 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:27:18,133 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:27:36,691 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:27:36,693 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:27:36,702 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:31:08,321 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:31:08,325 INFO     Loaded 83287 associations
+2023-03-08 16:31:09,147 INFO     The graph contains 12 different semantic groups: {'pathway', 'genotype', 'variant', 'molecular function', 'biological process', 'cellular component', 'anatomical entity', 'model', 'chemical', 'phenotype', 'gene', 'disease'}
+2023-03-08 16:31:09,148 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:31:09,152 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:31:09,158 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:31:27,728 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:31:27,731 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:31:27,739 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:31:27,746 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:31:57,281 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:31:57,285 INFO     Loaded 83287 associations
+2023-03-08 16:31:58,149 INFO     The graph contains 12 different semantic groups: {'gene', 'chemical', 'molecular function', 'biological process', 'disease', 'cellular component', 'phenotype', 'genotype', 'variant', 'anatomical entity', 'pathway', 'model'}
+2023-03-08 16:31:58,150 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:31:58,155 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:31:58,163 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:32:17,865 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:32:17,868 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:32:17,876 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:32:17,883 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:36:10,467 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:36:10,471 INFO     Loaded 83287 associations
+2023-03-08 16:36:11,322 INFO     The graph contains 12 different semantic groups: {'chemical', 'model', 'gene', 'phenotype', 'cellular component', 'pathway', 'molecular function', 'variant', 'genotype', 'disease', 'anatomical entity', 'biological process'}
+2023-03-08 16:36:11,322 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:36:11,329 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:36:11,339 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:36:31,848 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:36:31,850 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:36:31,859 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:36:31,866 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:37:44,776 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:37:44,780 INFO     Loaded 83287 associations
+2023-03-08 16:37:45,650 INFO     The graph contains 12 different semantic groups: {'model', 'cellular component', 'biological process', 'chemical', 'gene', 'phenotype', 'disease', 'anatomical entity', 'pathway', 'molecular function', 'variant', 'genotype'}
+2023-03-08 16:37:45,650 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:37:45,653 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:37:45,661 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:38:04,342 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:38:04,345 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:38:04,354 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:38:04,361 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:40:06,009 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:40:06,013 INFO     Loaded 83287 associations
+2023-03-08 16:40:06,873 INFO     The graph contains 12 different semantic groups: {'biological process', 'anatomical entity', 'molecular function', 'chemical', 'gene', 'variant', 'phenotype', 'cellular component', 'model', 'disease', 'pathway', 'genotype'}
+2023-03-08 16:40:06,873 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:40:06,876 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:40:06,882 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:40:25,921 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:40:25,924 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:40:25,932 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:40:25,938 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:41:52,275 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:41:52,279 INFO     Loaded 83287 associations
+2023-03-08 16:41:53,135 INFO     The graph contains 12 different semantic groups: {'disease', 'phenotype', 'molecular function', 'anatomical entity', 'biological process', 'gene', 'variant', 'genotype', 'model', 'pathway', 'cellular component', 'chemical'}
+2023-03-08 16:41:53,135 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:41:53,138 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:41:53,148 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:42:11,459 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:42:11,461 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:42:11,470 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:42:11,476 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:44:29,153 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:44:29,157 INFO     Loaded 83287 associations
+2023-03-08 16:44:30,002 INFO     The graph contains 12 different semantic groups: {'phenotype', 'model', 'variant', 'chemical', 'molecular function', 'genotype', 'biological process', 'pathway', 'cellular component', 'disease', 'gene', 'anatomical entity'}
+2023-03-08 16:44:30,002 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:44:30,007 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:44:30,015 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:44:51,569 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:44:51,572 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:44:51,581 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:44:51,586 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:55:53,146 INFO     Created a list of tuples with 83287 entries
+2023-03-08 16:55:53,150 INFO     Loaded 83287 associations
+2023-03-08 16:55:53,977 INFO     The graph contains 12 different semantic groups: {'phenotype', 'molecular function', 'biological process', 'model', 'anatomical entity', 'variant', 'gene', 'cellular component', 'chemical', 'pathway', 'disease', 'genotype'}
+2023-03-08 16:55:53,978 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 16:55:53,980 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 16:55:53,989 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 16:56:12,555 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-08 16:56:12,572 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION     GENE  ... ACT_SOURCE_URL                                     MOA_SOURCE_URL       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q01668  CACNA1D  ...            NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    O60840  CACNA1F  ...            NaN                                                NaN  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q13936  CACNA1C  ...            NaN           https://pubmed.ncbi.nlm.nih.gov/17276408           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme    Q92769    HDAC2  ...            NaN                                                NaN               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-08 16:56:13,060 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 16:56:13,062 INFO     Created a list of tuples with 357 entries
+2023-03-08 16:56:13,070 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 16:56:13,076 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 16:56:13,425 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-08 16:56:13,586 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-03-08 16:56:13,589 INFO     Created a list of tuples with 61 entries
+2023-03-08 16:56:13,777 INFO     There are 13 semantic groups: ['gene' 'phenotype' 'drug' 'variant' 'model' 'genotype' 'chemical'
+ 'cellular component' 'disease' 'biological process' 'anatomical entity'
+ 'molecular function' 'pathway']
+2023-03-08 16:56:13,783 INFO     There are 22 relation labels: ['in orthology relationship with' 'has phenotype'
+ 'in 1 to 1 orthology relationship with' 'interacts with' 'expressed in'
+ 'is part of' 'has_affected_feature' 'contributes to condition' 'enables'
+ 'likely_pathogenic_for_condition' 'targets' 'pathogenic_for_condition'
+ 'has role in modeling' 'involved_in' 'is substance that treats'
+ 'colocalizes with' nan 'is_allele_of' 'has_genotype'
+ 'is causal germline mutation in' 'causes condition'
+ 'is causal germline mutation partially giving rise to']
+2023-03-08 16:56:14,527 INFO     Graph of all connections between concepts saved to monarch_concepts.png
+2023-03-08 16:56:14,543 INFO     List of triplets saved to monarch_triplets.csv
+2023-03-08 17:06:58,613 INFO     Created a list of tuples with 83287 entries
+2023-03-08 17:06:58,619 INFO     Loaded 83287 associations
+2023-03-08 17:06:59,549 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'chemical', 'biological process', 'pathway', 'cellular component', 'disease', 'model', 'gene', 'genotype', 'variant', 'molecular function', 'phenotype'}
+2023-03-08 17:06:59,549 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 17:06:59,553 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 17:06:59,561 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 17:07:19,120 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-08 17:07:19,142 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION     GENE  ... ACT_SOURCE_URL                                     MOA_SOURCE_URL       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q01668  CACNA1D  ...            NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    O60840  CACNA1F  ...            NaN                                                NaN  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q13936  CACNA1C  ...            NaN           https://pubmed.ncbi.nlm.nih.gov/17276408           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme    Q92769    HDAC2  ...            NaN                                                NaN               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-08 17:07:19,734 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 17:07:19,735 INFO     Created a list of tuples with 357 entries
+2023-03-08 17:07:19,744 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 17:07:19,751 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 17:07:20,145 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-08 17:07:20,363 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-03-08 17:07:20,364 INFO     Created a list of tuples with 61 entries
+2023-03-08 17:07:20,578 INFO     The graph contains 13 different semantic groups: {'anatomical entity', 'chemical', 'biological process', 'pathway', 'cellular component', 'disease', 'model', 'gene', 'genotype', 'variant', 'molecular function', 'drug', 'phenotype'}
+2023-03-08 17:07:20,579 INFO     For the graph, a total of 83705 edges and 10283 nodes have been generated.
+2023-03-08 17:07:20,580 INFO     There are 13 semantic groups: ['gene' 'phenotype' 'variant' 'drug' 'anatomical entity' 'genotype'
+ 'disease' 'model' 'biological process' 'molecular function' 'chemical'
+ 'cellular component' 'pathway']
+2023-03-08 17:07:20,586 INFO     There are 22 relation labels: ['has phenotype' 'in orthology relationship with'
+ 'in 1 to 1 orthology relationship with' 'expressed in' 'interacts with'
+ 'has_affected_feature' 'pathogenic_for_condition' 'involved_in'
+ 'contributes to condition' 'enables' 'targets' 'is substance that treats'
+ 'is part of' 'likely_pathogenic_for_condition' 'colocalizes with'
+ 'is_allele_of' 'has role in modeling' nan 'has_genotype'
+ 'is causal germline mutation in'
+ 'is causal germline mutation partially giving rise to' 'causes condition']
+2023-03-08 17:07:20,955 INFO     Graph of all connections between concepts saved to concepts.png
+2023-03-08 17:07:20,973 INFO     List of triplets saved to triplets.csv
+2023-03-08 17:07:21,307 INFO     All nodes are stored into query_nodes.csv
+2023-03-08 17:07:21,834 INFO     All edges are stored into query_edges.csv
+2023-03-08 17:07:21,835 INFO     Generated query list in file queries.txt
+2023-03-08 17:07:21,835 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-03-08 17:21:20,102 INFO     Created a list of tuples with 83287 entries
+2023-03-08 17:21:20,105 INFO     Loaded 83287 associations
+2023-03-08 17:21:20,965 INFO     The graph contains 12 different semantic groups: {'variant', 'disease', 'gene', 'molecular function', 'model', 'chemical', 'pathway', 'phenotype', 'cellular component', 'anatomical entity', 'genotype', 'biological process'}
+2023-03-08 17:21:20,965 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 17:21:20,968 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 17:21:20,976 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 17:21:40,133 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-08 17:21:40,153 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION     GENE  ... ACT_SOURCE_URL                                     MOA_SOURCE_URL       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q01668  CACNA1D  ...            NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    O60840  CACNA1F  ...            NaN                                                NaN  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q13936  CACNA1C  ...            NaN           https://pubmed.ncbi.nlm.nih.gov/17276408           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme    Q92769    HDAC2  ...            NaN                                                NaN               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-08 17:21:40,657 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 17:21:40,659 INFO     Created a list of tuples with 357 entries
+2023-03-08 17:21:40,666 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 17:21:40,672 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 17:21:41,026 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-08 17:21:41,204 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-03-08 17:21:41,205 INFO     Created a list of tuples with 61 entries
+2023-03-08 17:21:41,407 INFO     The graph contains 13 different semantic groups: {'variant', 'disease', 'gene', 'molecular function', 'model', 'chemical', 'pathway', 'phenotype', 'drug', 'cellular component', 'anatomical entity', 'genotype', 'biological process'}
+2023-03-08 17:21:41,407 INFO     For the graph, a total of 83705 edges and 10283 nodes have been generated.
+2023-03-08 17:21:41,409 INFO     There are 13 semantic groups: ['phenotype' 'gene' 'variant' 'drug' 'biological process' 'model'
+ 'cellular component' 'genotype' 'disease' 'anatomical entity'
+ 'molecular function' 'chemical' 'pathway']
+2023-03-08 17:21:41,414 INFO     There are 22 relation labels: ['in 1 to 1 orthology relationship with' 'in orthology relationship with'
+ 'enables' 'interacts with' 'contributes to condition' 'involved_in'
+ 'has phenotype' 'pathogenic_for_condition'
+ 'likely_pathogenic_for_condition' 'is part of' 'has_affected_feature'
+ 'targets' 'is_allele_of' 'has role in modeling' 'expressed in'
+ 'colocalizes with' nan 'has_genotype' 'is substance that treats'
+ 'causes condition' 'is causal germline mutation in'
+ 'is causal germline mutation partially giving rise to']
+2023-03-08 17:21:41,758 INFO     Graph of all connections between concepts saved to concepts.png
+2023-03-08 17:21:41,776 INFO     List of triplets saved to triplets.csv
+2023-03-08 17:23:30,072 INFO     Created a list of tuples with 83287 entries
+2023-03-08 17:23:30,076 INFO     Loaded 83287 associations
+2023-03-08 17:23:30,900 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'phenotype', 'model', 'gene', 'variant', 'molecular function', 'pathway', 'cellular component', 'biological process', 'disease', 'genotype', 'chemical'}
+2023-03-08 17:23:30,900 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-08 17:23:30,904 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-08 17:23:30,910 INFO     A total of 3161 gene IDs has been extracted
+2023-03-08 17:23:49,650 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-08 17:23:49,671 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION     GENE  ... ACT_SOURCE_URL                                     MOA_SOURCE_URL       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q01668  CACNA1D  ...            NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    O60840  CACNA1F  ...            NaN                                                NaN  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel    Q13936  CACNA1C  ...            NaN           https://pubmed.ncbi.nlm.nih.gov/17276408           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme    Q92769    HDAC2  ...            NaN                                                NaN               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-08 17:23:50,176 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-08 17:23:50,178 INFO     Created a list of tuples with 357 entries
+2023-03-08 17:23:50,186 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-08 17:23:50,193 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-08 17:23:50,577 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-08 17:23:50,739 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-03-08 17:23:50,742 INFO     Created a list of tuples with 61 entries
+2023-03-08 17:23:50,944 INFO     The graph contains 13 different semantic groups: {'anatomical entity', 'phenotype', 'model', 'gene', 'variant', 'molecular function', 'pathway', 'cellular component', 'biological process', 'drug', 'disease', 'genotype', 'chemical'}
+2023-03-08 17:23:50,944 INFO     For the graph, a total of 83705 edges and 10283 nodes have been generated.
+2023-03-08 17:23:50,946 INFO     There are 13 semantic groups: ['phenotype' 'variant' 'gene' 'drug' 'model' 'cellular component'
+ 'disease' 'genotype' 'biological process' 'anatomical entity' 'chemical'
+ 'molecular function' 'pathway']
+2023-03-08 17:23:50,951 INFO     There are 22 relation labels: ['in 1 to 1 orthology relationship with' 'in orthology relationship with'
+ 'interacts with' 'has_affected_feature' 'has phenotype'
+ 'pathogenic_for_condition' 'contributes to condition' 'involved_in'
+ 'is part of' 'expressed in' 'targets' 'enables'
+ 'likely_pathogenic_for_condition' 'is_allele_of' 'has role in modeling'
+ nan 'is substance that treats' 'colocalizes with'
+ 'is causal germline mutation in' 'has_genotype' 'causes condition'
+ 'is causal germline mutation partially giving rise to']
+2023-03-08 17:23:51,304 INFO     Graph of all connections between concepts saved to concepts.png
+2023-03-08 17:23:51,320 INFO     List of triplets saved to triplets.csv
+2023-03-08 17:23:51,705 INFO     All nodes are stored into query_nodes.csv
+2023-03-08 17:23:52,175 INFO     All edges are stored into query_edges.csv
+2023-03-08 17:23:52,176 INFO     Generated query list in file queries.txt
+2023-03-08 17:23:52,176 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.

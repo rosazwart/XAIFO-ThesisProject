@@ -9,8 +9,8 @@ from tqdm import tqdm
 
 import util.constants as constants
 
-from util.common import extract_colvalues, register_info, tuplelist2dataframe
-from idmapper import db_mapper, IdMapper, DEFAULT_TO_DB
+from util.common import extract_colvalues, register_info, dataframe2tuplelist
+from ttd.idmapper import db_mapper, IdMapper, DEFAULT_TO_DB
 
 def load_drug_targets():
     """
@@ -101,37 +101,41 @@ def format_drugtarget_associations(drug_targets: pd.DataFrame):
     """
     drug_targets.drop_duplicates(inplace=True)
     
-    for idx, row in drug_targets.iterrows():
-        row['id'] = f'TTD{idx}'
+    for i, row in drug_targets.iterrows():
+        drug_targets.loc[i,'id'] = f'TTD{i}'
         
-        row['subject_id'] = row['STRUCT_ID']
-        row['subject_label'] = row['DRUG_NAME']
-        row['subject_iri'] = np.nan
-        row['subject_category'] = constants.DRUG
-        row['subject_taxon_id'] = np.nan
-        row['subject_taxon_label'] = np.nan
+        drug_targets.loc[i,'subject_id'] = str(row['STRUCT_ID'])
+        drug_targets.loc[i,'subject_label'] = row['DRUG_NAME']
+        drug_targets.loc[i,'subject_iri'] = np.nan
+        drug_targets.loc[i,'subject_category'] = constants.DRUG
+        drug_targets.loc[i,'subject_taxon_id'] = np.nan
+        drug_targets.loc[i,'subject_taxon_label'] = np.nan
         
-        row['object_id'] = row['TARGET_ID']
-        row['object_label'] = np.nan
-        row['object_iri'] = np.nan
-        row['object_category'] = np.nan
-        row['object_taxon_id'] = np.nan
-        row['object_taxon_label'] = np.nan
+        drug_targets.loc[i,'object_id'] = row['TARGET_ID']
+        drug_targets.loc[i,'object_label'] = np.nan
+        drug_targets.loc[i,'object_iri'] = np.nan
+        drug_targets.loc[i,'object_category'] = np.nan
+        drug_targets.loc[i,'object_taxon_id'] = np.nan
+        drug_targets.loc[i,'object_taxon_label'] = np.nan
         
-        row['relation_id'] = 'CustomRO:TTD'
-        row['relation_label'] = 'targets'
-        row['relation_iri'] = np.nan
+        drug_targets.loc[i,'relation_id'] = 'CustomRO:TTD'
+        drug_targets.loc[i,'relation_label'] = 'targets'
+        drug_targets.loc[i,'relation_iri'] = np.nan
 
-    return drug_targets[list(constants.assoc_tuple_values)]
+    drugtarget_associations_df = drug_targets[list(constants.assoc_tuple_values)]
+    drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations.csv', index=None)
+    register_info('All TTD associations are saved into ttd_associations.csv')
+    
+    return dataframe2tuplelist(drugtarget_associations_df) 
 
-def get_drugtarget_associations(nodes: pd.DataFrame):
+def get_drugtarget_associations(gene_nodes: pd.DataFrame):
     """
         Get all drug target interaction associations
-        :param nodes: Dataframe containing existing nodes
+        :param gene_nodes: Dataframe containing existing nodes
         :return List of tuples complying with `constants.assoc_tuple_values`
     """
     # Nodes fetched from Monarch Initiative
-    gene_ids = extract_colvalues(nodes, 'id')
+    gene_ids = extract_colvalues(gene_nodes, 'id')
     register_info(f'A total of {len(gene_ids)} gene IDs has been extracted')
     
     # Data for drug-target interactions
@@ -143,16 +147,13 @@ def get_drugtarget_associations(nodes: pd.DataFrame):
     mapped_drug_targets = drug_targets.copy()
     mapped_drug_targets['NEW_ID'] = np.nan
     mapped_drug_targets = add_new_ids(mapped_drug_targets, all_mapped_ids)
-    print(f'For a total of {mapped_drug_targets.shape[0]} drug-target interactions, new mapped IDs are found.')
+    register_info(f'For a total of {mapped_drug_targets.shape[0]} drug-target interactions, new mapped IDs are found.')
     
     matched_drug_targets = mapped_drug_targets[mapped_drug_targets['NEW_ID'].isin(gene_ids)]
-    print(f'Retrieved {matched_drug_targets.shape[0]} drug-target interactions with matched gene IDs:\n{matched_drug_targets.head(4)}')
+    register_info(f'Retrieved {matched_drug_targets.shape[0]} drug-target interactions with matched gene IDs:\n{matched_drug_targets.head(4)}')
     
     # Prepare dataframe with correct columns/column names
     relevant_matched_drug_targets = matched_drug_targets.rename({'NEW_ID': 'TARGET_ID'}, axis=1)[['DRUG_NAME', 'STRUCT_ID', 'TARGET_ID']]
 
     drugtargets_associations = format_drugtarget_associations(relevant_matched_drug_targets)
-    tuplelist2dataframe(drugtargets_associations).to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations.csv', index=None)
-    register_info('All TTD associations are saved into ttd_associations.csv')
-    
     return drugtargets_associations
