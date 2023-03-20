@@ -52,8 +52,7 @@ def add_new_ids(df, mapped_ids):
         new_id = mapped_id['to']
         df.loc[df['ACCESSION'] == accession_id, 'NEW_ID'] = new_id
         
-    df = df[df['NEW_ID'].notna()]
-    return df
+    return df[df['NEW_ID'].notna()]
 
 def fetch_id_mappings(entries: pd.DataFrame, map_to_db):
     """
@@ -99,7 +98,9 @@ def format_drugtarget_associations(drug_targets: pd.DataFrame):
         :param drug_targets: Dataframe with all drug target interactions
         :return Dataframe with correct column names and order
     """
+    print(f'There are {drug_targets.shape[0]} drug-target associations with columns {drug_targets.columns}.')
     drug_targets.drop_duplicates(inplace=True)
+    print(f'There are {drug_targets.shape[0]} drug-target associations without duplicates.')
     
     for i, row in drug_targets.iterrows():
         drug_targets.loc[i,'id'] = f'TTD{i}'

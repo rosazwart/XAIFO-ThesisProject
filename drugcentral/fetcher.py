@@ -51,14 +51,16 @@ def join_disease_name_with_id(names_df, ids_df):
     return left_outer_joined_df
 
 def format_drugdisease_associations(drug_disease_pairs: pd.DataFrame, drug_nodes: pd.DataFrame):
+    print(f'There are {drug_disease_pairs.shape[0]} drug-disease associations with columns {drug_disease_pairs.columns}.')
     drug_disease_pairs.drop_duplicates(inplace=True)
+    print(f'There are {drug_disease_pairs.shape[0]} drug-disease associations without duplicates.')
     
     for i, row in drug_disease_pairs.iterrows():
         drug_disease_pairs.loc[i,'id'] = f'DC{i}'
         
-        drug_entry = drug_nodes.loc[drug_nodes['label'] == row['DRUG_NAME']]
+        drug_id = drug_nodes.loc[drug_nodes['label'] == row['DRUG_NAME']]['id'].values[0]
         
-        drug_disease_pairs.loc[i,'subject_id'] = str(drug_entry['id'])
+        drug_disease_pairs.loc[i,'subject_id'] = str(drug_id)
         drug_disease_pairs.loc[i,'subject_label'] = row['DRUG_NAME']
         drug_disease_pairs.loc[i,'subject_iri'] = np.nan
         drug_disease_pairs.loc[i,'subject_category'] = constants.DRUG

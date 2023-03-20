@@ -2,7 +2,7 @@ import pandas as pd
 
 import util.constants as constants
 
-from util.loaders import get_input_data_path, load_monarch_associations_from_csv
+from util.loaders import load_associations_from_csv
 from builder.kg import KnowledgeGraph
 
 import analyzer.graphstructure as graphstructure
@@ -11,33 +11,7 @@ import ttd.fetcher as ttd_fetcher
 import drugcentral.fetcher as drugcentral_fetcher
 import builder.cypherqueries as cypher_querybuilder
 
-def analyze_prev_data():
-    data_path = get_input_data_path('graph_nodes_v2022-01-11.csv')
-    nodes = pd.read_csv(data_path)
-    print('Loaded nodes with attributes:', nodes.columns.values)
-    
-    data_path = get_input_data_path('graph_edges_v2022-01-11.csv')
-    edges = pd.read_csv(data_path)
-    print('Loaded edges with attributes:', edges.columns.values)
-    
-    edge_colmapping = {
-        'relations': 'property_label',
-        'subject': 'subject_id',
-        'object': 'object_id'
-    }
-    
-    node_colmapping = {
-        'node_id': 'id',
-        'semantics': 'semantic_groups'
-    }
-    
-    graphstructure.getConcepts(nodes, node_colmapping)
-    graphstructure.getRelations(edges, edge_colmapping)
-    graphstructure.getConnectionSummary(edges, nodes, 
-                                        edge_colmapping, node_colmapping,
-                                        'prev_concepts.png', 'prev_triplets.csv')
-
-def analyze_new_data(kg: KnowledgeGraph):
+def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filename):
     edges, nodes = kg.generate_dataframes()
     
     edge_colmapping = {
@@ -56,12 +30,22 @@ def analyze_new_data(kg: KnowledgeGraph):
     graphstructure.getRelations(edges, edge_colmapping)
     graphstructure.getConnectionSummary(edges, nodes, 
                                         edge_colmapping, node_colmapping,
-                                        'concepts.png', 'triplets.csv')
-
+                                        concepts_filename, triplets_filename)
+    
+def build_prev_kg():
+    monarch_associations = load_associations_from_csv('prev_monarch_associations.csv')
+    ttd_associations = load_associations_from_csv('prev_ttd_associations.csv')
+    drugcentral_associations = load_associations_from_csv('prev_drugcentral_associations.csv')
+    
+    kg = KnowledgeGraph(monarch_associations)
+    kg.add_edges_and_nodes(ttd_associations)
+    kg.add_edges_and_nodes(drugcentral_associations)
+    
+    analyze_data_from_kg(kg, 'prev_concepts.png', 'prev_triplets.csv')
 
 def build_kg(load_csv: bool = False):
     if load_csv:
-        monarch_associations = load_monarch_associations_from_csv()
+        monarch_associations = load_associations_from_csv('monarch_associations.csv')
     else:
         nodes_list = [
             'MONDO:0010679',
@@ -82,7 +66,7 @@ def build_kg(load_csv: bool = False):
     
     kg.add_edges_and_nodes(drugcentral_associations)
     
-    analyze_new_data(kg)
+    analyze_data_from_kg(kg, 'concepts.png', 'triplets.csv')
     
     kg_edges, kg_nodes = kg.generate_dataframes()
     cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
@@ -90,4 +74,5 @@ def build_kg(load_csv: bool = False):
     # TODO: still some duplicates for substance that treats and targets?
 
 if __name__ == "__main__":
-    build_kg(load_csv=True)
+    #build_kg(load_csv=True)
+    build_prev_kg()

@@ -435,3 +435,156 @@
 2023-03-08 17:23:52,176 INFO     Generated query list in file queries.txt
 2023-03-08 17:23:52,176 INFO     --- Instructions ---
  Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-03-20 15:47:42,301 INFO     Created a list of tuples with 83287 entries
+2023-03-20 15:47:42,304 INFO     Loaded 83287 associations
+2023-03-20 15:47:43,131 INFO     The graph contains 12 different semantic groups: {'model', 'phenotype', 'pathway', 'disease', 'biological process', 'variant', 'chemical', 'molecular function', 'anatomical entity', 'genotype', 'cellular component', 'gene'}
+2023-03-20 15:47:43,132 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-20 15:47:43,136 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-20 15:47:43,142 INFO     A total of 3161 gene IDs has been extracted
+2023-03-20 15:48:47,556 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-20 15:48:47,577 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-20 15:48:48,072 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-20 15:48:48,075 INFO     Created a list of tuples with 357 entries
+2023-03-20 15:48:48,083 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-20 15:48:48,090 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-20 15:48:48,463 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-20 15:52:57,355 INFO     Created a list of tuples with 83287 entries
+2023-03-20 15:52:57,359 INFO     Loaded 83287 associations
+2023-03-20 15:52:58,212 INFO     The graph contains 12 different semantic groups: {'pathway', 'biological process', 'cellular component', 'chemical', 'gene', 'model', 'variant', 'disease', 'phenotype', 'genotype', 'anatomical entity', 'molecular function'}
+2023-03-20 15:52:58,213 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-20 15:52:58,216 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-20 15:52:58,225 INFO     A total of 3161 gene IDs has been extracted
+2023-03-20 15:53:21,496 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-20 15:53:21,518 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-20 15:53:22,022 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-20 15:53:22,025 INFO     Created a list of tuples with 357 entries
+2023-03-20 15:53:22,032 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-20 15:53:22,040 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-20 15:53:22,384 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-20 15:53:22,516 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-03-20 15:53:22,517 INFO     Created a list of tuples with 61 entries
+2023-03-20 15:53:22,706 INFO     The graph contains 13 different semantic groups: {'pathway', 'biological process', 'cellular component', 'chemical', 'gene', 'model', 'drug', 'variant', 'disease', 'phenotype', 'genotype', 'anatomical entity', 'molecular function'}
+2023-03-20 15:53:22,706 INFO     For the graph, a total of 83705 edges and 10231 nodes have been generated.
+2023-03-20 15:53:22,709 INFO     There are 13 semantic groups: ['phenotype' 'gene' 'variant' 'anatomical entity' 'drug' 'genotype'
+ 'disease' 'model' 'biological process' 'cellular component' 'pathway'
+ 'chemical' 'molecular function']
+2023-03-20 15:53:22,715 INFO     There are 22 relation labels: ['in 1 to 1 orthology relationship with' 'has phenotype' 'interacts with'
+ 'in orthology relationship with' 'pathogenic_for_condition'
+ 'likely_pathogenic_for_condition' 'is part of' 'contributes to condition'
+ 'enables' 'is_allele_of' 'expressed in' 'targets' 'has_affected_feature'
+ 'involved_in' 'has role in modeling' 'is causal germline mutation in' nan
+ 'colocalizes with' 'causes condition' 'is substance that treats'
+ 'has_genotype' 'is causal germline mutation partially giving rise to']
+2023-03-20 15:53:23,366 INFO     Graph of all connections between concepts saved to concepts.png
+2023-03-20 15:53:23,383 INFO     List of triplets saved to triplets.csv
+2023-03-20 15:53:23,768 INFO     All nodes are stored into query_nodes.csv
+2023-03-20 15:53:24,245 INFO     All edges are stored into query_edges.csv
+2023-03-20 15:53:24,246 INFO     Generated query list in file queries.txt
+2023-03-20 15:53:24,248 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-03-20 16:03:05,237 INFO     Created a list of tuples with 83287 entries
+2023-03-20 16:03:05,241 INFO     Loaded 83287 associations
+2023-03-20 16:03:06,073 INFO     The graph contains 12 different semantic groups: {'phenotype', 'disease', 'pathway', 'variant', 'cellular component', 'genotype', 'model', 'molecular function', 'chemical', 'anatomical entity', 'gene', 'biological process'}
+2023-03-20 16:03:06,074 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-03-20 16:03:06,078 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-03-20 16:03:06,085 INFO     A total of 3161 gene IDs has been extracted
+2023-03-20 16:03:24,624 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-03-20 16:03:24,645 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-03-20 16:03:25,140 INFO     All TTD associations are saved into ttd_associations.csv
+2023-03-20 16:03:25,141 INFO     Created a list of tuples with 357 entries
+2023-03-20 16:03:25,150 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-03-20 16:03:25,156 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-03-20 16:03:25,496 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-03-20 16:03:25,627 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-03-20 16:03:25,628 INFO     Created a list of tuples with 61 entries
+2023-03-20 16:03:25,818 INFO     The graph contains 13 different semantic groups: {'phenotype', 'disease', 'pathway', 'variant', 'drug', 'cellular component', 'genotype', 'model', 'molecular function', 'chemical', 'anatomical entity', 'gene', 'biological process'}
+2023-03-20 16:03:25,819 INFO     For the graph, a total of 83705 edges and 10231 nodes have been generated.
+2023-03-20 16:03:25,821 INFO     There are 13 semantic groups: ['phenotype' 'gene' 'variant' 'drug' 'molecular function' 'genotype'
+ 'model' 'disease' 'anatomical entity' 'biological process' 'chemical'
+ 'cellular component' 'pathway']
+2023-03-20 16:03:25,826 INFO     There are 22 relation labels: ['in orthology relationship with' 'in 1 to 1 orthology relationship with'
+ 'interacts with' 'has role in modeling' 'contributes to condition'
+ 'has phenotype' 'is part of' 'involved_in' 'has_affected_feature'
+ 'expressed in' 'pathogenic_for_condition'
+ 'likely_pathogenic_for_condition' 'targets' 'enables' 'colocalizes with'
+ nan 'is_allele_of' 'is substance that treats'
+ 'is causal germline mutation in' 'has_genotype' 'causes condition'
+ 'is causal germline mutation partially giving rise to']
+2023-03-20 16:03:26,156 INFO     Graph of all connections between concepts saved to concepts.png
+2023-03-20 16:03:26,173 INFO     List of triplets saved to triplets.csv
+2023-03-20 16:03:26,550 INFO     All nodes are stored into query_nodes.csv
+2023-03-20 16:03:27,020 INFO     All edges are stored into query_edges.csv
+2023-03-20 16:03:27,021 INFO     Generated query list in file queries.txt
+2023-03-20 16:03:27,022 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-03-20 16:03:43,164 INFO     Created a list of tuples with 82674 entries
+2023-03-20 16:03:43,166 INFO     Loaded 82674 associations
+2023-03-20 16:03:43,171 INFO     Created a list of tuples with 239 entries
+2023-03-20 16:03:43,172 INFO     Loaded 239 associations
+2023-03-20 16:03:43,175 INFO     Created a list of tuples with 31 entries
+2023-03-20 16:03:43,176 INFO     Loaded 31 associations
+2023-03-20 16:04:42,270 INFO     Created a list of tuples with 82674 entries
+2023-03-20 16:04:42,274 INFO     Loaded 82674 associations
+2023-03-20 16:04:42,278 INFO     Created a list of tuples with 239 entries
+2023-03-20 16:04:42,279 INFO     Loaded 239 associations
+2023-03-20 16:04:42,282 INFO     Created a list of tuples with 31 entries
+2023-03-20 16:04:42,282 INFO     Loaded 31 associations
+2023-03-20 16:04:43,112 INFO     The graph contains 8 different semantic groups: {'DISO', 'VARI', 'ORTH', 'PHYS', 'GENE', 'DRUG', 'ANAT', 'GENO'}
+2023-03-20 16:04:43,113 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-20 16:04:43,352 INFO     The graph contains 9 different semantic groups: {'DISO', 'VARI', 'drug', 'ORTH', 'PHYS', 'GENE', 'DRUG', 'ANAT', 'GENO'}
+2023-03-20 16:04:43,352 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-20 16:04:43,354 INFO     There are 9 semantic groups: ['drug' 'ORTH' 'DISO' 'VARI' 'ANAT' 'GENE' 'GENO' 'PHYS' 'DRUG']
+2023-03-20 16:04:43,360 INFO     There are 25 relation labels: ['in 1 to 1 orthology relationship with' 'in orthology relationship with'
+ 'interacts with' 'has phenotype' 'enables' 'is part of'
+ 'has_affected_feature' 'expressed in' 'has role in modeling'
+ 'involved_in' 'pathogenic_for_condition' 'targets'
+ 'contributes to condition' 'is_allele_of' 'None'
+ 'likely_pathogenic_for_condition' 'is substance that treats' 'source'
+ 'colocalizes with' 'has_genotype' 'causes condition'
+ 'is causal germline mutation in'
+ 'is causal germline mutation partially giving rise to' 'contributes to'
+ 'is marker for']
+2023-03-20 16:04:43,681 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-20 16:04:43,695 INFO     List of triplets saved to prev_triplets.csv
+2023-03-20 16:11:10,758 INFO     Created a list of tuples with 82674 entries
+2023-03-20 16:11:10,760 INFO     Loaded 82674 associations
+2023-03-20 16:11:10,765 INFO     Created a list of tuples with 239 entries
+2023-03-20 16:11:10,765 INFO     Loaded 239 associations
+2023-03-20 16:11:10,768 INFO     Created a list of tuples with 31 entries
+2023-03-20 16:11:10,768 INFO     Loaded 31 associations
+2023-03-20 16:11:11,612 INFO     The graph contains 8 different semantic groups: {'DISO', 'VARI', 'GENE', 'ORTH', 'DRUG', 'GENO', 'PHYS', 'ANAT'}
+2023-03-20 16:11:11,612 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-20 16:11:11,851 INFO     The graph contains 8 different semantic groups: {'DISO', 'VARI', 'ORTH', 'GENE', 'DRUG', 'GENO', 'PHYS', 'ANAT'}
+2023-03-20 16:11:11,851 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-20 16:11:11,851 INFO     There are 8 semantic groups: ['ORTH' 'DRUG' 'DISO' 'VARI' 'GENO' 'GENE' 'PHYS' 'ANAT']
+2023-03-20 16:11:11,857 INFO     There are 25 relation labels: ['in 1 to 1 orthology relationship with' 'in orthology relationship with'
+ 'has_affected_feature' 'enables' 'interacts with' 'has phenotype'
+ 'pathogenic_for_condition' 'expressed in' 'is part of' 'involved_in'
+ 'likely_pathogenic_for_condition' 'targets' 'contributes to condition'
+ 'has role in modeling' 'None' 'is substance that treats'
+ 'colocalizes with' 'is causal germline mutation in' 'is_allele_of'
+ 'is marker for' 'contributes to' 'source' 'has_genotype'
+ 'is causal germline mutation partially giving rise to' 'causes condition']
+2023-03-20 16:11:12,186 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-20 16:11:12,201 INFO     List of triplets saved to prev_triplets.csv
