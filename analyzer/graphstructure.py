@@ -18,9 +18,10 @@ def getRelations(edges: pd.DataFrame, edge_colmapping: dict):
         :param edges: Dataframe of nodes containing a column for relation
         :param edge_colmapping: Dictionary indicating name of column holding relation label
     """
-    unique_relations = edges[edge_colmapping['relations']].unique()
-    register_info(f'There are {len(unique_relations)} relation labels: {unique_relations}')
-    return unique_relations
+    relations = edges[[edge_colmapping['relationids'], edge_colmapping['relations']]]
+    unique_relations_df = relations.groupby(edge_colmapping['relationids']).first()
+    register_info(f'There are {unique_relations_df.shape[0]} relation labels: {unique_relations_df}')
+    return unique_relations_df.reset_index()
     
 def getConnectionSummary(edges: pd.DataFrame, nodes: pd.DataFrame, edge_colmapping: dict, node_colmapping: dict, img_name: str, file_name: str):
     """

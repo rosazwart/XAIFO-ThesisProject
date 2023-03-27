@@ -10,12 +10,14 @@ import monarch.fetcher as monarch_fetcher
 import ttd.fetcher as ttd_fetcher
 import drugcentral.fetcher as drugcentral_fetcher
 import builder.cypherqueries as cypher_querybuilder
+import ols.fetcher as ols_fetcher
 
 def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filename):
     edges, nodes = kg.generate_dataframes()
     
     edge_colmapping = {
         'relations': 'relation_label',
+        'relationids': 'relation_id',
         'subject': 'subject',
         'object': 'object'
     }
@@ -27,10 +29,12 @@ def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filenam
     
     kg.analyze_graph()
     graphstructure.getConcepts(nodes, node_colmapping)
-    graphstructure.getRelations(edges, edge_colmapping)
+    relations_df = graphstructure.getRelations(edges, edge_colmapping)
     graphstructure.getConnectionSummary(edges, nodes, 
                                         edge_colmapping, node_colmapping,
                                         concepts_filename, triplets_filename)
+    
+    ols_fetcher.analyze_ontology_relations(relations_df)
     
 def build_prev_kg():
     monarch_associations = load_associations_from_csv('prev_monarch_associations.csv')
