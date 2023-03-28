@@ -5257,3 +5257,123 @@ RO:HOM0000020              in 1 to 1 orthology relationship with
 dc:source                                                 source
 2023-03-27 16:20:32,259 INFO     Graph of all connections between concepts saved to prev_concepts.png
 2023-03-27 16:20:32,273 INFO     List of triplets saved to prev_triplets.csv
+2023-03-28 16:04:11,187 INFO     Created a list of tuples with 82674 entries
+2023-03-28 16:04:11,190 INFO     Loaded 82674 associations
+2023-03-28 16:04:11,196 INFO     Created a list of tuples with 239 entries
+2023-03-28 16:04:11,196 INFO     Loaded 239 associations
+2023-03-28 16:04:11,201 INFO     Created a list of tuples with 31 entries
+2023-03-28 16:04:11,202 INFO     Loaded 31 associations
+2023-03-28 16:04:12,018 INFO     The graph contains 8 different semantic groups: {'ORTH', 'PHYS', 'DRUG', 'ANAT', 'DISO', 'VARI', 'GENE', 'GENO'}
+2023-03-28 16:04:12,018 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-28 16:04:12,254 INFO     The graph contains 8 different semantic groups: {'ORTH', 'PHYS', 'DRUG', 'ANAT', 'DISO', 'VARI', 'GENE', 'GENO'}
+2023-03-28 16:04:12,254 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-28 16:04:12,256 INFO     There are 8 semantic groups: ['DISO' 'DRUG' 'VARI' 'ORTH' 'GENE' 'GENO' 'PHYS' 'ANAT']
+2023-03-28 16:04:12,275 INFO     There are 25 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has_genotype
+GENO:0000408                                        is_allele_of
+GENO:0000418                                has_affected_feature
+GENO:0000840                            pathogenic_for_condition
+GENO:0000841                     likely_pathogenic_for_condition
+None                                                        None
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved_in
+RO:0002434                                        interacts with
+RO:0002607                                         is marker for
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+dc:source                                                 source
+2023-03-28 16:04:12,940 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-28 16:04:12,959 INFO     List of triplets saved to prev_triplets.csv
+2023-03-28 16:11:33,489 INFO     Created a list of tuples with 82674 entries
+2023-03-28 16:11:33,491 INFO     Loaded 82674 associations
+2023-03-28 16:11:33,497 INFO     Created a list of tuples with 239 entries
+2023-03-28 16:11:33,497 INFO     Loaded 239 associations
+2023-03-28 16:11:33,500 INFO     Created a list of tuples with 31 entries
+2023-03-28 16:11:33,501 INFO     Loaded 31 associations
+2023-03-28 16:11:34,298 INFO     The graph contains 8 different semantic groups: {'PHYS', 'GENO', 'ANAT', 'VARI', 'DISO', 'GENE', 'DRUG', 'ORTH'}
+2023-03-28 16:11:34,299 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-28 16:11:34,515 INFO     The graph contains 8 different semantic groups: {'PHYS', 'GENO', 'ANAT', 'VARI', 'DISO', 'GENE', 'DRUG', 'ORTH'}
+2023-03-28 16:11:34,515 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-28 16:11:34,516 INFO     There are 8 semantic groups: ['DISO' 'ORTH' 'DRUG' 'VARI' 'GENO' 'PHYS' 'GENE' 'ANAT']
+2023-03-28 16:11:34,529 INFO     There are 25 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has_genotype
+GENO:0000408                                        is_allele_of
+GENO:0000418                                has_affected_feature
+GENO:0000840                            pathogenic_for_condition
+GENO:0000841                     likely_pathogenic_for_condition
+None                                                        None
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved_in
+RO:0002434                                        interacts with
+RO:0002607                                         is marker for
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+dc:source                                                 source
+2023-03-28 16:11:34,843 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-28 16:11:34,858 INFO     List of triplets saved to prev_triplets.csv
+2023-03-28 16:19:07,837 INFO     Created a list of tuples with 82674 entries
+2023-03-28 16:19:07,840 INFO     Loaded 82674 associations
+2023-03-28 16:19:07,844 INFO     Created a list of tuples with 239 entries
+2023-03-28 16:19:07,845 INFO     Loaded 239 associations
+2023-03-28 16:19:07,848 INFO     Created a list of tuples with 31 entries
+2023-03-28 16:19:07,848 INFO     Loaded 31 associations
+2023-03-28 16:19:08,657 INFO     The graph contains 8 different semantic groups: {'DRUG', 'DISO', 'ANAT', 'GENE', 'GENO', 'PHYS', 'ORTH', 'VARI'}
+2023-03-28 16:19:08,657 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-28 16:19:08,893 INFO     The graph contains 8 different semantic groups: {'DRUG', 'DISO', 'ANAT', 'GENE', 'GENO', 'PHYS', 'ORTH', 'VARI'}
+2023-03-28 16:19:08,893 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-28 16:19:08,894 INFO     There are 8 semantic groups: ['ORTH' 'DRUG' 'DISO' 'GENO' 'VARI' 'GENE' 'PHYS' 'ANAT']
+2023-03-28 16:19:08,906 INFO     There are 25 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has_genotype
+GENO:0000408                                        is_allele_of
+GENO:0000418                                has_affected_feature
+GENO:0000840                            pathogenic_for_condition
+GENO:0000841                     likely_pathogenic_for_condition
+None                                                        None
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved_in
+RO:0002434                                        interacts with
+RO:0002607                                         is marker for
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+dc:source                                                 source
+2023-03-28 16:19:09,226 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-28 16:19:09,241 INFO     List of triplets saved to prev_triplets.csv

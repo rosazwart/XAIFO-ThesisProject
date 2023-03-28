@@ -1,110 +1,83 @@
-import pandas as pd
-
-import ols.requester as requester
-
-def get_ids(links, class_name='ancestors'):
-    """
-    """
-    ids = []
-    
-    if class_name in links:
-        link = links[class_name]['href']
-        response_values = requester.get_values(link)
-        response_properties = response_values['_embedded']['properties']
-        
-        for property_values in response_properties:
-            id = property_values['obo_id']
-            if id:
-                ids.append(id)
-        
-    return ids
+import ols.logger as logger
+import ols.unpacker as unpacker
 
 def get_relation_properties(relations_df):
     """
+        For each relation found in the dataset, get its properties provided by OLS. 
+        :param relations_df: Dataframe that contains relations in the dataset
+        :return List of relations that are represented by a dictionary with keys `uri` (id), `iri` (link), 
+        `label`, `description`, `ancestors`, `descendants`, `parents`
     """
-    relations_properties = []
+    all_relations = []
     
     for _, row in relations_df.iterrows():
-        relation_properties = {}
+        current_relation = {}
         
         relation_id = row['relation_id']
-        relation_properties['uri'] = relation_id
+        current_relation['uri'] = relation_id
         
+        # Prefix of relation ID represents id of ontology
         prefix_id = relation_id.split(':')[0].lower()
         
+        # Ignore custom relation IDs
         if 'custom' not in prefix_id:
-            response_values = requester.get_iri(ontology=prefix_id, uri=relation_id)
-            response_results = response_values['response']
-            
-            numberFound = response_results['numFound']
-            iri = None
-            if numberFound == 1:
-                iri = response_results['docs'][0]['iri']
-            elif numberFound > 1:
-                for resultEntry in response_results['docs']:
-                    if 'obo_id' in resultEntry and resultEntry['obo_id'] == relation_id:
-                        iri = resultEntry['iri']
-                
+            # Retrieve IRI formatted ID of current relation
+            iri = unpacker.get_iri_id(ontology=prefix_id, uri=relation_id)
             if iri:
-                response_values = requester.get_term(ontology=prefix_id, iri=iri)
-                if '_embedded' in response_values:
-                    response_properties = response_values['_embedded']['properties']
-                    
-                    if (len(response_properties) > 0):
-                        properties = response_properties[0]
-                        label = properties['label']
-                        uri = properties['obo_id']
+                current_relation = unpacker.get_properties(ontology=prefix_id, iri=iri, relation_entry=current_relation)
                         
-                        annotations =  properties['annotation']
-                        description = None
-                        if 'definition' in annotations:
-                            description =annotations['definition']
-                        
-                        links = properties['_links']
-                        ancestors = get_ids(links, 'ancestors')
-                        descendants = get_ids(links, 'descendants')
-                        
-                        relation_properties['iri'] = iri
-                        relation_properties['uri'] = uri
-                        relation_properties['label'] = label
-                        relation_properties['description'] = description
-                        relation_properties['ancestors'] = ancestors
-                        relation_properties['descendants'] = descendants
-                        
-        relations_properties.append(relation_properties)
+        all_relations.append(current_relation)
     
-    return relations_properties
+    return all_relations
 
-def search_in_properties(uri, all_relations):
+def search_relation_based_on_uri(uri, all_relations):
+    """
+        Search relation that has given URI formatted ID from given all relations.
+        :param uri: ID in URI format
+        :param all_relations: List of all relations with their properties in dictionaries
+        :return The dictionary of found relation or `None`
+    """
     for relation_properties in all_relations:
         if 'uri' in relation_properties and relation_properties['uri'] == uri:
             return relation_properties
     return None
 
-def report_ancestors_overlap_analysis(relation1, relation2, overlapping):
-    print(relation1, relation2, overlapping)
+def report_parents_overlap_analysis(relation1, relation2, overlapping):
+    logger.register_info(f'The relations:')
+    logger.register_info(f'-Relation with ID {relation1["uri"]} and label {relation1["label"]}')
+    logger.register_info(f'-Relation with ID {relation2["uri"]} and label {relation2["label"]}')
+    logger.register_info(f'have overlapping parents:')
+    for overlapping_parent in overlapping:
+        parent_uri = overlapping_parent
+        prefix_id = parent_uri.split(':')[0].lower()
+        parent_iri = unpacker.get_iri_id(ontology=prefix_id, uri=parent_uri)
+        parent_properties = {
+            'uri': parent_uri
+        }
+        parent_properties = unpacker.get_properties(prefix_id, parent_iri, parent_properties)
+        logger.register_info(f'- Relation with ID {parent_properties["uri"]} and label {parent_properties["label"]} describing {parent_properties["description"]}')
+    logger.register_info('\n')
 
-def find_overlap(relations):
+def find_parent_overlap(relations):
     for relation_properties1 in relations:
-        if 'ancestors' in relation_properties1:
-            ancestors1 = relation_properties1['ancestors']
+        if 'parents' in relation_properties1:
+            parents1 = relation_properties1['parents']
             
             for relation_properties2 in relations:
                 if 'uri' in relation_properties2:
                     if relation_properties1['uri'] != relation_properties2['uri']:
-                        if 'ancestors' in relation_properties2:
-                            ancestors2 = relation_properties2['ancestors']
-                            ancestor_overlap = set(ancestors1).intersection(ancestors2)
-                            if len(ancestor_overlap) > 0:
-                                report_ancestors_overlap_analysis(relation_properties1, relation_properties2, ancestor_overlap)
-            
+                        if 'parents' in relation_properties2:
+                            parents2 = relation_properties2['parents']
+                            parent_overlap = list(set(parents1).intersection(parents2))
+                            if len(parent_overlap) > 0:
+                                report_parents_overlap_analysis(relation_properties1, relation_properties2, parent_overlap)
 
 def report_ancestors_analysis(relation, related_relations, role):
     if len(related_relations):
-        print(f'For relation with URI {relation["uri"]} and label "{relation["label"]}" with definitions {relation["description"]}, {role} have been found that also exist in the same relations set:')
+        logger.register_info(f'For relation with URI {relation["uri"]} and label "{relation["label"]}" with definitions {relation["description"]}, {role} have been found that also exist in the same relations set:')
         for related_relation in related_relations:
-            print(f'- Relation with URI {related_relation["uri"]} and label "{related_relation["label"]}" with definitions {related_relation["description"]}')
-        print('\n')
+            logger.register_info(f'- Relation with URI {related_relation["uri"]} and label "{related_relation["label"]}" with definitions {related_relation["description"]}')
+        logger.register_info('\n')
 
 def analyze_ontology_relations(relations_df):
     all_relations = get_relation_properties(relations_df)
@@ -114,20 +87,11 @@ def analyze_ontology_relations(relations_df):
         
         if 'ancestors' in relation_properties:
             for ancestor_id in relation_properties['ancestors']:
-                ancestor = search_in_properties(ancestor_id, all_relations)
+                ancestor = search_relation_based_on_uri(ancestor_id, all_relations)
                 if ancestor:
                     ancestors_present.append(ancestor)
             report_ancestors_analysis(relation_properties, ancestors_present, 'ancestors')
-        
-    
-        #if 'descendants' in relation_properties:
-        #    descendants_present = []
-        #    for descendant_id in relation_properties['descendants']:
-        #        descendant = search_in_properties(descendant_id, all_relations)
-        #        if descendant:
-        #            descendants_present.append(descendant)
-        #    report_analysis(relation_properties, descendants_present, 'descendants')
     
     # Find direct parent overlap
-    find_overlap(all_relations)
+    find_parent_overlap(all_relations)
                 

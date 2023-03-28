@@ -8,7 +8,9 @@ RETRIES = 2
 
 def get_values(url):
     """
-    
+        Get values provided by given URL.
+        :param url: Link of information source calling on API
+        :return Response values of API call
     """
     for i in range(RETRIES):
         try:
@@ -25,6 +27,10 @@ def get_values(url):
 
 def get_term(ontology, iri):
     """
+        Get properties of given IRI and ontology ID.
+        :param ontology: ID of ontology
+        :param iri: ID of relation in IRI format
+        :return Response values of API call https://www.ebi.ac.uk/ols/docs/api#:~:text=Properties%20and%20individuals 
     """
     for i in range(RETRIES):
         try:
@@ -41,6 +47,10 @@ def get_term(ontology, iri):
 
 def get_iri(ontology, uri):
     """
+        Get IRI of given URI and ontology ID.
+        :param ontology: ID of ontology
+        :param uri: ID of relation in URI format
+        :return: Response values of API call https://www.ebi.ac.uk/ols/docs/api#:~:text=results%20page%20number-,Select%20terms,-We%20provide%20an
     """
     params = {
         'obo_id': uri,

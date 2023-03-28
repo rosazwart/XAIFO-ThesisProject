@@ -1,5 +1,5 @@
 import logging
-logging.basicConfig(level=logging.INFO, filename='monarchfetcher.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
+logging.basicConfig(level=logging.INFO, filename='datafetcher.log', filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
 
 import networkx as nx
 import matplotlib.pyplot as plt
