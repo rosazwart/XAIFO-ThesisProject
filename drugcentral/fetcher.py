@@ -41,19 +41,18 @@ def load_drug_disease_entries():
             current_drug_disease_pair = dict()
     
     drug_disease_df = pd.DataFrame.from_dict(drug_disease_pairs, orient='columns')
-    print(f'Loaded {drug_disease_df.shape[0]} drug-disease pairs:\n{drug_disease_df.head(3)}')
+    common.register_info(f'Loaded {drug_disease_df.shape[0]} drug-disease pairs:\n{drug_disease_df.head(3)}')
     return drug_disease_df
 
 def join_disease_name_with_id(names_df, ids_df):
     joined_df = pd.merge(names_df, ids_df, left_on='DISEASE_NAME', right_on='Name', how='left')
     left_outer_joined_df = joined_df[joined_df['DISEASE_ID'].notna()][['DRUG_ID', 'DRUG_NAME', 'DISEASE_ID', 'DISEASE_NAME']]
-    print(f'Total of {left_outer_joined_df.shape[0]} disease names mapped to their IDs:\n{left_outer_joined_df.head(10)}')
+    common.register_info(f'Total of {left_outer_joined_df.shape[0]} disease names mapped to their IDs:\n{left_outer_joined_df.head(10)}')
     return left_outer_joined_df
 
 def format_drugdisease_associations(drug_disease_pairs: pd.DataFrame, drug_nodes: pd.DataFrame):
-    print(f'There are {drug_disease_pairs.shape[0]} drug-disease associations with columns {drug_disease_pairs.columns}.')
     drug_disease_pairs.drop_duplicates(inplace=True)
-    print(f'There are {drug_disease_pairs.shape[0]} drug-disease associations without duplicates.')
+    common.register_info(f'There are {drug_disease_pairs.shape[0]} drug-disease associations without duplicates.')
     
     for i, row in drug_disease_pairs.iterrows():
         drug_disease_pairs.loc[i,'id'] = f'DC{i}'
@@ -89,10 +88,10 @@ def get_drugdisease_associations(drug_nodes: pd.DataFrame, diso_pheno_nodes: pd.
         Get 
     """
     drug_names = common.extract_colvalues(drug_nodes, 'label')
-    print(f'There are {len(drug_names)} unique drug names')
+    common.register_info(f'There are {len(drug_names)} unique drug names')
     
     diso_pheno_ids = common.extract_colvalues(diso_pheno_nodes, 'id')
-    print(f'There are {len(diso_pheno_ids)} unique disease/phenotype IDs')
+    common.register_info(f'There are {len(diso_pheno_ids)} unique disease/phenotype IDs')
     
     # Data for drug disease pairs
     drug_disease_pairs = load_drug_disease_entries()

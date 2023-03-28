@@ -2,8 +2,9 @@
     Module that fetches relevant data from the Monarch Initiative data and analytic platform (https://monarchinitiative.org/about/monarch).
 """
 import util.constants as constants
-from util.common import register_info, tuplelist2dataframe
+from util.common import tuplelist2dataframe
 
+from monarch.logger import register_info
 import monarch.unpacker as unpacker
 import monarch.filterer as filterer
 

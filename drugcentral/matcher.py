@@ -1,6 +1,8 @@
 import re
 import pandas as pd
 
+import util.common as common
+
 def convert_id_format(df):
     new_ids = list()
     
@@ -25,5 +27,5 @@ def load_phenotype_matcher():
     formatted_matches['Name'] = trusted_matches['Name'].str.strip()
     matched_phenotype_ids = convert_id_format(formatted_matches)
     
-    print(f'Loaded {matched_phenotype_ids.shape[0]} phenotypes with matching IDs scoring 100:\n{matched_phenotype_ids.head(3)}')
+    common.register_info(f'Loaded {matched_phenotype_ids.shape[0]} phenotypes with matching IDs scoring 100:\n{matched_phenotype_ids.head(3)}')
     return matched_phenotype_ids

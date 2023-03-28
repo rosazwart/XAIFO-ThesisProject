@@ -8,6 +8,7 @@ import numpy as np
 from tqdm import tqdm
 
 import util.constants as constants
+import util.common as common
 
 from util.common import extract_colvalues, register_info, dataframe2tuplelist
 from ttd.idmapper import db_mapper, IdMapper, DEFAULT_TO_DB
@@ -18,7 +19,7 @@ def load_drug_targets():
         :return: Dataframe containing drug-target interactions
     """
     drug_targets = pd.read_csv('././data/drug.target.interaction.tsv', header=0, sep='\t', index_col=False)
-    print(f'Loaded {drug_targets.shape[0]} drug-target interactions:\n{drug_targets.head(3)}')
+    common.register_info(f'Loaded {drug_targets.shape[0]} drug-target interactions:\n{drug_targets.head(3)}')
     return drug_targets
 
 def get_organisms(df):
@@ -27,7 +28,7 @@ def get_organisms(df):
         :param df: Dataframe containing column `ORGANISM`
     """
     organisms = df['ORGANISM'].unique()
-    print(f'There are {organisms.shape[0]} organisms:\n{organisms}')
+    common.register_info(f'There are {organisms.shape[0]} organisms:\n{organisms}')
     return organisms
 
 def get_single_id(id):
@@ -98,9 +99,9 @@ def format_drugtarget_associations(drug_targets: pd.DataFrame):
         :param drug_targets: Dataframe with all drug target interactions
         :return Dataframe with correct column names and order
     """
-    print(f'There are {drug_targets.shape[0]} drug-target associations with columns {drug_targets.columns}.')
+    common.register_info(f'There are {drug_targets.shape[0]} drug-target associations with columns {drug_targets.columns}.')
     drug_targets.drop_duplicates(inplace=True)
-    print(f'There are {drug_targets.shape[0]} drug-target associations without duplicates.')
+    common.register_info(f'There are {drug_targets.shape[0]} drug-target associations without duplicates.')
     
     for i, row in drug_targets.iterrows():
         drug_targets.loc[i,'id'] = f'TTD{i}'
