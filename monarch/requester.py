@@ -1,4 +1,4 @@
-from monarch.logger import register_error
+from util.common import register_error
 
 import requests
 import time

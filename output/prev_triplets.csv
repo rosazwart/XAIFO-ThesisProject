@@ -1,73 +1,73 @@
 subject,relation,object
-GENO,None,ORTH
-GENO,None,GENE
 ORTH,None,ORTH
+GENO,None,ORTH
 DISO,None,GENO
 DRUG,None,DISO
+GENO,None,GENE
 GENE,causes condition,DISO
 GENE,colocalizes with,GENE
 ORTH,colocalizes with,ORTH
 GENE,contributes to,DISO
-ORTH,contributes to condition,DISO
 GENO,contributes to condition,GENO
 GENE,contributes to condition,GENO
+ORTH,contributes to condition,DISO
 GENE,contributes to condition,DISO
 GENO,contributes to condition,DISO
-GENO,enables,PHYS
 ORTH,enables,PHYS
 GENE,enables,PHYS
-ORTH,expressed in,ANAT
+GENO,enables,PHYS
 GENE,expressed in,ANAT
-GENE,has phenotype,DISO
-DISO,has phenotype,DISO
+ORTH,expressed in,ANAT
+GENO,has affected feature,GENE
+GENO,has affected feature,ORTH
+VARI,has affected feature,GENE
+ORTH,has affected feature,ORTH
+GENO,has genotype,DISO
+GENO,has genotype,GENO
+GENO,has genotype,ORTH
 GENO,has phenotype,DISO
-ORTH,has phenotype,DISO
+DISO,has phenotype,DISO
+GENE,has phenotype,DISO
 ORTH,has phenotype,GENO
-GENO,has role in modeling,DISO
+ORTH,has phenotype,DISO
 ORTH,has role in modeling,DISO
-ORTH,has_affected_feature,ORTH
-GENO,has_affected_feature,GENE
-VARI,has_affected_feature,GENE
-GENO,has_affected_feature,ORTH
-GENO,has_genotype,GENO
-GENO,has_genotype,DISO
-GENO,has_genotype,ORTH
-GENO,in 1 to 1 orthology relationship with,ORTH
-ORTH,in 1 to 1 orthology relationship with,GENO
+GENO,has role in modeling,DISO
 GENE,in 1 to 1 orthology relationship with,GENO
-GENE,in 1 to 1 orthology relationship with,GENE
-ORTH,in 1 to 1 orthology relationship with,GENE
-GENE,in 1 to 1 orthology relationship with,ORTH
-ORTH,in 1 to 1 orthology relationship with,ORTH
+ORTH,in 1 to 1 orthology relationship with,GENO
 GENO,in 1 to 1 orthology relationship with,GENE
-ORTH,in orthology relationship with,GENO
-ORTH,in orthology relationship with,ORTH
-GENO,in orthology relationship with,ORTH
-ORTH,in orthology relationship with,GENE
+GENE,in 1 to 1 orthology relationship with,GENE
+ORTH,in 1 to 1 orthology relationship with,ORTH
+GENE,in 1 to 1 orthology relationship with,ORTH
+ORTH,in 1 to 1 orthology relationship with,GENE
+GENO,in 1 to 1 orthology relationship with,ORTH
 GENO,in orthology relationship with,GENE
-GENE,in orthology relationship with,GENO
-GENE,in orthology relationship with,GENE
 GENE,in orthology relationship with,ORTH
-ORTH,interacts with,ORTH
+ORTH,in orthology relationship with,GENO
+GENO,in orthology relationship with,ORTH
+GENE,in orthology relationship with,GENE
+ORTH,in orthology relationship with,GENE
+GENE,in orthology relationship with,GENO
+ORTH,in orthology relationship with,ORTH
 ORTH,interacts with,GENE
-GENE,interacts with,GENE
 GENE,interacts with,ORTH
-DISO,involved_in,PHYS
-GENE,involved_in,PHYS
-ORTH,involved_in,PHYS
-GENO,involved_in,PHYS
+GENE,interacts with,GENE
+ORTH,interacts with,ORTH
+GENE,involved in,PHYS
+DISO,involved in,PHYS
+GENO,involved in,PHYS
+ORTH,involved in,PHYS
+DISO,is allele of,GENE
+ORTH,is allele of,ORTH
 GENE,is causal germline mutation in,DISO
 GENE,is causal germline mutation partially giving rise to,DISO
 GENE,is marker for,DISO
-GENO,is part of,PHYS
-GENE,is part of,PHYS
 ORTH,is part of,PHYS
+GENE,is part of,PHYS
+GENO,is part of,PHYS
 DRUG,is substance that treats,DISO
-ORTH,is_allele_of,ORTH
-DISO,is_allele_of,GENE
-VARI,likely_pathogenic_for_condition,DISO
-GENE,pathogenic_for_condition,DISO
-VARI,pathogenic_for_condition,DISO
+VARI,likely pathogenic for condition,DISO
+GENE,pathogenic for condition,DISO
+VARI,pathogenic for condition,DISO
 PHYS,source,GENE
-DRUG,targets,ORTH
 DRUG,targets,GENE
+DRUG,targets,ORTH

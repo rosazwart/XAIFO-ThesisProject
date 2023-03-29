@@ -1,4 +1,4 @@
-import ols.logger as logger
+import util.common as common
 import ols.unpacker as unpacker
 
 def get_relation_properties(relations_df):
@@ -43,10 +43,10 @@ def search_relation_based_on_uri(uri, all_relations):
     return None
 
 def report_parents_overlap_analysis(relation1, relation2, overlapping):
-    logger.register_info(f'The relations:')
-    logger.register_info(f'-Relation with ID {relation1["uri"]} and label {relation1["label"]}')
-    logger.register_info(f'-Relation with ID {relation2["uri"]} and label {relation2["label"]}')
-    logger.register_info(f'have overlapping parents:')
+    common.register_info(f'The relations:')
+    common.register_info(f'-Relation with ID {relation1["uri"]} and label {relation1["label"]}')
+    common.register_info(f'-Relation with ID {relation2["uri"]} and label {relation2["label"]}')
+    common.register_info(f'have overlapping parents:')
     for overlapping_parent in overlapping:
         parent_uri = overlapping_parent
         prefix_id = parent_uri.split(':')[0].lower()
@@ -55,8 +55,8 @@ def report_parents_overlap_analysis(relation1, relation2, overlapping):
             'uri': parent_uri
         }
         parent_properties = unpacker.get_properties(prefix_id, parent_iri, parent_properties)
-        logger.register_info(f'- Relation with ID {parent_properties["uri"]} and label {parent_properties["label"]} describing {parent_properties["description"]}')
-    logger.register_info('\n')
+        common.register_info(f'- Relation with ID {parent_properties["uri"]} and label {parent_properties["label"]} describing {parent_properties["description"]}')
+    common.register_info('\n')
 
 def find_parent_overlap(relations):
     for relation_properties1 in relations:
@@ -74,10 +74,10 @@ def find_parent_overlap(relations):
 
 def report_ancestors_analysis(relation, related_relations, role):
     if len(related_relations):
-        logger.register_info(f'For relation with URI {relation["uri"]} and label "{relation["label"]}" with definitions {relation["description"]}, {role} have been found that also exist in the same relations set:')
+        common.register_info(f'For relation with URI {relation["uri"]} and label "{relation["label"]}" with definitions {relation["description"]}, {role} have been found that also exist in the same relations set:')
         for related_relation in related_relations:
-            logger.register_info(f'- Relation with URI {related_relation["uri"]} and label "{related_relation["label"]}" with definitions {related_relation["description"]}')
-        logger.register_info('\n')
+            common.register_info(f'- Relation with URI {related_relation["uri"]} and label "{related_relation["label"]}" with definitions {related_relation["description"]}')
+        common.register_info('\n')
 
 def analyze_ontology_relations(relations_df):
     all_relations = get_relation_properties(relations_df)

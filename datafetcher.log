@@ -1,0 +1,268 @@
+2023-03-29 12:20:27,185 INFO     Created a list of tuples with 82674 entries
+2023-03-29 12:20:27,188 INFO     Loaded 82674 associations
+2023-03-29 12:20:27,193 INFO     Created a list of tuples with 239 entries
+2023-03-29 12:20:27,193 INFO     Loaded 239 associations
+2023-03-29 12:20:27,197 INFO     Created a list of tuples with 31 entries
+2023-03-29 12:20:27,198 INFO     Loaded 31 associations
+2023-03-29 12:20:28,048 INFO     The graph contains 8 different semantic groups: {'VARI', 'GENE', 'ANAT', 'PHYS', 'DRUG', 'ORTH', 'DISO', 'GENO'}
+2023-03-29 12:20:28,048 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-29 12:20:28,305 INFO     The graph contains 8 different semantic groups: {'VARI', 'GENE', 'ANAT', 'PHYS', 'DRUG', 'ORTH', 'DISO', 'GENO'}
+2023-03-29 12:20:28,305 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-29 12:20:28,306 INFO     There are 8 semantic groups: ['DRUG' 'DISO' 'ORTH' 'VARI' 'GENO' 'GENE' 'ANAT' 'PHYS']
+2023-03-29 12:20:28,319 INFO     There are 25 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has_genotype
+GENO:0000408                                        is_allele_of
+GENO:0000418                                has_affected_feature
+GENO:0000840                            pathogenic_for_condition
+GENO:0000841                     likely_pathogenic_for_condition
+None                                                        None
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved_in
+RO:0002434                                        interacts with
+RO:0002607                                         is marker for
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+dc:source                                                 source
+2023-03-29 12:20:28,669 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-29 12:20:28,685 INFO     List of triplets saved to prev_triplets.csv
+2023-03-29 12:20:44,493 INFO     For relation with URI GENO:0000408 and label "is_allele_of" with definitions None, ancestors have been found that also exist in the same relations set:
+2023-03-29 12:20:44,494 INFO     - Relation with URI GENO:0000418 and label "has_affected_feature" with definitions None
+2023-03-29 12:20:44,494 INFO     
+
+2023-03-29 12:20:44,494 INFO     For relation with URI GENO:0000840 and label "pathogenic_for_condition" with definitions None, ancestors have been found that also exist in the same relations set:
+2023-03-29 12:20:44,495 INFO     - Relation with URI RO:0003303 and label "causes condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:44,495 INFO     
+
+2023-03-29 12:20:44,496 INFO     For relation with URI GENO:0000841 and label "likely_pathogenic_for_condition" with definitions None, ancestors have been found that also exist in the same relations set:
+2023-03-29 12:20:44,496 INFO     - Relation with URI RO:0003303 and label "causes condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:44,497 INFO     
+
+2023-03-29 12:20:44,497 INFO     For relation with URI RO:0004013 and label "is causal germline mutation in" with definitions ['Relates a gene to condition, such that a mutation in this gene is sufficient to produce the condition and that can be passed on to offspring[modified from orphanet].'], ancestors have been found that also exist in the same relations set:
+2023-03-29 12:20:44,498 INFO     - Relation with URI RO:0003303 and label "causes condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:44,498 INFO     
+
+2023-03-29 12:20:44,499 INFO     For relation with URI RO:0004016 and label "is causal germline mutation partially giving rise to" with definitions ['Relates a gene to condition, such that a mutation in this gene partially contributes to the presentation of this condition[modified from orphanet].'], ancestors have been found that also exist in the same relations set:
+2023-03-29 12:20:44,500 INFO     - Relation with URI RO:0003304 and label "contributes to condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some contributing role that influences the condition.']
+2023-03-29 12:20:44,500 INFO     
+
+2023-03-29 12:20:44,500 INFO     For relation with URI RO:HOM0000020 and label "in 1 to 1 orthology relationship with" with definitions ['Orthology that involves two genes that did not experience any duplication after the speciation event that created them.'], ancestors have been found that also exist in the same relations set:
+2023-03-29 12:20:44,501 INFO     - Relation with URI RO:HOM0000017 and label "in orthology relationship with" with definitions ['Historical homology that involves genes that diverged after a speciation event.']
+2023-03-29 12:20:44,501 INFO     
+
+2023-03-29 12:20:44,501 INFO     The relations:
+2023-03-29 12:20:44,502 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:20:44,502 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:20:44,502 INFO     have overlapping parents:
+2023-03-29 12:20:45,208 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:45,209 INFO     
+
+2023-03-29 12:20:45,209 INFO     The relations:
+2023-03-29 12:20:45,210 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:20:45,210 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:20:45,210 INFO     have overlapping parents:
+2023-03-29 12:20:45,933 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:45,934 INFO     
+
+2023-03-29 12:20:45,934 INFO     The relations:
+2023-03-29 12:20:45,935 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:20:45,935 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:20:45,935 INFO     have overlapping parents:
+2023-03-29 12:20:46,655 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:46,655 INFO     
+
+2023-03-29 12:20:46,656 INFO     The relations:
+2023-03-29 12:20:46,656 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:20:46,656 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:20:46,657 INFO     have overlapping parents:
+2023-03-29 12:20:47,408 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:47,409 INFO     
+
+2023-03-29 12:20:47,410 INFO     The relations:
+2023-03-29 12:20:47,410 INFO     -Relation with ID RO:0003303 and label causes condition
+2023-03-29 12:20:47,410 INFO     -Relation with ID RO:0003304 and label contributes to condition
+2023-03-29 12:20:47,411 INFO     have overlapping parents:
+2023-03-29 12:20:48,400 INFO     - Relation with ID RO:0003302 and label causes or contributes to condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal or contributing role that influences the condition.']
+2023-03-29 12:20:48,401 INFO     
+
+2023-03-29 12:20:48,401 INFO     The relations:
+2023-03-29 12:20:48,401 INFO     -Relation with ID RO:0003304 and label contributes to condition
+2023-03-29 12:20:48,402 INFO     -Relation with ID RO:0003303 and label causes condition
+2023-03-29 12:20:48,403 INFO     have overlapping parents:
+2023-03-29 12:20:49,242 INFO     - Relation with ID RO:0003302 and label causes or contributes to condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal or contributing role that influences the condition.']
+2023-03-29 12:20:49,242 INFO     
+
+2023-03-29 12:20:49,243 INFO     The relations:
+2023-03-29 12:20:49,243 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:20:49,244 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:20:49,244 INFO     have overlapping parents:
+2023-03-29 12:20:50,073 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:50,073 INFO     
+
+2023-03-29 12:20:50,074 INFO     The relations:
+2023-03-29 12:20:50,074 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:20:50,074 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:20:50,075 INFO     have overlapping parents:
+2023-03-29 12:20:50,798 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:20:50,799 INFO     
+
+2023-03-29 12:20:50,799 INFO     The relations:
+2023-03-29 12:20:50,800 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:20:50,800 INFO     -Relation with ID RO:0004016 and label is causal germline mutation partially giving rise to
+2023-03-29 12:20:50,800 INFO     have overlapping parents:
+2023-03-29 12:20:51,515 INFO     - Relation with ID RO:0004010 and label is genetic basis for condition describing None
+2023-03-29 12:20:51,515 INFO     
+
+2023-03-29 12:20:51,516 INFO     The relations:
+2023-03-29 12:20:51,516 INFO     -Relation with ID RO:0004016 and label is causal germline mutation partially giving rise to
+2023-03-29 12:20:51,517 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:20:51,517 INFO     have overlapping parents:
+2023-03-29 12:20:52,570 INFO     - Relation with ID RO:0004010 and label is genetic basis for condition describing None
+2023-03-29 12:20:52,571 INFO     
+
+2023-03-29 12:58:05,528 INFO     Created a list of tuples with 82674 entries
+2023-03-29 12:58:05,533 INFO     Loaded 82674 associations
+2023-03-29 12:58:05,538 INFO     Created a list of tuples with 239 entries
+2023-03-29 12:58:05,538 INFO     Loaded 239 associations
+2023-03-29 12:58:05,545 INFO     Created a list of tuples with 31 entries
+2023-03-29 12:58:05,545 INFO     Loaded 31 associations
+2023-03-29 12:58:06,724 INFO     The graph contains 8 different semantic groups: {'DISO', 'ANAT', 'GENE', 'VARI', 'PHYS', 'GENO', 'DRUG', 'ORTH'}
+2023-03-29 12:58:06,725 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-03-29 12:58:07,087 INFO     The graph contains 8 different semantic groups: {'DISO', 'ANAT', 'GENE', 'VARI', 'PHYS', 'GENO', 'DRUG', 'ORTH'}
+2023-03-29 12:58:07,087 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-03-29 12:58:07,090 INFO     There are 8 semantic groups: ['DISO' 'DRUG' 'ORTH' 'VARI' 'GENO' 'PHYS' 'GENE' 'ANAT']
+2023-03-29 12:58:07,114 INFO     There are 25 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+GENO:0000841                     likely pathogenic for condition
+None                                                        None
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0002607                                         is marker for
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+dc:source                                                 source
+2023-03-29 12:58:07,809 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-03-29 12:58:07,840 INFO     List of triplets saved to prev_triplets.csv
+2023-03-29 12:58:24,654 INFO     For relation with URI GENO:0000408 and label "is_allele_of" with definitions None, ancestors have been found that also exist in the same relations set:
+2023-03-29 12:58:24,654 INFO     - Relation with URI GENO:0000418 and label "has_affected_feature" with definitions None
+2023-03-29 12:58:24,655 INFO     
+
+2023-03-29 12:58:24,655 INFO     For relation with URI GENO:0000840 and label "pathogenic_for_condition" with definitions None, ancestors have been found that also exist in the same relations set:
+2023-03-29 12:58:24,656 INFO     - Relation with URI RO:0003303 and label "causes condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:24,657 INFO     
+
+2023-03-29 12:58:24,657 INFO     For relation with URI GENO:0000841 and label "likely_pathogenic_for_condition" with definitions None, ancestors have been found that also exist in the same relations set:
+2023-03-29 12:58:24,658 INFO     - Relation with URI RO:0003303 and label "causes condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:24,658 INFO     
+
+2023-03-29 12:58:24,659 INFO     For relation with URI RO:0004013 and label "is causal germline mutation in" with definitions ['Relates a gene to condition, such that a mutation in this gene is sufficient to produce the condition and that can be passed on to offspring[modified from orphanet].'], ancestors have been found that also exist in the same relations set:
+2023-03-29 12:58:24,659 INFO     - Relation with URI RO:0003303 and label "causes condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:24,660 INFO     
+
+2023-03-29 12:58:24,660 INFO     For relation with URI RO:0004016 and label "is causal germline mutation partially giving rise to" with definitions ['Relates a gene to condition, such that a mutation in this gene partially contributes to the presentation of this condition[modified from orphanet].'], ancestors have been found that also exist in the same relations set:
+2023-03-29 12:58:24,662 INFO     - Relation with URI RO:0003304 and label "contributes to condition" with definitions ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some contributing role that influences the condition.']
+2023-03-29 12:58:24,662 INFO     
+
+2023-03-29 12:58:24,663 INFO     For relation with URI RO:HOM0000020 and label "in 1 to 1 orthology relationship with" with definitions ['Orthology that involves two genes that did not experience any duplication after the speciation event that created them.'], ancestors have been found that also exist in the same relations set:
+2023-03-29 12:58:24,664 INFO     - Relation with URI RO:HOM0000017 and label "in orthology relationship with" with definitions ['Historical homology that involves genes that diverged after a speciation event.']
+2023-03-29 12:58:24,664 INFO     
+
+2023-03-29 12:58:24,665 INFO     The relations:
+2023-03-29 12:58:24,666 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:58:24,666 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:58:24,667 INFO     have overlapping parents:
+2023-03-29 12:58:25,422 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:25,423 INFO     
+
+2023-03-29 12:58:25,423 INFO     The relations:
+2023-03-29 12:58:25,423 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:58:25,424 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:58:25,424 INFO     have overlapping parents:
+2023-03-29 12:58:26,554 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:26,554 INFO     
+
+2023-03-29 12:58:26,555 INFO     The relations:
+2023-03-29 12:58:26,555 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:58:26,555 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:58:26,556 INFO     have overlapping parents:
+2023-03-29 12:58:27,503 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:27,504 INFO     
+
+2023-03-29 12:58:27,504 INFO     The relations:
+2023-03-29 12:58:27,504 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:58:27,505 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:58:27,505 INFO     have overlapping parents:
+2023-03-29 12:58:28,224 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:28,226 INFO     
+
+2023-03-29 12:58:28,226 INFO     The relations:
+2023-03-29 12:58:28,227 INFO     -Relation with ID RO:0003303 and label causes condition
+2023-03-29 12:58:28,227 INFO     -Relation with ID RO:0003304 and label contributes to condition
+2023-03-29 12:58:28,228 INFO     have overlapping parents:
+2023-03-29 12:58:28,966 INFO     - Relation with ID RO:0003302 and label causes or contributes to condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal or contributing role that influences the condition.']
+2023-03-29 12:58:28,967 INFO     
+
+2023-03-29 12:58:28,968 INFO     The relations:
+2023-03-29 12:58:28,968 INFO     -Relation with ID RO:0003304 and label contributes to condition
+2023-03-29 12:58:28,969 INFO     -Relation with ID RO:0003303 and label causes condition
+2023-03-29 12:58:28,969 INFO     have overlapping parents:
+2023-03-29 12:58:29,744 INFO     - Relation with ID RO:0003302 and label causes or contributes to condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal or contributing role that influences the condition.']
+2023-03-29 12:58:29,744 INFO     
+
+2023-03-29 12:58:29,745 INFO     The relations:
+2023-03-29 12:58:29,745 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:58:29,745 INFO     -Relation with ID GENO:0000840 and label pathogenic_for_condition
+2023-03-29 12:58:29,746 INFO     have overlapping parents:
+2023-03-29 12:58:30,450 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:30,450 INFO     
+
+2023-03-29 12:58:30,452 INFO     The relations:
+2023-03-29 12:58:30,452 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:58:30,453 INFO     -Relation with ID GENO:0000841 and label likely_pathogenic_for_condition
+2023-03-29 12:58:30,453 INFO     have overlapping parents:
+2023-03-29 12:58:31,178 INFO     - Relation with ID RO:0003303 and label causes condition describing ['A relationship between an entity (e.g. a genotype, genetic variation, chemical, or environmental exposure) and a condition (a phenotype or disease), where the entity has some causal role for the condition.']
+2023-03-29 12:58:31,179 INFO     
+
+2023-03-29 12:58:31,179 INFO     The relations:
+2023-03-29 12:58:31,179 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:58:31,180 INFO     -Relation with ID RO:0004016 and label is causal germline mutation partially giving rise to
+2023-03-29 12:58:31,180 INFO     have overlapping parents:
+2023-03-29 12:58:31,894 INFO     - Relation with ID RO:0004010 and label is genetic basis for condition describing None
+2023-03-29 12:58:31,894 INFO     
+
+2023-03-29 12:58:31,895 INFO     The relations:
+2023-03-29 12:58:31,896 INFO     -Relation with ID RO:0004016 and label is causal germline mutation partially giving rise to
+2023-03-29 12:58:31,896 INFO     -Relation with ID RO:0004013 and label is causal germline mutation in
+2023-03-29 12:58:31,897 INFO     have overlapping parents:
+2023-03-29 12:58:32,637 INFO     - Relation with ID RO:0004010 and label is genetic basis for condition describing None
+2023-03-29 12:58:32,637 INFO     
+
