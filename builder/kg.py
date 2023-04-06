@@ -54,7 +54,7 @@ class Edge:
         self.relation = {
             'id': assoc_tuple[constants.assoc_tuple_values.index('relation_id')],
             'iri': assoc_tuple[constants.assoc_tuple_values.index('relation_iri')],
-            'label': assoc_tuple[constants.assoc_tuple_values.index('relation_label')].replace('_', ' ')
+            'label': str(assoc_tuple[constants.assoc_tuple_values.index('relation_label')]).replace('_', ' ')
         }
         
     def __eq__(self, other):

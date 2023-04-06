@@ -8,31 +8,31 @@
         CREATE CONSTRAINT variantIdConstraint FOR (v:Variant) REQUIRE v.id IS UNIQUE;
     ;
 
+        CREATE CONSTRAINT cellularcomponentIdConstraint FOR (c:CellularComponent) REQUIRE c.id IS UNIQUE;
+    ;
+
         CREATE CONSTRAINT drugIdConstraint FOR (d:Drug) REQUIRE d.id IS UNIQUE;
-    ;
-
-        CREATE CONSTRAINT molecularfunctionIdConstraint FOR (m:MolecularFunction) REQUIRE m.id IS UNIQUE;
-    ;
-
-        CREATE CONSTRAINT genotypeIdConstraint FOR (g:Genotype) REQUIRE g.id IS UNIQUE;
-    ;
-
-        CREATE CONSTRAINT modelIdConstraint FOR (m:Model) REQUIRE m.id IS UNIQUE;
-    ;
-
-        CREATE CONSTRAINT diseaseIdConstraint FOR (d:Disease) REQUIRE d.id IS UNIQUE;
-    ;
-
-        CREATE CONSTRAINT anatomicalentityIdConstraint FOR (a:AnatomicalEntity) REQUIRE a.id IS UNIQUE;
     ;
 
         CREATE CONSTRAINT biologicalprocessIdConstraint FOR (b:BiologicalProcess) REQUIRE b.id IS UNIQUE;
     ;
 
+        CREATE CONSTRAINT modelIdConstraint FOR (m:Model) REQUIRE m.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT genotypeIdConstraint FOR (g:Genotype) REQUIRE g.id IS UNIQUE;
+    ;
+
         CREATE CONSTRAINT chemicalIdConstraint FOR (c:Chemical) REQUIRE c.id IS UNIQUE;
     ;
 
-        CREATE CONSTRAINT cellularcomponentIdConstraint FOR (c:CellularComponent) REQUIRE c.id IS UNIQUE;
+        CREATE CONSTRAINT molecularfunctionIdConstraint FOR (m:MolecularFunction) REQUIRE m.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT anatomicalentityIdConstraint FOR (a:AnatomicalEntity) REQUIRE a.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT diseaseIdConstraint FOR (d:Disease) REQUIRE d.id IS UNIQUE;
     ;
 
         CREATE CONSTRAINT pathwayIdConstraint FOR (p:Pathway) REQUIRE p.id IS UNIQUE;

@@ -78,5 +78,5 @@ def build_kg(load_csv: bool = False):
     # TODO: still some duplicates for substance that treats and targets?
 
 if __name__ == "__main__":
-    #build_kg(load_csv=True)
-    build_prev_kg()
+    build_kg(load_csv=True)
+    #build_prev_kg()
