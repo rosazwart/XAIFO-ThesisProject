@@ -1,5 +1,3 @@
-import pandas as pd
-
 import util.constants as constants
 
 from util.loaders import load_associations_from_csv
@@ -10,9 +8,10 @@ import monarch.fetcher as monarch_fetcher
 import ttd.fetcher as ttd_fetcher
 import drugcentral.fetcher as drugcentral_fetcher
 import builder.cypherqueries as cypher_querybuilder
+import builder.restructure_kg as restructurer
 import ols.fetcher as ols_fetcher
 
-def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filename):
+def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filename, ontologies: bool = False):
     edges, nodes = kg.generate_dataframes()
     
     edge_colmapping = {
@@ -34,7 +33,8 @@ def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filenam
                                         edge_colmapping, node_colmapping,
                                         concepts_filename, triplets_filename)
     
-    ols_fetcher.analyze_ontology_relations(relations_df)
+    if ontologies:
+        ols_fetcher.analyze_ontology_relations(relations_df)
     
 def build_prev_kg():
     monarch_associations = load_associations_from_csv('prev_monarch_associations.csv')
@@ -72,8 +72,10 @@ def build_kg(load_csv: bool = False):
     
     analyze_data_from_kg(kg, 'concepts.png', 'triplets.csv')
     
-    kg_edges, kg_nodes = kg.generate_dataframes()
-    cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
+    restructurer.RestructuredKnowledgeGraph(kg)
+    
+    #kg_edges, kg_nodes = kg.generate_dataframes()
+    #cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
     
     # TODO: still some duplicates for substance that treats and targets?
 
