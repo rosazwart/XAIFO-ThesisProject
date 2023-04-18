@@ -1,3 +1,5 @@
+import numpy as np
+
 # Dependent on BioLink API responses defined at https://api.monarchinitiative.org/api/
 # `_` indicates dictionary key level separation for example `dict['subject']['id']`
 assoc_tuple_values = ('id', 
@@ -11,6 +13,13 @@ TAXON = 'taxon'
 DRUG = 'drug'
 DISEASE = 'disease'
 PHENOTYPE = 'phenotype'
+MODEL = 'model'
+
+FOUND_IN = {
+    'id': 'CustomRO:foundin',
+    'label': 'found in',
+    'iri': np.nan
+}
 
 INPUT_FOLDER = 'data'
 OUTPUT_FOLDER = 'output'

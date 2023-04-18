@@ -17,7 +17,8 @@ class Node:
         self.semantic_groups = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_category')]
         self.label = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_label')]
         self.iri = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_iri')]
-        self.taxon = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_taxon_id')]
+        self.taxon_id = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_taxon_id')]
+        self.taxon_label = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_taxon_label')]
         
     def __eq__(self, other):
         return self.id == other.id
@@ -36,7 +37,8 @@ class Node:
             'label': self.label,
             'iri': self.iri,
             'semantic': self.semantic_groups,
-            'taxon_id': self.taxon
+            'taxon_id': self.taxon_id,
+            'taxon_label': self.taxon_label
         }
         
         return node_dict
@@ -78,19 +80,13 @@ class Edge:
         }
         
         return edge_dict
-
-class KnowledgeGraph:
+    
+class GeneralKnowledgeGraph:
     """
-        Initialize a knowledge graph by giving a list of associations that is converted into
-        a set of Edge objects and Node objects. 
-        :param all_associations: list of tuples complying with `constants.assoc_tuple_values`, by default an empty list
     """
-    def __init__(self, all_associations: list = []):
+    def __init__(self):
         self.all_edges = set()  # all unique edges in knowledge graph
         self.all_nodes = set()  # all unique nodes in knowledge graph
-        
-        self.add_edges_and_nodes(all_associations)
-        self.analyze_graph()
         
     def generate_dataframes(self):
         """
@@ -131,16 +127,6 @@ class KnowledgeGraph:
         register_info(f'All {len(found_relations)} relations with substring "{substring_relation_label}":\n {found_relations}')
         
         return found_relations
-    
-    def add_edges_and_nodes(self, associations: list):
-        """
-            Add new edges and nodes to the graph given a list of association dictionaries.
-            :param associations: list of association dictionaries
-        """
-        for association in associations:
-            self.all_edges.add(Edge(association))
-            self.all_nodes.add(Node(association, 'subject'))
-            self.all_nodes.add(Node(association, 'object'))
             
     def get_extracted_nodes(self, extract_semantic_groups: list):
         """
@@ -156,4 +142,26 @@ class KnowledgeGraph:
         register_info(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of the semantic groups {extract_semantic_groups}')
 
         return pd.DataFrame.from_records([node.to_dict() for node in extracted_nodes])
+
+class KnowledgeGraph(GeneralKnowledgeGraph):
+    """
+        Initialize a knowledge graph by giving a list of associations that is converted into
+        a set of Edge objects and Node objects. 
+        :param all_associations: list of tuples complying with `constants.assoc_tuple_values`, by default an empty list
+    """
+    def __init__(self, all_associations: list = []):
+        GeneralKnowledgeGraph.__init__(self)
+        
+        self.add_edges_and_nodes(all_associations)
+        self.analyze_graph()
+    
+    def add_edges_and_nodes(self, associations: list):
+        """
+            Add new edges and nodes to the graph given a list of association dictionaries.
+            :param associations: list of association dictionaries
+        """
+        for association in associations:
+            self.all_edges.add(Edge(association))
+            self.all_nodes.add(Node(association, 'subject'))
+            self.all_nodes.add(Node(association, 'object'))
     

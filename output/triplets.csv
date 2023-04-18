@@ -1,49 +1,49 @@
 subject,relation,object
 gene,causes condition,disease
 gene,colocalizes with,gene
+gene,contributes to condition,disease
 gene,contributes to condition,phenotype
 variant,contributes to condition,phenotype
 variant,contributes to condition,disease
-gene,contributes to condition,disease
 model,enables,molecular function
 gene,enables,molecular function
 gene,expressed in,anatomical entity
 variant,has affected feature,gene
 model,has genotype,genotype
 model,has genotype,variant
-genotype,has phenotype,phenotype
-variant,has phenotype,phenotype
 genotype,has phenotype,disease
-variant,has phenotype,disease
+genotype,has phenotype,phenotype
 disease,has phenotype,phenotype
+variant,has phenotype,phenotype
 gene,has phenotype,phenotype
 model,has phenotype,phenotype
-variant,has role in modeling,disease
-model,has role in modeling,disease
+variant,has phenotype,disease
 genotype,has role in modeling,disease
 gene,has role in modeling,disease
-gene,in 1 to 1 orthology relationship with,model
-gene,in 1 to 1 orthology relationship with,gene
+model,has role in modeling,disease
+variant,has role in modeling,disease
 model,in 1 to 1 orthology relationship with,gene
+gene,in 1 to 1 orthology relationship with,gene
+gene,in 1 to 1 orthology relationship with,model
 gene,in orthology relationship with,gene
 gene,interacts with,gene
-gene,interacts with,model
 model,interacts with,gene
-disease,involved in,pathway
-gene,involved in,biological process
-gene,involved in,pathway
+gene,interacts with,model
 disease,involved in,biological process
+disease,involved in,pathway
+gene,involved in,pathway
+gene,involved in,biological process
 variant,is allele of,gene
 gene,is causal germline mutation in,disease
 gene,is causal germline mutation partially giving rise to,disease
-gene,is part of,cellular component
 model,is part of,cellular component
+gene,is part of,cellular component
 drug,is substance that treats,phenotype
 variant,likely pathogenic for condition,disease
-genotype,nan,gene
-chemical,nan,disease
 variant,nan,genotype
-variant,nan,model
+chemical,nan,disease
+genotype,nan,gene
 model,nan,gene
+variant,nan,model
 variant,pathogenic for condition,disease
 drug,targets,gene

@@ -72,7 +72,11 @@ def build_kg(load_csv: bool = False):
     
     analyze_data_from_kg(kg, 'concepts.png', 'triplets.csv')
     
-    restructurer.RestructuredKnowledgeGraph(kg)
+    #new_kg = restructurer.RestructuredKnowledgeGraph(kg)
+    #analyze_data_from_kg(new_kg, 'new_concepts.png', 'new_triplets.csv')
+    
+    #new_kg_edges, new_kg_nodes = new_kg.generate_dataframes()
+    #cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, False)
     
     #kg_edges, kg_nodes = kg.generate_dataframes()
     #cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
