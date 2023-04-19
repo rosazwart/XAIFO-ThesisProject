@@ -5,7 +5,8 @@ import util.common as common
 
 import pandas as pd
 import numpy as np
-import hashlib
+
+from tqdm import tqdm
 
 class Node:
     """
@@ -238,54 +239,120 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
     """
         Initialize a knowledge graph restructuring by giving a KnowledgeGraph entity
         containing a set of Edge and Node objects.
-        :param old_kg: KnowledgeGraph instance
+        :param prev_kg: KnowledgeGraph instance
     """
-    def __init__(self, old_kg: AssocKnowledgeGraph):
+    def __init__(self, prev_kg: AssocKnowledgeGraph):
         KnowledgeGraph.__init__(self)
             
-        self.restructure_kg(old_kg)
+        self.restructure_kg(prev_kg)
         
     def add_edge(self, edge: NewEdge):
         """
             Add a NewEdge object to set of edges.
         """
-        self.all_edges.add(edge)
+        if edge:
+            self.all_edges.add(edge)
     
     def add_node(self, node: NewNode):
         """
             Add a NewNode object to set of nodes.
         """
-        self.all_nodes.add(node)
+        if node:
+            self.all_nodes.add(node)
+            
+    def remove_node(self, node: AssocNode):
+        """
+        """
+        if node.semantic_groups == constants.ANAT:
+            return True
+        else:
+            return False
+            
+    def remove_edge(self, prev_edge: AssocEdge, prev_nodes_df: pd.DataFrame):
+        """
+        """
+        subject_id = prev_edge.subject
+        subject_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == subject_id, 'semantic'].iloc[0]
+        object_id = prev_edge.object
+        object_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == object_id, 'semantic'].iloc[0]
         
-    def transform_node(self, node: Node, edges_df: pd.DataFrame):
+        if subject_semantic == constants.ANAT or object_semantic == constants.ANAT:
+            return True
+        elif pd.isnull(prev_edge.relation['id']):
+            # TODO: Not all
+            return True
+        else: 
+            return False
+        
+    def group_edge(self, prev_edge: AssocEdge):
+        """
+
+        """
+        if prev_edge.relation['id'] in constants.REL_GROUPING:
+            new_relation = constants.REL_GROUPING[prev_edge.relation['id']]
+            grouped_edge = NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+            return grouped_edge
+        else:
+            edge = NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, prev_edge.relation['id'], prev_edge.relation['label'], prev_edge.relation['iri'])
+            return edge
+    
+    def get_node_associations(self, node_id, edges_df: pd.DataFrame):
+        # Create heatmap for each semantic group, each column being a relation, count occurrence of each relation, ratio with total of entity of that semantic group
+        associated_rows_df = edges_df.loc[(edges_df['subject'] == node_id) | (edges_df['object'] == node_id)]
+        relations = associated_rows_df['relation_id'].unique().tolist()
+        
+        return relations
+        
+    def transform_node_semantic(self, node: AssocNode, all_relations: list):
         """
             Find out to which semantic group the node belongs.
         """
+        if node.semantic_groups == constants.MODEL:
+            if 'GENO:0000222' in all_relations:
+                return constants.BIOLART
+        
         return node.semantic_groups
         
-    def add_concept_taxon(self, node: Node):
-        if not pd.isnull(node.taxon_id) and node.semantic_groups == constants.GENE:
+    def add_concept_taxon(self, node: AssocNode):
+        if not pd.isnull(node.taxon_id) and node.semantic_groups in [constants.GENE, constants.BIOLART]:
             gene_node = node
             taxon_node = NewNode(id=gene_node.taxon_id, label=gene_node.taxon_label, iri=np.nan, semantic=constants.TAXON)
             
-            taxon_edge_id = common.generate_edge_id(constants.FOUND_IN['id'], gene_node.id, taxon_node.id)
-            taxon_edge = NewEdge(taxon_edge_id, gene_node.id, taxon_node.id, constants.FOUND_IN['id'], constants.FOUND_IN['label'], constants.FOUND_IN['iri'])
+            if node.semantic_groups == constants.GENE:
+                taxon_edge_id = common.generate_edge_id(constants.FOUND_IN['id'], gene_node.id, taxon_node.id)
+                taxon_edge = NewEdge(taxon_edge_id, gene_node.id, taxon_node.id, constants.FOUND_IN['id'], constants.FOUND_IN['label'], constants.FOUND_IN['iri'])
+            elif node.semantic_groups == constants.BIOLART:
+                taxon_edge_id = common.generate_edge_id(constants.IS_OF['id'], gene_node.id, taxon_node.id)
+                taxon_edge = NewEdge(taxon_edge_id, gene_node.id, taxon_node.id, constants.IS_OF['id'], constants.IS_OF['label'], constants.IS_OF['iri'])
+            else:
+                taxon_edge = None
             
             self.add_node(taxon_node)
-            self.add_node(gene_node)
-            
             self.add_edge(taxon_edge)
             
-    def restructure_kg(self, old_kg: KnowledgeGraph):
-        edges_df, _ = old_kg.generate_dataframes()
-        print(list(edges_df.columns.values))
+    def restructure_kg(self, prev_kg: AssocKnowledgeGraph):
+        _, prev_nodes_df = prev_kg.generate_dataframes()
         
-        for node in old_kg.all_nodes:
-            node.semantic_groups = self.transform_node(node, edges_df)
+        print('Iterating over edges')
+        for prev_edge in tqdm(prev_kg.all_edges):
+            if not self.remove_edge(prev_edge, prev_nodes_df):
+                new_edge = self.group_edge(prev_edge)
+                self.add_edge(new_edge)
             
-            # Add TAXON nodes
-            self.add_concept_taxon(node)
-            
-            #         
+        edges_df, _ = self.generate_dataframes()
+        
+        print('Iterating over nodes')
+        for node in tqdm(prev_kg.all_nodes):
+            if not self.remove_node(node):
+                # Get all relations it is associated with
+                node_relations = self.get_node_associations(node.id, edges_df)
+                
+                node.semantic_groups = self.transform_node_semantic(node, node_relations)
+                
+                # Add TAXON nodes
+                self.add_concept_taxon(node)
+                
+                new_node = NewNode(node.id, node.label, node.iri, node.semantic_groups)
+                self.add_node(new_node)
 
     

@@ -14,11 +14,69 @@ DRUG = 'drug'
 DISEASE = 'disease'
 PHENOTYPE = 'phenotype'
 MODEL = 'model'
+BIOLART = 'biological artifact'
+ANAT = 'anatomical entity'
+VAR = 'variant'
 
 FOUND_IN = {
     'id': 'CustomRO:foundin',
     'label': 'found in',
     'iri': np.nan
+}
+
+IS_OF = {
+    'id': 'CustomRO:isof',
+    'label': 'is of',
+    'iri': np.nan
+}
+
+IS_VARIANT_IN = {
+    'id': 'CustomRO:isvariantin',
+    'label': 'is variant in',
+    'iri': np.nan
+}
+
+REL_GROUPING = {
+    'RO:HOM0000020': {
+        'id': 'RO:HOM0000017',
+        'label': 'in orthology relationship with',
+        'iri': 'http://purl.obolibrary.org/obo/RO_HOM0000017'
+    },
+    'RO:0004016': {
+        'id': 'RO:0003304',
+        'label': 'contributes to condition',
+        'iri': 'http://purl.obolibrary.org/obo/RO_0003304'
+    },
+    'RO:0002607': {
+        'id': 'RO:0003304',
+        'label': 'contributes to condition',
+        'iri': 'http://purl.obolibrary.org/obo/RO_0003304'
+    },
+    'RO:0002326': {
+        'id': 'RO:0003304',
+        'label': 'contributes to condition',
+        'iri': 'http://purl.obolibrary.org/obo/RO_0003304'
+    },
+    'GENO:0000841': {
+        'id': 'CustomRO:likelycauses',
+        'label': 'likely causes condition',
+        'iri': np.nan
+    },
+    'RO:0004013': {
+        'id': 'RO:0003303',
+        'label': 'causes condition',
+        'iri': 'http://purl.obolibrary.org/obo/RO_0003303'
+    },
+    'GENO:0000840': {
+        'id': 'RO:0003303',
+        'label': 'causes condition',
+        'iri': 'http://purl.obolibrary.org/obo/RO_0003303'
+    },
+    'RO:0002200': {
+        'id': 'RO:0003303',
+        'label': 'causes condition',
+        'iri': 'http://purl.obolibrary.org/obo/RO_0003303'
+    }
 }
 
 INPUT_FOLDER = 'data'
