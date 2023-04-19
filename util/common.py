@@ -36,6 +36,7 @@ def draw_graph(edges, source_colname, target_colname, file_name):
     nx.draw(G, with_labels=True, node_size=800, font_size=6)
     
     plt.savefig(file_name)
+    plt.clf()
     
 def tuplelist2dataframe(tuple_list: list):
     """

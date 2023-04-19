@@ -3,13 +3,25 @@ from util.common import register_info
 import util.constants as constants
 
 import pandas as pd
+import numpy as np
+import hashlib
 
 class Node:
+    """
+        Initialize nodes using this class carrying information about the entity it represents.
+    """
+    def __eq__(self, other):
+        return self.id == other.id
+    
+    def __hash__(self):
+        return hash(self.id)
+    
+class AssocNode(Node):
     """
         Initialize nodes using this class, carrying information about the id of the entity,
         the semantic groups that are associated with the entity, the label of the entity as well as
         the iri link. The taxon attribute is used to specify whether the entity belongs to a certain taxon
-        relevant to GENE entities.
+        when applicable.
         :param assoc_tuple: tuple of information about association
     """
     def __init__(self, assoc_tuple: tuple, node_role: str):
@@ -19,13 +31,6 @@ class Node:
         self.iri = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_iri')]
         self.taxon_id = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_taxon_id')]
         self.taxon_label = assoc_tuple[constants.assoc_tuple_values.index(f'{node_role}_taxon_label')]
-        
-    def __eq__(self, other):
-        return self.id == other.id
-    
-    def __hash__(self):
-        # https://hynek.me/articles/hashes-and-equality/
-        return hash(self.id)
     
     def to_dict(self):
         """
@@ -43,7 +48,48 @@ class Node:
         
         return node_dict
     
+class NewNode(Node):
+    """
+        Initialize nodes using this class, carrying information about the id
+        of the entity, the semantic groups that are associated with the entity,
+        and the label.
+        :param id: id of entity
+        :param label: label of entity
+        :param iri: id in iri format of entity
+        :param semantic: semantic group to which entity belongs
+    """
+    def __init__(self, id, label, iri, semantic):
+        self.id = id
+        self.label = label
+        self.iri = iri
+        self.semantic_groups = semantic
+    
+    def to_dict(self):
+        """
+            Convert NewNode object to a dictionary of values relevant to the
+            node.
+            :return: dictionary with node information
+        """
+        node_dict = {
+            'id': self.id,
+            'label': self.label,
+            'iri': self.iri,
+            'semantic': self.semantic_groups
+        }
+        
+        return node_dict
+    
 class Edge:
+    """
+        Initialize edges using this class carryinh information about the association it represents.
+    """
+    def __eq__(self, other):
+        return self.id == other.id
+    
+    def __hash__(self):
+        return hash(self.id)
+    
+class AssocEdge(Edge):
     """
         Initialize edges using this class, carrying information about the id of the association,
         the ids of the subject and object and the id, label and iri link of the relation.
@@ -58,12 +104,6 @@ class Edge:
             'iri': assoc_tuple[constants.assoc_tuple_values.index('relation_iri')],
             'label': str(assoc_tuple[constants.assoc_tuple_values.index('relation_label')]).replace('_', ' ')
         }
-        
-    def __eq__(self, other):
-        return self.id == other.id
-    
-    def __hash__(self):
-        return hash(self.id)
     
     def to_dict(self):
         """
@@ -81,8 +121,36 @@ class Edge:
         
         return edge_dict
     
-class GeneralKnowledgeGraph:
+class NewEdge(Edge):
+    def __init__(self, id, subject, object, relation_id, relation_label, relation_iri):
+        self.id = id
+        self.subject = subject
+        self.object = object
+        self.relation = {
+            'id': relation_id,
+            'iri': relation_iri,
+            'label': relation_label
+        }
+    
+    def to_dict(self):
+        """
+            Convert NewEdge object to a dictionary of values relevant to the edge.
+            :return: dictionary with edge information
+        """
+        edge_dict = {
+            'id': self.id,
+            'subject': self.subject,
+            'object': self.object,
+            'relation_id': self.relation['id'],
+            'relation_label': self.relation['label'],
+            'relation_iri': self.relation['iri']
+        }
+        
+        return edge_dict
+    
+class KnowledgeGraph:
     """
+        Initialize a knowledge graph that consists of a set of edges and a set of nodes.
     """
     def __init__(self):
         self.all_edges = set()  # all unique edges in knowledge graph
@@ -143,14 +211,14 @@ class GeneralKnowledgeGraph:
 
         return pd.DataFrame.from_records([node.to_dict() for node in extracted_nodes])
 
-class KnowledgeGraph(GeneralKnowledgeGraph):
+class AssocKnowledgeGraph(KnowledgeGraph):
     """
         Initialize a knowledge graph by giving a list of associations that is converted into
         a set of Edge objects and Node objects. 
         :param all_associations: list of tuples complying with `constants.assoc_tuple_values`, by default an empty list
     """
     def __init__(self, all_associations: list = []):
-        GeneralKnowledgeGraph.__init__(self)
+        KnowledgeGraph.__init__(self)
         
         self.add_edges_and_nodes(all_associations)
         self.analyze_graph()
@@ -161,7 +229,69 @@ class KnowledgeGraph(GeneralKnowledgeGraph):
             :param associations: list of association dictionaries
         """
         for association in associations:
-            self.all_edges.add(Edge(association))
-            self.all_nodes.add(Node(association, 'subject'))
-            self.all_nodes.add(Node(association, 'object'))
+            self.all_edges.add(AssocEdge(association))
+            self.all_nodes.add(AssocNode(association, 'subject'))
+            self.all_nodes.add(AssocNode(association, 'object'))
+    
+class RestructuredKnowledgeGraph(KnowledgeGraph):
+    """
+        Initialize a knowledge graph restructuring by giving a KnowledgeGraph entity
+        containing a set of Edge and Node objects.
+        :param old_kg: KnowledgeGraph instance
+    """
+    def __init__(self, old_kg: AssocKnowledgeGraph):
+        KnowledgeGraph.__init__(self)
+            
+        self.restructure_kg(old_kg)
+        
+    def generate_edge_id(self, relation_id, subject, object):
+        strings_tuple = (relation_id, subject, object)
+        hasher = hashlib.md5()
+        for string_value in strings_tuple:
+            hasher.update(string_value.encode())
+        return hasher.hexdigest()
+        
+    def add_edge(self, edge: NewEdge):
+        """
+            Add a NewEdge object to set of edges.
+        """
+        self.all_edges.add(edge)
+    
+    def add_node(self, node: NewNode):
+        """
+            Add a NewNode object to set of nodes.
+        """
+        self.all_nodes.add(node)
+        
+    def transform_node(self, node: Node, edges_df: pd.DataFrame):
+        """
+            Find out to which semantic group the node belongs.
+        """
+        print(edges_df)
+        return node.semantic_groups
+        
+    def add_concept_taxon(self, node: Node):
+        if not pd.isnull(node.taxon_id) and node.semantic_groups == constants.GENE:
+            gene_node = node
+            taxon_node = NewNode(id=gene_node.taxon_id, label=gene_node.taxon_label, iri=np.nan, semantic=constants.TAXON)
+            
+            taxon_edge_id = self.generate_edge_id(constants.FOUND_IN['id'], gene_node.id, taxon_node.id)
+            taxon_edge = NewEdge(taxon_edge_id, gene_node.id, taxon_node.id, constants.FOUND_IN['id'], constants.FOUND_IN['label'], constants.FOUND_IN['iri'])
+            
+            self.add_node(taxon_node)
+            self.add_node(gene_node)
+            
+            self.add_edge(taxon_edge)
+            
+    def restructure_kg(self, old_kg: KnowledgeGraph):
+        edges_df, _ = old_kg.generate_dataframes()
+        
+        for node in old_kg.all_nodes:
+            node.semantic_groups = self.transform_node(node, edges_df)
+            
+            # Add TAXON nodes
+            self.add_concept_taxon(node)
+            
+            #         
+
     

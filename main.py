@@ -1,17 +1,16 @@
 import util.constants as constants
 
 from util.loaders import load_associations_from_csv
-from builder.kg import KnowledgeGraph
+from builder.kg import AssocKnowledgeGraph, RestructuredKnowledgeGraph
 
 import analyzer.graphstructure as graphstructure
 import monarch.fetcher as monarch_fetcher
 import ttd.fetcher as ttd_fetcher
 import drugcentral.fetcher as drugcentral_fetcher
 import builder.cypherqueries as cypher_querybuilder
-import builder.restructure_kg as restructurer
 import ols.fetcher as ols_fetcher
 
-def analyze_data_from_kg(kg: KnowledgeGraph, concepts_filename, triplets_filename, ontologies: bool = False):
+def analyze_data_from_kg(kg: AssocKnowledgeGraph | RestructuredKnowledgeGraph, concepts_filename, triplets_filename, ontologies: bool = False):
     edges, nodes = kg.generate_dataframes()
     
     edge_colmapping = {
@@ -41,7 +40,7 @@ def build_prev_kg():
     ttd_associations = load_associations_from_csv('prev_ttd_associations.csv')
     drugcentral_associations = load_associations_from_csv('prev_drugcentral_associations.csv')
     
-    kg = KnowledgeGraph(monarch_associations)
+    kg = AssocKnowledgeGraph(monarch_associations)
     kg.add_edges_and_nodes(ttd_associations)
     kg.add_edges_and_nodes(drugcentral_associations)
     
@@ -57,7 +56,7 @@ def build_kg(load_csv: bool = False):
         ]
         monarch_associations = monarch_fetcher.get_monarch_associations(nodes_list)
         
-    kg = KnowledgeGraph(monarch_associations)
+    kg = AssocKnowledgeGraph(monarch_associations)
     
     gene_nodes = kg.get_extracted_nodes([constants.GENE])
     ttd_associations = ttd_fetcher.get_drugtarget_associations(gene_nodes)
@@ -70,16 +69,18 @@ def build_kg(load_csv: bool = False):
     
     kg.add_edges_and_nodes(drugcentral_associations)
     
+    # Initial knowledge graph
     analyze_data_from_kg(kg, 'concepts.png', 'triplets.csv')
     
-    #new_kg = restructurer.RestructuredKnowledgeGraph(kg)
-    #analyze_data_from_kg(new_kg, 'new_concepts.png', 'new_triplets.csv')
+    kg_edges, kg_nodes = kg.generate_dataframes()
+    cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
     
-    #new_kg_edges, new_kg_nodes = new_kg.generate_dataframes()
-    #cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, False)
+    # Restructured knowledge graph
+    new_kg = RestructuredKnowledgeGraph(kg)
+    analyze_data_from_kg(new_kg, 'new_concepts.png', 'new_triplets.csv')
     
-    #kg_edges, kg_nodes = kg.generate_dataframes()
-    #cypher_querybuilder.build_queries(kg_nodes, kg_edges, True)
+    new_kg_edges, new_kg_nodes = new_kg.generate_dataframes()
+    cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, False)
     
     # TODO: still some duplicates for substance that treats and targets?
 
