@@ -2075,3 +2075,299 @@ RO:HOM0000020              in 1 to 1 orthology relationship with
  Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
 2023-04-19 12:13:57,386 INFO     The graph contains 0 different semantic groups: set()
 2023-04-19 12:13:57,386 INFO     For the graph, a total of 0 edges and 0 nodes have been generated.
+2023-04-19 12:40:04,793 INFO     Created a list of tuples with 83287 entries
+2023-04-19 12:40:04,797 INFO     Loaded 83287 associations
+2023-04-19 12:40:05,729 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'chemical', 'model', 'gene', 'genotype', 'biological process', 'pathway', 'variant', 'phenotype', 'cellular component', 'disease', 'molecular function'}
+2023-04-19 12:40:05,729 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-04-19 12:40:05,736 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-04-19 12:40:05,744 INFO     A total of 3161 gene IDs has been extracted
+2023-04-19 12:40:05,834 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME  ... ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  ...         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  ...         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  ...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-04-19 12:40:24,505 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-04-19 12:40:24,522 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME  ...    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2  ...  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-04-19 12:40:24,525 INFO     Total of 366 drug-target associations changed to 357 by dropping duplicates.
+2023-04-19 12:40:25,044 INFO     All TTD associations are saved into ttd_associations.csv
+2023-04-19 12:40:25,045 INFO     Created a list of tuples with 357 entries
+2023-04-19 12:40:25,054 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-04-19 12:40:25,061 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-04-19 12:40:25,073 INFO     There are 282 unique drug names
+2023-04-19 12:40:25,073 INFO     There are 5323 unique disease/phenotype IDs
+2023-04-19 12:40:25,357 INFO     Loaded 28978 drug-disease pairs:
+  DRUG_ID DRUG_NAME                 DISEASE_NAME     PHASE
+0  D00ABE   ald-301                     ischemia   Phase 2
+1  D00ABE   ald-301  peripheral arterial disease   Phase 2
+2  D00ABO   kw-2449      acute myeloid leukaemia   Phase 1
+2023-04-19 12:40:25,377 INFO     Loaded 493 phenotypes with matching IDs scoring 100:
+                   Name     ontologyTermName                            ontologyTermIRI  score  validated  review  DISEASE_ID
+0   respiratory failure  Respiratory failure  http://purl.obolibrary.org/obo/HP_0002878  100.0      False   False  HP:0002878
+17        dental caries        Carious teeth  http://purl.obolibrary.org/obo/HP_0000670  100.0      False   False  HP:0000670
+25            gastritis            Gastritis  http://purl.obolibrary.org/obo/HP_0005263  100.0      False   False  HP:0005263
+2023-04-19 12:40:25,410 INFO     Total of 12151 disease names mapped to their IDs:
+   DRUG_ID                                        DRUG_NAME  DISEASE_ID                           DISEASE_NAME
+1   D00ABE                                          ald-301  HP:0004950            peripheral arterial disease
+2   D00ABO                                          kw-2449  HP:0004808                acute myeloid leukaemia
+4   D00ACC                                           nd1251  HP:0000716                             depression
+11  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+12  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+14  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0002861                               melanoma
+19  D00AJS                                            aik11  HP:0005978         non insulin dependent diabetes
+21  D00AKQ                             o-desulfated heparin  HP:0006510  chronic obstructive pulmonary disease
+22  D00AKR                                          amg 479  HP:0003002                          breast cancer
+24  D00AKY                                    sk&f-s-106203  HP:0002099                                 asthma
+2023-04-19 12:40:25,416 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-04-19 12:40:25,417 INFO     Total of 64 drug-disease associations changed to 61 by dropping duplicates.
+2023-04-19 12:40:25,533 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-04-19 12:40:25,533 INFO     Created a list of tuples with 61 entries
+2023-04-19 12:40:25,726 INFO     The graph contains 13 different semantic groups: {'anatomical entity', 'chemical', 'model', 'gene', 'genotype', 'biological process', 'pathway', 'variant', 'drug', 'phenotype', 'cellular component', 'disease', 'molecular function'}
+2023-04-19 12:40:25,726 INFO     For the graph, a total of 83705 edges and 10231 nodes have been generated.
+2023-04-19 12:40:25,727 INFO     There are 13 semantic groups: ['phenotype' 'gene' 'drug' 'model' 'variant' 'anatomical entity' 'disease'
+ 'genotype' 'biological process' 'cellular component' 'chemical'
+ 'molecular function' 'pathway']
+2023-04-19 12:40:25,743 INFO     There are 21 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+GENO:0000841                     likely pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2023-04-19 12:40:26,099 INFO     Graph of all connections between concepts saved to concepts.png
+2023-04-19 12:40:26,116 INFO     List of triplets saved to triplets.csv
+2023-04-19 12:40:26,518 INFO     All nodes are stored into query_nodes.csv
+2023-04-19 12:40:27,000 INFO     All edges are stored into query_edges.csv
+2023-04-19 12:40:27,001 INFO     Generated query list in file queries.txt
+2023-04-19 12:40:27,001 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-04-19 12:41:29,467 INFO     Created a list of tuples with 83287 entries
+2023-04-19 12:41:29,469 INFO     Loaded 83287 associations
+2023-04-19 12:41:30,364 INFO     The graph contains 12 different semantic groups: {'pathway', 'cellular component', 'gene', 'model', 'molecular function', 'disease', 'chemical', 'phenotype', 'variant', 'genotype', 'biological process', 'anatomical entity'}
+2023-04-19 12:41:30,364 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-04-19 12:41:30,368 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-04-19 12:41:30,375 INFO     A total of 3161 gene IDs has been extracted
+2023-04-19 12:41:30,449 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME  ... ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  ...         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  ...         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  ...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-04-19 12:41:49,416 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-04-19 12:41:49,435 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME  ...    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2  ...  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-04-19 12:41:49,437 INFO     Total of 366 drug-target associations changed to 357 by dropping duplicates.
+2023-04-19 12:41:49,957 INFO     All TTD associations are saved into ttd_associations.csv
+2023-04-19 12:41:49,959 INFO     Created a list of tuples with 357 entries
+2023-04-19 12:41:49,968 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-04-19 12:41:49,975 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-04-19 12:41:49,987 INFO     There are 282 unique drug names
+2023-04-19 12:41:49,987 INFO     There are 5323 unique disease/phenotype IDs
+2023-04-19 12:41:50,258 INFO     Loaded 28978 drug-disease pairs:
+  DRUG_ID DRUG_NAME                 DISEASE_NAME     PHASE
+0  D00ABE   ald-301                     ischemia   Phase 2
+1  D00ABE   ald-301  peripheral arterial disease   Phase 2
+2  D00ABO   kw-2449      acute myeloid leukaemia   Phase 1
+2023-04-19 12:41:50,279 INFO     Loaded 493 phenotypes with matching IDs scoring 100:
+                   Name     ontologyTermName                            ontologyTermIRI  score  validated  review  DISEASE_ID
+0   respiratory failure  Respiratory failure  http://purl.obolibrary.org/obo/HP_0002878  100.0      False   False  HP:0002878
+17        dental caries        Carious teeth  http://purl.obolibrary.org/obo/HP_0000670  100.0      False   False  HP:0000670
+25            gastritis            Gastritis  http://purl.obolibrary.org/obo/HP_0005263  100.0      False   False  HP:0005263
+2023-04-19 12:41:50,313 INFO     Total of 12151 disease names mapped to their IDs:
+   DRUG_ID                                        DRUG_NAME  DISEASE_ID                           DISEASE_NAME
+1   D00ABE                                          ald-301  HP:0004950            peripheral arterial disease
+2   D00ABO                                          kw-2449  HP:0004808                acute myeloid leukaemia
+4   D00ACC                                           nd1251  HP:0000716                             depression
+11  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+12  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+14  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0002861                               melanoma
+19  D00AJS                                            aik11  HP:0005978         non insulin dependent diabetes
+21  D00AKQ                             o-desulfated heparin  HP:0006510  chronic obstructive pulmonary disease
+22  D00AKR                                          amg 479  HP:0003002                          breast cancer
+24  D00AKY                                    sk&f-s-106203  HP:0002099                                 asthma
+2023-04-19 12:41:50,319 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-04-19 12:41:50,319 INFO     Total of 64 drug-disease associations changed to 61 by dropping duplicates.
+2023-04-19 12:41:50,437 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-04-19 12:41:50,438 INFO     Created a list of tuples with 61 entries
+2023-04-19 12:41:50,639 INFO     The graph contains 13 different semantic groups: {'pathway', 'cellular component', 'gene', 'model', 'molecular function', 'drug', 'disease', 'chemical', 'phenotype', 'variant', 'genotype', 'biological process', 'anatomical entity'}
+2023-04-19 12:41:50,639 INFO     For the graph, a total of 83705 edges and 10231 nodes have been generated.
+2023-04-19 12:41:50,641 INFO     There are 13 semantic groups: ['phenotype' 'gene' 'variant' 'model' 'disease' 'drug' 'genotype'
+ 'anatomical entity' 'cellular component' 'chemical' 'molecular function'
+ 'biological process' 'pathway']
+2023-04-19 12:41:50,655 INFO     There are 21 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+GENO:0000841                     likely pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2023-04-19 12:41:51,019 INFO     Graph of all connections between concepts saved to concepts.png
+2023-04-19 12:41:51,035 INFO     List of triplets saved to triplets.csv
+2023-04-19 12:41:51,423 INFO     All nodes are stored into query_nodes.csv
+2023-04-19 12:41:51,883 INFO     All edges are stored into query_edges.csv
+2023-04-19 12:41:51,883 INFO     Generated query list in file queries.txt
+2023-04-19 12:41:51,884 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-04-19 12:41:52,909 INFO     The graph contains 2 different semantic groups: {'taxon', 'gene'}
+2023-04-19 12:41:52,909 INFO     For the graph, a total of 3161 edges and 3186 nodes have been generated.
+2023-04-19 12:41:52,909 INFO     There are 2 semantic groups: ['gene' 'taxon']
+2023-04-19 12:41:52,915 INFO     There are 1 relation labels:                  relation_label
+relation_id                    
+CustomRO:foundin       found in
+2023-04-19 12:41:52,989 INFO     Graph of all connections between concepts saved to new_concepts.png
+2023-04-19 12:41:52,994 INFO     List of triplets saved to new_triplets.csv
+2023-04-19 12:41:53,047 INFO     All nodes are stored into query_nodes.csv
+2023-04-19 12:41:53,064 INFO     All edges are stored into query_edges.csv
+2023-04-19 12:41:53,065 INFO     Generated query list in file queries.txt
+2023-04-19 12:41:53,065 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-04-19 12:42:17,639 INFO     Created a list of tuples with 83287 entries
+2023-04-19 12:42:17,644 INFO     Loaded 83287 associations
+2023-04-19 12:42:18,547 INFO     The graph contains 12 different semantic groups: {'biological process', 'chemical', 'disease', 'pathway', 'variant', 'genotype', 'model', 'gene', 'cellular component', 'anatomical entity', 'molecular function', 'phenotype'}
+2023-04-19 12:42:18,547 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-04-19 12:42:18,551 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-04-19 12:42:18,558 INFO     A total of 3161 gene IDs has been extracted
+2023-04-19 12:42:18,635 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME  ... ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  ...         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  ...         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  ...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-04-19 12:42:36,632 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-04-19 12:42:36,651 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME  ...    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  ...  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2  ...  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-04-19 12:42:36,653 INFO     Total of 366 drug-target associations changed to 357 by dropping duplicates.
+2023-04-19 12:42:37,163 INFO     All TTD associations are saved into ttd_associations.csv
+2023-04-19 12:42:37,166 INFO     Created a list of tuples with 357 entries
+2023-04-19 12:42:37,175 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-04-19 12:42:37,182 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-04-19 12:42:37,194 INFO     There are 282 unique drug names
+2023-04-19 12:42:37,194 INFO     There are 5323 unique disease/phenotype IDs
+2023-04-19 12:42:37,463 INFO     Loaded 28978 drug-disease pairs:
+  DRUG_ID DRUG_NAME                 DISEASE_NAME     PHASE
+0  D00ABE   ald-301                     ischemia   Phase 2
+1  D00ABE   ald-301  peripheral arterial disease   Phase 2
+2  D00ABO   kw-2449      acute myeloid leukaemia   Phase 1
+2023-04-19 12:42:37,484 INFO     Loaded 493 phenotypes with matching IDs scoring 100:
+                   Name     ontologyTermName                            ontologyTermIRI  score  validated  review  DISEASE_ID
+0   respiratory failure  Respiratory failure  http://purl.obolibrary.org/obo/HP_0002878  100.0      False   False  HP:0002878
+17        dental caries        Carious teeth  http://purl.obolibrary.org/obo/HP_0000670  100.0      False   False  HP:0000670
+25            gastritis            Gastritis  http://purl.obolibrary.org/obo/HP_0005263  100.0      False   False  HP:0005263
+2023-04-19 12:42:37,519 INFO     Total of 12151 disease names mapped to their IDs:
+   DRUG_ID                                        DRUG_NAME  DISEASE_ID                           DISEASE_NAME
+1   D00ABE                                          ald-301  HP:0004950            peripheral arterial disease
+2   D00ABO                                          kw-2449  HP:0004808                acute myeloid leukaemia
+4   D00ACC                                           nd1251  HP:0000716                             depression
+11  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+12  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+14  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0002861                               melanoma
+19  D00AJS                                            aik11  HP:0005978         non insulin dependent diabetes
+21  D00AKQ                             o-desulfated heparin  HP:0006510  chronic obstructive pulmonary disease
+22  D00AKR                                          amg 479  HP:0003002                          breast cancer
+24  D00AKY                                    sk&f-s-106203  HP:0002099                                 asthma
+2023-04-19 12:42:37,526 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-04-19 12:42:37,527 INFO     Total of 64 drug-disease associations changed to 61 by dropping duplicates.
+2023-04-19 12:42:37,640 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-04-19 12:42:37,643 INFO     Created a list of tuples with 61 entries
+2023-04-19 12:42:37,839 INFO     The graph contains 13 different semantic groups: {'biological process', 'chemical', 'disease', 'pathway', 'variant', 'genotype', 'model', 'gene', 'drug', 'cellular component', 'anatomical entity', 'molecular function', 'phenotype'}
+2023-04-19 12:42:37,839 INFO     For the graph, a total of 83705 edges and 10231 nodes have been generated.
+2023-04-19 12:42:37,840 INFO     There are 13 semantic groups: ['phenotype' 'gene' 'drug' 'variant' 'model' 'disease'
+ 'cellular component' 'genotype' 'anatomical entity' 'biological process'
+ 'molecular function' 'chemical' 'pathway']
+2023-04-19 12:42:37,855 INFO     There are 21 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+GENO:0000841                     likely pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2023-04-19 12:42:38,223 INFO     Graph of all connections between concepts saved to concepts.png
+2023-04-19 12:42:38,238 INFO     List of triplets saved to triplets.csv
+2023-04-19 12:42:38,628 INFO     All nodes are stored into query_nodes.csv
+2023-04-19 12:42:39,091 INFO     All edges are stored into query_edges.csv
+2023-04-19 12:42:39,092 INFO     Generated query list in file queries.txt
+2023-04-19 12:42:39,092 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-04-19 12:42:39,349 INFO     The graph contains 2 different semantic groups: {'taxon', 'gene'}
+2023-04-19 12:42:39,349 INFO     For the graph, a total of 3161 edges and 3186 nodes have been generated.
+2023-04-19 12:42:39,351 INFO     There are 2 semantic groups: ['gene' 'taxon']
+2023-04-19 12:42:39,356 INFO     There are 1 relation labels:                  relation_label
+relation_id                    
+CustomRO:foundin       found in
+2023-04-19 12:42:39,435 INFO     Graph of all connections between concepts saved to new_concepts.png
+2023-04-19 12:42:39,438 INFO     List of triplets saved to new_triplets.csv
+2023-04-19 12:42:39,493 INFO     All nodes are stored into query_nodes.csv
+2023-04-19 12:42:39,509 INFO     All edges are stored into query_edges.csv
+2023-04-19 12:42:39,510 INFO     Generated query list in file queries.txt
+2023-04-19 12:42:39,510 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.

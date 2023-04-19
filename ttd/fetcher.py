@@ -93,34 +93,37 @@ def get_mapped_ids(drug_targets):
                 
     return all_mapped_id_results
 
-def format_drugtarget_associations(drug_targets: pd.DataFrame):
+def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
     """
         Format dataframe with drug target interactions such that it complies with formatting of associations `constants.assoc_tuple_values`.
         :param drug_targets: Dataframe with all drug target interactions
         :return Dataframe with correct column names and order
     """
-    common.register_info(f'There are {drug_targets.shape[0]} drug-target associations with columns {drug_targets.columns}.')
-    drug_targets.drop_duplicates(inplace=True)
-    common.register_info(f'There are {drug_targets.shape[0]} drug-target associations without duplicates.')
+    drug_targets = drug_targets_prev.drop_duplicates(inplace=False).copy()
+    common.register_info(f'Total of {drug_targets_prev.shape[0]} drug-target associations changed to {drug_targets.shape[0]} by dropping duplicates.')
     
     for i, row in drug_targets.iterrows():
-        drug_targets.loc[i,'id'] = f'TTD{i}'
+        subject_id = str(row['STRUCT_ID'])
+        object_id = row['TARGET_ID']
+        relation_id = 'CustomRO:TTD'
         
-        drug_targets.loc[i,'subject_id'] = str(row['STRUCT_ID'])
+        drug_targets.loc[i,'id'] = common.generate_edge_id(relation_id, subject_id, object_id)
+
+        drug_targets.loc[i,'subject_id'] = subject_id
         drug_targets.loc[i,'subject_label'] = row['DRUG_NAME']
         drug_targets.loc[i,'subject_iri'] = np.nan
         drug_targets.loc[i,'subject_category'] = constants.DRUG
         drug_targets.loc[i,'subject_taxon_id'] = np.nan
         drug_targets.loc[i,'subject_taxon_label'] = np.nan
         
-        drug_targets.loc[i,'object_id'] = row['TARGET_ID']
+        drug_targets.loc[i,'object_id'] = object_id
         drug_targets.loc[i,'object_label'] = np.nan
         drug_targets.loc[i,'object_iri'] = np.nan
         drug_targets.loc[i,'object_category'] = np.nan
         drug_targets.loc[i,'object_taxon_id'] = np.nan
         drug_targets.loc[i,'object_taxon_label'] = np.nan
         
-        drug_targets.loc[i,'relation_id'] = 'CustomRO:TTD'
+        drug_targets.loc[i,'relation_id'] = relation_id
         drug_targets.loc[i,'relation_label'] = 'targets'
         drug_targets.loc[i,'relation_iri'] = np.nan
 

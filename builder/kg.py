@@ -1,6 +1,7 @@
 from util.common import register_info
 
 import util.constants as constants
+import util.common as common
 
 import pandas as pd
 import numpy as np
@@ -244,13 +245,6 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             
         self.restructure_kg(old_kg)
         
-    def generate_edge_id(self, relation_id, subject, object):
-        strings_tuple = (relation_id, subject, object)
-        hasher = hashlib.md5()
-        for string_value in strings_tuple:
-            hasher.update(string_value.encode())
-        return hasher.hexdigest()
-        
     def add_edge(self, edge: NewEdge):
         """
             Add a NewEdge object to set of edges.
@@ -267,7 +261,6 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         """
             Find out to which semantic group the node belongs.
         """
-        print(edges_df)
         return node.semantic_groups
         
     def add_concept_taxon(self, node: Node):
@@ -275,7 +268,7 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             gene_node = node
             taxon_node = NewNode(id=gene_node.taxon_id, label=gene_node.taxon_label, iri=np.nan, semantic=constants.TAXON)
             
-            taxon_edge_id = self.generate_edge_id(constants.FOUND_IN['id'], gene_node.id, taxon_node.id)
+            taxon_edge_id = common.generate_edge_id(constants.FOUND_IN['id'], gene_node.id, taxon_node.id)
             taxon_edge = NewEdge(taxon_edge_id, gene_node.id, taxon_node.id, constants.FOUND_IN['id'], constants.FOUND_IN['label'], constants.FOUND_IN['iri'])
             
             self.add_node(taxon_node)
@@ -285,6 +278,7 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             
     def restructure_kg(self, old_kg: KnowledgeGraph):
         edges_df, _ = old_kg.generate_dataframes()
+        print(list(edges_df.columns.values))
         
         for node in old_kg.all_nodes:
             node.semantic_groups = self.transform_node(node, edges_df)

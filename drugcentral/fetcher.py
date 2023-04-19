@@ -50,9 +50,9 @@ def join_disease_name_with_id(names_df, ids_df):
     common.register_info(f'Total of {left_outer_joined_df.shape[0]} disease names mapped to their IDs:\n{left_outer_joined_df.head(10)}')
     return left_outer_joined_df
 
-def format_drugdisease_associations(drug_disease_pairs: pd.DataFrame, drug_nodes: pd.DataFrame):
-    drug_disease_pairs.drop_duplicates(inplace=True)
-    common.register_info(f'There are {drug_disease_pairs.shape[0]} drug-disease associations without duplicates.')
+def format_drugdisease_associations(drug_disease_pairs_prev: pd.DataFrame, drug_nodes: pd.DataFrame):
+    drug_disease_pairs = drug_disease_pairs_prev.drop_duplicates(inplace=False).copy()
+    common.register_info(f'Total of {drug_disease_pairs_prev.shape[0]} drug-disease associations changed to {drug_disease_pairs.shape[0]} by dropping duplicates.')
     
     for i, row in drug_disease_pairs.iterrows():
         drug_disease_pairs.loc[i,'id'] = f'DC{i}'

@@ -4,6 +4,7 @@ logging.basicConfig(level=logging.INFO, filename='datafetcher.log', filemode="a+
 import networkx as nx
 import matplotlib.pyplot as plt
 import pandas as pd
+import hashlib
 
 from util.constants import assoc_tuple_values
 
@@ -63,3 +64,10 @@ def extract_colvalues(df: pd.DataFrame, extract_colname: str):
     """
     colvalues = df[extract_colname].to_list()
     return colvalues
+
+def generate_edge_id(relation_id, subject_id, object_id):
+    strings_tuple = (relation_id, subject_id, object_id)
+    hasher = hashlib.md5()
+    for string_value in strings_tuple:
+        hasher.update(string_value.encode())
+    return hasher.hexdigest()
