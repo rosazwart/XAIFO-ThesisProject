@@ -55,27 +55,30 @@ def format_drugdisease_associations(drug_disease_pairs_prev: pd.DataFrame, drug_
     common.register_info(f'Total of {drug_disease_pairs_prev.shape[0]} drug-disease associations changed to {drug_disease_pairs.shape[0]} by dropping duplicates.')
     
     for i, row in drug_disease_pairs.iterrows():
-        drug_disease_pairs.loc[i,'id'] = f'DC{i}'
-        
         drug_id = drug_nodes.loc[drug_nodes['label'] == row['DRUG_NAME']]['id'].values[0]
+        subject_id = str(drug_id)
+        object_id = row['DISEASE_ID']
+        relation_id = constants.TREATS['id']
         
-        drug_disease_pairs.loc[i,'subject_id'] = str(drug_id)
+        drug_disease_pairs.loc[i,'id'] = common.generate_edge_id(relation_id, subject_id, object_id)
+        
+        drug_disease_pairs.loc[i,'subject_id'] = subject_id
         drug_disease_pairs.loc[i,'subject_label'] = row['DRUG_NAME']
         drug_disease_pairs.loc[i,'subject_iri'] = np.nan
         drug_disease_pairs.loc[i,'subject_category'] = constants.DRUG
         drug_disease_pairs.loc[i,'subject_taxon_id'] = np.nan
         drug_disease_pairs.loc[i,'subject_taxon_label'] = np.nan
         
-        drug_disease_pairs.loc[i,'object_id'] = row['DISEASE_ID']
+        drug_disease_pairs.loc[i,'object_id'] = object_id
         drug_disease_pairs.loc[i,'object_label'] = np.nan
         drug_disease_pairs.loc[i,'object_iri'] = np.nan
         drug_disease_pairs.loc[i,'object_category'] = np.nan
         drug_disease_pairs.loc[i,'object_taxon_id'] = np.nan
         drug_disease_pairs.loc[i,'object_taxon_label'] = np.nan
         
-        drug_disease_pairs.loc[i,'relation_id'] = 'CustomRO:DC'
-        drug_disease_pairs.loc[i,'relation_label'] = 'is substance that treats'
-        drug_disease_pairs.loc[i,'relation_iri'] = np.nan
+        drug_disease_pairs.loc[i,'relation_id'] = relation_id
+        drug_disease_pairs.loc[i,'relation_label'] = constants.TREATS['label']
+        drug_disease_pairs.loc[i,'relation_iri'] = constants.TREATS['iri']
         
     drugdisease_associations_df = drug_disease_pairs[list(constants.assoc_tuple_values)]
     drugdisease_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/drugcentral_associations.csv', index=None)

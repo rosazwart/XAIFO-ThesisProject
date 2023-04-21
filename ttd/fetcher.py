@@ -105,7 +105,7 @@ def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
     for i, row in drug_targets.iterrows():
         subject_id = str(row['STRUCT_ID'])
         object_id = row['TARGET_ID']
-        relation_id = 'CustomRO:TTD'
+        relation_id = constants.TARGETS['id']
         
         drug_targets.loc[i,'id'] = common.generate_edge_id(relation_id, subject_id, object_id)
 
@@ -124,8 +124,8 @@ def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
         drug_targets.loc[i,'object_taxon_label'] = np.nan
         
         drug_targets.loc[i,'relation_id'] = relation_id
-        drug_targets.loc[i,'relation_label'] = 'targets'
-        drug_targets.loc[i,'relation_iri'] = np.nan
+        drug_targets.loc[i,'relation_label'] = constants.TARGETS['label']
+        drug_targets.loc[i,'relation_iri'] = constants.TARGETS['iri']
 
     drugtarget_associations_df = drug_targets[list(constants.assoc_tuple_values)]
     drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations.csv', index=None)

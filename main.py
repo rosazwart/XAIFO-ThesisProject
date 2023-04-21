@@ -80,7 +80,7 @@ def build_kg(load_csv: bool = False):
     analyze_data_from_kg(new_kg, 'new_concepts.png', 'new_triplets.csv')
     
     new_kg_edges, new_kg_nodes = new_kg.generate_dataframes()
-    cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, False)
+    cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, True)
     
     # TODO: still some duplicates for substance that treats and targets?
 

@@ -262,14 +262,25 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             
     def remove_node(self, node: AssocNode):
         """
+            Remove node when it belongs to one of the excluded semantic groups.
         """
         if node.semantic_groups == constants.ANAT:
+            return True
+        else:
+            return False
+    
+    def edge_is_empty(self, prev_edge: AssocEdge):
+        """
+            Check whether the edge has an empty relation.
+        """
+        if pd.isnull(prev_edge.relation['id']):
             return True
         else:
             return False
             
     def remove_edge(self, prev_edge: AssocEdge, prev_nodes_df: pd.DataFrame):
         """
+            Check whether the edge needs to removed due to one or both nodes needed to be removed as well.
         """
         subject_id = prev_edge.subject
         subject_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == subject_id, 'semantic'].iloc[0]
@@ -278,15 +289,49 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         
         if subject_semantic == constants.ANAT or object_semantic == constants.ANAT:
             return True
-        elif pd.isnull(prev_edge.relation['id']):
-            # TODO: Not all
-            return True
         else: 
             return False
         
+    def deduce_edge(self, prev_edge: AssocEdge, prev_nodes_df: pd.DataFrame):
+        """
+            Deduce from the object and subject semantic groups of the edge, the relation.
+        """
+        subject_id = prev_edge.subject
+        subject_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == subject_id, 'semantic'].iloc[0]
+        object_id = prev_edge.object
+        object_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == object_id, 'semantic'].iloc[0]
+        
+        if subject_semantic == constants.VAR and object_semantic in [constants.GENOTYPE, constants.MODEL]:
+            new_relation = constants.IS_VARIANT_IN
+            return NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        elif subject_semantic == constants.CHEMICAL and object_semantic == constants.DISEASE:
+            new_relation = constants.TREATS
+            return NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        elif subject_semantic in [constants.GENOTYPE, constants.MODEL] and object_semantic == constants.GENE:
+            new_relation = constants.EXPRESSES_GENE
+            return NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        else:   
+            print(f'Ignore edge with subject concept {subject_semantic} and object concept {object_semantic}')
+            return None
+    
+    def rename_edge(self, edge: NewEdge, prev_nodes_df: pd.DataFrame):
+        """
+            Replace the relation of an edge with another relation.
+        """
+        subject_id = edge.subject
+        subject_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == subject_id, 'semantic'].iloc[0]
+        object_id = edge.object
+        object_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == object_id, 'semantic'].iloc[0]
+        
+        if subject_semantic == constants.DISEASE and object_semantic == constants.PHENOTYPE:
+            new_relation = constants.PHENOTYPE_ASSOCIATED
+            return NewEdge(edge.id, edge.subject, edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        
+        return edge
+        
     def group_edge(self, prev_edge: AssocEdge):
         """
-
+            Replace the relation of an edge with another relation due to grouping of relations.
         """
         if prev_edge.relation['id'] in constants.REL_GROUPING:
             new_relation = constants.REL_GROUPING[prev_edge.relation['id']]
@@ -297,6 +342,9 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             return edge
     
     def get_node_associations(self, node_id, edges_df: pd.DataFrame):
+        """
+            Get all relations that are found at least once in an edge connected to the given node.
+        """
         # Create heatmap for each semantic group, each column being a relation, count occurrence of each relation, ratio with total of entity of that semantic group
         associated_rows_df = edges_df.loc[(edges_df['subject'] == node_id) | (edges_df['object'] == node_id)]
         relations = associated_rows_df['relation_id'].unique().tolist()
@@ -305,15 +353,28 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         
     def transform_node_semantic(self, node: AssocNode, all_relations: list):
         """
-            Find out to which semantic group the node belongs.
+            Change the semantic group of the node based on its previous semantic group or its associated relations.
         """
         if node.semantic_groups == constants.MODEL:
-            if 'GENO:0000222' in all_relations:
+            if any(i in ['RO:0002327', 'BFO:0000050', 'RO:0002434', 'RO:0002325', 'RO:HOM0000017'] for i in all_relations):
+                return constants.GENE
+            elif constants.IS_VARIANT_IN['id'] in all_relations:
+                return constants.GENOTYPE
+            else:
                 return constants.BIOLART
+            
+        if node.semantic_groups == constants.PATHWAY:
+            return constants.BIOLPRO
+        
+        if node.semantic_groups == constants.CHEMICAL:
+            return constants.DRUG
         
         return node.semantic_groups
         
     def add_concept_taxon(self, node: AssocNode):
+        """
+            Add nodes as entities of semantic group TAXON.
+        """
         if not pd.isnull(node.taxon_id) and node.semantic_groups in [constants.GENE, constants.BIOLART]:
             gene_node = node
             taxon_node = NewNode(id=gene_node.taxon_id, label=gene_node.taxon_label, iri=np.nan, semantic=constants.TAXON)
@@ -331,17 +392,25 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             self.add_edge(taxon_edge)
             
     def restructure_kg(self, prev_kg: AssocKnowledgeGraph):
+        """
+            Restructure the knowledge graph by iterating over all edges and nodes of the given graph.
+        """
         _, prev_nodes_df = prev_kg.generate_dataframes()
         
-        print('Iterating over edges')
+        print('Iterating over edges (grouping, deducing, renaming) ...')
         for prev_edge in tqdm(prev_kg.all_edges):
-            if not self.remove_edge(prev_edge, prev_nodes_df):
+            if self.edge_is_empty(prev_edge):
+                new_edge = self.deduce_edge(prev_edge, prev_nodes_df)
+                self.add_edge(new_edge)
+            elif not self.remove_edge(prev_edge, prev_nodes_df):
                 new_edge = self.group_edge(prev_edge)
+                new_edge = self.rename_edge(new_edge, prev_nodes_df)
+                
                 self.add_edge(new_edge)
             
         edges_df, _ = self.generate_dataframes()
         
-        print('Iterating over nodes')
+        print('Iterating over nodes (transforming, adding) ...')
         for node in tqdm(prev_kg.all_nodes):
             if not self.remove_node(node):
                 # Get all relations it is associated with

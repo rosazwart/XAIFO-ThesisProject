@@ -1,4 +1,37 @@
 
+        CREATE CONSTRAINT geneIdConstraint FOR (g:Gene) REQUIRE g.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT variantIdConstraint FOR (v:Variant) REQUIRE v.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT phenotypeIdConstraint FOR (p:Phenotype) REQUIRE p.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT drugIdConstraint FOR (d:Drug) REQUIRE d.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT biologicalprocessIdConstraint FOR (b:BiologicalProcess) REQUIRE b.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT taxonIdConstraint FOR (t:Taxon) REQUIRE t.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT molecularfunctionIdConstraint FOR (m:MolecularFunction) REQUIRE m.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT genotypeIdConstraint FOR (g:Genotype) REQUIRE g.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT cellularcomponentIdConstraint FOR (c:CellularComponent) REQUIRE c.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT biologicalartifactIdConstraint FOR (b:BiologicalArtifact) REQUIRE b.id IS UNIQUE;
+    ;
+
+        CREATE CONSTRAINT diseaseIdConstraint FOR (d:Disease) REQUIRE d.id IS UNIQUE;
+    ;
+
         LOAD CSV WITH HEADERS FROM 'file:///query_nodes.csv' AS row
         CALL apoc.merge.node([row.semantic_label], {id: row.id, label: row.label, iri: row.iri})
         YIELD node

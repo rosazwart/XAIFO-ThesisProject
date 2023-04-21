@@ -2,37 +2,37 @@ subject,relation,object
 gene,causes condition,disease
 gene,colocalizes with,gene
 variant,contributes to condition,disease
-variant,contributes to condition,phenotype
 gene,contributes to condition,phenotype
+variant,contributes to condition,phenotype
 gene,contributes to condition,disease
-model,enables,molecular function
 gene,enables,molecular function
+model,enables,molecular function
 gene,expressed in,anatomical entity
 variant,has affected feature,gene
-model,has genotype,genotype
 model,has genotype,variant
-genotype,has phenotype,disease
+model,has genotype,genotype
 genotype,has phenotype,phenotype
-variant,has phenotype,disease
 variant,has phenotype,phenotype
-disease,has phenotype,phenotype
+variant,has phenotype,disease
+genotype,has phenotype,disease
 gene,has phenotype,phenotype
 model,has phenotype,phenotype
+disease,has phenotype,phenotype
+model,has role in modeling,disease
 gene,has role in modeling,disease
 variant,has role in modeling,disease
-model,has role in modeling,disease
 genotype,has role in modeling,disease
-gene,in 1 to 1 orthology relationship with,gene
 gene,in 1 to 1 orthology relationship with,model
 model,in 1 to 1 orthology relationship with,gene
+gene,in 1 to 1 orthology relationship with,gene
 gene,in orthology relationship with,gene
-model,interacts with,gene
-gene,interacts with,model
 gene,interacts with,gene
+gene,interacts with,model
+model,interacts with,gene
 gene,involved in,pathway
+gene,involved in,biological process
 disease,involved in,biological process
 disease,involved in,pathway
-gene,involved in,biological process
 variant,is allele of,gene
 gene,is causal germline mutation in,disease
 gene,is causal germline mutation partially giving rise to,disease
@@ -42,8 +42,8 @@ drug,is substance that treats,phenotype
 variant,likely pathogenic for condition,disease
 chemical,nan,disease
 model,nan,gene
-genotype,nan,gene
 variant,nan,genotype
 variant,nan,model
+genotype,nan,gene
 variant,pathogenic for condition,disease
 drug,targets,gene

@@ -17,6 +17,9 @@ MODEL = 'model'
 BIOLART = 'biological artifact'
 ANAT = 'anatomical entity'
 VAR = 'variant'
+PATHWAY = 'pathway'
+BIOLPRO = 'biological process'
+CHEMICAL = 'chemical'
 
 FOUND_IN = {
     'id': 'CustomRO:foundin',
@@ -33,6 +36,30 @@ IS_OF = {
 IS_VARIANT_IN = {
     'id': 'CustomRO:isvariantin',
     'label': 'is variant in',
+    'iri': np.nan
+}
+
+TARGETS = {
+    'id': 'CustomRO:TTD',
+    'label': 'targets',
+    'iri': np.nan
+}
+
+TREATS = {
+    'id': 'CustomRO:DC',
+    'label': 'is substance that treats',
+    'iri': np.nan
+}
+
+EXPRESSES_GENE = {
+    'id': 'CustomRO:expressesgene',
+    'label': 'expresses gene',
+    'iri': np.nan
+}
+
+PHENOTYPE_ASSOCIATED = {
+    'id': 'CustomRO:associatedphenotype',
+    'label': 'associated with phenotype',
     'iri': np.nan
 }
 
