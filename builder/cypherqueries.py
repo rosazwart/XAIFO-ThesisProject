@@ -43,7 +43,7 @@ def build_queries_for_edges(all_edges: pd.DataFrame):
     all_edges.dropna(inplace=True)
     all_edges.reset_index(drop=True, inplace=True)
     
-    file_name = 'query_edges.csv'.format(all_edges)
+    file_name = 'query_edges.csv'
     all_edges.to_csv('output/{}'.format(file_name), index=False)
     
     register_info(f'All edges are stored into {file_name}')

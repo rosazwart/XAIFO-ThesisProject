@@ -82,6 +82,8 @@ def build_kg(load_csv: bool = False):
     new_kg_edges, new_kg_nodes = new_kg.generate_dataframes()
     cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, True)
     
+    new_kg.save_graph('new_kg')
+    
     # TODO: still some duplicates for substance that treats and targets?
 
 if __name__ == "__main__":

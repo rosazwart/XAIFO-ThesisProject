@@ -166,6 +166,17 @@ class KnowledgeGraph:
         edges = pd.DataFrame.from_records([edge.to_dict() for edge in self.all_edges])
         nodes = pd.DataFrame.from_records([node.to_dict() for node in self.all_nodes])
         return edges, nodes
+    
+    def save_graph(self, filename_prefix):
+        edges, nodes = self.generate_dataframes()
+        
+        edges_file_name = '{}_edges.csv'.format(filename_prefix)
+        edges.to_csv('output/{}'.format(edges_file_name), index=False)
+        
+        nodes_file_name = '{}_nodes.csv'.format(filename_prefix)
+        nodes.to_csv('output/{}'.format(nodes_file_name), index=False)
+        
+        print(f'Knowledge graph content saved into files {edges_file_name} and {nodes_file_name} in the output folder.')
         
     def analyze_graph(self):
         """
