@@ -1,6 +1,7 @@
 import pandas as pd
 
-from util.common import register_info, draw_graph
+from util.common import register_info
+from util.graph import draw_graph
 
 def getConcepts(nodes: pd.DataFrame, node_colmapping: dict):
     """
