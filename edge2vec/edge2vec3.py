@@ -1,69 +1,51 @@
 """
-    Source: https://github.com/PPerdomoQ/rare-disease-explainer/blob/main/edge2vec3.py
+    Edited by Rosa
+    Source python3 update: https://github.com/PPerdomoQ/rare-disease-explainer/blob/main/edge2vec3.py
+    Source: https://github.com/RoyZhengGao/edge2vec/blob/master/edge2vec.py
 """
 
-import argparse
-import networkx as nx
-import matplotlib.pyplot as plt
 import random
 import numpy as np   
-import math
-from scipy import stats
 from gensim.models import Word2Vec
 
-'''
-use existing matrix to run edge2vec
-'''
- 
-def read_graph(edgeList,weighted=False, directed=False):
-    '''
-    Reads the input network in networkx.
-    '''
-    if weighted:
-        G = nx.read_edgelist(edgeList, nodetype=str, data=(('type',int),('weight',float),('id',int)), create_using=nx.DiGraph())
-    else:
-        G = nx.read_edgelist(edgeList, nodetype=str,data=(('type',int),('id',int)), create_using=nx.DiGraph())
-        for edge in G.edges():
-            G[edge[0]][edge[1]]['weight'] = 1.0
-
-    if not directed:
-        G = G.to_undirected()
-
-    #print(G.edges(data = True))
-    return G
- 
-def read_edge_type_matrix(file):
-    '''
-    load transition matrix
-    '''
-    matrix = np.loadtxt(file, delimiter=' ')
-    return matrix
-
-
-def simulate_walks_2(G, num_walks, walk_length,matrix,is_directed,p,q):
-    '''
-    generate random walk paths constrainted by transition matrix
-    '''
+def simulate_walks_2(G, num_walks, walk_length, matrix, p, q):
+    """
+        Generate random walk paths constrained by transition matrix for each node in given graph
+        :param G: digraph generated with networkx
+        :param num_walks: number of walks per node 
+        :param walk_length: allowed length of walks
+        :param matrix: edge type transition matrix
+        :param p: the greater p, the lower the probability of returning to previous node
+        :param q: the greater q, the lower the probability of moving to another node than the previous and current node
+        :return list of paths containing nodes visited during these paths
+    """
     walks = []
     nodes = list(G.nodes())
+    
     print('Walk iteration:')
     for walk_iter in range(num_walks):
         print(str(walk_iter+1), '/', str(num_walks))
         random.shuffle(nodes) 
         for node in nodes:
-            # print "chosen node id: ",nodes
-            walks.append(edge2vec_walk_2(G, walk_length, node,matrix,is_directed,p,q))  
+            walks.append(edge2vec_walk_2(G, walk_length, node, matrix, p, q))  
     return walks
 
-def edge2vec_walk_2(G, walk_length, start_node,matrix,is_directed,p,q): 
-    # print "start node: ", type(start_node), start_node
-    '''
-    return a random walk path
-    '''
+def edge2vec_walk_2(G, walk_length, start_node, matrix, p, q):
+    """
+        Return a random walk path constrained by edge type transition matrix and parameters p and q
+        :param G: digraph generated with networkx
+        :param walk_length: allowed length of walks
+        :param start_node: first node visited
+        :param matrix: edge type transition matrix
+        :param is_directed: specifies whether graph has directed edges
+        :param p: the greater p, the lower the probability of returning to previous node
+        :param q: the greater q, the lower the probability of moving to another node than the previous and current node
+        :return list of nodes encountered during the walk
+    """
     walk = [start_node]  
     while len(walk) < walk_length:# here we may need to consider some dead end issues
         cur = walk[-1]
-        cur_nbrs =sorted(G.neighbors(cur)) #(G.neighbors(cur))
+        cur_nbrs =sorted(G.neighbors(cur))
         random.shuffle(cur_nbrs)
         if len(cur_nbrs) > 0:
             if len(walk) == 1:
@@ -72,20 +54,15 @@ def edge2vec_walk_2(G, walk_length, start_node,matrix,is_directed,p,q):
                 walk.append(next) 
             else:
                 prev = walk[-2]
-                #print('Prev:', prev)
-                #print('Cur:', cur)
                 pre_edge_type = G[prev][cur]['type']
                 distance_sum = 0
                 for neighbor in cur_nbrs:
                     neighbor_link = G[cur][neighbor] 
-                    # print "neighbor_link: ",neighbor_link
                     neighbor_link_type = neighbor_link['type']
-                    # print "neighbor_link_type: ",neighbor_link_type
                     neighbor_link_weight = neighbor_link['weight']
                     trans_weight = matrix[pre_edge_type-1][neighbor_link_type-1]
                     
-                    if G.has_edge(neighbor,prev) or G.has_edge(prev,neighbor):#undirected graph
-                        
+                    if G.has_edge(neighbor,prev) or G.has_edge(prev,neighbor): #undirected graph
                         distance_sum += trans_weight*neighbor_link_weight/p #+1 normalization
                     elif neighbor == prev: #decide whether it can random walk back
                         distance_sum += trans_weight*neighbor_link_weight
@@ -100,9 +77,7 @@ def edge2vec_walk_2(G, walk_length, start_node,matrix,is_directed,p,q):
                 threshold = 0 
                 for neighbor in cur_nbrs:
                     neighbor_link = G[cur][neighbor] 
-                    # print "neighbor_link: ",neighbor_link
                     neighbor_link_type = neighbor_link['type']
-                    # print "neighbor_link_type: ",neighbor_link_type
                     neighbor_link_weight = neighbor_link['weight']
                     trans_weight = matrix[pre_edge_type-1][neighbor_link_type-1]
                     
@@ -114,7 +89,6 @@ def edge2vec_walk_2(G, walk_length, start_node,matrix,is_directed,p,q):
                             break;
                     elif neighbor == prev:
                         threshold += trans_weight*neighbor_link_weight
-                        #print('Activated')
                         if threshold >= rand:
                             next = neighbor
                             break;        
@@ -125,10 +99,7 @@ def edge2vec_walk_2(G, walk_length, start_node,matrix,is_directed,p,q):
                             break;
 		 
                 walk.append(next) 
-                #print('Next:', next)
         else:
             break #if only has 1 neighbour 
  
-        # print "walk length: ",len(walk),walk
-        # print "edge walk: ",len(edge_walk),edge_walk 
     return walk  

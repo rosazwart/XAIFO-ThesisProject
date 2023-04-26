@@ -1,77 +1,68 @@
 """
-    Source: https://github.com/PPerdomoQ/rare-disease-explainer/blob/main/transition3.py
+    Edited by Rosa
+    Source python3 update: https://github.com/PPerdomoQ/rare-disease-explainer/blob/main/transition3.py
+    Source: https://github.com/RoyZhengGao/edge2vec/blob/master/transition.py
 """
 
-import argparse
 import networkx as nx
-import matplotlib.pyplot as plt
 import random
 import numpy as np   
 import math
 from scipy import stats
 from scipy import spatial
-
-'''
-first version: unweighted, undirected network
-use edge random walk to generate edge transction matrix based on EM algorithm
-'''
- 
-def read_graph(edgeList,weighted=False, directed=False):
-    '''
-    Reads the input network in networkx.
-    '''
-    if weighted:
-        G = nx.read_edgelist(edgeList, nodetype=str, data=(('type',int),('weight',float),('id',int)), create_using=nx.DiGraph())
-    else:
-        G = nx.read_edgelist(edgeList, nodetype=str,data=(('type',int),('id',int)), create_using=nx.DiGraph())
-        for edge in G.edges():
-            G[edge[0]][edge[1]]['weight'] = 1.0
-
-    if not directed:
-        G = G.to_undirected()
-
-    # print (G.edges(data = True))
-    print("Number of edges is {}".format(G.number_of_edges()))
-    print("Number of nodes is {}".format(G.number_of_nodes()))
-    return G
  
 def initialize_edge_type_matrix(type_num):
-    '''
-    initialize a transition matrix with equal values
-    '''
+    """
+        Initialize an edge type transition matrix with equal values.
+        :param type_num: number of edge types
+        :return list of lists representing matrix
+    """
     initialized_val = 1.0/(type_num*type_num)
-    matrix = [ [ initialized_val for i in range(type_num) ] for j in range(type_num) ]
+    matrix = [ [ initialized_val for _ in range(type_num) ] for _ in range(type_num) ]
     return matrix
 
-
-def simulate_walks_1(G, num_walks, walk_length,matrix,is_directed,p,q):
-    '''
-    generate random walk paths constrainted by transition matrix
-    '''
+def simulate_walks_1(G: nx.DiGraph, num_walks, walk_length, matrix, is_directed, p, q):
+    """
+        Generate random walk paths that are constrained by edge type transition matrix.
+        :param G: digraph generated with networkx
+        :param num_walks: number of walks per node (of a maximum of 1000 nodes)
+        :param walk_length: allowed length of walks
+        :param matrix: edge type transition matrix
+        :param is_directed: specifies whether graph has directed edges
+        :param p: the greater p, the lower the probability of returning to previous node
+        :param q: the greater q, the lower the probability of moving to another node than the previous and current node
+        :return list of paths containing edge types encountered during these paths
+    """
     walks = []
     links = list(G.edges(data = True))
-    #print(links[0])
+
     print('Walk iteration:')
     for walk_iter in range(num_walks):
         print(str(walk_iter+1), '/', str(num_walks))
         random.shuffle(links)
         count = 1000
         for link in links:
-            # print "chosen link id: ",link[2]['id']
-            walks.append(edge2vec_walk(G, walk_length, link,matrix,is_directed,p,q)) 
+            walks.append(edge2vec_walk(G, walk_length, link, matrix, is_directed, p, q)) 
             count = count - 1
-            if count == 0 and len(links)>1000:#control the pairwise list length
+            if count == 0 and len(links)>1000:  # control the pairwise list length
                 break
     return walks
 
-def edge2vec_walk(G, walk_length, start_link,matrix,is_directed,p,q): 
-    '''
-    return a random walk path
-    '''
-    # print "start link: ", type(start_link), start_link
+def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q): 
+    """
+        Return a random walk path constrained by edge type transition matrix and parameters p and q
+        :param G: digraph generated with networkx
+        :param walk_length: allowed length of walks
+        :param start_link: first edge traversed
+        :param matrix: edge type transition matrix
+        :param is_directed: specifies whether graph has directed edges
+        :param p: the greater p, the lower the probability of returning to previous node
+        :param q: the greater q, the lower the probability of moving to another node than the previous and current node
+        :return list of edge types encountered during the walk
+    """
     walk = [start_link] 
     result = [str(start_link[2]['type'])]
-    # print "result ",result
+    
     while len(walk) < walk_length:# here we may need to consider some dead end issues
         cur = walk[-1]
         start_node = cur[0]
@@ -92,39 +83,30 @@ def edge2vec_walk(G, walk_length, start_link,matrix,is_directed,p,q):
             start_direction = 1.0/G.degree(start_node)
             end_direction = 1.0/G.degree(end_node)
             prob = start_direction/(start_direction+end_direction)
-            # print "start node: ", start_node, " degree: ", G.degree(start_node)
-            # print "end node: ", end_node, " degree: ", G.degree(end_node)
 
-            # print cur[0], cur[1]
             rand = np.random.rand() 
-            # print "random number ",rand
-            # print "probability for start node: ",prob
 
             if prob >= rand:
-                # print "yes"
                 direction_node = start_node
                 left_node = end_node
             else:
                 direction_node = end_node
                 left_node = start_node
-        # print "directed node: ",direction_node
-        # print "left_node node: ",left_node
+                
         '''
         here to choose which link goes to. There are three conditions for the link based on node distance. 0,1,2
         '''
+        
         neighbors = G.neighbors(direction_node) 
-        # print G.has_edge(1,3)
-        # print G.has_edge(3,1)
+        
         '''
         calculate sum of distance, with +1 normalization
         '''
+        
         distance_sum = 0
         for neighbor in neighbors:
-            # print "neighbors:", neighbor
             neighbor_link = G[direction_node][neighbor]#get candidate link's type
-            # print "neighbor_link: ",neighbor_link
             neighbor_link_type = neighbor_link['type']
-            # print "neighbor_link_type: ",neighbor_link_type
             neighbor_link_weight = neighbor_link['weight']
             trans_weight = matrix[cur_edge_type-1][neighbor_link_type-1]
             if G.has_edge(neighbor,left_node) or G.has_edge(left_node,neighbor): 
@@ -137,13 +119,10 @@ def edge2vec_walk(G, walk_length, start_link,matrix,is_directed,p,q):
         '''
         pick up the next step link
         '''
-        # random.shuffle(neighbors)
         rand = np.random.rand() * distance_sum
         threshold = 0
-        # next_link_end_node = 0 
         neighbors2 = G.neighbors(direction_node) 
         for neighbor in neighbors2:
-            # print "current threshold: ", threshold
             neighbor_link = G[direction_node][neighbor]#get candidate link's type
             neighbor_link_type = neighbor_link['type']
             neighbor_link_weight = neighbor_link['weight']
@@ -164,30 +143,30 @@ def edge2vec_walk(G, walk_length, start_link,matrix,is_directed,p,q):
                     next_link_end_node = neighbor
                     break;
 
-        # print "distance_sum: ",distance_sum
-        # print "rand: ", rand, " threshold: ", threshold
-        # print "next_link_end_node: ",next_link_end_node
-
         if distance_sum > 0: # the direction_node has next_link_end_node
             next_link = G[direction_node][next_link_end_node]
-            # next_link = G.get_edge_data(direction_node,next_link_end_node)
             
             next_link_tuple = tuple()
             next_link_tuple += (direction_node,)
             next_link_tuple += (next_link_end_node,)
             next_link_tuple += (next_link,)
-            # print type(next_link_tuple)
-            # print next_link_tuple
+            
             walk.append(next_link_tuple)
             result.append(str(next_link_tuple[2]['type']))
-            # print "walk length: ",len(walk),walk
         else:
             break
-    # print "path: ",result
+
     return result  
 
 
-def update_trans_matrix(walks,type_size,evaluation_metric):
+def update_trans_matrix(walks, type_size, evaluation_metric):
+    """
+        This is the E-step of the EM framework, during which the edge type transition matrix is updated using an evaluation metric
+        :param walks: list of edge types encountered during the walks
+        :param type_size: number of edge types
+        :param evaluation_metric: allowed values are 1 (wilcoxon test), 2 (entroy test), 3 (spearmanr test), 4 (pearsonr test)
+        :return updated matrix
+    """
     '''
     E step, update transition matrix
     '''
@@ -207,20 +186,16 @@ def update_trans_matrix(walks,type_size,evaluation_metric):
                 curr_repo[edge_id] = 1
 
         for i in range(type_size):
-            
-            # print "curr_repo[i]: ",curr_repo[i],type(curr_repo[i])
             if i in curr_repo:
                 repo[i].append(curr_repo[i]) 
             else:
                 repo[i].append(0) 
     
     for i in range(type_size):
-        # print "repo ",i, ": ",repo[i],type(repo[i])
         for j in range(type_size):  
             if evaluation_metric == 1:
                 sim_score = wilcoxon_test(repo[i],repo[j])  
                 matrix[i][j] = sim_score
-                # print "each pair of edge type sim_score: ", sim_score
             elif evaluation_metric == 2:
                 sim_score = entroy_test(repo[i],repo[j])  
                 matrix[i][j] = sim_score
@@ -245,7 +220,7 @@ def wilcoxon_test(v1,v2):# original metric: the smaller the more similar
         result = 0
     else: 
         result = stats.wilcoxon(v1, v2).statistic
-    print('w', result)
+
     return 1/(math.sqrt(result)+1)
 
 def entroy_test(v1,v2):#original metric: the smaller the more similar
@@ -254,7 +229,7 @@ def entroy_test(v1,v2):#original metric: the smaller the more similar
         result = 0
     else: 
         result = stats.wilcoxon(v1, v2).statistic
-    print('e' ,result)
+
     return result
 
 def spearmanr_test(v1,v2):#original metric: the larger the more similar 
@@ -271,7 +246,7 @@ def pearsonr_test(v1,v2):#original metric: the larger the more similar
         result = 0
     else: 
         result = stats.wilcoxon(v1, v2).statistic
-    print('p', result)
+
     return sigmoid(result)
 
 def cos_test(v1,v2): 
