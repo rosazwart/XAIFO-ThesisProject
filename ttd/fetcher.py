@@ -102,36 +102,49 @@ def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
     drug_targets = drug_targets_prev.drop_duplicates(inplace=False).copy()
     common.register_info(f'Total of {drug_targets_prev.shape[0]} drug-target associations changed to {drug_targets.shape[0]} by dropping duplicates.')
     
+    new_assocs = pd.DataFrame()
+    
     for i, row in drug_targets.iterrows():
-        subject_id = str(row['STRUCT_ID'])
-        object_id = row['TARGET_ID']
-        relation_id = constants.TARGETS['id']
+        drug_id = str(row['STRUCT_ID'])
+        drug_label = row['DRUG_NAME']
         
-        drug_targets.loc[i,'id'] = common.generate_edge_id(relation_id, subject_id, object_id)
+        prod_id = row['PROD_ID']
+        prod_label = row['PROD_NAME']
+        
+        gene_id = row['GENE_ID']
+        
+        prod_gene_relation = constants.IS_PRODUCT_OF
+        drug_prod_relation = constants.TARGETS
+        
+        prod_gene_edge_id = common.generate_edge_id(prod_gene_relation['id'], prod_id, gene_id)
+        drug_prod_edge_id = common.generate_edge_id(drug_prod_relation['id'], drug_id, prod_id)
+        
+        new_edges = {
+            'id': [prod_gene_edge_id, drug_prod_edge_id],
+            'subject_id': [prod_id, drug_id],
+            'subject_label': [prod_label, drug_label],
+            'subject_iri': [np.nan, np.nan],
+            'subject_category': [constants.GENE_PRODUCT, constants.DRUG],
+            'subject_taxon_id': [np.nan, np.nan],
+            'subject_taxon_label': [np.nan, np.nan],
+            'object_id': [gene_id, prod_id],
+            'object_label': [np.nan, prod_label],
+            'object_iri': [np.nan, np.nan],
+            'object_category': [np.nan, constants.GENE_PRODUCT],
+            'object_taxon_id': [np.nan, np.nan],
+            'object_taxon_label': [np.nan, np.nan],
+            'relation_id': [prod_gene_relation['id'], drug_prod_relation['id']],
+            'relation_label': [prod_gene_relation['label'], drug_prod_relation['label']],
+            'relation_iri': [prod_gene_relation['iri'], drug_prod_relation['iri']]
+        }
+        
+        new_assocs = new_assocs.append(pd.DataFrame(new_edges))
 
-        drug_targets.loc[i,'subject_id'] = subject_id
-        drug_targets.loc[i,'subject_label'] = row['DRUG_NAME']
-        drug_targets.loc[i,'subject_iri'] = np.nan
-        drug_targets.loc[i,'subject_category'] = constants.DRUG
-        drug_targets.loc[i,'subject_taxon_id'] = np.nan
-        drug_targets.loc[i,'subject_taxon_label'] = np.nan
-        
-        drug_targets.loc[i,'object_id'] = object_id
-        drug_targets.loc[i,'object_label'] = np.nan
-        drug_targets.loc[i,'object_iri'] = np.nan
-        drug_targets.loc[i,'object_category'] = np.nan
-        drug_targets.loc[i,'object_taxon_id'] = np.nan
-        drug_targets.loc[i,'object_taxon_label'] = np.nan
-        
-        drug_targets.loc[i,'relation_id'] = relation_id
-        drug_targets.loc[i,'relation_label'] = constants.TARGETS['label']
-        drug_targets.loc[i,'relation_iri'] = constants.TARGETS['iri']
-
-    drugtarget_associations_df = drug_targets[list(constants.assoc_tuple_values)]
+    drugtarget_associations_df = new_assocs[list(constants.assoc_tuple_values)]
     drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations.csv', index=None)
     register_info('All TTD associations are saved into ttd_associations.csv')
     
-    return dataframe2tuplelist(drugtarget_associations_df) 
+    return dataframe2tuplelist(new_assocs) 
 
 def get_drugtarget_associations(gene_nodes: pd.DataFrame):
     """
@@ -145,7 +158,9 @@ def get_drugtarget_associations(gene_nodes: pd.DataFrame):
     
     # Data for drug-target interactions
     drug_targets = load_drug_targets()
+    
     # Collect correct target IDs
+    print('The IDs in the drug-target interaction database need to be mapped to the previously extracted gene IDs:')
     all_mapped_ids = get_mapped_ids(drug_targets)
     
     # Create dataframe to hold new IDs
@@ -155,10 +170,10 @@ def get_drugtarget_associations(gene_nodes: pd.DataFrame):
     register_info(f'For a total of {mapped_drug_targets.shape[0]} drug-target interactions, new mapped IDs are found.')
     
     matched_drug_targets = mapped_drug_targets[mapped_drug_targets['NEW_ID'].isin(gene_ids)]
-    register_info(f'Retrieved {matched_drug_targets.shape[0]} drug-target interactions with matched gene IDs:\n{matched_drug_targets.head(4)}')
     
     # Prepare dataframe with correct columns/column names
-    relevant_matched_drug_targets = matched_drug_targets.rename({'NEW_ID': 'TARGET_ID'}, axis=1)[['DRUG_NAME', 'STRUCT_ID', 'TARGET_ID']]
+    relevant_matched_drug_targets = matched_drug_targets.rename({'NEW_ID': 'GENE_ID', 'ACCESSION': 'PROD_ID', 'TARGET_NAME': 'PROD_NAME'}, axis=1)[['DRUG_NAME', 'STRUCT_ID', 'GENE_ID', 'PROD_ID', 'PROD_NAME']]
+    register_info(f'Retrieved {relevant_matched_drug_targets.shape[0]} drug-target interactions with matched gene IDs:\n{relevant_matched_drug_targets.head(4)}')
 
     drugtargets_associations = format_drugtarget_associations(relevant_matched_drug_targets)
     return drugtargets_associations

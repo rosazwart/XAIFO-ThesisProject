@@ -20,6 +20,7 @@ VAR = 'variant'
 PATHWAY = 'pathway'
 BIOLPRO = 'biological process'
 CHEMICAL = 'chemical'
+GENE_PRODUCT = 'gene product'
 
 FOUND_IN = {
     'id': 'CustomRO:foundin',
@@ -40,8 +41,14 @@ IS_VARIANT_IN = {
 }
 
 TARGETS = {
-    'id': 'CustomRO:TTD',
+    'id': 'CustomRO:TTD2',
     'label': 'targets',
+    'iri': np.nan
+}
+
+IS_PRODUCT_OF = {
+    'id': 'CustomRO:TTD1',
+    'label': 'is product of',
     'iri': np.nan
 }
 

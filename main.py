@@ -45,8 +45,13 @@ def build_prev_kg():
     kg.add_edges_and_nodes(drugcentral_associations)
     
     analyze_data_from_kg(kg, 'prev_concepts.png', 'prev_triplets.csv')
+    
+    kg.save_graph('prev_kg')
+    
 
 def build_kg(load_csv: bool = False):
+    # --- Add associations from Monarch Initiative ---
+    
     if load_csv:
         monarch_associations = load_associations_from_csv('monarch_associations.csv')
     else:
@@ -58,10 +63,14 @@ def build_kg(load_csv: bool = False):
         
     kg = AssocKnowledgeGraph(monarch_associations)
     
+    # --- Add associations from TTD ---
+    
     gene_nodes = kg.get_extracted_nodes([constants.GENE])
     ttd_associations = ttd_fetcher.get_drugtarget_associations(gene_nodes)
     
     kg.add_edges_and_nodes(ttd_associations)
+    
+    # --- Add associations from DrugCentral ---
     
     drug_nodes = kg.get_extracted_nodes([constants.DRUG])
     diso_pheno_nodes = kg.get_extracted_nodes([constants.DISEASE, constants.PHENOTYPE])
@@ -83,8 +92,6 @@ def build_kg(load_csv: bool = False):
     cypher_querybuilder.build_queries(new_kg_nodes, new_kg_edges, True)
     
     new_kg.save_graph('new_kg')
-    
-    # TODO: still some duplicates for substance that treats and targets?
 
 if __name__ == "__main__":
     build_kg(load_csv=True)

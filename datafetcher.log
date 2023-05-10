@@ -4486,3 +4486,271 @@ RO:HOM0000017                 in orthology relationship with
 2023-04-24 13:18:51,022 INFO     Generated query list in file queries.txt
 2023-04-24 13:18:51,022 INFO     --- Instructions ---
  Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-05-10 14:15:58,756 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:15:58,761 INFO     Loaded 83287 associations
+2023-05-10 14:15:59,703 INFO     The graph contains 12 different semantic groups: {'cellular component', 'variant', 'gene', 'model', 'pathway', 'phenotype', 'disease', 'genotype', 'biological process', 'molecular function', 'anatomical entity', 'chemical'}
+2023-05-10 14:15:59,703 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:15:59,708 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:15:59,716 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:15:59,801 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:16:20,421 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:16:20,426 INFO     Loaded 83287 associations
+2023-05-10 14:16:21,359 INFO     The graph contains 12 different semantic groups: {'molecular function', 'gene', 'model', 'phenotype', 'genotype', 'cellular component', 'variant', 'anatomical entity', 'chemical', 'pathway', 'disease', 'biological process'}
+2023-05-10 14:16:21,360 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:16:21,364 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:16:21,372 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:16:21,455 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:17:24,671 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:17:24,675 INFO     Loaded 83287 associations
+2023-05-10 14:17:25,607 INFO     The graph contains 12 different semantic groups: {'gene', 'variant', 'genotype', 'pathway', 'chemical', 'biological process', 'phenotype', 'model', 'cellular component', 'disease', 'molecular function', 'anatomical entity'}
+2023-05-10 14:17:25,608 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:17:25,613 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:17:25,620 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:17:25,710 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:20:24,918 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:20:24,922 INFO     Loaded 83287 associations
+2023-05-10 14:20:25,859 INFO     The graph contains 12 different semantic groups: {'chemical', 'anatomical entity', 'phenotype', 'genotype', 'variant', 'model', 'cellular component', 'biological process', 'molecular function', 'gene', 'pathway', 'disease'}
+2023-05-10 14:20:25,860 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:20:25,864 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:20:25,873 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:20:25,965 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:21:27,688 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-05-10 14:22:35,331 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:22:35,335 INFO     Loaded 83287 associations
+2023-05-10 14:22:36,317 INFO     The graph contains 12 different semantic groups: {'gene', 'variant', 'cellular component', 'chemical', 'model', 'genotype', 'pathway', 'phenotype', 'anatomical entity', 'molecular function', 'biological process', 'disease'}
+2023-05-10 14:22:36,318 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:22:36,323 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:22:36,331 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:22:36,427 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:22:56,886 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-05-10 14:22:56,908 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-05-10 14:29:47,138 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:29:47,142 INFO     Loaded 83287 associations
+2023-05-10 14:29:48,153 INFO     The graph contains 12 different semantic groups: {'molecular function', 'variant', 'anatomical entity', 'biological process', 'disease', 'genotype', 'model', 'phenotype', 'pathway', 'gene', 'cellular component', 'chemical'}
+2023-05-10 14:29:48,154 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:29:48,159 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:29:48,169 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:29:48,265 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:30:08,847 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-05-10 14:30:08,876 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-05-10 14:30:25,180 INFO     Created a list of tuples with 83287 entries
+2023-05-10 14:30:25,184 INFO     Loaded 83287 associations
+2023-05-10 14:30:26,111 INFO     The graph contains 12 different semantic groups: {'pathway', 'gene', 'disease', 'biological process', 'anatomical entity', 'genotype', 'phenotype', 'molecular function', 'chemical', 'variant', 'model', 'cellular component'}
+2023-05-10 14:30:26,111 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 14:30:26,116 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 14:30:26,124 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 14:30:26,206 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 14:30:46,129 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-05-10 14:30:46,152 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-05-10 15:14:01,804 INFO     Created a list of tuples with 83287 entries
+2023-05-10 15:14:01,809 INFO     Loaded 83287 associations
+2023-05-10 15:14:02,751 INFO     The graph contains 12 different semantic groups: {'anatomical entity', 'variant', 'molecular function', 'chemical', 'phenotype', 'cellular component', 'biological process', 'genotype', 'gene', 'disease', 'pathway', 'model'}
+2023-05-10 15:14:02,751 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 15:14:02,756 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 15:14:02,762 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 15:14:02,843 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 15:14:23,432 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-05-10 15:14:23,452 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...       ACTION_TYPE    TDL      ORGANISM     NEW_ID
+10     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1391
+11     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...  GATING INHIBITOR  Tclin  Homo sapiens  HGNC:1393
+14     (S)-nitrendipine          6  Voltage-dependent L-type calcium channel subun...  Ion channel  ...           BLOCKER  Tclin  Homo sapiens  HGNC:1390
+22  phenylbutanoic acid         24                              Histone deacetylase 2       Enzyme  ...               NaN  Tclin  Homo sapiens  HGNC:4853
+
+[4 rows x 21 columns]
+2023-05-10 15:14:23,464 INFO     Total of 366 drug-target associations changed to 358 by dropping duplicates.
+2023-05-10 15:14:24,349 INFO     All TTD associations are saved into ttd_associations.csv
+2023-05-10 15:14:24,352 INFO     Created a list of tuples with 716 entries
+2023-05-10 15:19:35,291 INFO     Created a list of tuples with 83287 entries
+2023-05-10 15:19:35,295 INFO     Loaded 83287 associations
+2023-05-10 15:19:36,327 INFO     The graph contains 12 different semantic groups: {'pathway', 'genotype', 'molecular function', 'chemical', 'disease', 'anatomical entity', 'gene', 'phenotype', 'biological process', 'variant', 'model', 'cellular component'}
+2023-05-10 15:19:36,327 INFO     For the graph, a total of 83287 edges and 9949 nodes have been generated.
+2023-05-10 15:19:36,332 INFO     Extracted a total of 3161 nodes that belong to at least one of the semantic groups ['gene']
+2023-05-10 15:19:36,340 INFO     A total of 3161 gene IDs has been extracted
+2023-05-10 15:19:36,439 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS  ...                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel  ...                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel  ...  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2023-05-10 15:19:55,650 INFO     For a total of 16134 drug-target interactions, new mapped IDs are found.
+2023-05-10 15:19:55,660 INFO     Retrieved 366 drug-target interactions with matched gene IDs:
+              DRUG_NAME  STRUCT_ID    GENE_ID PROD_ID                                          PROD_NAME
+10     (S)-nitrendipine          6  HGNC:1391  Q01668  Voltage-dependent L-type calcium channel subun...
+11     (S)-nitrendipine          6  HGNC:1393  O60840  Voltage-dependent L-type calcium channel subun...
+14     (S)-nitrendipine          6  HGNC:1390  Q13936  Voltage-dependent L-type calcium channel subun...
+22  phenylbutanoic acid         24  HGNC:4853  Q92769                              Histone deacetylase 2
+2023-05-10 15:19:55,663 INFO     Total of 366 drug-target associations changed to 358 by dropping duplicates.
+2023-05-10 15:19:56,502 INFO     All TTD associations are saved into ttd_associations.csv
+2023-05-10 15:19:56,504 INFO     Created a list of tuples with 716 entries
+2023-05-10 15:19:56,517 INFO     Extracted a total of 282 nodes that belong to at least one of the semantic groups ['drug']
+2023-05-10 15:19:56,525 INFO     Extracted a total of 5323 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2023-05-10 15:19:56,539 INFO     There are 282 unique drug names
+2023-05-10 15:19:56,540 INFO     There are 5323 unique disease/phenotype IDs
+2023-05-10 15:19:56,806 INFO     Loaded 28978 drug-disease pairs:
+  DRUG_ID DRUG_NAME                 DISEASE_NAME     PHASE
+0  D00ABE   ald-301                     ischemia   Phase 2
+1  D00ABE   ald-301  peripheral arterial disease   Phase 2
+2  D00ABO   kw-2449      acute myeloid leukaemia   Phase 1
+2023-05-10 15:19:56,833 INFO     Loaded 493 phenotypes with matching IDs scoring 100:
+                   Name     ontologyTermName                            ontologyTermIRI  score  validated  review  DISEASE_ID
+0   respiratory failure  Respiratory failure  http://purl.obolibrary.org/obo/HP_0002878  100.0      False   False  HP:0002878
+17        dental caries        Carious teeth  http://purl.obolibrary.org/obo/HP_0000670  100.0      False   False  HP:0000670
+25            gastritis            Gastritis  http://purl.obolibrary.org/obo/HP_0005263  100.0      False   False  HP:0005263
+2023-05-10 15:19:56,872 INFO     Total of 12151 disease names mapped to their IDs:
+   DRUG_ID                                        DRUG_NAME  DISEASE_ID                           DISEASE_NAME
+1   D00ABE                                          ald-301  HP:0004950            peripheral arterial disease
+2   D00ABO                                          kw-2449  HP:0004808                acute myeloid leukaemia
+4   D00ACC                                           nd1251  HP:0000716                             depression
+11  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+12  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+14  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0002861                               melanoma
+19  D00AJS                                            aik11  HP:0005978         non insulin dependent diabetes
+21  D00AKQ                             o-desulfated heparin  HP:0006510  chronic obstructive pulmonary disease
+22  D00AKR                                          amg 479  HP:0003002                          breast cancer
+24  D00AKY                                    sk&f-s-106203  HP:0002099                                 asthma
+2023-05-10 15:19:56,879 INFO     A total of 64 are matched with existing drugs and diseases/phenotypes
+2023-05-10 15:19:56,881 INFO     Total of 64 drug-disease associations changed to 61 by dropping duplicates.
+2023-05-10 15:19:57,091 INFO     All DrugCentral associations are saved into drugcentral_associations.csv
+2023-05-10 15:19:57,092 INFO     Created a list of tuples with 61 entries
+2023-05-10 15:19:57,306 INFO     The graph contains 14 different semantic groups: {'pathway', 'gene product', 'genotype', 'molecular function', 'chemical', 'disease', 'anatomical entity', 'gene', 'phenotype', 'biological process', 'variant', 'drug', 'model', 'cellular component'}
+2023-05-10 15:19:57,306 INFO     For the graph, a total of 83739 edges and 10269 nodes have been generated.
+2023-05-10 15:19:57,308 INFO     There are 14 semantic groups: ['phenotype' 'gene' 'variant' 'gene product' 'drug' 'model' 'genotype'
+ 'anatomical entity' 'biological process' 'disease' 'cellular component'
+ 'pathway' 'chemical' 'molecular function']
+2023-05-10 15:19:57,328 INFO     There are 22 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD1                                      is product of
+CustomRO:TTD2                                            targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+GENO:0000841                     likely pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2023-05-10 15:19:58,096 INFO     Graph of all connections between concepts saved to concepts.png
+2023-05-10 15:19:58,122 INFO     List of triplets saved to triplets.csv
+2023-05-10 15:19:58,480 INFO     All nodes are stored into query_nodes.csv
+2023-05-10 15:19:58,911 INFO     All edges are stored into query_edges.csv
+2023-05-10 15:19:58,911 INFO     Generated query list in file queries.txt
+2023-05-10 15:19:58,912 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-05-10 15:27:44,130 INFO     The graph contains 12 different semantic groups: {'taxon', 'gene product', 'genotype', 'molecular function', 'disease', 'biological artifact', 'gene', 'phenotype', 'biological process', 'variant', 'drug', 'cellular component'}
+2023-05-10 15:27:44,130 INFO     For the graph, a total of 85992 edges and 10275 nodes have been generated.
+2023-05-10 15:27:44,132 INFO     There are 12 semantic groups: ['phenotype' 'gene' 'variant' 'gene product' 'drug' 'taxon'
+ 'biological artifact' 'genotype' 'biological process' 'disease'
+ 'cellular component' 'molecular function']
+2023-05-10 15:27:44,155 INFO     There are 21 relation labels:                                               relation_label
+relation_id                                                 
+BFO:0000050                                       is part of
+CustomRO:DC                         is substance that treats
+CustomRO:TTD1                                  is product of
+CustomRO:TTD2                                        targets
+CustomRO:associatedphenotype       associated with phenotype
+CustomRO:expressesgene                        expresses gene
+CustomRO:foundin                                    found in
+CustomRO:isof                                          is of
+CustomRO:isvariantin                           is variant in
+CustomRO:likelycauses                likely causes condition
+GENO:0000222                                    has genotype
+GENO:0000408                                    is allele of
+GENO:0000418                            has affected feature
+RO:0002325                                  colocalizes with
+RO:0002327                                           enables
+RO:0002331                                       involved in
+RO:0002434                                    interacts with
+RO:0003301                              has role in modeling
+RO:0003303                                  causes condition
+RO:0003304                          contributes to condition
+RO:HOM0000017                 in orthology relationship with
+2023-05-10 15:27:44,347 INFO     Graph of all connections between concepts saved to new_concepts.png
+2023-05-10 15:27:44,364 INFO     List of triplets saved to new_triplets.csv
+2023-05-10 15:27:44,695 INFO     All nodes are stored into query_nodes.csv
+2023-05-10 15:27:45,092 INFO     All edges are stored into query_edges.csv
+2023-05-10 15:27:45,093 INFO     Generated query list in file queries.txt
+2023-05-10 15:27:45,094 INFO     --- Instructions ---
+ Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
