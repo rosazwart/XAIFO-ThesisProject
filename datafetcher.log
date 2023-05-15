@@ -4754,3 +4754,43 @@ RO:HOM0000017                 in orthology relationship with
 2023-05-10 15:27:45,093 INFO     Generated query list in file queries.txt
 2023-05-10 15:27:45,094 INFO     --- Instructions ---
  Place the generated csv files into the import file of the database. Then, copy paste the queries from the txt file into the Neo4j browser.
+2023-05-15 21:04:36,642 INFO     Created a list of tuples with 82674 entries
+2023-05-15 21:04:36,644 INFO     Loaded 82674 associations
+2023-05-15 21:04:36,648 INFO     Created a list of tuples with 239 entries
+2023-05-15 21:04:36,649 INFO     Loaded 239 associations
+2023-05-15 21:04:36,652 INFO     Created a list of tuples with 31 entries
+2023-05-15 21:04:36,652 INFO     Loaded 31 associations
+2023-05-15 21:04:37,637 INFO     The graph contains 8 different semantic groups: {'DRUG', 'ANAT', 'GENE', 'VARI', 'GENO', 'ORTH', 'DISO', 'PHYS'}
+2023-05-15 21:04:37,637 INFO     For the graph, a total of 82674 edges and 9841 nodes have been generated.
+2023-05-15 21:04:37,858 INFO     The graph contains 8 different semantic groups: {'DRUG', 'ANAT', 'GENE', 'VARI', 'GENO', 'ORTH', 'DISO', 'PHYS'}
+2023-05-15 21:04:37,858 INFO     For the graph, a total of 82944 edges and 10034 nodes have been generated.
+2023-05-15 21:04:37,860 INFO     There are 8 semantic groups: ['ORTH' 'DISO' 'DRUG' 'GENO' 'VARI' 'GENE' 'ANAT' 'PHYS']
+2023-05-15 21:04:37,882 INFO     There are 25 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+GENO:0000841                     likely pathogenic for condition
+None                                                        None
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0002607                                         is marker for
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+dc:source                                                 source
+2023-05-15 21:04:38,564 INFO     Graph of all connections between concepts saved to prev_concepts.png
+2023-05-15 21:04:38,582 INFO     List of triplets saved to prev_triplets.csv

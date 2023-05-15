@@ -94,5 +94,5 @@ def build_kg(load_csv: bool = False):
     new_kg.save_graph('new_kg')
 
 if __name__ == "__main__":
-    build_kg(load_csv=True)
-    #build_prev_kg()
+    #build_kg(load_csv=True)
+    build_prev_kg()
