@@ -41,15 +41,14 @@ class LinkPredModel(torch.nn.Module):
         edge_label_index = edge_label_index.to(self.device)
 
         for i in range(len(self.convs) - 1):
-          x = self.convs[i](x, edge_index)
-          x = self.bns[i](x)
-          x = F.leaky_relu(x)
-          x = F.dropout(x, p=self.dropout, training=training)
+            x = self.convs[i](x, edge_index)
+            x = self.bns[i](x)
+            x = F.leaky_relu(x)
+            x = F.dropout(x, p=self.dropout, training=training)
         
         x = self.convs[-1](x, edge_index)  
         x = self.bns[-1](x)
         
-
         nodes_first, nodes_second = edge_label_index
         nodes_first_features = x[nodes_first.long()]
         nodes_second_features = x[nodes_second.long()]

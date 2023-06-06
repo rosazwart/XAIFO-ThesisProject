@@ -70,6 +70,12 @@ PHENOTYPE_ASSOCIATED = {
     'iri': np.nan
 }
 
+INTERACTS_WITH = {
+    'id': 'RO:0002434',
+    'label': 'interacts with',
+    'iri': 'http://purl.obolibrary.org/obo/RO_0002434'
+}
+
 REL_GROUPING = {
     'RO:HOM0000020': {
         'id': 'RO:HOM0000017',
