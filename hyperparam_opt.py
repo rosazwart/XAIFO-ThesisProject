@@ -19,14 +19,14 @@ def optim(args):
     # Node embedding using Edge2Vec
     trans_matrix = transitions.initialize_edge_type_matrix(args['type_size'])
     
-    G1 = nx.from_pandas_edgelist(args['df'], 'index_head', 'index_tail', 'type', create_using=nx.DiGraph(), edge_key= (('type', int),('id',int)))
+    G1 = nx.from_pandas_edgelist(args['df'], 'index_head', 'index_tail', 'type', create_using=nx.DiGraph(), edge_key= (('type', int),('id', int)))
     G1 = G1.to_undirected()
     for edge in G1.edges():
         G1[edge[0]][edge[1]]['weight'] = 1.0
     
     for i in range(args['epoch_e2v']):
         walks = transitions.simulate_walks_1(G1, args['num_walks'], args['walk_length'], trans_matrix, True, args['p'], args['q'])
-        trans_matrix = transitions.update_trans_matrix(walks,args['type_size'], 3)
+        trans_matrix = transitions.update_trans_matrix(walks, args['type_size'], 3)
     
     walks = edge2vec.simulate_walks_2(G1, args['num_walks'], args['walk_length'], trans_matrix, args['p'], args['q'])
     w2v_model = edge2vec.Word2Vec(walks, vector_size=args['dimensions_e2v'], window=args['walk_length']-1, min_count=0, sg=1, workers=8, epochs=args['epoch_e2v'])

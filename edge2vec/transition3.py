@@ -1,7 +1,7 @@
 """
     Edited by Rosa
     Source python3 update: https://github.com/PPerdomoQ/rare-disease-explainer/blob/main/transition3.py
-    Source: https://github.com/RoyZhengGao/edge2vec/blob/master/transition.py
+    Source original (python2) version: https://github.com/RoyZhengGao/edge2vec/blob/master/transition.py
 """
 
 import networkx as nx
