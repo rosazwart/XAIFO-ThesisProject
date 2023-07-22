@@ -7,6 +7,9 @@ from math import sqrt
 from typing import Optional
 import copy
 
+import matplotlib.pyplot as plt
+import networkx as nx
+
 import torch
 from tqdm import tqdm
 
@@ -93,16 +96,16 @@ class GNNExplainer(Explainer):
         std = 0.1
 
         if self.feat_mask_type == 'individual_feature':
-            self.node_feat_mask = torch.nn.Parameter(torch.randn(N, F) * std)
+            self.node_feat_mask = torch.nn.Parameter(torch.randn(N, F) * std)   # mask applied to each feature per node
         elif self.feat_mask_type == 'scalar':
-            self.node_feat_mask = torch.nn.Parameter(torch.randn(N, 1) * std)
+            self.node_feat_mask = torch.nn.Parameter(torch.randn(N, 1) * std)   # mask applied to each node
         else:
-            self.node_feat_mask = torch.nn.Parameter(torch.randn(1, F) * std)
+            self.node_feat_mask = torch.nn.Parameter(torch.randn(1, F) * std)   # mask applied to each feature
 
         std = torch.nn.init.calculate_gain('relu') * sqrt(2.0 / (2 * N))
 
         if self.allow_edge_mask:
-            self.edge_mask = torch.nn.Parameter(torch.randn(E) * std)
+            self.edge_mask = torch.nn.Parameter(torch.randn(E) * std)   # mask applied to each edge
 
     def _clear_masks(self):
         clear_masks(self.model)
@@ -306,7 +309,7 @@ class GNNExplainer(Explainer):
         :rtype: (:class:`Tensor`, :class:`Tensor`)
         """
 
-        self.model.eval()
+        self.model.eval()   # set to model evaluation
         self._clear_masks()
 
         num_nodes = x.size(0)
@@ -318,26 +321,32 @@ class GNNExplainer(Explainer):
         x1, edge_index1, mapping1, hard_edge_mask1, subset1, kwargs1 = subgraph(node_idx=[node_idx1, node_idx2], 
                                                                                 x=x, edge_index=edge_index, 
                                                                                 flow='source_to_target', num_hops = self.num_hops, **kwargs)
-        print('Edge Index Subgraph with', self.num_hops, 'hops')
 
-        # initial embedding
+        # x1                -> subgraph nodes with features
+        # edge_index1       -> subgraph edges expressed in node pairs
+        # mapping1          -> indices of node_idx1 and node_idx2 in subgraph node list
+        # hard_edge_mask1   -> complete graph edges mask for subgraph edges
+
+        # Initial embedding of nodes from relevant edge
         node_embedding_1 = emb[node_idx1]
         node_embedding_2 = emb[node_idx2]
 
-        # Get the initial prediction.       
+        # Get the initial prediction from trained model on complete computation graph       
         prediction = torch.Tensor([torch.sum(node_embedding_1 * node_embedding_2, dim=-1)]).requires_grad_()
-        print('Prediction:', prediction)
 
+        # Initialize GNNExplainer masks for subgraph
         self._initialize_masks(x1, edge_index1)
         self.to(x1.device)
 
         if self.allow_edge_mask:
+            # Apply mask on edges in each layer of model
             set_masks(self.model, self.edge_mask, edge_index1,
                       apply_sigmoid=True)
             parameters = [self.node_feat_mask, self.edge_mask]
         else:
             parameters = [self.node_feat_mask]
-            
+        
+        # Optimize values of node and edge masks
         optimizer = torch.optim.Adam(parameters, lr=self.lr)
 
         if self.log:  # pragma: no cover
@@ -345,25 +354,23 @@ class GNNExplainer(Explainer):
             pbar.set_description(f'Explain edge between nodes {node_idx1} and {node_idx2}')
         
         for epoch in range(1, self.epochs + 1):
-            optimizer.zero_grad()
+            optimizer.zero_grad()   # Remove gradient from previous epoch
             criterion = torch.nn.MSELoss(reduction='sum')
-            h = x1 
+            h = x1  # all subgraph nodes with their features
             
             pred1, emb1 = self.model(h, edge_index1, edge_index1)
             out = torch.tensor([torch.sum(emb1[mapping1[1]]* emb1[mapping1[0]], dim=-1)]).requires_grad_()
-            
-            # print('Out:', out)
-            # print('Prediction:', prediction)
-            loss = criterion(out, prediction)
-            #loss = self.get_loss(out, prediction, mapping1)
-            m = self.edge_mask.sigmoid()
+
+            loss = criterion(out, prediction)   # calculate loss given prediction of trained model and current model's prediction
+
+            m = self.edge_mask.sigmoid()    # ranging between 0 and 1
             edge_reduce = getattr(torch, self.coeffs['edge_reduction'])
-            loss = loss + self.coeffs['edge_size'] * edge_reduce(m)
+            loss = loss + self.coeffs['edge_size'] * edge_reduce(m) # partition of sum over all mask values
             ent = -m * torch.log(m + EPS) - (1 - m) * torch.log(1 - m + EPS)
             loss = loss + self.coeffs['edge_ent'] * ent.mean()
 
-            loss.backward()
-            optimizer.step()
+            loss.backward()     # Compute the gradients
+            optimizer.step()    # Iterate over all parameter tensors that need to be updated which are the masks
 
             if self.log:  # pragma: no cover
                 pbar.update(1)
@@ -490,18 +497,16 @@ def subgraph(node_idx, x, edge_index, num_hops, **kwargs):
         
     return x, edge_index, mapping, edge_mask, subset, kwargs_new
     
-def visualize_subgraph(node_idx, edge_index_full,
-                        edge_mask, nodes, y = None,
-                        threshold = None,
-                        edge_y = None,
-                        node_alpha = None, seed= 10,
+def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
+                       threshold = None,
+                       edge_y = None,
+                       node_alpha = None, seed= 10,
                        flow = 'source_to_target', 
                        num_hops = 1,node_label = 'preflabel',
                        edge_labels = None,
                        show_inactive = False,
                        remove_unconnected = False,
-                       
-                        **kwargs):
+                       **kwargs):
     r"""Visualizes the subgraph given an edge mask :attr:`edge_mask`.
 
     Args:
@@ -526,8 +531,6 @@ def visualize_subgraph(node_idx, edge_index_full,
 
     :rtype: :class:`matplotlib.axes.Axes`, :class:`networkx.DiGraph`
     """
-    import matplotlib.pyplot as plt
-    import networkx as nx
 
     assert edge_mask.size(0) == edge_index_full.size(1) # check whether there is an equal number of edges in the mask and set of all edges
 
@@ -543,17 +546,16 @@ def visualize_subgraph(node_idx, edge_index_full,
             num_nodes=None, flow=flow)
         
 
-    edge_mask = edge_mask[hard_edge_mask]
+    edge_mask = edge_mask[hard_edge_mask]   # only get GNNExplainer mask values from edges in subgraph
     selected = (hard_edge_mask == True).nonzero(as_tuple=True)
 
     if threshold is not None:
-        edge_mask = (edge_mask >= threshold).to(torch.float)
+        edge_mask = (edge_mask >= threshold).to(torch.float)    # edge mask value needs to exceed given threshold to be included
 
     if y is None:
         y = torch.zeros(edge_index.max().item() + 1,
                         device=edge_index.device)
     else:
-        #print(y[subset])
         y = y[subset].to(torch.float) / y.max().item()
         
 
@@ -634,17 +636,16 @@ def visualize_subgraph(node_idx, edge_index_full,
     nx.draw_networkx_labels(G2, pos, **label_kwargs)
 
     if edge_labels is not None: 
-
-      edge_labels_sub = {}
-      for (n1,n2) in G2.edges(): 
-        #print(n1)
-        edge_labels_sub[(n1, n2)] = edge_labels[(mapping2[n1], mapping2[n2])]
+        edge_labels_sub = {}
+        for (n1,n2) in G2.edges(): 
+            #print(n1)
+            edge_labels_sub[(n1, n2)] = edge_labels[(mapping2[n1], mapping2[n2])]
       
-      nx.draw_networkx_edge_labels(
-      G2, pos,
-      edge_labels=edge_labels_sub,
-      font_color='red', 
-      font_size = 10
-  )
+        nx.draw_networkx_edge_labels(
+            G2, pos,
+            edge_labels=edge_labels_sub,
+            font_color='red', 
+            font_size = 10
+        )
 
     return ax, G2
