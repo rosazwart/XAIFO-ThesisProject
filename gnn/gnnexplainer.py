@@ -333,6 +333,7 @@ class GNNExplainer(Explainer):
 
         # Get the initial prediction from trained model on complete computation graph       
         prediction = torch.Tensor([torch.sum(node_embedding_1 * node_embedding_2, dim=-1)]).requires_grad_()
+        print('Prediction from trained model:', prediction.sigmoid())
 
         # Initialize GNNExplainer masks for subgraph
         self._initialize_masks(x1, edge_index1)
@@ -567,7 +568,6 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
             colors[i % len(colors)]['color']
             for i in edge_y[hard_edge_mask]
         ]
-
 
     data = Data(edge_index=edge_index, att=edge_mask,
                 edge_color=edge_color, y=y, num_nodes=y.size(0)).to('cpu')
