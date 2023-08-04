@@ -1,3 +1,6 @@
+# IMPORTANT: Run with `xaifo` environment
+# TODO: error with `xaifognn` environment
+
 import pandas as pd
 import networkx as nx
 

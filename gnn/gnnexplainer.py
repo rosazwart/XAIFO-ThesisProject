@@ -594,7 +594,7 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
                     G2.remove_node(node)
                     
 
-    active = torch.tensor(list(G2.nodes()))
+    active = torch.tensor(list(G2.nodes())).long()
 
     mapping = {k: str(nodes.iloc[i][node_label]) + ' ' + str(i) for k, i in enumerate(subset.tolist())}
     mapping2 = {str(nodes.iloc[i][node_label]) + ' ' + str(i): i for k, i in enumerate(subset.tolist())}
@@ -624,7 +624,6 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
             ))
 
     if node_alpha is None:
-        #print(active)
         nx.draw_networkx_nodes(G2, pos, node_color=y[active].tolist(),
                                 **node_kwargs)
     else:

@@ -1,3 +1,6 @@
+# IMPORTANT: Run with `xaifo` environment
+# TODO: error with `xaifognn` environment
+
 import pandas as pd
 import networkx as nx
 import numpy as np
@@ -39,13 +42,14 @@ def get_embedding(node_type, data, model):
     return z
 
 def optim(args):
-    # Node embedding using Metapath2Vec
     nodes = args['nodes']
         
     node_semantics = nodes[['semantic', 'semantic_id']].drop_duplicates().set_index('semantic_id').to_dict()
     node_semantics_dict = node_semantics['semantic']
     
     edges = args['edges']
+    
+    # Node embedding using Metapath2Vec
     edges_m2v = edges.copy()
     edges_m2v.replace({'class_head': node_semantics_dict, 'class_tail': node_semantics_dict}, inplace=True)
     edges_m2v['relation'].fillna('na', inplace=True)
@@ -81,7 +85,7 @@ def optim(args):
         
     model = MetaPath2Vec(data.edge_index_dict, embedding_dim=args['dimensions_m2v'],
                         metapath=metapaths, walk_length=args['walk_length'], context_size=args['context_size'],
-                        walks_per_node=args['num_walks'], num_negative_samples=5,
+                        walks_per_node=args['num_walks'], num_negative_samples=1,
                         sparse=True).to(args['device'])
 
     loader = model.loader(batch_size=128, shuffle=True, num_workers=6)
@@ -143,72 +147,50 @@ if __name__ == "__main__":
     torch_device = 'cpu'
     print('Using device:', torch_device)
     
-    # Load data
+    # Set parameters
     dataset_nr = input('Enter dataset number (1 or 2):')
     assert dataset_nr == 1 or 2
     
+    # Load data
     edge_df = pd.read_csv(f'output/indexed_edges_{dataset_nr}.csv')
     node_df = pd.read_csv(f'output/indexed_nodes_{dataset_nr}.csv')
     
-    args = {
+    # Set hyperparameter search space
+    search_args = {
         'device': torch_device, 
-        "hidden_dim" : 64,
-        'output_dim': 64,
-        "epochs" : 100,
+        "hidden_dim" : tune.choice([64, 128, 256]),
+        'output_dim': tune.choice([64, 128, 256]),
+        "epochs" : tune.choice([100, 150, 200]),
         'type_size' : len(set(edge_df['type'])),
-        'epoch_m2v' : 5,
-        'num_walks': 2,
-        'walk_length' : 5,
-        'context_size': 3,
-        'dimensions_m2v' : 32,
-        'lr_m2v' : 0.01,
+        'epoch_m2v' : tune.choice([5, 10]),
+        'num_walks': tune.choice([2, 5, 10]),
+        'walk_length' : tune.choice([10, 25, 35]),
+        'context_size': tune.choice([3, 7]),
+        'dimensions_m2v' : tune.choice([32, 64, 128]),
+        'lr_m2v' : tune.loguniform(1e-4, 1e-1),
         'edges': edge_df, 
         'nodes': node_df,
-        'lr': 0.01, 
-        'aggr': 'mean', 
-        'dropout': 0.1, 
-        'layers': 2
+        'lr': tune.loguniform(1e-4, 1e-1), 
+        'aggr': tune.choice(['mean', 'sum']), 
+        'dropout': tune.choice([0, 0.1, 0.2]), 
+        'layers': tune.choice([2, 4, 6])
     }
-    
-    optim(args)
-    
-    """
-        search_args = {
-            'device': torch_device, 
-            "hidden_dim" : tune.choice([64, 128, 256]),
-            'output_dim': tune.choice([64, 128, 256]),
-            "epochs" : tune.choice([100, 150, 200]),
-            'type_size' : len(set(edge_df['type'])),
-            'epoch_m2v' : tune.choice([5, 10]),
-            'num_walks': tune.choice([2, 5, 10]),
-            'walk_length' : tune.choice([5, 10, 50]),
-            'context_size': tune.choice([3, 7, 10]),
-            'dimensions_m2v' : tune.choice([32, 64, 128]),
-            'lr_m2v' : tune.loguniform(1e-4, 1e-1),
-            'edges': edge_df, 
-            'nodes': node_df,
-            'lr': tune.loguniform(1e-4, 1e-1), 
-            'aggr': tune.choice(['mean', 'sum']), 
-            'dropout': tune.choice([0, 0.1, 0.2]), 
-            'layers': tune.choice([2, 4, 6])
-        }
 
-        scheduler = ASHAScheduler(
-            max_t=10,
-            grace_period=1,
-            reduction_factor=2)
+    scheduler = ASHAScheduler(
+        max_t=10,
+        grace_period=1,
+        reduction_factor=2)
 
-        result = tune.run(
-            tune.with_parameters(optim),
-            resources_per_trial = {"cpu": 8}, #change this value according to the gpu units you would like to use
-            config = search_args,
-            metric = "val_auc",
-            mode = "max",
-            num_samples = 30, #select the maximum number of models you would like to test
-            scheduler = scheduler, 
-            resume = False, 
-            local_dir = "output")
-        
-        best_trial = result.get_best_trial("val_auc")
-        print("Best trial config: {}".format(best_trial.config))
-    """
+    result = tune.run(
+        tune.with_parameters(optim),
+        resources_per_trial = {"cpu": 8}, #change this value according to the gpu units you would like to use
+        config = search_args,
+        metric = "val_auc",
+        mode = "max",
+        num_samples = 30, #select the maximum number of models you would like to test
+        scheduler = scheduler, 
+        resume = False, 
+        local_dir = "output")
+    
+    best_trial = result.get_best_trial("val_auc")
+    print("Best trial config: {}".format(best_trial.config))
