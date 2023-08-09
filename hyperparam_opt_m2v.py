@@ -54,6 +54,21 @@ def optim(args):
     edges_m2v.replace({'class_head': node_semantics_dict, 'class_tail': node_semantics_dict}, inplace=True)
     edges_m2v['relation'].fillna('na', inplace=True)
     
+    # TODO: to avoid index error, how to solve
+    if args['dataset_nr'] == 1:
+        node_type_first = 'ORTH'
+    else:
+        node_type_first = 'genotype'
+
+    matching_indices = edges_m2v.index[edges_m2v['class_head'] == node_type_first].tolist()
+
+    index_1 = 0
+    index_2 = matching_indices[0]
+
+    temp_row = edges_m2v.iloc[index_1].copy()
+    edges_m2v.iloc[index_1] = edges_m2v.iloc[index_2]
+    edges_m2v.iloc[index_2] = temp_row
+    
     metapath_df = edges_m2v[['class_head', 'relation', 'class_tail']].drop_duplicates().reset_index().drop(columns=['index'])
     
     metapaths = list()
@@ -170,6 +185,7 @@ if __name__ == "__main__":
         'lr_m2v' : tune.loguniform(1e-4, 1e-1),
         'edges': edge_df, 
         'nodes': node_df,
+        'dataset_nr': dataset_nr,
         'lr': tune.loguniform(1e-4, 1e-1), 
         'aggr': tune.choice(['mean', 'sum']), 
         'dropout': tune.choice([0, 0.1, 0.2]), 
