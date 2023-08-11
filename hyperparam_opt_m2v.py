@@ -69,6 +69,8 @@ def optim(args):
     edges_m2v.iloc[index_1] = edges_m2v.iloc[index_2]
     edges_m2v.iloc[index_2] = temp_row
     
+    # Find all metapaths
+    
     metapath_df = edges_m2v[['class_head', 'relation', 'class_tail']].drop_duplicates().reset_index().drop(columns=['index'])
     
     metapaths = list()
