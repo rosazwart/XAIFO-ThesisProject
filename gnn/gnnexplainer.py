@@ -497,13 +497,15 @@ def subgraph(node_idx, x, edge_index, num_hops, **kwargs):
         kwargs_new[key] = value  # TODO: this is not in PGExplainer
         
     return x, edge_index, mapping, edge_mask, subset, kwargs_new
-    
+
 def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
                        threshold = None,
                        edge_y = None,
-                       node_alpha = None, seed= 10,
+                       node_alpha = None, 
+                       seed= 10,
                        flow = 'source_to_target', 
-                       num_hops = 1,node_label = 'preflabel',
+                       num_hops = 1,
+                       node_label = 'preflabel',
                        edge_labels = None,
                        show_inactive = False,
                        remove_unconnected = False,
@@ -511,9 +513,8 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
     r"""Visualizes the subgraph given an edge mask :attr:`edge_mask`.
 
     Args:
-        node_idx (int): The node id to explain.
-            Set to :obj:`None` to explain a graph.
-        edge_index (LongTensor): The edge indices.
+        node_idx (int, list, tuple, Tensor): The node id(s) to explain.
+        edge_index_full (LongTensor): The indices for each existing edge in graph.
         edge_mask (Tensor): The edge mask.
         y (Tensor, optional): The ground-truth node-prediction labels used
             as node colorings. All nodes will have the same color
@@ -535,20 +536,12 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
 
     assert edge_mask.size(0) == edge_index_full.size(1) # check whether there is an equal number of edges in the mask and set of all edges
 
-    if node_idx is None or node_idx[0] < 0:
-        hard_edge_mask = torch.BoolTensor([True] * edge_index_full.size(1), device=edge_mask.device)
-        subset = torch.arange(edge_index_full.max().item() + 1, device=edge_index_full.device)
-        y = None
-
-    else:
-        # Only operate on a k-hop subgraph around `node_idx`.
-        subset, edge_index, mapping_sub, hard_edge_mask = k_hop_subgraph(
-            node_idx, num_hops, edge_index_full, relabel_nodes=True,
-            num_nodes=None, flow=flow)
-        
+    # Only operate on a k-hop subgraph around node(s) given by `node_idx`
+    subset, edge_index, mapping_sub, hard_edge_mask = k_hop_subgraph(
+        node_idx, num_hops, edge_index_full, relabel_nodes=True,
+        num_nodes=None, flow=flow)
 
     edge_mask = edge_mask[hard_edge_mask]   # only get GNNExplainer mask values from edges in subgraph
-    selected = (hard_edge_mask == True).nonzero(as_tuple=True)
 
     if threshold is not None:
         edge_mask = (edge_mask >= threshold).to(torch.float)    # edge mask value needs to exceed given threshold to be included
@@ -556,12 +549,14 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
     if y is None:
         y = torch.zeros(edge_index.max().item() + 1,
                         device=edge_index.device)
+        y2 = torch.zeros(edge_index.max().item() + 1,
+                        device=edge_index.device)
     else:
+        y2 = y[subset].to(torch.int)    # maintain node class identifier as node attribute
         y = y[subset].to(torch.float) / y.max().item()
         
-
     if edge_y is None:
-        edge_color = ['black'] * edge_index.size(1)
+        edge_color = ['black'] * edge_index.size(1) # all edges are represented with color black
     else:
         colors = list(plt.rcParams['axes.prop_cycle'])
         edge_color = [
@@ -570,19 +565,18 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
         ]
 
     data = Data(edge_index=edge_index, att=edge_mask,
-                edge_color=edge_color, y=y, num_nodes=y.size(0)).to('cpu')
+                edge_color=edge_color, y=y, y2=y2, num_nodes=y.size(0)).to('cpu')  # store subgraph in data object describing homogeneous graph
 
-    G = to_networkx(data, node_attrs=['y'],
-                    edge_attrs=['att', 'edge_color'])
+    G = to_networkx(data, node_attrs=['y', 'y2'],
+                    edge_attrs=['att', 'edge_color'])   # convert to networkx graph object
 
     G2 = copy.deepcopy(G)
     if num_hops >= 1 and not show_inactive: 
       for indx, edge in enumerate(G.edges): 
-        if edge_mask[indx] <  threshold:
-          G2.remove_edge(edge[0], edge[1])
+        if edge_mask[indx] < threshold:
+          G2.remove_edge(edge[0], edge[1])  # remove all edges that do not exceed threshold
       removed_nodes = list(nx.isolates(G2))
-      G2.remove_nodes_from(removed_nodes)
-
+      G2.remove_nodes_from(removed_nodes)   # remove all nodes that have become isolates due to edge removal
     
     if remove_unconnected:
         G2 = G2.to_undirected()
@@ -595,10 +589,12 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
                     
 
     active = torch.tensor(list(G2.nodes())).long()
+    
+    G3 = copy.deepcopy(G2)
 
     mapping = {k: str(nodes.iloc[i][node_label]) + ' ' + str(i) for k, i in enumerate(subset.tolist())}
     mapping2 = {str(nodes.iloc[i][node_label]) + ' ' + str(i): i for k, i in enumerate(subset.tolist())}
-    G2 = nx.relabel_nodes(G2, mapping)
+    G3 = nx.relabel_nodes(G3, mapping)
 
     node_args = set(signature(nx.draw_networkx_nodes).parameters.keys())
     node_kwargs = {k: v for k, v in kwargs.items() if k in node_args}
@@ -609,42 +605,46 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
     label_kwargs = {k: v for k, v in kwargs.items() if k in label_args}
     label_kwargs['font_size'] = kwargs.get('font_size') or 10
 
-    pos = nx.spring_layout(G2, seed=seed)
+    pos = nx.spring_layout(G3, seed=seed)
     ax = plt.gca()
-    for source, target, data in G2.edges(data=True):
+    for source, target, data in G3.edges(data=True):
         ax.annotate(
             '', xy=pos[target], xycoords='data', xytext=pos[source],
-            textcoords='data', arrowprops=dict(
-                arrowstyle="->",
-                alpha=max(data['att'], 0.1),
-                color=data['edge_color'],
-                shrinkA=sqrt(node_kwargs['node_size']) / 2.0,
-                shrinkB=sqrt(node_kwargs['node_size']) / 2.0,
-                connectionstyle="arc3,rad=0.1",
-            ))
+            textcoords='data', arrowprops={
+                'arrowstyle': "->",
+                'alpha': max(data['att'], 0.1),
+                'color': data['edge_color'],
+                'shrinkA': sqrt(node_kwargs['node_size']) / 2.0,
+                'shrinkB': sqrt(node_kwargs['node_size']) / 2.0,
+                'connectionstyle': "arc3,rad=0.1",
+            })
 
     if node_alpha is None:
-        nx.draw_networkx_nodes(G2, pos, node_color=y[active].tolist(),
+        nx.draw_networkx_nodes(G3, pos, node_color=y[active].tolist(),
                                 **node_kwargs)
     else:
         node_alpha_subset = node_alpha[subset]
         assert ((node_alpha_subset >= 0) & (node_alpha_subset <= 1)).all()
-        nx.draw_networkx_nodes(G2, pos, alpha=node_alpha_subset.tolist(),
+        nx.draw_networkx_nodes(G3, pos, alpha=node_alpha_subset.tolist(),
                                 node_color=y.tolist(), **node_kwargs)
 
-    nx.draw_networkx_labels(G2, pos, **label_kwargs)
+    nx.draw_networkx_labels(G3, pos, **label_kwargs)
 
     if edge_labels is not None: 
         edge_labels_sub = {}
-        for (n1,n2) in G2.edges(): 
-            #print(n1)
+        edge_labels_sub_attr = {}
+        for (n1,n2) in G3.edges():
             edge_labels_sub[(n1, n2)] = edge_labels[(mapping2[n1], mapping2[n2])]
+            edge_labels_sub_attr[(n1, n2)] = {'label': edge_labels[(mapping2[n1], mapping2[n2])]}
       
         nx.draw_networkx_edge_labels(
-            G2, pos,
+            G3, pos,
             edge_labels=edge_labels_sub,
             font_color='red', 
-            font_size = 10
+            font_size = 9
         )
+        
+        # Store relation label for each edge
+        nx.set_edge_attributes(G3, edge_labels_sub_attr)
 
-    return ax, G2
+    return ax, G3
