@@ -8,6 +8,7 @@ from typing import Optional
 import copy
 
 import matplotlib.pyplot as plt
+from matplotlib.colors import Normalize
 import networkx as nx
 
 import torch
@@ -498,7 +499,7 @@ def subgraph(node_idx, x, edge_index, num_hops, **kwargs):
         
     return x, edge_index, mapping, edge_mask, subset, kwargs_new
 
-def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
+def visualize_subgraph2(node_idx, edge_index_full, edge_mask, nodes, node_labels_dict, y = None,
                        threshold = None,
                        edge_y = None,
                        node_alpha = None, 
@@ -599,7 +600,6 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
     node_args = set(signature(nx.draw_networkx_nodes).parameters.keys())
     node_kwargs = {k: v for k, v in kwargs.items() if k in node_args}
     node_kwargs['node_size'] = kwargs.get('node_size') or 800
-    node_kwargs['cmap'] = kwargs.get('cmap') or 'cool'
 
     label_args = set(signature(nx.draw_networkx_labels).parameters.keys())
     label_kwargs = {k: v for k, v in kwargs.items() if k in label_args}
@@ -620,8 +620,32 @@ def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, y = None,
             })
 
     if node_alpha is None:
-        nx.draw_networkx_nodes(G3, pos, node_color=y[active].tolist(),
-                                **node_kwargs)
+        node_label_color_dict = {node: (node_labels_dict[label], color) for node, label, color in zip(G3.nodes(), y2[active].tolist(), y[active].tolist())}
+        
+        # Create legend entries for each color
+        unique_colors = {}
+        for node, (label, value) in node_label_color_dict.items():
+            unique_colors[value] = label
+        
+        # Create color mapper
+        color_values = [value for _, value in node_label_color_dict.values()]
+        norm = Normalize(vmin=min(color_values), vmax=max(color_values))
+        colormap = plt.get_cmap('cool')
+        
+        # Draw nodes with color
+        for node, (label, color) in node_label_color_dict.items():
+            color_mapped = colormap(norm(color))
+            nx.draw_networkx_nodes(G3, pos, nodelist=[node], node_color=color_mapped, label=label, **node_kwargs)
+        
+        # Draw legend 
+        legend_handles = []
+        for value, label in unique_colors.items():
+            color = colormap(norm(value))
+            legend_handles.append(plt.Line2D([0], [0], marker='o', color='w', label=label,
+                                            markerfacecolor=color, markersize=10))
+
+        plt.legend(handles=legend_handles, loc='upper left', bbox_to_anchor=(1, 1), title='Node Types')
+        
     else:
         node_alpha_subset = node_alpha[subset]
         assert ((node_alpha_subset >= 0) & (node_alpha_subset <= 1)).all()
