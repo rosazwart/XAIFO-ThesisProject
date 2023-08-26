@@ -499,7 +499,7 @@ def subgraph(node_idx, x, edge_index, num_hops, **kwargs):
         
     return x, edge_index, mapping, edge_mask, subset, kwargs_new
 
-def visualize_subgraph2(node_idx, edge_index_full, edge_mask, nodes, node_labels_dict, y = None,
+def visualize_subgraph(node_idx, edge_index_full, edge_mask, nodes, node_labels_dict, y = None,
                        threshold = None,
                        edge_y = None,
                        node_alpha = None, 

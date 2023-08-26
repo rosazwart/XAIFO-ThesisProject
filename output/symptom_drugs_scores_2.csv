@@ -1,0 +1,82 @@
+Symptom,Symptom ID,Drug Candidate,Score
+Calf muscle pseudohypertrophy,HP:0003707,azathioprine,0.9981572
+Calf muscle pseudohypertrophy,HP:0003707,levosimendan,0.9815238
+Calf muscle pseudohypertrophy,HP:0003707,disopyramide,0.9754701
+Elevated serum creatine kinase,HP:0003236,levosimendan,0.99947995
+Elevated serum creatine kinase,HP:0003236,azathioprine,0.99024606
+Elevated serum creatine kinase,HP:0003236,mezlocillin,0.9799192
+"Intellectual disability, mild",HP:0001256,azathioprine,0.9950683
+"Intellectual disability, mild",HP:0001256,levosimendan,0.9816706
+"Intellectual disability, mild",HP:0001256,brilliant Blue G,0.9662828
+Hyporeflexia,HP:0001265,azathioprine,0.99622583
+Hyporeflexia,HP:0001265,levosimendan,0.9954869
+Hyporeflexia,HP:0001265,mezlocillin,0.9896119
+Generalized hypotonia,HP:0001290,mezlocillin,0.9999063
+Generalized hypotonia,HP:0001290,azathioprine,0.99985945
+Generalized hypotonia,HP:0001290,levosimendan,0.9993911
+Hyperlordosis,HP:0003307,levosimendan,0.9999144
+Hyperlordosis,HP:0003307,mezlocillin,0.9987118
+Hyperlordosis,HP:0003307,carvedilol,0.9955936
+Skeletal muscle atrophy,HP:0003202,mezlocillin,0.99528116
+Skeletal muscle atrophy,HP:0003202,levosimendan,0.99409467
+Skeletal muscle atrophy,HP:0003202,selinexor,0.9693021
+Global developmental delay,HP:0001263,azathioprine,0.9999107
+Global developmental delay,HP:0001263,brilliant Blue G,0.999506
+Global developmental delay,HP:0001263,mezlocillin,0.9970662
+Hypoventilation,HP:0002791,levosimendan,0.98063505
+Hypoventilation,HP:0002791,azathioprine,0.9608234
+Hypoventilation,HP:0002791,brilliant Blue G,0.93930835
+Flexion contracture,HP:0001371,levosimendan,0.9998179
+Flexion contracture,HP:0001371,mezlocillin,0.999749
+Flexion contracture,HP:0001371,carvedilol,0.9975325
+Proximal muscle weakness,HP:0003701,levosimendan,0.9999826
+Proximal muscle weakness,HP:0003701,mezlocillin,0.9999695
+Proximal muscle weakness,HP:0003701,azathioprine,0.99967575
+Motor delay,HP:0001270,levosimendan,0.99997985
+Motor delay,HP:0001270,azathioprine,0.9980387
+Motor delay,HP:0001270,mezlocillin,0.99773955
+Muscular dystrophy,HP:0003560,azathioprine,0.9929703
+Muscular dystrophy,HP:0003560,amiodarone,0.97117215
+Muscular dystrophy,HP:0003560,clomifene,0.96469104
+Calf muscle hypertrophy,HP:0008981,levosimendan,0.99986255
+Calf muscle hypertrophy,HP:0008981,mezlocillin,0.99499714
+Calf muscle hypertrophy,HP:0008981,azathioprine,0.9912573
+Scoliosis,HP:0002650,mezlocillin,0.9999435
+Scoliosis,HP:0002650,azathioprine,0.99985695
+Scoliosis,HP:0002650,levosimendan,0.9996382
+Cardiomyopathy,HP:0001638,levosimendan,0.997021
+Cardiomyopathy,HP:0001638,amiodarone,0.91395587
+Cardiomyopathy,HP:0001638,azathioprine,0.86166245
+Progressive muscle weakness,HP:0003323,levosimendan,0.9983199
+Progressive muscle weakness,HP:0003323,brilliant Blue G,0.99032974
+Progressive muscle weakness,HP:0003323,azathioprine,0.98644304
+Congestive heart failure,HP:0001635,levosimendan,0.9999976
+Congestive heart failure,HP:0001635,carvedilol,0.99997294
+Congestive heart failure,HP:0001635,amodiaquine,0.9990532
+Delayed speech and language development,HP:0000750,estradiol,0.99016625
+Delayed speech and language development,HP:0000750,desipramine,0.9895806
+Delayed speech and language development,HP:0000750,acetylcholine,0.9890947
+Abnormal EKG,HP:0003115,levosimendan,0.99738604
+Abnormal EKG,HP:0003115,amiodarone,0.99277276
+Abnormal EKG,HP:0003115,carfilzomib,0.9671638
+Arrhythmia,HP:0011675,aprindine,0.9997961
+Arrhythmia,HP:0011675,levosimendan,0.9994616
+Arrhythmia,HP:0011675,carvedilol,0.9875815
+Gowers sign,HP:0003391,levosimendan,0.995565
+Gowers sign,HP:0003391,azathioprine,0.9898465
+Gowers sign,HP:0003391,mezlocillin,0.98517376
+Respiratory insufficiency,HP:0002093,levosimendan,0.9998313
+Respiratory insufficiency,HP:0002093,mezlocillin,0.99955446
+Respiratory insufficiency,HP:0002093,azathioprine,0.99764544
+Cognitive impairment,HP:0100543,azathioprine,0.9982204
+Cognitive impairment,HP:0100543,brilliant Blue G,0.9943626
+Cognitive impairment,HP:0100543,mezlocillin,0.98763907
+Dilated cardiomyopathy,HP:0001644,levosimendan,0.99983954
+Dilated cardiomyopathy,HP:0001644,yohimbine,0.9878114
+Dilated cardiomyopathy,HP:0001644,miltefosine,0.9852858
+Waddling gait,HP:0002515,levosimendan,0.9995383
+Waddling gait,HP:0002515,mezlocillin,0.9989562
+Waddling gait,HP:0002515,azathioprine,0.99725026
+Specific learning disability,HP:0001328,azathioprine,0.9993049
+Specific learning disability,HP:0001328,brilliant Blue G,0.9897391
+Specific learning disability,HP:0001328,disopyramide,0.978593
