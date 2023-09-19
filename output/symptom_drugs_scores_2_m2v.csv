@@ -1,0 +1,82 @@
+Symptom,Symptom ID,Drug Candidate,Score
+Calf muscle pseudohypertrophy,HP:0003707,brilliant Blue G,0.8504805
+Calf muscle pseudohypertrophy,HP:0003707,midostaurin,0.7797942
+Calf muscle pseudohypertrophy,HP:0003707,fedratinib,0.77357966
+Elevated serum creatine kinase,HP:0003236,clomifene,0.8778797
+Elevated serum creatine kinase,HP:0003236,levosimendan,0.8631298
+Elevated serum creatine kinase,HP:0003236,midostaurin,0.8504209
+"Intellectual disability, mild",HP:0001256,nintedanib,0.81531024
+"Intellectual disability, mild",HP:0001256,axitinib,0.7887275
+"Intellectual disability, mild",HP:0001256,ruxolitinib,0.7825499
+Hyporeflexia,HP:0001265,levosimendan,0.91960144
+Hyporeflexia,HP:0001265,desipramine,0.85685754
+Hyporeflexia,HP:0001265,carvedilol,0.8104184
+Generalized hypotonia,HP:0001290,trihexyphenidyl,0.8507568
+Generalized hypotonia,HP:0001290,clomifene,0.837181
+Generalized hypotonia,HP:0001290,clodronic acid,0.8223128
+Hyperlordosis,HP:0003307,acetylcholine,0.8358993
+Hyperlordosis,HP:0003307,levosimendan,0.80515224
+Hyperlordosis,HP:0003307,carvedilol,0.779136
+Skeletal muscle atrophy,HP:0003202,levosimendan,0.8920514
+Skeletal muscle atrophy,HP:0003202,midostaurin,0.87335074
+Skeletal muscle atrophy,HP:0003202,carvedilol,0.8540865
+Global developmental delay,HP:0001263,trihexyphenidyl,0.83561677
+Global developmental delay,HP:0001263,levosimendan,0.82071096
+Global developmental delay,HP:0001263,acetylcholine,0.7696824
+Hypoventilation,HP:0002791,trihexyphenidyl,0.88590014
+Hypoventilation,HP:0002791,levosimendan,0.88149095
+Hypoventilation,HP:0002791,isradipine,0.8433617
+Flexion contracture,HP:0001371,carvedilol,0.80151606
+Flexion contracture,HP:0001371,levosimendan,0.78647417
+Flexion contracture,HP:0001371,desipramine,0.76959753
+Proximal muscle weakness,HP:0003701,levosimendan,0.8868116
+Proximal muscle weakness,HP:0003701,carvedilol,0.8421034
+Proximal muscle weakness,HP:0003701,desipramine,0.834826
+Motor delay,HP:0001270,desipramine,0.84227854
+Motor delay,HP:0001270,midostaurin,0.82530904
+Motor delay,HP:0001270,levosimendan,0.8219278
+Muscular dystrophy,HP:0003560,midostaurin,0.89848375
+Muscular dystrophy,HP:0003560,sunitinib,0.8744136
+Muscular dystrophy,HP:0003560,quercetin,0.8635705
+Calf muscle hypertrophy,HP:0008981,levosimendan,0.81814647
+Calf muscle hypertrophy,HP:0008981,sorafenib,0.7915068
+Calf muscle hypertrophy,HP:0008981,acetylcholine,0.77070993
+Scoliosis,HP:0002650,levosimendan,0.92780155
+Scoliosis,HP:0002650,carvedilol,0.90477425
+Scoliosis,HP:0002650,trihexyphenidyl,0.90437657
+Cardiomyopathy,HP:0001638,levosimendan,0.903632
+Cardiomyopathy,HP:0001638,midostaurin,0.8727079
+Cardiomyopathy,HP:0001638,acetylcholine,0.85474634
+Progressive muscle weakness,HP:0003323,fenfluramine,0.8722076
+Progressive muscle weakness,HP:0003323,clomifene,0.8622189
+Progressive muscle weakness,HP:0003323,dexfenfluramine,0.8617562
+Congestive heart failure,HP:0001635,levosimendan,0.96990484
+Congestive heart failure,HP:0001635,carvedilol,0.94461817
+Congestive heart failure,HP:0001635,trihexyphenidyl,0.8349535
+Delayed speech and language development,HP:0000750,levosimendan,0.8885583
+Delayed speech and language development,HP:0000750,desipramine,0.8547885
+Delayed speech and language development,HP:0000750,trihexyphenidyl,0.8490846
+Abnormal EKG,HP:0003115,nicotine,0.685189
+Abnormal EKG,HP:0003115,fedratinib,0.671471
+Abnormal EKG,HP:0003115,ruboxistaurin,0.6601646
+Arrhythmia,HP:0011675,midostaurin,0.86043763
+Arrhythmia,HP:0011675,sunitinib,0.8409867
+Arrhythmia,HP:0011675,levosimendan,0.7780028
+Gowers sign,HP:0003391,levosimendan,0.84272885
+Gowers sign,HP:0003391,trihexyphenidyl,0.8030358
+Gowers sign,HP:0003391,midostaurin,0.7780012
+Respiratory insufficiency,HP:0002093,levosimendan,0.90678245
+Respiratory insufficiency,HP:0002093,desipramine,0.8707339
+Respiratory insufficiency,HP:0002093,disopyramide,0.86021143
+Cognitive impairment,HP:0100543,carvedilol,0.892265
+Cognitive impairment,HP:0100543,levosimendan,0.87724805
+Cognitive impairment,HP:0100543,clomifene,0.8401035
+Dilated cardiomyopathy,HP:0001644,levosimendan,0.906079
+Dilated cardiomyopathy,HP:0001644,carvedilol,0.8603561
+Dilated cardiomyopathy,HP:0001644,midostaurin,0.8225144
+Waddling gait,HP:0002515,acetylcholine,0.8564218
+Waddling gait,HP:0002515,ponatinib,0.8377634
+Waddling gait,HP:0002515,desipramine,0.83031404
+Specific learning disability,HP:0001328,levosimendan,0.8970486
+Specific learning disability,HP:0001328,carvedilol,0.8639651
+Specific learning disability,HP:0001328,ruxolitinib,0.82733667

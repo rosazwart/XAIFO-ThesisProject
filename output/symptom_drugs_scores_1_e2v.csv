@@ -1,0 +1,82 @@
+Symptom,Symptom ID,Drug Candidate,Score
+Arrhythmia,HP:0011675,levosimendan,0.8524757
+Arrhythmia,HP:0011675,chlorzoxazone,0.7223176
+Arrhythmia,HP:0011675,bendroflumethiazide,0.7201272
+Waddling gait,HP:0002515,nicotinic acid,0.9128524
+Waddling gait,HP:0002515,carvedilol,0.9022744
+Waddling gait,HP:0002515,florbetaben F18,0.8970201
+Elevated serum creatine kinase,HP:0003236,nicotinic acid,0.9074553
+Elevated serum creatine kinase,HP:0003236,carvedilol,0.89080906
+Elevated serum creatine kinase,HP:0003236,levosimendan,0.88707566
+Respiratory insufficiency,HP:0002093,nicotinic acid,0.9586219
+Respiratory insufficiency,HP:0002093,carvedilol,0.9507652
+Respiratory insufficiency,HP:0002093,florbetaben F18,0.9506691
+Calf muscle pseudohypertrophy,HP:0003707,nicotinic acid,0.8270948
+Calf muscle pseudohypertrophy,HP:0003707,bendroflumethiazide,0.822512
+Calf muscle pseudohypertrophy,HP:0003707,carvedilol,0.8132375
+"Intellectual disability, mild",HP:0001256,nicotinic acid,0.87046975
+"Intellectual disability, mild",HP:0001256,carvedilol,0.8610673
+"Intellectual disability, mild",HP:0001256,florbetaben F18,0.84991795
+Proximal muscle weakness,HP:0003701,nicotinic acid,0.9282768
+Proximal muscle weakness,HP:0003701,carvedilol,0.9203213
+Proximal muscle weakness,HP:0003701,florbetaben F18,0.91289485
+Skeletal muscle atrophy,HP:0003202,nicotinic acid,0.9124632
+Skeletal muscle atrophy,HP:0003202,carvedilol,0.89839906
+Skeletal muscle atrophy,HP:0003202,florbetaben F18,0.893162
+Muscular dystrophy,HP:0003560,chlorzoxazone,0.86494315
+Muscular dystrophy,HP:0003560,nicotinic acid,0.84287924
+Muscular dystrophy,HP:0003560,carvedilol,0.82122916
+Gowers sign,HP:0003391,nicotinic acid,0.8938034
+Gowers sign,HP:0003391,carvedilol,0.8826881
+Gowers sign,HP:0003391,florbetaben F18,0.8755022
+Congestive heart failure,HP:0001635,levosimendan,0.8572585
+Congestive heart failure,HP:0001635,chloropyramine,0.7026671
+Congestive heart failure,HP:0001635,tiludronic acid,0.70043254
+Specific learning disability,HP:0001328,nicotinic acid,0.8889392
+Specific learning disability,HP:0001328,carvedilol,0.87742347
+Specific learning disability,HP:0001328,florbetaben F18,0.87366575
+Progressive muscle weakness,HP:0003323,chlorzoxazone,0.8027125
+Progressive muscle weakness,HP:0003323,nicotinic acid,0.7317249
+Progressive muscle weakness,HP:0003323,levosimendan,0.7189962
+Flexion contracture,HP:0001371,nicotinic acid,0.96768326
+Flexion contracture,HP:0001371,carvedilol,0.962617
+Flexion contracture,HP:0001371,florbetaben F18,0.9590013
+Scoliosis,HP:0002650,nicotinic acid,0.9745352
+Scoliosis,HP:0002650,carvedilol,0.969572
+Scoliosis,HP:0002650,florbetaben F18,0.96665233
+Abnormal EKG,HP:0003115,levosimendan,0.73061997
+Abnormal EKG,HP:0003115,bendroflumethiazide,0.70119935
+Abnormal EKG,HP:0003115,viltolarsen,0.6899082
+Global developmental delay,HP:0001263,nicotinic acid,0.9797515
+Global developmental delay,HP:0001263,carvedilol,0.97549736
+Global developmental delay,HP:0001263,florbetaben F18,0.97451615
+Calf muscle hypertrophy,HP:0008981,nicotinic acid,0.92481637
+Calf muscle hypertrophy,HP:0008981,carvedilol,0.9152817
+Calf muscle hypertrophy,HP:0008981,florbetaben F18,0.90652657
+Cardiomyopathy,HP:0001638,levosimendan,0.84339285
+Cardiomyopathy,HP:0001638,chlorzoxazone,0.841795
+Cardiomyopathy,HP:0001638,nicotinic acid,0.81497484
+Hyperlordosis,HP:0003307,nicotinic acid,0.9188601
+Hyperlordosis,HP:0003307,carvedilol,0.9089722
+Hyperlordosis,HP:0003307,florbetaben F18,0.90116227
+Delayed speech and language development,HP:0000750,nicotinic acid,0.9696501
+Delayed speech and language development,HP:0000750,carvedilol,0.9647189
+Delayed speech and language development,HP:0000750,florbetaben F18,0.9633182
+Hyporeflexia,HP:0001265,nicotinic acid,0.9291464
+Hyporeflexia,HP:0001265,carvedilol,0.920539
+Hyporeflexia,HP:0001265,florbetaben F18,0.91408813
+Dilated cardiomyopathy,HP:0001644,nicotinic acid,0.92578864
+Dilated cardiomyopathy,HP:0001644,levosimendan,0.9217571
+Dilated cardiomyopathy,HP:0001644,carvedilol,0.9152636
+Motor delay,HP:0001270,nicotinic acid,0.95265245
+Motor delay,HP:0001270,carvedilol,0.9457334
+Motor delay,HP:0001270,florbetaben F18,0.94125134
+Generalized hypotonia,HP:0001290,nicotinic acid,0.98299295
+Generalized hypotonia,HP:0001290,carvedilol,0.97925925
+Generalized hypotonia,HP:0001290,florbetaben F18,0.97854096
+Cognitive impairment,HP:0100543,nicotinic acid,0.93161863
+Cognitive impairment,HP:0100543,carvedilol,0.9218465
+Cognitive impairment,HP:0100543,florbetaben F18,0.9194522
+Hypoventilation,HP:0002791,bendroflumethiazide,0.7318182
+Hypoventilation,HP:0002791,nicotinic acid,0.72851247
+Hypoventilation,HP:0002791,viltolarsen,0.7249036
