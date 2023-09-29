@@ -79,7 +79,7 @@ def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q):
         if is_directed: # directed graph has random walk direction already
             direction_node = end_node
             left_node = start_node
-        else:# for undirected graph, first consider the random walk direction by choosing the start node
+        else: # for undirected graph, first consider the random walk direction by choosing the start node
             start_direction = 1.0/G.degree(start_node)
             end_direction = 1.0/G.degree(end_node)
             prob = start_direction/(start_direction+end_direction)
@@ -105,13 +105,13 @@ def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q):
         
         distance_sum = 0
         for neighbor in neighbors:
-            neighbor_link = G[direction_node][neighbor]#get candidate link's type
+            neighbor_link = G[direction_node][neighbor] # get candidate link's type
             neighbor_link_type = neighbor_link['type']
             neighbor_link_weight = neighbor_link['weight']
             trans_weight = matrix[cur_edge_type-1][neighbor_link_type-1]
             if G.has_edge(neighbor,left_node) or G.has_edge(left_node,neighbor): 
                 distance_sum += trans_weight*neighbor_link_weight/p  
-            elif neighbor == left_node: #decide whether it can random walk back
+            elif neighbor == left_node: # decide whether it can random walk back
                 distance_sum += trans_weight*neighbor_link_weight
             else:
                 distance_sum += trans_weight*neighbor_link_weight/q
@@ -123,7 +123,7 @@ def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q):
         threshold = 0
         neighbors2 = G.neighbors(direction_node) 
         for neighbor in neighbors2:
-            neighbor_link = G[direction_node][neighbor]#get candidate link's type
+            neighbor_link = G[direction_node][neighbor] # get candidate link's type
             neighbor_link_type = neighbor_link['type']
             neighbor_link_weight = neighbor_link['weight']
             trans_weight = matrix[cur_edge_type-1][neighbor_link_type-1]
