@@ -8,7 +8,7 @@ import random
 import numpy as np   
 from gensim.models import Word2Vec
 
-def simulate_walks_2(G, num_walks, walk_length, matrix, p, q):
+def simulate_walks_2(G, num_walks, walk_length, matrix, p, q, seed=None):
     """
         Generate random walk paths constrained by transition matrix for each node in given graph
         :param G: digraph generated with networkx
@@ -19,6 +19,8 @@ def simulate_walks_2(G, num_walks, walk_length, matrix, p, q):
         :param q: the greater q, the lower the probability of moving to another node than the previous and current node
         :return list of paths containing nodes visited during these paths
     """
+    random.seed(seed)
+    
     walks = []
     nodes = list(G.nodes())
     
@@ -27,10 +29,10 @@ def simulate_walks_2(G, num_walks, walk_length, matrix, p, q):
         print(str(walk_iter+1), '/', str(num_walks))
         random.shuffle(nodes) 
         for node in nodes:
-            walks.append(edge2vec_walk_2(G, walk_length, node, matrix, p, q))  
+            walks.append(edge2vec_walk_2(G, walk_length, node, matrix, p, q, seed))  
     return walks
 
-def edge2vec_walk_2(G, walk_length, start_node, matrix, p, q):
+def edge2vec_walk_2(G, walk_length, start_node, matrix, p, q, seed=None):
     """
         Return a random walk path constrained by edge type transition matrix and parameters p and q
         :param G: digraph generated with networkx
@@ -42,6 +44,9 @@ def edge2vec_walk_2(G, walk_length, start_node, matrix, p, q):
         :param q: the greater q, the lower the probability of moving to another node than the previous and current node
         :return list of nodes encountered during the walk
     """
+    random.seed(seed)
+    np.random.seed(seed)
+    
     walk = [start_node]  
     while len(walk) < walk_length:# here we may need to consider some dead end issues
         cur = walk[-1]

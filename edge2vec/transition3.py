@@ -21,7 +21,7 @@ def initialize_edge_type_matrix(type_num):
     matrix = [ [ initialized_val for _ in range(type_num) ] for _ in range(type_num) ]
     return matrix
 
-def simulate_walks_1(G: nx.DiGraph, num_walks, walk_length, matrix, is_directed, p, q):
+def simulate_walks_1(G: nx.DiGraph, num_walks, walk_length, matrix, is_directed, p, q, seed=None):
     """
         Generate random walk paths that are constrained by edge type transition matrix.
         :param G: digraph generated with networkx
@@ -33,6 +33,8 @@ def simulate_walks_1(G: nx.DiGraph, num_walks, walk_length, matrix, is_directed,
         :param q: the greater q, the lower the probability of moving to another node than the previous and current node
         :return list of paths containing edge types encountered during these paths
     """
+    random.seed(seed)
+        
     walks = []
     links = list(G.edges(data = True))
 
@@ -42,13 +44,13 @@ def simulate_walks_1(G: nx.DiGraph, num_walks, walk_length, matrix, is_directed,
         random.shuffle(links)
         count = 1000
         for link in links:
-            walks.append(edge2vec_walk(G, walk_length, link, matrix, is_directed, p, q)) 
+            walks.append(edge2vec_walk(G, walk_length, link, matrix, is_directed, p, q, seed)) 
             count = count - 1
             if count == 0 and len(links)>1000:  # control the pairwise list length
                 break
     return walks
 
-def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q): 
+def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q, seed=None): 
     """
         Return a random walk path constrained by edge type transition matrix and parameters p and q
         :param G: digraph generated with networkx
@@ -60,6 +62,9 @@ def edge2vec_walk(G, walk_length, start_link, matrix, is_directed, p, q):
         :param q: the greater q, the lower the probability of moving to another node than the previous and current node
         :return list of edge types encountered during the walk
     """
+    random.seed(seed)
+    np.random.seed(seed)
+    
     walk = [start_link] 
     result = [str(start_link[2]['type'])]
     
