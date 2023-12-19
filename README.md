@@ -1,6 +1,6 @@
 # Supporting Code for the MSc Thesis Project: Foundational Ontologies to Improve the Explainability of Explainable AI
  
-This repository provides the code supporting the master's thesis project presented in msc_thesis_final_rosazwart.pdf.
+This repository provides the code supporting the master's thesis project presented in [msc_thesis_final_rosazwart.pdf](msc_thesis_final_rosazwart.pdf).
 
 The code performs a drug-repurposing pipeline that predicts new drug candidates that can potentially treat a symptom related to the rare disease Duchenne muscular dystrophy. For the predictions, explanations (in the form of subgraphs of the input graph) are generated. 
 
