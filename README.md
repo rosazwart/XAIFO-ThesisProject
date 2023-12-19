@@ -34,7 +34,7 @@ Running the script [main.py](main.py) and specifying to build the restructured K
 - `output/ttd_assocations.csv`
 - `output/drugcentral_associations.csv`
 
-When the user disagrees, the script will look for the existing monarch_assocations.csv file which results in skipping the Monarch Initiative API fetching process. 
+When the user disagrees, the script will look for the existing `monarch_assocations.csv` file which results in skipping the Monarch Initiative API fetching process. 
 
 After this, the script will merge all data into a KG and restructure the nodes and edges, yielding the restructured KG represented with the following files containing all its edges and nodes:
 
