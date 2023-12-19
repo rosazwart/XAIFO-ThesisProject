@@ -1,3 +1,5 @@
+# Source: https://github.com/NuriaQueralt/bioknowledge-reviewer/blob/master/bioknowledge_reviewer/monarch.py
+
 # @name: monarch.py
 # @description: Module for Monarch network preparation and management
 # @version: 2.0

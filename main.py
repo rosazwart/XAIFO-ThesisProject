@@ -94,5 +94,20 @@ def build_kg(load_csv: bool = False):
     new_kg.save_graph('new_kg')
 
 if __name__ == "__main__":
-    #build_kg(load_csv=True)
-    build_prev_kg()
+    kg_mode = input('Enter which KG needs to be built (choose 1 for original, choose 2 for restructured):')
+    
+    assert kg_mode == '1' or kg_mode == '2'
+    
+    if kg_mode == '1':
+        build_prev_kg()
+    else:
+        from_csv = input('Load already fetched nodes and edges from Monarch Initiative stored in csv file? (choose yes or no):')
+        
+        assert from_csv == 'yes' or from_csv == 'no'
+        
+        if from_csv == 'yes':
+            load_csv = True
+        else:
+            load_csv = False
+        
+        build_kg(load_csv=load_csv)
