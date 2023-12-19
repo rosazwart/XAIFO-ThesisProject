@@ -22,7 +22,7 @@ Running this set of Jupyter Notebooks results in the creation of three csv files
 - `output/prev_ttd_associations.csv`
 - `output/prev_drugcentral_associations.csv`
 
-Using main.py and specifying in the user input to build the original KG, the graph is built resulting in csv files containing all edges and nodes:
+Using [main.py](main.py) and specifying in the user input to build the original KG, the graph is built resulting in csv files containing all edges and nodes:
 
 - `output/prev_kg_edges.csv`
 - `output/prev_kg_nodes.csv`
