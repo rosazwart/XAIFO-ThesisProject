@@ -10,7 +10,9 @@ import drugcentral.fetcher as drugcentral_fetcher
 import builder.cypherqueries as cypher_querybuilder
 import ols.fetcher as ols_fetcher
 
-def analyze_data_from_kg(kg: AssocKnowledgeGraph | RestructuredKnowledgeGraph, concepts_filename, triplets_filename, ontologies: bool = False):
+from typing import Union
+
+def analyze_data_from_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], concepts_filename, triplets_filename, ontologies: bool = False):
     edges, nodes = kg.generate_dataframes()
     
     edge_colmapping = {
