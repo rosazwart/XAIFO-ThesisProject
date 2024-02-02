@@ -56,8 +56,8 @@ def build_kg(load_csv: bool = False):
         monarch_associations = load_associations_from_csv('monarch_associations.csv')
     else:
         nodes_list = [
-            'MONDO:0010679',
-            'HGNC:2928'
+            'MONDO:0007739',    # Huntington disease
+            'HGNC:4851' # HTT, causal gene Huntington disease
         ]
         monarch_associations = monarch_fetcher.get_monarch_associations(nodes_list)
         
