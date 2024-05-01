@@ -1,7 +1,0 @@
-﻿,DRUG_ID,DRUG_NAME,DISEASES,PHASE,Name,ontologyTermName,ontologyTermIRI,validated,review,ID
-1302,91,Adenosine triphosphate,Bradycardia , Discontinued in Phase 2,bradycardia,Bradycardia,http://purl.obolibrary.org/obo/HP_0001662,False,False,HP:0001662
-13599,522,Carvedilol,Congestive heart failure , Approved,congestive heart failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
-18485,2817,VESNARINONE,Cardiac failure , Approved,cardiac failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
-21288,2123,Phenelzine,Depression , Approved,depression,Depressivity,http://purl.obolibrary.org/obo/HP_0000716,False,False,HP:0000716
-23772,4468,Esketamine,Depression , Phase 3,depression,Depressivity,http://purl.obolibrary.org/obo/HP_0000716,False,False,HP:0000716
-25467,522,Carvedilol,Congestive heart failure , Approved,congestive heart failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
