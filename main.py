@@ -1,6 +1,7 @@
 import util.constants as constants
 
-from util.loaders import load_associations_from_csv
+from util.common import today
+from util.loaders import load_associations_from_csv, create_output_folder
 from builder.kg import AssocKnowledgeGraph, RestructuredKnowledgeGraph
 
 import analyzer.graphstructure as graphstructure
@@ -38,9 +39,11 @@ def analyze_data_from_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGra
         ols_fetcher.analyze_ontology_relations(relations_df)
     
 def build_prev_kg():
-    monarch_associations = load_associations_from_csv('prev_monarch_associations.csv')
-    ttd_associations = load_associations_from_csv('prev_ttd_associations.csv')
-    drugcentral_associations = load_associations_from_csv('prev_drugcentral_associations.csv')
+    file_date = input('Enter date of files (monarch, ttd, drugcentral) in format yyyy-mm-dd:')
+    
+    monarch_associations = load_associations_from_csv(f'prev_monarch_associations_{file_date}.csv')
+    ttd_associations = load_associations_from_csv(f'prev_ttd_associations_{file_date}.csv')
+    drugcentral_associations = load_associations_from_csv(f'prev_drugcentral_associations_{file_date}.csv')
     
     kg = AssocKnowledgeGraph(monarch_associations)
     kg.add_edges_and_nodes(ttd_associations)
@@ -55,7 +58,8 @@ def build_kg(load_csv: bool = False):
     # --- Add associations from Monarch Initiative ---
     
     if load_csv:
-        monarch_associations = load_associations_from_csv('monarch_associations.csv')
+        file_date = input('Enter date of file with all monarch associations in format yyyy-mm-dd:')
+        monarch_associations = load_associations_from_csv(f'monarch_associations_{file_date}.csv')
     else:
         nodes_list = [
             'MONDO:0007739',    # Huntington disease
@@ -96,6 +100,8 @@ def build_kg(load_csv: bool = False):
     new_kg.save_graph('new_kg')
 
 if __name__ == "__main__":
+    create_output_folder()
+    
     kg_mode = input('Enter which KG needs to be built (choose 1 for original, choose 2 for restructured):')
     
     assert kg_mode == '1' or kg_mode == '2'

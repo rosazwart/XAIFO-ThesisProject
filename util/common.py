@@ -4,7 +4,11 @@ logging.basicConfig(level=logging.INFO, filename='datafetcher.log', filemode="a+
 import pandas as pd
 import hashlib
 
+import datetime
+
 from util.constants import assoc_tuple_values
+
+today = datetime.date.today()
 
 def register_info(message):
     """

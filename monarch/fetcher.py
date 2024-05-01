@@ -2,7 +2,7 @@
     Module that fetches relevant data from the Monarch Initiative data and analytic platform (https://monarchinitiative.org/about/monarch).
 """
 import util.constants as constants
-from util.common import tuplelist2dataframe, register_info
+from util.common import tuplelist2dataframe, register_info, today
 
 import monarch.unpacker as unpacker
 import monarch.filterer as filterer
@@ -105,7 +105,8 @@ def get_monarch_associations(nodes_list):
     register_info(f'A total of {len(all_nodes_id_list)} nodes have been found for which from and to associations will be retrieved.')
         
     all_associations = get_seed_first_order_associations(seed_id_list=all_nodes_id_list, rows=1000, exclude_new_ids=True)
-    tuplelist2dataframe(all_associations).to_csv(f'{constants.OUTPUT_FOLDER}/monarch_associations.csv', index=False)
-    register_info('All MONARCH associations are saved into monarch_associations.csv')
+    
+    tuplelist2dataframe(all_associations).to_csv(f'{constants.OUTPUT_FOLDER}/monarch_associations_{today}.csv', index=False)
+    register_info(f'All MONARCH associations are saved into monarch_associations_{today}.csv')
     
     return all_associations

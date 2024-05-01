@@ -141,8 +141,8 @@ def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
         new_assocs = new_assocs.append(pd.DataFrame(new_edges))
 
     drugtarget_associations_df = new_assocs[list(constants.assoc_tuple_values)]
-    drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations.csv', index=None)
-    register_info('All TTD associations are saved into ttd_associations.csv')
+    drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations_{common.today}.csv', index=None)
+    register_info(f'All TTD associations are saved into ttd_associations_{common.today}.csv')
     
     return dataframe2tuplelist(new_assocs) 
 

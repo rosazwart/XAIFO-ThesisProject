@@ -170,10 +170,10 @@ class KnowledgeGraph:
     def save_graph(self, filename_prefix):
         edges, nodes = self.generate_dataframes()
         
-        edges_file_name = '{}_edges.csv'.format(filename_prefix)
+        edges_file_name = '{}_edges_{}.csv'.format(filename_prefix, common.today)
         edges.to_csv('output/{}'.format(edges_file_name), index=False)
         
-        nodes_file_name = '{}_nodes.csv'.format(filename_prefix)
+        nodes_file_name = '{}_nodes_{}.csv'.format(filename_prefix, common.today)
         nodes.to_csv('output/{}'.format(nodes_file_name), index=False)
         
         print(f'Knowledge graph content saved into files {edges_file_name} and {nodes_file_name} in the output folder.')

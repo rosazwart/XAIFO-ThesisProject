@@ -81,8 +81,8 @@ def format_drugdisease_associations(drug_disease_pairs_prev: pd.DataFrame, drug_
         drug_disease_pairs.loc[i,'relation_iri'] = constants.TREATS['iri']
         
     drugdisease_associations_df = drug_disease_pairs[list(constants.assoc_tuple_values)]
-    drugdisease_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/drugcentral_associations.csv', index=None)
-    common.register_info('All DrugCentral associations are saved into drugcentral_associations.csv')
+    drugdisease_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/drugcentral_associations_{common.today}.csv', index=None)
+    common.register_info(f'All DrugCentral associations are saved into drugcentral_associations_{common.today}.csv')
     
     return common.dataframe2tuplelist(drugdisease_associations_df) 
     
