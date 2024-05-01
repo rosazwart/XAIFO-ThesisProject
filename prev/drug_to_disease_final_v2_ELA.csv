@@ -1,32 +1,7 @@
 ﻿,DRUG_ID,DRUG_NAME,DISEASES,PHASE,Name,ontologyTermName,ontologyTermIRI,validated,review,ID
-975,4483,Carfilzomib,Small-cell lung cancer , Phase 1/2,small cell lung cancer,Small cell lung carcinoma,http://purl.obolibrary.org/obo/HP_0030357,False,False,HP:0030357
-2389,4225,Axitinib,Renal cell carcinoma , Approved,renal cell carcinoma,Renal cell carcinoma,http://purl.obolibrary.org/obo/HP_0005584,False,False,HP:0005584
-2871,5431,Tirbanibulin,Prostate cancer , Phase 2,prostate cancer,Prostate cancer,http://purl.obolibrary.org/obo/HP_0012125,False,False,HP:0012125
-6582,789,Decamethonium,Muscle spasm , Approved,muscle spasm,Hyperkinetic movements,http://purl.obolibrary.org/obo/HP_0002487,False,False,HP:0002487
-9416,661,Cisatracurium,Muscle spasm , Approved,muscle spasm,Hyperkinetic movements,http://purl.obolibrary.org/obo/HP_0002487,False,False,HP:0002487
-9732,749,Cyclizine,Nausea , Approved,nausea,Nausea,http://purl.obolibrary.org/obo/HP_0002018,False,False,HP:0002018
-9800,183,Amlodipine,Hypertension , Approved,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822
-10669,461,Cadralazine,Hypertension , Approved,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822
-10829,2745,Trihexyphenidyl,Dystonia , Approved,dystonia,Dystonia,http://purl.obolibrary.org/obo/HP_0001332,False,False,HP:0001332
-10831,2745,Trihexyphenidyl,Obesity , Investigative,obesity,Obesity,http://purl.obolibrary.org/obo/HP_0001513,False,False,HP:0001513
-11246,2774,Tropicamide,Mydriasis , Approved,mydriasis,Mydriasis,http://purl.obolibrary.org/obo/HP_0011499,False,False,HP:0011499
-11578,1150,Fenfluramine,Obesity , Withdrawn from market,obesity,Obesity,http://purl.obolibrary.org/obo/HP_0001513,False,False,HP:0001513
-11792,1947,Nitrendipine,Hypertension , Approved,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822
-13096,1576,Levosimendan,Congestive heart failure , Approved,congestive heart failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
-13097,1576,Levosimendan,Heart failure , Phase 4,heart failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
+1302,91,Adenosine triphosphate,Bradycardia , Discontinued in Phase 2,bradycardia,Bradycardia,http://purl.obolibrary.org/obo/HP_0001662,False,False,HP:0001662
 13599,522,Carvedilol,Congestive heart failure , Approved,congestive heart failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
-15202,832,Dexfenfluramine,Obesity , Withdrawn from market,obesity,Obesity,http://purl.obolibrary.org/obo/HP_0001513,False,False,HP:0001513
-16752,4099,Levamlodipine,Hypertension , Phase 4,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822
-18666,2396,Rocuronium,Muscle spasm , Approved,muscle spasm,Hyperkinetic movements,http://purl.obolibrary.org/obo/HP_0002487,False,False,HP:0002487
-18743,4119,Romidepsin,Renal cell carcinoma , Phase 3,renal cell carcinoma,Renal cell carcinoma,http://purl.obolibrary.org/obo/HP_0005584,False,False,HP:0005584
-19257,926,Disopyramide,Ventricular arrhythmias , Approved,ventricular arrhythmias,Ventricular arrhythmia,http://purl.obolibrary.org/obo/HP_0004308,False,False,HP:0004308
-19258,926,Disopyramide,Urinary incontinence , Withdrawn from market,urinary incontinence,Urinary incontinence,http://purl.obolibrary.org/obo/HP_0000020,False,False,HP:0000020
-20326,5345,Entrectinib,Neuroblastoma , Phase 1,neuroblastoma,Neuroblastoma,http://purl.obolibrary.org/obo/HP_0003006,False,False,HP:0003006
-21224,4157,Lercanidipine,Hypertension , Approved,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822
-22897,1942,Nisoldipine,Hypertension , Approved,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822
-24230,901,Dimenhydrinate,Nausea , Approved,nausea,Nausea,http://purl.obolibrary.org/obo/HP_0002018,False,False,HP:0002018
-25358,231,Aprindine,Cardiac arrhythmias , Approved,cardiac arrhythmias,Arrhythmia,http://purl.obolibrary.org/obo/HP_0011675,False,False,HP:0011675
-25448,1797,Mibefradil,Glioblastoma multiforme , Phase 1,glioblastoma multiforme,Glioblastoma multiforme,http://purl.obolibrary.org/obo/HP_0012174,False,False,HP:0012174
+18485,2817,VESNARINONE,Cardiac failure , Approved,cardiac failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
+21288,2123,Phenelzine,Depression , Approved,depression,Depressivity,http://purl.obolibrary.org/obo/HP_0000716,False,False,HP:0000716
+23772,4468,Esketamine,Depression , Phase 3,depression,Depressivity,http://purl.obolibrary.org/obo/HP_0000716,False,False,HP:0000716
 25467,522,Carvedilol,Congestive heart failure , Approved,congestive heart failure,Congestive heart failure,http://purl.obolibrary.org/obo/HP_0001635,False,False,HP:0001635
-25482,313,Diphenidol,Nausea , Approved,nausea,Nausea,http://purl.obolibrary.org/obo/HP_0002018,False,False,HP:0002018
-25591,1142,Felodipine,Hypertension , Approved,hypertension,Hypertension,http://purl.obolibrary.org/obo/HP_0000822,False,False,HP:0000822

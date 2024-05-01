@@ -1,0 +1,7 @@
+id,subject_id,subject_label,subject_iri,subject_category,subject_taxon_id,subject_taxon_label,object_id,object_label,object_iri,object_category,object_taxon_id,object_taxon_label,relation_id,relation_label,relation_iri
+DC0,91.0,,,DRUG,,,HP:0001662,,,,,,CustomRO:DC,is substance that treats,
+DC1,522.0,,,DRUG,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
+DC2,2817.0,,,DRUG,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
+DC3,2123.0,,,DRUG,,,HP:0000716,,,,,,CustomRO:DC,is substance that treats,
+DC4,4468.0,,,DRUG,,,HP:0000716,,,,,,CustomRO:DC,is substance that treats,
+DC5,522.0,,,DRUG,,,HP:0001635,,,,,,CustomRO:DC,is substance that treats,
