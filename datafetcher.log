@@ -1,0 +1,32 @@
+2024-07-09 10:39:16,975 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:39:16,984 INFO     Loaded 228753 associations
+2024-07-09 10:44:06,116 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:44:06,124 INFO     Loaded 228753 associations
+2024-07-09 10:44:57,442 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:44:57,450 INFO     Loaded 228753 associations
+2024-07-09 10:45:51,317 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:45:51,327 INFO     Loaded 228753 associations
+2024-07-09 10:46:01,149 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:46:01,160 INFO     Loaded 228753 associations
+2024-07-09 10:48:45,723 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:48:45,731 INFO     Loaded 228753 associations
+2024-07-09 10:49:57,037 INFO     Created a list of tuples with 228753 entries
+2024-07-09 10:49:57,045 INFO     Loaded 228753 associations
+2024-07-09 11:00:45,758 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:00:45,765 INFO     Loaded 228753 associations
+2024-07-09 11:03:08,463 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:03:08,470 INFO     Loaded 228753 associations
+2024-07-09 11:04:02,975 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:04:02,983 INFO     Loaded 228753 associations
+2024-07-09 11:07:36,215 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:07:36,222 INFO     Loaded 228753 associations
+2024-07-09 11:07:36,790 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:08:41,065 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:08:41,073 INFO     Loaded 228753 associations
+2024-07-09 11:08:41,619 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']

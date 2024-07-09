@@ -16,13 +16,22 @@ def create_output_folder():
     else:
         print('Output folder located at', output_path, 'already exists, so it does not have to be created')
 
-def load_associations_from_csv(file_name):
+def load_associations_from_csv(file_name, foldernames: list | None = None):
     """
         :return List of tuples containing monarch associations from csv file
     """
-    data_path = os.path.join(OUTPUT_FOLDER, file_name)
-    associations = pd.read_csv(data_path)
-    associations = dataframe2tuplelist(associations)
-    register_info(f'Loaded {len(associations)} associations')
+
+    if foldernames:
+        curr_path = os.getcwd()
+        for foldername in foldernames:
+            curr_path = os.path.join(curr_path, foldername)
+        file_path = os.path.join(curr_path, file_name)
+        associations = pd.read_csv(file_path)
+        associations = dataframe2tuplelist(associations)
+    else:
+        data_path = os.path.join(OUTPUT_FOLDER, file_name)
+        associations = pd.read_csv(data_path)
+        associations = dataframe2tuplelist(associations)
     
+    register_info(f'Loaded {len(associations)} associations')
     return associations
