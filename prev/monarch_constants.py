@@ -1,6 +1,8 @@
 def prefix2category(prefix: str):
     """
     """
+    prefix = prefix.lower()
+
     if 'variant' in prefix:
         return 'VARI'
     elif 'phenotype' in prefix or 'mondo' in prefix or 'omim' in prefix or 'doid' in prefix or 'hp' in prefix or 'mp' in prefix or 'fbcv' in prefix or 'fbbt' in prefix or 'zp' in prefix or 'apo' in prefix or 'trait' in prefix:

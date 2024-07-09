@@ -52,7 +52,6 @@ def build_prev_kg():
     analyze_data_from_kg(kg, 'prev_concepts.png', 'prev_triplets.csv')
     
     kg.save_graph('prev_kg')
-    
 
 def build_kg(load_csv: bool = False):
     # --- Add associations from Monarch Initiative ---

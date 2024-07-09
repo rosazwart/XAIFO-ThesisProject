@@ -30,3 +30,373 @@
  'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
  'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
  'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:36:05,796 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:36:05,805 INFO     Loaded 228753 associations
+2024-07-09 11:36:06,398 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:36:56,179 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:36:56,186 INFO     Loaded 228753 associations
+2024-07-09 11:36:56,720 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:39:33,592 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:39:33,600 INFO     Loaded 228753 associations
+2024-07-09 11:39:34,148 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:40:47,602 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:40:47,609 INFO     Loaded 228753 associations
+2024-07-09 11:40:48,177 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:41:28,128 INFO     Created a list of tuples with 228753 entries
+2024-07-09 11:41:28,136 INFO     Loaded 228753 associations
+2024-07-09 11:41:28,723 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 11:41:29,749 INFO     Created a dataframe with 14618 entries and column values ['id']
+2024-07-09 12:34:07,127 INFO     Created a list of tuples with 228753 entries
+2024-07-09 12:34:07,136 INFO     Loaded 228753 associations
+2024-07-09 12:34:07,756 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 12:35:35,341 INFO     Created a list of tuples with 228753 entries
+2024-07-09 12:35:35,349 INFO     Loaded 228753 associations
+2024-07-09 12:35:35,930 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 12:35:36,964 INFO     Created a dataframe with 14618 entries and column values ['id' 'semantic_groups']
+2024-07-09 12:40:17,439 INFO     Created a list of tuples with 228753 entries
+2024-07-09 12:40:17,447 INFO     Loaded 228753 associations
+2024-07-09 12:40:18,031 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 12:40:19,160 INFO     Created a dataframe with 14618 entries and column values ['id' 'semantic_groups' 'name']
+2024-07-09 13:41:37,052 INFO     Created a list of tuples with 228753 entries
+2024-07-09 13:41:37,059 INFO     Loaded 228753 associations
+2024-07-09 13:42:45,516 INFO     Created a list of tuples with 228753 entries
+2024-07-09 13:42:45,523 INFO     Loaded 228753 associations
+2024-07-09 13:43:39,758 INFO     Created a list of tuples with 228753 entries
+2024-07-09 13:43:39,765 INFO     Loaded 228753 associations
+2024-07-09 13:44:03,435 INFO     Created a list of tuples with 228753 entries
+2024-07-09 13:44:03,443 INFO     Loaded 228753 associations
+2024-07-09 13:44:19,315 INFO     Created a list of tuples with 228753 entries
+2024-07-09 13:44:19,323 INFO     Loaded 228753 associations
+2024-07-09 13:44:19,848 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 13:44:21,077 INFO     Created a dataframe with 14618 entries and column values ['id' 'semantic_groups' 'name']
+2024-07-09 13:44:28,149 INFO     Created a list of tuples with 228753 entries
+2024-07-09 13:44:28,157 INFO     Loaded 228753 associations
+2024-07-09 13:44:28,668 INFO     Created a dataframe with 228753 entries and column values ['id' 'subject_id' 'subject_label' 'subject_iri' 'subject_category'
+ 'subject_taxon_id' 'subject_taxon_label' 'object_id' 'object_label'
+ 'object_iri' 'object_category' 'object_taxon_id' 'object_taxon_label'
+ 'relation_id' 'relation_label' 'relation_iri']
+2024-07-09 13:44:29,900 INFO     Created a dataframe with 14618 entries and column values ['id' 'semantic_groups' 'name']
+2024-07-09 14:28:39,305 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:28:39,313 INFO     Loaded 228753 associations
+2024-07-09 14:28:55,148 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:28:55,156 INFO     Loaded 228753 associations
+2024-07-09 14:33:22,316 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:33:22,323 INFO     Loaded 228753 associations
+2024-07-09 14:33:22,326 INFO     Created a list of tuples with 305 entries
+2024-07-09 14:33:22,327 INFO     Loaded 305 associations
+2024-07-09 14:33:22,328 INFO     Created a list of tuples with 39 entries
+2024-07-09 14:33:22,329 INFO     Loaded 39 associations
+2024-07-09 14:33:23,136 INFO     The graph contains 7 different semantic groups: {'PHYS', 'VARI', 'ANAT', 'GENO', 'ORTH', 'GENE', 'DISO'}
+2024-07-09 14:33:23,136 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:35:10,850 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:35:10,858 INFO     Loaded 228753 associations
+2024-07-09 14:35:10,861 INFO     Created a list of tuples with 305 entries
+2024-07-09 14:35:10,861 INFO     Loaded 305 associations
+2024-07-09 14:35:10,864 INFO     Created a list of tuples with 39 entries
+2024-07-09 14:35:10,864 INFO     Loaded 39 associations
+2024-07-09 14:35:11,739 INFO     The graph contains 7 different semantic groups: {'VARI', 'GENO', 'ORTH', 'DISO', 'ANAT', 'PHYS', 'GENE'}
+2024-07-09 14:35:11,740 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:39:49,484 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:39:49,492 INFO     Loaded 228753 associations
+2024-07-09 14:39:49,495 INFO     Created a list of tuples with 305 entries
+2024-07-09 14:39:49,495 INFO     Loaded 305 associations
+2024-07-09 14:39:49,498 INFO     Created a list of tuples with 39 entries
+2024-07-09 14:39:49,498 INFO     Loaded 39 associations
+2024-07-09 14:39:50,397 INFO     The graph contains 7 different semantic groups: {'PHYS', 'ORTH', 'VARI', 'ANAT', 'GENE', 'DISO', 'GENO'}
+2024-07-09 14:39:50,398 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:39:50,729 INFO     The graph contains 8 different semantic groups: {'PHYS', 'ORTH', 'VARI', 'ANAT', 'GENE', 'DRUG', 'DISO', 'GENO'}
+2024-07-09 14:39:50,730 INFO     For the graph, a total of 228999 edges and 14833 nodes have been generated.
+2024-07-09 14:39:50,731 INFO     There are 8 semantic groups: ['ORTH' 'DISO' 'GENO' 'GENE' 'DRUG' 'PHYS' 'VARI' 'ANAT']
+2024-07-09 14:39:50,757 INFO     There are 21 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD                                             targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2024-07-09 14:39:51,578 INFO     Graph of all connections between concepts saved to prev_hd_concepts.png
+2024-07-09 14:39:51,608 INFO     List of triplets saved to prev_hd_triplets.csv
+2024-07-09 14:44:49,296 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:44:49,303 INFO     Loaded 228753 associations
+2024-07-09 14:44:50,134 INFO     The graph contains 12 different semantic groups: {'marker', 'model', 'interaction', 'function', 'gene', 'phenotype', 'pathway', 'variant', 'genotype', 'disease', 'anatomy', 'homology'}
+2024-07-09 14:44:50,134 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:44:50,136 INFO     Extracted a total of 4138 nodes that belong to at least one of the semantic groups ['gene']
+2024-07-09 14:44:50,141 INFO     A total of 4138 gene IDs has been extracted
+2024-07-09 14:44:50,206 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION   GENE  ... MOA_SOURCE  ACT_SOURCE_URL                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel    Q12809  KCNH2  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel    P35498  SCN1A  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel    P35499  SCN4A  ...     CHEMBL             NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2024-07-09 14:45:04,359 INFO     For a total of 16141 drug-target interactions, new mapped IDs are found.
+2024-07-09 14:45:04,365 INFO     Retrieved 167 drug-target interactions with matched gene IDs:
+                  DRUG_NAME  STRUCT_ID    GENE_ID PROD_ID                                       PROD_NAME
+237               adenosine         90  HGNC:4141  P04406  Glyceraldehyde-3-phosphate dehydrogenase liver
+257  adenosine triphosphate         91  HGNC:5241  P11142               Heat shock cognate 71 kDa protein
+626             amodiaquine        186   HGNC:620  P05067                         Amyloid beta A4 protein
+889              astemizole        249  HGNC:3236  P00533                Epidermal growth factor receptor
+2024-07-09 14:45:04,367 INFO     Total of 167 drug-target associations changed to 158 by dropping duplicates.
+2024-07-09 14:53:45,892 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:53:45,900 INFO     Loaded 228753 associations
+2024-07-09 14:53:46,735 INFO     The graph contains 12 different semantic groups: {'gene', 'model', 'anatomy', 'homology', 'disease', 'marker', 'variant', 'pathway', 'phenotype', 'interaction', 'genotype', 'function'}
+2024-07-09 14:53:46,736 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:53:46,738 INFO     Extracted a total of 4138 nodes that belong to at least one of the semantic groups ['gene']
+2024-07-09 14:53:46,742 INFO     A total of 4138 gene IDs has been extracted
+2024-07-09 14:53:46,801 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION   GENE  ... MOA_SOURCE  ACT_SOURCE_URL                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel    Q12809  KCNH2  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel    P35498  SCN1A  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel    P35499  SCN4A  ...     CHEMBL             NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2024-07-09 14:54:00,838 INFO     For a total of 16141 drug-target interactions, new mapped IDs are found.
+2024-07-09 14:54:00,844 INFO     Retrieved 167 drug-target interactions with matched gene IDs:
+                  DRUG_NAME  STRUCT_ID    GENE_ID PROD_ID                                       PROD_NAME
+237               adenosine         90  HGNC:4141  P04406  Glyceraldehyde-3-phosphate dehydrogenase liver
+257  adenosine triphosphate         91  HGNC:5241  P11142               Heat shock cognate 71 kDa protein
+626             amodiaquine        186   HGNC:620  P05067                         Amyloid beta A4 protein
+889              astemizole        249  HGNC:3236  P00533                Epidermal growth factor receptor
+2024-07-09 14:54:00,845 INFO     Total of 167 drug-target associations changed to 158 by dropping duplicates.
+2024-07-09 14:54:00,949 INFO     All TTD associations are saved into ttd_associations_2024-07-09.csv
+2024-07-09 14:54:00,950 INFO     Created a list of tuples with 316 entries
+2024-07-09 14:56:37,000 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:56:37,008 INFO     Loaded 228753 associations
+2024-07-09 14:56:37,870 INFO     The graph contains 12 different semantic groups: {'marker', 'anatomy', 'model', 'homology', 'function', 'genotype', 'phenotype', 'disease', 'interaction', 'gene', 'pathway', 'variant'}
+2024-07-09 14:56:37,870 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:56:37,872 INFO     Extracted a total of 4138 nodes that belong to at least one of the semantic groups ['gene']
+2024-07-09 14:56:37,877 INFO     A total of 4138 gene IDs has been extracted
+2024-07-09 14:56:37,941 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION   GENE  ... MOA_SOURCE  ACT_SOURCE_URL                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel    Q12809  KCNH2  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel    P35498  SCN1A  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel    P35499  SCN4A  ...     CHEMBL             NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2024-07-09 14:56:51,806 INFO     For a total of 16141 drug-target interactions, new mapped IDs are found.
+2024-07-09 14:56:51,812 INFO     Retrieved 167 drug-target interactions with matched gene IDs:
+                  DRUG_NAME  STRUCT_ID    GENE_ID PROD_ID                                       PROD_NAME
+237               adenosine         90  HGNC:4141  P04406  Glyceraldehyde-3-phosphate dehydrogenase liver
+257  adenosine triphosphate         91  HGNC:5241  P11142               Heat shock cognate 71 kDa protein
+626             amodiaquine        186   HGNC:620  P05067                         Amyloid beta A4 protein
+889              astemizole        249  HGNC:3236  P00533                Epidermal growth factor receptor
+2024-07-09 14:56:51,813 INFO     Total of 167 drug-target associations changed to 158 by dropping duplicates.
+2024-07-09 14:56:51,921 INFO     All TTD associations are saved into ttd_associations_2024-07-09.csv
+2024-07-09 14:56:51,922 INFO     Created a list of tuples with 316 entries
+2024-07-09 14:56:51,927 INFO     Extracted a total of 122 nodes that belong to at least one of the semantic groups ['drug']
+2024-07-09 14:56:51,931 INFO     Extracted a total of 6440 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2024-07-09 14:56:51,942 INFO     There are 122 unique drug names
+2024-07-09 14:56:51,943 INFO     There are 6440 unique disease/phenotype IDs
+2024-07-09 14:56:52,064 INFO     Loaded 28978 drug-disease pairs:
+  DRUG_ID DRUG_NAME                 DISEASE_NAME     PHASE
+0  D00ABE   ald-301                     ischemia   Phase 2
+1  D00ABE   ald-301  peripheral arterial disease   Phase 2
+2  D00ABO   kw-2449      acute myeloid leukaemia   Phase 1
+2024-07-09 14:56:52,077 INFO     Loaded 699 phenotypes with matching IDs scoring 100:
+                  Name         ontologyTermName                            ontologyTermIRI   score  validated  review  DISEASE_ID
+0  respiratory failure      Respiratory failure  http://purl.obolibrary.org/obo/HP_0002878  100.00      False   False  HP:0002878
+1   sexual dysfunction  Male sexual dysfunction  http://purl.obolibrary.org/obo/HP_0040307   86.49      False   False  HP:0040307
+6          pollakiuria             Pollakisuria  http://purl.obolibrary.org/obo/HP_0100515   88.00      False   False  HP:0100515
+2024-07-09 14:56:52,101 INFO     Total of 14760 disease names mapped to their IDs:
+   DRUG_ID                                        DRUG_NAME  DISEASE_ID                           DISEASE_NAME
+1   D00ABE                                          ald-301  HP:0004950            peripheral arterial disease
+2   D00ABO                                          kw-2449  HP:0004808                acute myeloid leukaemia
+4   D00ACC                                           nd1251  HP:0000716                             depression
+5   D00ACH                                         hmr-4004  HP:0100658                    bacterial infection
+11  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+12  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+14  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0002861                               melanoma
+19  D00AJS                                            aik11  HP:0005978         non insulin dependent diabetes
+21  D00AKQ                             o-desulfated heparin  HP:0006510  chronic obstructive pulmonary disease
+22  D00AKR                                          amg 479  HP:0003002                          breast cancer
+2024-07-09 14:56:52,105 INFO     A total of 20 are matched with existing drugs and diseases/phenotypes
+2024-07-09 14:56:52,106 INFO     Total of 20 drug-disease associations changed to 20 by dropping duplicates.
+2024-07-09 14:56:52,139 INFO     All DrugCentral associations are saved into drugcentral_associations_2024-07-09.csv
+2024-07-09 14:56:52,140 INFO     Created a list of tuples with 20 entries
+2024-07-09 14:56:52,471 INFO     The graph contains 14 different semantic groups: {'marker', 'anatomy', 'model', 'gene product', 'homology', 'function', 'genotype', 'phenotype', 'disease', 'drug', 'interaction', 'gene', 'pathway', 'variant'}
+2024-07-09 14:56:52,471 INFO     For the graph, a total of 228856 edges and 14766 nodes have been generated.
+2024-07-09 14:56:52,473 INFO     There are 14 semantic groups: ['gene' 'homology' 'phenotype' 'interaction' 'genotype' 'model' 'drug'
+ 'disease' 'variant' 'anatomy' 'function' 'gene product' 'marker'
+ 'pathway']
+2024-07-09 14:56:52,497 INFO     There are 22 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD1                                      is product of
+CustomRO:TTD2                                            targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2024-07-09 14:56:52,868 INFO     Graph of all connections between concepts saved to all_hd_concepts.png
+2024-07-09 14:56:52,902 INFO     List of triplets saved to all_hd_triplets.csv
+2024-07-09 14:59:21,891 INFO     Created a list of tuples with 228753 entries
+2024-07-09 14:59:21,899 INFO     Loaded 228753 associations
+2024-07-09 14:59:22,754 INFO     The graph contains 12 different semantic groups: {'anatomy', 'model', 'genotype', 'disease', 'marker', 'pathway', 'variant', 'homology', 'interaction', 'function', 'phenotype', 'gene'}
+2024-07-09 14:59:22,754 INFO     For the graph, a total of 228655 edges and 14618 nodes have been generated.
+2024-07-09 14:59:22,756 INFO     Extracted a total of 4138 nodes that belong to at least one of the semantic groups ['gene']
+2024-07-09 14:59:22,760 INFO     A total of 4138 gene IDs has been extracted
+2024-07-09 14:59:22,821 INFO     Loaded 19378 drug-target interactions:
+         DRUG_NAME  STRUCT_ID                                        TARGET_NAME TARGET_CLASS ACCESSION   GENE  ... MOA_SOURCE  ACT_SOURCE_URL                                     MOA_SOURCE_URL ACTION_TYPE    TDL      ORGANISM
+0  levobupivacaine          4  Potassium voltage-gated channel subfamily H me...  Ion channel    Q12809  KCNH2  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+1  levobupivacaine          4        Sodium channel protein type 1 subunit alpha  Ion channel    P35498  SCN1A  ...        NaN             NaN                                                NaN         NaN  Tclin  Homo sapiens
+2  levobupivacaine          4        Sodium channel protein type 4 subunit alpha  Ion channel    P35499  SCN4A  ...     CHEMBL             NaN  https://www.ebi.ac.uk/chembl/compound/inspect/...     BLOCKER  Tclin  Homo sapiens
+
+[3 rows x 20 columns]
+2024-07-09 14:59:36,985 INFO     For a total of 16141 drug-target interactions, new mapped IDs are found.
+2024-07-09 14:59:36,990 INFO     Retrieved 167 drug-target interactions with matched gene IDs:
+                  DRUG_NAME  STRUCT_ID    GENE_ID PROD_ID                                       PROD_NAME
+237               adenosine         90  HGNC:4141  P04406  Glyceraldehyde-3-phosphate dehydrogenase liver
+257  adenosine triphosphate         91  HGNC:5241  P11142               Heat shock cognate 71 kDa protein
+626             amodiaquine        186   HGNC:620  P05067                         Amyloid beta A4 protein
+889              astemizole        249  HGNC:3236  P00533                Epidermal growth factor receptor
+2024-07-09 14:59:36,992 INFO     Total of 167 drug-target associations changed to 158 by dropping duplicates.
+2024-07-09 14:59:37,099 INFO     All TTD associations are saved into ttd_associations_2024-07-09.csv
+2024-07-09 14:59:37,100 INFO     Created a list of tuples with 316 entries
+2024-07-09 14:59:37,105 INFO     Extracted a total of 122 nodes that belong to at least one of the semantic groups ['drug']
+2024-07-09 14:59:37,109 INFO     Extracted a total of 6440 nodes that belong to at least one of the semantic groups ['disease', 'phenotype']
+2024-07-09 14:59:37,118 INFO     There are 122 unique drug names
+2024-07-09 14:59:37,119 INFO     There are 6440 unique disease/phenotype IDs
+2024-07-09 14:59:37,249 INFO     Loaded 28978 drug-disease pairs:
+  DRUG_ID DRUG_NAME                 DISEASE_NAME     PHASE
+0  D00ABE   ald-301                     ischemia   Phase 2
+1  D00ABE   ald-301  peripheral arterial disease   Phase 2
+2  D00ABO   kw-2449      acute myeloid leukaemia   Phase 1
+2024-07-09 14:59:37,263 INFO     Loaded 699 phenotypes with matching IDs scoring 100:
+                  Name         ontologyTermName                            ontologyTermIRI   score  validated  review  DISEASE_ID
+0  respiratory failure      Respiratory failure  http://purl.obolibrary.org/obo/HP_0002878  100.00      False   False  HP:0002878
+1   sexual dysfunction  Male sexual dysfunction  http://purl.obolibrary.org/obo/HP_0040307   86.49      False   False  HP:0040307
+6          pollakiuria             Pollakisuria  http://purl.obolibrary.org/obo/HP_0100515   88.00      False   False  HP:0100515
+2024-07-09 14:59:37,301 INFO     Total of 14760 disease names mapped to their IDs:
+   DRUG_ID                                        DRUG_NAME  DISEASE_ID                           DISEASE_NAME
+1   D00ABE                                          ald-301  HP:0004950            peripheral arterial disease
+2   D00ABO                                          kw-2449  HP:0004808                acute myeloid leukaemia
+4   D00ACC                                           nd1251  HP:0000716                             depression
+5   D00ACH                                         hmr-4004  HP:0100658                    bacterial infection
+11  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+12  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0030358             non small cell lung cancer
+14  D00AHT  prame antigen-specific cancer immunotherapeutic  HP:0002861                               melanoma
+19  D00AJS                                            aik11  HP:0005978         non insulin dependent diabetes
+21  D00AKQ                             o-desulfated heparin  HP:0006510  chronic obstructive pulmonary disease
+22  D00AKR                                          amg 479  HP:0003002                          breast cancer
+2024-07-09 14:59:37,307 INFO     A total of 20 are matched with existing drugs and diseases/phenotypes
+2024-07-09 14:59:37,308 INFO     Total of 20 drug-disease associations changed to 20 by dropping duplicates.
+2024-07-09 14:59:37,348 INFO     All DrugCentral associations are saved into drugcentral_associations_2024-07-09.csv
+2024-07-09 14:59:37,349 INFO     Created a list of tuples with 20 entries
+2024-07-09 14:59:37,687 INFO     The graph contains 14 different semantic groups: {'anatomy', 'model', 'genotype', 'disease', 'marker', 'drug', 'pathway', 'gene product', 'variant', 'homology', 'interaction', 'function', 'phenotype', 'gene'}
+2024-07-09 14:59:37,687 INFO     For the graph, a total of 228856 edges and 14766 nodes have been generated.
+2024-07-09 14:59:37,689 INFO     There are 14 semantic groups: ['homology' 'phenotype' 'function' 'gene' 'interaction' 'genotype' 'drug'
+ 'anatomy' 'model' 'variant' 'gene product' 'disease' 'marker' 'pathway']
+2024-07-09 14:59:37,714 INFO     There are 22 relation labels:                                                   relation_label
+relation_id                                                     
+BFO:0000050                                           is part of
+CustomRO:DC                             is substance that treats
+CustomRO:TTD1                                      is product of
+CustomRO:TTD2                                            targets
+GENO:0000222                                        has genotype
+GENO:0000408                                        is allele of
+GENO:0000418                                has affected feature
+GENO:0000840                            pathogenic for condition
+RO:0002200                                         has phenotype
+RO:0002206                                          expressed in
+RO:0002325                                      colocalizes with
+RO:0002326                                        contributes to
+RO:0002327                                               enables
+RO:0002331                                           involved in
+RO:0002434                                        interacts with
+RO:0003301                                  has role in modeling
+RO:0003303                                      causes condition
+RO:0003304                              contributes to condition
+RO:0004013                        is causal germline mutation in
+RO:0004016     is causal germline mutation partially giving r...
+RO:HOM0000017                     in orthology relationship with
+RO:HOM0000020              in 1 to 1 orthology relationship with
+2024-07-09 14:59:38,084 INFO     Graph of all connections between concepts saved to all_hd_concepts.png
+2024-07-09 14:59:38,118 INFO     List of triplets saved to all_hd_triplets.csv
+2024-07-09 15:12:56,830 INFO     The graph contains 15 different semantic groups: {'biological process', 'biological artifact', 'anatomy', 'disease', 'genotype', 'marker', 'drug', 'gene product', 'variant', 'homology', 'interaction', 'function', 'taxon', 'phenotype', 'gene'}
+2024-07-09 15:12:56,830 INFO     For the graph, a total of 233158 edges and 14791 nodes have been generated.
+2024-07-09 15:12:56,846 INFO     There are 15 semantic groups: ['homology' 'phenotype' 'function' 'gene' 'interaction' 'genotype' 'drug'
+ 'anatomy' 'biological artifact' 'taxon' 'variant' 'gene product'
+ 'disease' 'marker' 'biological process']
+2024-07-09 15:12:56,868 INFO     There are 21 relation labels:                                               relation_label
+relation_id                                                 
+BFO:0000050                                       is part of
+CustomRO:DC                         is substance that treats
+CustomRO:TTD1                                  is product of
+CustomRO:TTD2                                        targets
+CustomRO:associatedphenotype       associated with phenotype
+CustomRO:expressesgene                        expresses gene
+CustomRO:foundin                                    found in
+CustomRO:isof                                          is of
+CustomRO:isvariantin                           is variant in
+GENO:0000222                                    has genotype
+GENO:0000408                                    is allele of
+GENO:0000418                            has affected feature
+RO:0002206                                      expressed in
+RO:0002325                                  colocalizes with
+RO:0002327                                           enables
+RO:0002331                                       involved in
+RO:0002434                                    interacts with
+RO:0003301                              has role in modeling
+RO:0003303                                  causes condition
+RO:0003304                          contributes to condition
+RO:HOM0000017                 in orthology relationship with
+2024-07-09 15:12:57,082 INFO     Graph of all connections between concepts saved to restr_hd_concepts.png
+2024-07-09 15:12:57,115 INFO     List of triplets saved to restr_hd_triplets.csv

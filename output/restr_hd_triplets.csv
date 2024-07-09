@@ -1,0 +1,84 @@
+subject,relation,object
+disease,associated with phenotype,phenotype
+biological artifact,causes condition,phenotype
+genotype,causes condition,phenotype
+homology,causes condition,phenotype
+variant,causes condition,phenotype
+gene,causes condition,phenotype
+interaction,causes condition,phenotype
+genotype,causes condition,disease
+variant,causes condition,disease
+gene,causes condition,disease
+interaction,colocalizes with,gene
+homology,colocalizes with,interaction
+interaction,colocalizes with,interaction
+homology,colocalizes with,homology
+interaction,colocalizes with,homology
+gene,colocalizes with,interaction
+gene,colocalizes with,gene
+homology,colocalizes with,gene
+gene,colocalizes with,homology
+homology,contributes to condition,disease
+gene,contributes to condition,phenotype
+variant,contributes to condition,disease
+variant,contributes to condition,phenotype
+interaction,contributes to condition,disease
+homology,contributes to condition,phenotype
+marker,contributes to condition,disease
+gene,contributes to condition,disease
+interaction,contributes to condition,phenotype
+interaction,enables,function
+homology,enables,function
+gene,enables,function
+interaction,expressed in,anatomy
+homology,expressed in,anatomy
+gene,expressed in,anatomy
+biological artifact,expresses gene,gene
+genotype,expresses gene,gene
+gene,found in,taxon
+variant,has affected feature,marker
+variant,has affected feature,gene
+variant,has affected feature,homology
+variant,has affected feature,interaction
+biological artifact,has genotype,genotype
+genotype,has role in modeling,disease
+homology,has role in modeling,disease
+variant,has role in modeling,disease
+biological artifact,has role in modeling,disease
+gene,has role in modeling,disease
+interaction,has role in modeling,disease
+homology,in orthology relationship with,homology
+gene,in orthology relationship with,gene
+interaction,in orthology relationship with,homology
+homology,in orthology relationship with,gene
+interaction,in orthology relationship with,interaction
+gene,in orthology relationship with,interaction
+interaction,in orthology relationship with,gene
+gene,in orthology relationship with,homology
+homology,in orthology relationship with,interaction
+homology,interacts with,interaction
+interaction,interacts with,gene
+gene,interacts with,homology
+gene,interacts with,interaction
+interaction,interacts with,homology
+homology,interacts with,homology
+gene,interacts with,gene
+homology,interacts with,gene
+interaction,interacts with,interaction
+homology,involved in,function
+gene,involved in,biological process
+homology,involved in,biological process
+disease,involved in,biological process
+interaction,involved in,biological process
+interaction,involved in,function
+gene,involved in,function
+variant,is allele of,gene
+biological artifact,is allele of,gene
+biological artifact,is of,taxon
+gene,is part of,function
+homology,is part of,function
+interaction,is part of,function
+gene product,is product of,gene
+drug,is substance that treats,phenotype
+variant,is variant in,genotype
+drug,targets,gene product

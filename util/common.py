@@ -27,11 +27,11 @@ def register_error(message):
     print(message)
     logging.error(message)
     
-def tuplelist2dataframe(tuple_list: list):
+def tuplelist2dataframe(tuple_list: list, column_values: tuple = assoc_tuple_values):
     """
 
     """
-    df = pd.DataFrame.from_records(tuple_list, columns=list(assoc_tuple_values))
+    df = pd.DataFrame.from_records(tuple_list, columns=list(column_values))
     register_info(f'Created a dataframe with {df.shape[0]} entries and column values {df.columns.values}')
     return df
 

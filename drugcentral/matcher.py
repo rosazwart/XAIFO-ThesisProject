@@ -19,7 +19,7 @@ def load_phenotype_matcher():
         :return Dataframe with matched phenotype IDs scoring 100
     """
     matches = pd.read_csv('././data/matched_phenotypes.csv', header = 0, delimiter = ';')
-    trusted_matches = matches[matches['score'] == 100]
+    trusted_matches = matches[matches['score'] > 80]
     
     # Change formatting
     formatted_matches = trusted_matches.copy()

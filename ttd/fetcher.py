@@ -138,7 +138,8 @@ def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
             'relation_iri': [prod_gene_relation['iri'], drug_prod_relation['iri']]
         }
         
-        new_assocs = new_assocs.append(pd.DataFrame(new_edges))
+        #new_assocs = new_assocs.append(pd.DataFrame(new_edges))
+        new_assocs = pd.concat([new_assocs, pd.DataFrame(new_edges)], ignore_index=True)
 
     drugtarget_associations_df = new_assocs[list(constants.assoc_tuple_values)]
     drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations_{common.today}.csv', index=None)
