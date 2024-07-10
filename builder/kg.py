@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 
 from tqdm import tqdm
+from copy import deepcopy
 
 class Node:
     """
@@ -275,7 +276,7 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         """
             Remove node when it belongs to one of the excluded semantic groups.
         """
-        if node.semantic_groups == constants.ANAT:
+        if node.semantic_groups == constants.ANAT or node.semantic_groups == constants.ANAT2:
             return True
         else:
             return False
@@ -300,7 +301,23 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         
         if subject_semantic == constants.ANAT or object_semantic == constants.ANAT:
             return True
+        elif subject_semantic == constants.ANAT2 or object_semantic == constants.ANAT2:
+            return True
         else: 
+            return False
+        
+    def remove_incorrect_edge(self, prev_edge: AssocEdge, prev_nodes_df: pd.DataFrame):
+        """
+            Check whether the edge needs to removed due to model inconsistencies.
+        """
+        subject_id = prev_edge.subject
+        subject_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == subject_id, 'semantic'].iloc[0]
+        object_id = prev_edge.object
+        object_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == object_id, 'semantic'].iloc[0]
+
+        if subject_semantic == constants.GENE and object_semantic == constants.GENE and prev_edge.relation['id'] == constants.EXPRESSES_GENE['id']:
+            return True
+        else:
             return False
         
     def deduce_edge(self, prev_edge: AssocEdge, prev_nodes_df: pd.DataFrame):
@@ -321,6 +338,9 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         elif subject_semantic in [constants.GENOTYPE, constants.MODEL] and object_semantic == constants.GENE:
             new_relation = constants.EXPRESSES_GENE
             return NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        elif subject_semantic == constants.MODEL and object_semantic == constants.GENOTYPE:
+            new_relation = constants.HAS_GENOTYPE
+            return NewEdge(prev_edge.id, prev_edge.subject, prev_edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
         else:   
             print(f'Ignore edge with subject concept {subject_semantic} and object concept {object_semantic}')
             return None
@@ -336,6 +356,29 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         
         if subject_semantic == constants.DISEASE and object_semantic == constants.PHENOTYPE:
             new_relation = constants.PHENOTYPE_ASSOCIATED
+            return NewEdge(edge.id, edge.subject, edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        
+        elif subject_semantic == constants.GENE and object_semantic in [constants.FUNCTION, constants.FUNCTION2]:
+            new_relation = constants.ENABLES
+            return NewEdge(edge.id, edge.subject, edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        
+        elif subject_semantic == constants.MODEL and object_semantic == constants.GENE:
+            new_relation = constants.EXPRESSES_GENE
+            return NewEdge(edge.id, edge.subject, edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
+        
+        return edge
+    
+    def rename_edge_after(self, edge: NewEdge, prev_nodes_df: pd.DataFrame):
+        """
+            After changing the nodes, decide whether the edge still needs to change.
+        """
+        subject_id = edge.subject
+        subject_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == subject_id, 'semantic'].iloc[0]
+        object_id = edge.object
+        object_semantic = prev_nodes_df.loc[prev_nodes_df['id'] == object_id, 'semantic'].iloc[0]
+
+        if subject_semantic == constants.GENE and object_semantic == constants.FUNCTION:
+            new_relation = constants.ENABLES
             return NewEdge(edge.id, edge.subject, edge.object, new_relation['id'], new_relation['label'], new_relation['iri'])
         
         return edge
@@ -361,16 +404,38 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         relations = associated_rows_df['relation_id'].unique().tolist()
         
         return relations
+    
+    def get_to_node_associations(self, node_id, edges_df: pd.DataFrame):
+        """ 
+            Get all relations that are found at least one in an edge directed towards the given node.
+        """
+        associated_rows_df = edges_df.loc[edges_df['object'] == node_id]
+        relations = associated_rows_df['relation_id'].unique().tolist()
         
-    def transform_node_semantic(self, node: AssocNode, all_relations: list):
+        return relations
+    
+    def get_from_node_associations(self, node_id, edges_df: pd.DataFrame):
+        """ 
+            Get all relations that are found at least one in an edge directed from the given node.
+        """
+        associated_rows_df = edges_df.loc[edges_df['subject'] == node_id]
+        relations = associated_rows_df['relation_id'].unique().tolist()
+        
+        return relations
+        
+    def transform_node_semantic(self, node: AssocNode, all_relations: list, all_relations_to_node: list = [], all_relations_from_node: list = []):
         """
             Change the semantic group of the node based on its previous semantic group or its associated relations.
         """
-        if node.semantic_groups == constants.MODEL:
-            if any(i in ['RO:0002327', 'BFO:0000050', 'RO:0002434', 'RO:0002325', 'RO:HOM0000017'] for i in all_relations):
+        if node.semantic_groups in [constants.MODEL, constants.MARKER, constants.HOMOLOGY, constants.INTERACTION]:
+            if any(i in [constants.INTERACTS_WITH['id'], constants.COLOCALIZES_WITH['id'], constants.IN_ORTH_REL_WITH['id']] for i in all_relations):
                 return constants.GENE
-            elif constants.IS_VARIANT_IN['id'] in all_relations:
+            elif any(i in [constants.ENABLES['id'], constants.IS_PART_OF['id']] for i in all_relations_from_node):
+                return constants.GENE
+            elif constants.IS_VARIANT_IN['id'] in all_relations_to_node:
                 return constants.GENOTYPE
+            elif constants.HAS_AFFECTED_FEATURE['id'] in all_relations_to_node:
+                return constants.GENE
             else:
                 return constants.BIOLART
             
@@ -379,6 +444,12 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
         
         if node.semantic_groups == constants.CHEMICAL:
             return constants.DRUG
+        
+        if node.semantic_groups == constants.FUNCTION2:
+            if constants.IS_PART_OF['id'] in all_relations_to_node and constants.ENABLES['id'] not in all_relations_to_node:
+                return constants.CELLULAR_COMPONENT
+            else:
+                return constants.FUNCTION
         
         return node.semantic_groups
         
@@ -426,13 +497,33 @@ class RestructuredKnowledgeGraph(KnowledgeGraph):
             if not self.remove_node(node):
                 # Get all relations it is associated with
                 node_relations = self.get_node_associations(node.id, edges_df)
+                to_node_relations = self.get_to_node_associations(node.id, edges_df)
+                from_node_relations = self.get_from_node_associations(node.id, edges_df)
                 
-                node.semantic_groups = self.transform_node_semantic(node, node_relations)
+                node.semantic_groups = self.transform_node_semantic(node, node_relations, to_node_relations, from_node_relations)
                 
                 # Add TAXON nodes
                 self.add_concept_taxon(node)
                 
                 new_node = NewNode(node.id, node.label, node.iri, node.semantic_groups)
                 self.add_node(new_node)
+
+        _, nodes_df = self.generate_dataframes()
+
+        print('Iterating over new edges to remove triples that are inconsistent with model...')
+        edges_removed = 0
+        all_new_edges = deepcopy(self.all_edges)
+        for edge in tqdm(all_new_edges):
+            if edge in self.all_edges:
+                self.all_edges.remove(edge)
+
+                if not self.remove_incorrect_edge(prev_edge=edge, prev_nodes_df=nodes_df):
+                    new_edge = self.rename_edge_after(edge, nodes_df)
+                    self.add_edge(new_edge)
+
+                    edges_removed += 1
+
+        print(f'A total of {edges_removed} edges are removed due to model inconsistencies.')
+
 
     

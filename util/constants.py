@@ -16,11 +16,18 @@ PHENOTYPE = 'phenotype'
 MODEL = 'model'
 BIOLART = 'biological artifact'
 ANAT = 'anatomical entity'
+ANAT2 = 'anatomy'
 VAR = 'variant'
 PATHWAY = 'pathway'
 BIOLPRO = 'biological process'
 CHEMICAL = 'chemical'
 GENE_PRODUCT = 'gene product'
+MARKER = 'marker'
+HOMOLOGY = 'homology'
+INTERACTION = 'interaction'
+FUNCTION = 'molecular function'
+FUNCTION2 = 'function'
+CELLULAR_COMPONENT = 'cellular component'
 
 FOUND_IN = {
     'id': 'CustomRO:foundin',
@@ -74,6 +81,42 @@ INTERACTS_WITH = {
     'id': 'RO:0002434',
     'label': 'interacts with',
     'iri': 'http://purl.obolibrary.org/obo/RO_0002434'
+}
+
+ENABLES = {
+    'id': 'RO:0002327',
+    'label': 'enables',
+    'iri': 'http://purl.obolibrary.org/obo/RO_0002327'
+}
+
+IS_PART_OF = {
+    'id': 'BFO:0000050',
+    'label': 'is part of',
+    'iri': np.nan
+}
+
+HAS_AFFECTED_FEATURE = {
+    'id': 'GENO:0000418',
+    'label': 'has affected feature',
+    'iri': 'http://purl.obolibrary.org/obo/GENO_0000418'
+}
+
+HAS_GENOTYPE = {
+    'id': 'GENO:0000222',
+    'label': 'has genotype',
+    'iri': 'http://purl.obolibrary.org/obo/GENO_0000222'
+}
+
+COLOCALIZES_WITH = {
+    'id': 'RO:0002325',
+    'label': 'colocalizes with',
+    'iri': 'http://purl.obolibrary.org/obo/RO_0002325'
+}
+
+IN_ORTH_REL_WITH = {
+    'id': 'RO:HOM0000017',
+    'label': 'in orthology relationship with',
+    'iri': 'http://purl.obolibrary.org/obo/RO_HOM0000017'
 }
 
 REL_GROUPING = {

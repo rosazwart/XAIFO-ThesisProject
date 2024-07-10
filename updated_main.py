@@ -82,8 +82,6 @@ def build_restr_kg():
 
     restr_kg.save_graph('restr_hd_kg')
 
-    # TODO: interaction semantic group, how to restructure? check relations linking interaction with other semantic classes
-
 if __name__ == "__main__":
     create_output_folder()
 
