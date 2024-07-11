@@ -10,7 +10,7 @@
         'p': 1,
         'q': 0.5,
         'dimensions_e2v': 64,
-        'lr': 0.0,
+        'lr': 0.09964196586063126,
         'aggr': 'mean',
         'dropout': 0,
         'layers': 6
