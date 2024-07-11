@@ -16,19 +16,19 @@
         'layers': 6
     },
     'restr': {
-        'hidden_dim': 0,
-        'output_dim': 0,
-        'epochs': 0,
-        'type_size': 0,
-        'epoch_e2v': 0,
-        'num_walks': 0,
-        'walk_length': 0,
-        'p': 0,
-        'q': 0,
-        'dimensions_e2v': 0,
-        'lr': 0,
-        'aggr': '',
+        'hidden_dim': 256,
+        'output_dim': 256,
+        'epochs': 100,
+        'type_size': 19,
+        'epoch_e2v': 10,
+        'num_walks': 6,
+        'walk_length': 7,
+        'p': 0.75,
+        'q': 1,
+        'dimensions_e2v': 64,
+        'lr': 0.013040167907327541,
+        'aggr': 'mean',
         'dropout': 0,
-        'layers': 0
+        'layers': 2
     }
 }
