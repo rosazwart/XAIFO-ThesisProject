@@ -7,7 +7,7 @@ from util.common import register_info, dataframe2tuplelist
 def get_input_data_path(file_name):
     return os.path.join(INPUT_FOLDER, file_name)
 
-def create_output_folder():
+def create_output_folder(subfoldername: str):
     cwd_path = os.getcwd()
     output_path = os.path.join(cwd_path, OUTPUT_FOLDER)
     
@@ -15,6 +15,12 @@ def create_output_folder():
         os.makedirs(output_path)
     else:
         print('Output folder located at', output_path, 'already exists, so it does not have to be created')
+
+    sub_output_path = os.path.join(output_path, subfoldername)
+    if not os.path.isdir(sub_output_path):
+        os.makedirs(sub_output_path)
+    else:
+        print('Output folder located at', sub_output_path, 'already exists, so it does not have to be created')
 
 def load_associations_from_csv(file_name, foldernames: list | None = None):
     """

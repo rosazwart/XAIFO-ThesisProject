@@ -9,7 +9,8 @@ import drugcentral.fetcher as drugcentral_fetcher
 
 from typing import Union
 
-FILENAME = 'hd_monarch_associations_2024-06-24.csv'
+DISEASE_PREFIX = 'hd'
+FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-06-24.csv'
 
 def analyze_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], concepts_filename, triplets_filename, ontologies: bool = False):
     edges, nodes = kg.generate_dataframes()
@@ -27,11 +28,9 @@ def analyze_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], conce
     }
     
     kg.analyze_graph()
-    graphstructure.getConcepts(nodes, node_colmapping)
-    relations_df = graphstructure.getRelations(edges, edge_colmapping)
-    graphstructure.getConnectionSummary(edges, nodes, 
-                                        edge_colmapping, node_colmapping,
-                                        concepts_filename, triplets_filename)
+    graphstructure.get_concepts(nodes, node_colmapping)
+    relations_df = graphstructure.get_relations(edges, edge_colmapping)
+    graphstructure.get_connection_summary(edges, nodes, edge_colmapping, node_colmapping, concepts_filename, triplets_filename, DISEASE_PREFIX)
     
     if ontologies:
         ols_fetcher.analyze_ontology_relations(relations_df)
@@ -83,7 +82,7 @@ def build_restr_kg():
     restr_kg.save_graph('restr_hd_kg')
 
 if __name__ == "__main__":
-    create_output_folder()
+    create_output_folder(subfoldername=DISEASE_PREFIX)
 
     kg_mode = input('Enter which KG needs to be built (choose 1 for original, choose 2 for restructured):')
     assert kg_mode == '1' or kg_mode == '2'
