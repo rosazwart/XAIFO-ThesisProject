@@ -1,8 +1,11 @@
 import sys
-from util.loaders import load_associations_from_csv
+from util.loaders import load_associations_from_csv, create_output_folder
 from util.constants import assoc_tuple_values, OUTPUT_FOLDER
 from prev.monarch_constants import prefix2category
 from util.common import tuplelist2dataframe, today
+
+DISEASE_PREFIX = 'dmd'
+FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-07-18.csv'
 
 def convert_concepts(node_id: str):
     """
@@ -37,8 +40,9 @@ def get_nodes(assoc: list):
     return nodes_tuplelist
 
 if __name__ == "__main__":
-    filename = 'hd_monarch_associations_2024-06-24.csv'
-    monarch_assoc = load_associations_from_csv(file_name=filename, foldernames=['localfetcher', 'output'])
+    create_output_folder(subfoldername=DISEASE_PREFIX)
+
+    monarch_assoc = load_associations_from_csv(file_name=FILENAME, foldernames=['localfetcher', 'output'])
 
     converted_monarch_assoc = []
     for monarch_assoc_tuple in monarch_assoc:
@@ -55,9 +59,9 @@ if __name__ == "__main__":
 
         converted_monarch_assoc.append(tuple(monarch_assoc_list))
 
-    tuplelist2dataframe(converted_monarch_assoc).to_csv(f'{OUTPUT_FOLDER}/prev_{filename}', index=False)
+    tuplelist2dataframe(converted_monarch_assoc).to_csv(f'{OUTPUT_FOLDER}/{DISEASE_PREFIX}/prev_{FILENAME}', index=False)
 
     monarch_nodes = get_nodes(assoc=converted_monarch_assoc)
-    tuplelist2dataframe(monarch_nodes, column_values=tuple(['id', 'semantic_groups', 'name'])).to_csv(f'prev/monarch/prev_{filename.replace('associations', 'nodes')}', index=False)
+    tuplelist2dataframe(monarch_nodes, column_values=tuple(['id', 'semantic_groups', 'name'])).to_csv(f'prev/monarch/prev_{FILENAME.replace('associations', 'nodes')}', index=False)
 
     

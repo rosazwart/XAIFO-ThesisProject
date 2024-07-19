@@ -219,7 +219,7 @@ class KnowledgeGraph:
         extracted_nodes = set()
         
         for node in self.all_nodes:
-            if node.semantic_groups in extract_semantic_groups:
+            if node.semantic_groups in extract_semantic_groups or len(extract_semantic_groups) == 0:
                 extracted_nodes.add(node)
         register_info(f'Extracted a total of {len(extracted_nodes)} nodes that belong to at least one of the semantic groups {extract_semantic_groups}')
 

@@ -1,5 +1,5 @@
 import util.constants as constants
-from util.loaders import load_associations_from_csv, create_output_folder
+from util.loaders import load_associations_from_csv, create_output_folder, OUTPUT_FOLDER
 from builder.kg import AssocKnowledgeGraph, RestructuredKnowledgeGraph
 
 import analyzer.graphstructure as graphstructure
@@ -9,8 +9,8 @@ import drugcentral.fetcher as drugcentral_fetcher
 
 from typing import Union
 
-DISEASE_PREFIX = 'hd'
-FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-06-24.csv'
+DISEASE_PREFIX = 'dmd'
+FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-07-18.csv'
 
 def analyze_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], concepts_filename, triplets_filename, ontologies: bool = False):
     edges, nodes = kg.generate_dataframes()
@@ -38,31 +38,32 @@ def analyze_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], conce
 def build_prev_kg():
     """
     """
-    monarch_assoc = load_associations_from_csv('prev_hd_monarch_associations_2024-06-24.csv')
-    ttd_assoc = load_associations_from_csv('prev_hd_ttd_associations_2024-07-09.csv')
-    drugcentral_assoc = load_associations_from_csv('prev_hd_drugcentral_associations_2024-07-09.csv')
+    monarch_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_monarch_associations_2024-07-18.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
+    ttd_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_ttd_associations_2024-07-19.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
+    drugcentral_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_drugcentral_associations_2024-07-19.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
 
     kg = AssocKnowledgeGraph(monarch_assoc)
     kg.add_edges_and_nodes(ttd_assoc)
     kg.add_edges_and_nodes(drugcentral_assoc)
 
-    analyze_kg(kg, 'prev_hd_concepts.png', 'prev_hd_triplets.csv')
+    analyze_kg(kg, f'prev_{DISEASE_PREFIX}_concepts.png', f'prev_{DISEASE_PREFIX}_triplets.csv')
 
-    kg.save_graph(filename_prefix='prev_hd_kg')
+    kg.save_graph(DISEASE_PREFIX, f'prev_{DISEASE_PREFIX}_kg')
 
 def build_restr_kg():
     """
     """
-    monarch_assoc = load_associations_from_csv('hd_monarch_associations_2024-06-24.csv')
+    monarch_assoc = load_associations_from_csv(FILENAME, foldernames=['localfetcher', OUTPUT_FOLDER])
 
     kg = AssocKnowledgeGraph(monarch_assoc)
 
     # --- Add associations from TTD ---
     
-    gene_nodes = kg.get_extracted_nodes([constants.GENE])
-    ttd_associations = ttd_fetcher.get_drugtarget_associations(gene_nodes)
+    gene_nodes = kg.get_extracted_nodes([]) # constants.GENE
+    ttd_associations = ttd_fetcher.get_drugtarget_associations(gene_nodes, disease_prefix=DISEASE_PREFIX)
     
     kg.add_edges_and_nodes(ttd_associations)
+    print(f'Added {len(ttd_associations)} drug-target associations')
 
     # --- Add associations from DrugCentral ---
     
@@ -71,15 +72,16 @@ def build_restr_kg():
     drugcentral_associations = drugcentral_fetcher.get_drugdisease_associations(drug_nodes, diso_pheno_nodes)
     
     kg.add_edges_and_nodes(drugcentral_associations)
+    print(f'Added {len(drugcentral_associations)} drug-phenotype/disease associations')
 
     # Initial knowledge graph
-    analyze_kg(kg, 'all_hd_concepts.png', 'all_hd_triplets.csv')
+    analyze_kg(kg, f'all_{DISEASE_PREFIX}_concepts.png', f'all_{DISEASE_PREFIX}_triplets.csv')
 
     # Restructuring
     restr_kg = RestructuredKnowledgeGraph(kg)
-    analyze_kg(restr_kg, 'restr_hd_concepts.png', 'restr_hd_triplets.csv')
+    analyze_kg(restr_kg, f'restr_{DISEASE_PREFIX}_concepts.png', f'restr_{DISEASE_PREFIX}_triplets.csv')
 
-    restr_kg.save_graph('restr_hd_kg')
+    restr_kg.save_graph(DISEASE_PREFIX, f'restr_{DISEASE_PREFIX}_kg')
 
 if __name__ == "__main__":
     create_output_folder(subfoldername=DISEASE_PREFIX)

@@ -90,10 +90,12 @@ def get_mapped_ids(drug_targets):
     other_relevant_entries = drug_targets[~drug_targets['ORGANISM'].isin(all_taxon_names)]
     other_id_mappings = fetch_id_mappings(other_relevant_entries, DEFAULT_TO_DB)
     all_mapped_id_results = all_mapped_id_results + other_id_mappings
+
+    print(f'A total of {len(all_mapped_id_results)} ACCESSION IDs are mapped to other database IDs')
                 
     return all_mapped_id_results
 
-def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
+def format_drugtarget_associations(drug_targets_prev: pd.DataFrame, disease_prefix: str):
     """
         Format dataframe with drug target interactions such that it complies with formatting of associations `constants.assoc_tuple_values`.
         :param drug_targets: Dataframe with all drug target interactions
@@ -142,12 +144,12 @@ def format_drugtarget_associations(drug_targets_prev: pd.DataFrame):
         new_assocs = pd.concat([new_assocs, pd.DataFrame(new_edges)], ignore_index=True)
 
     drugtarget_associations_df = new_assocs[list(constants.assoc_tuple_values)]
-    drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/ttd_associations_{common.today}.csv', index=None)
-    register_info(f'All TTD associations are saved into ttd_associations_{common.today}.csv')
+    drugtarget_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/{disease_prefix}/ttd_associations_{common.today}.csv', index=None)
+    register_info(f'All {len(drugtarget_associations_df)} TTD associations are saved into ttd_associations_{common.today}.csv')
     
     return dataframe2tuplelist(new_assocs) 
 
-def get_drugtarget_associations(gene_nodes: pd.DataFrame):
+def get_drugtarget_associations(gene_nodes: pd.DataFrame, disease_prefix: str):
     """
         Get all drug target interaction associations
         :param gene_nodes: Dataframe containing existing nodes
@@ -176,5 +178,5 @@ def get_drugtarget_associations(gene_nodes: pd.DataFrame):
     relevant_matched_drug_targets = matched_drug_targets.rename({'NEW_ID': 'GENE_ID', 'ACCESSION': 'PROD_ID', 'TARGET_NAME': 'PROD_NAME'}, axis=1)[['DRUG_NAME', 'STRUCT_ID', 'GENE_ID', 'PROD_ID', 'PROD_NAME']]
     register_info(f'Retrieved {relevant_matched_drug_targets.shape[0]} drug-target interactions with matched gene IDs:\n{relevant_matched_drug_targets.head(4)}')
 
-    drugtargets_associations = format_drugtarget_associations(relevant_matched_drug_targets)
+    drugtargets_associations = format_drugtarget_associations(relevant_matched_drug_targets, disease_prefix)
     return drugtargets_associations
