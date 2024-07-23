@@ -81,7 +81,10 @@ if __name__ == "__main__":
     dataset_nr = input('Enter dataset number (1 or 2):')
     assert dataset_nr == 1 or 2
     
-    edge_df = pd.read_csv(f'output/indexed_edges_{dataset_nr}.csv')
+    disease_prefix = input('Enter disease prefix (dmd or hd):')
+    assert disease_prefix == 'dmd' or 'hd'
+    
+    edge_df = pd.read_csv(f'output/{disease_prefix}/indexed_edges_{dataset_nr}.csv')
     
     search_args = {
         'device': torch_device, 

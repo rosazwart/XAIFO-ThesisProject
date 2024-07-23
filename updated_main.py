@@ -9,8 +9,8 @@ import drugcentral.fetcher as drugcentral_fetcher
 
 from typing import Union
 
-DISEASE_PREFIX = 'dmd'
-FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-07-18.csv'
+DISEASE_PREFIX = 'hd'
+FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-06-24.csv'
 
 def analyze_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], concepts_filename, triplets_filename, ontologies: bool = False):
     edges, nodes = kg.generate_dataframes()
