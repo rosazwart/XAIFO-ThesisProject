@@ -4,8 +4,8 @@ from util.constants import assoc_tuple_values, OUTPUT_FOLDER
 from prev.monarch_constants import prefix2category
 from util.common import tuplelist2dataframe, today
 
-DISEASE_PREFIX = 'dmd'
-FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-07-18.csv'
+DISEASE_PREFIX = 'hd'
+FILENAME = f'{DISEASE_PREFIX}_monarch_associations_2024-06-24.csv'
 
 def convert_concepts(node_id: str):
     """
@@ -62,6 +62,6 @@ if __name__ == "__main__":
     tuplelist2dataframe(converted_monarch_assoc).to_csv(f'{OUTPUT_FOLDER}/{DISEASE_PREFIX}/prev_{FILENAME}', index=False)
 
     monarch_nodes = get_nodes(assoc=converted_monarch_assoc)
-    tuplelist2dataframe(monarch_nodes, column_values=tuple(['id', 'semantic_groups', 'name'])).to_csv(f'prev/monarch/prev_{FILENAME.replace('associations', 'nodes')}', index=False)
+    tuplelist2dataframe(monarch_nodes, column_values=tuple(['id', 'semantic_groups', 'name'])).to_csv(f'prev/monarch/prev_{FILENAME.replace("associations", "nodes")}', index=False)
 
     

@@ -38,9 +38,9 @@ def analyze_kg(kg: Union[AssocKnowledgeGraph, RestructuredKnowledgeGraph], conce
 def build_prev_kg():
     """
     """
-    monarch_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_monarch_associations_2024-07-18.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
-    ttd_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_ttd_associations_2024-07-19.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
-    drugcentral_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_drugcentral_associations_2024-07-19.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
+    monarch_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_monarch_associations_2024-06-24.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
+    ttd_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_ttd_associations_2024-07-23.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
+    drugcentral_assoc = load_associations_from_csv(f'prev_{DISEASE_PREFIX}_drugcentral_associations_2024-07-23.csv', foldernames=[OUTPUT_FOLDER, DISEASE_PREFIX])
 
     kg = AssocKnowledgeGraph(monarch_assoc)
     kg.add_edges_and_nodes(ttd_assoc)
