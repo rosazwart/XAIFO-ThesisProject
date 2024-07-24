@@ -50,7 +50,7 @@ def join_disease_name_with_id(names_df, ids_df):
     common.register_info(f'Total of {left_outer_joined_df.shape[0]} disease names mapped to their IDs:\n{left_outer_joined_df.head(10)}')
     return left_outer_joined_df
 
-def format_drugdisease_associations(drug_disease_pairs_prev: pd.DataFrame, drug_nodes: pd.DataFrame):
+def format_drugdisease_associations(drug_disease_pairs_prev: pd.DataFrame, drug_nodes: pd.DataFrame, disease_prefix: str):
     drug_disease_pairs = drug_disease_pairs_prev.drop_duplicates(inplace=False).copy()
     common.register_info(f'Total of {drug_disease_pairs_prev.shape[0]} drug-disease associations changed to {drug_disease_pairs.shape[0]} by dropping duplicates.')
     
@@ -81,12 +81,12 @@ def format_drugdisease_associations(drug_disease_pairs_prev: pd.DataFrame, drug_
         drug_disease_pairs.loc[i,'relation_iri'] = constants.TREATS['iri']
         
     drugdisease_associations_df = drug_disease_pairs[list(constants.assoc_tuple_values)]
-    drugdisease_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/drugcentral_associations_{common.today}.csv', index=None)
+    drugdisease_associations_df.to_csv(f'{constants.OUTPUT_FOLDER}/{disease_prefix}/drugcentral_associations_{common.today}.csv', index=None)
     common.register_info(f'All DrugCentral associations are saved into drugcentral_associations_{common.today}.csv')
     
     return common.dataframe2tuplelist(drugdisease_associations_df) 
     
-def get_drugdisease_associations(drug_nodes: pd.DataFrame, diso_pheno_nodes: pd.DataFrame):
+def get_drugdisease_associations(drug_nodes: pd.DataFrame, diso_pheno_nodes: pd.DataFrame, disease_prefix: str):
     """
         Get 
     """
@@ -105,5 +105,5 @@ def get_drugdisease_associations(drug_nodes: pd.DataFrame, diso_pheno_nodes: pd.
     included_drug_disease_edges = drug_disease_edges.loc[(drug_disease_edges['DISEASE_ID'].isin(diso_pheno_ids)) & (drug_disease_edges['DRUG_NAME'].isin(drug_names))]
     common.register_info(f'A total of {included_drug_disease_edges.shape[0]} are matched with existing drugs and diseases/phenotypes')
     
-    drugdisease_associations = format_drugdisease_associations(included_drug_disease_edges, drug_nodes)
+    drugdisease_associations = format_drugdisease_associations(included_drug_disease_edges, drug_nodes, disease_prefix)
     return drugdisease_associations

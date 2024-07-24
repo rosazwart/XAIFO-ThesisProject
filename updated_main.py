@@ -69,7 +69,7 @@ def build_restr_kg():
     
     drug_nodes = kg.get_extracted_nodes([constants.DRUG])
     diso_pheno_nodes = kg.get_extracted_nodes([constants.DISEASE, constants.PHENOTYPE])
-    drugcentral_associations = drugcentral_fetcher.get_drugdisease_associations(drug_nodes, diso_pheno_nodes)
+    drugcentral_associations = drugcentral_fetcher.get_drugdisease_associations(drug_nodes, diso_pheno_nodes, disease_prefix=DISEASE_PREFIX)
     
     kg.add_edges_and_nodes(drugcentral_associations)
     print(f'Added {len(drugcentral_associations)} drug-phenotype/disease associations')
