@@ -1,5 +1,8 @@
 Drug,Symptom ID,Symptom
-cerulenin,HP:0002591,Polyphagia
+omeprazole,HP:0002059,Cerebral atrophy
 cerulenin,HP:0001288,Gait disturbance
 cerulenin,HP:0002067,Bradykinesia
+omeprazole,HP:0001250,Seizure
+pantoprazole,HP:0002059,Cerebral atrophy
 cerulenin,HP:0002171,Gliosis
+cerulenin,HP:0002591,Polyphagia

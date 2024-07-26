@@ -48,7 +48,7 @@ def optim(args):
         G2.add_edge(int(edge['index_head']), int(edge['index_tail']))
         
     # Split graph dataset into train, test and validation sets
-    dataset = GraphDataset(G2, task='link_pred', edge_train_mode="all")
+    dataset = GraphDataset(G2, task='link_pred', edge_train_mode="all", edge_negative_sampling_ratio=args['edge_neg_sampl'])
     
     datasets = {}
     datasets['train'], datasets['val'], datasets['test']= dataset.split(transductive=True, split_ratio=[0.8, 0.1, 0.1])
@@ -102,7 +102,8 @@ if __name__ == "__main__":
         'lr': tune.loguniform(1e-4, 1e-1), 
         'aggr': tune.choice(['mean', 'sum']), 
         'dropout': tune.choice([0, 0.1, 0.2]), 
-        'layers': tune.choice([2, 4, 6])
+        'layers': tune.choice([2, 4, 6]),
+        'edge_neg_sampl': tune.choice([0.5, 1.0, 1.5])
     }
 
     scheduler = ASHAScheduler(

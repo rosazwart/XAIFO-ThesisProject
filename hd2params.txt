@@ -1,0 +1,16 @@
+2024-07-25 16:45:23,722 INFO tune.py:798 -- Total run time: 22835.18 seconds (22813.10 seconds for the tuning loop).
+Best trial config: {'device': device(type='cpu'), 'hidden_dim': 64, 'output_dim': 128, 'epochs': 150, 'type_size': 19, 'epoch_e2v': 10, 'num_walks': 6, 'walk_length': 5, 'p': 0.5, 'q': 1, 'dimensions_e2v': 128, 'df':
+    head                                      label_head  ...  index_tail  type
+0       WormBase:WBGene00006537                                           tbb-2  ...        9968     0
+1       WormBase:WBGene00006537                                           tbb-2  ...        3292     0
+2       WormBase:WBGene00006537                                           tbb-2  ...        8349     0
+3       WormBase:WBGene00006537                                           tbb-2  ...        4998     1
+4       WormBase:WBGene00006537                                           tbb-2  ...        6541     0
+...                         ...                                             ...  ...         ...   ...
+230223                   Q99460  26S proteasome non-ATPase regulatory subunit 1  ...         352    11
+230224                   P53396                            ATP-citrate synthase  ...       10260    11
+230225                   Q60631          Growth factor receptor-bound protein 2  ...        6661    11
+230226                     1980                                      octreotide  ...        6566    12
+230227                   P00533                Epidermal growth factor receptor  ...        8284    11
+
+[230228 rows x 10 columns], 'lr': 0.002385409259236275, 'aggr': 'mean', 'dropout': 0, 'layers': 2, 'edge_neg_sampl': 1.5}
